@@ -1,0 +1,22 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && node ./dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.6.4",
+    "@types/readline-sync": "^1.4.4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
