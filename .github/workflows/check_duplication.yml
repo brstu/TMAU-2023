@@ -1,6 +1,6 @@
 name: Check code duplication
 
-on: pull_request
+on: pull_request_target
 
 jobs:
   duplicate-code-check:
