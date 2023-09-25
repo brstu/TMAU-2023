@@ -61,7 +61,8 @@ std::vector<TemperatureModel> simulateNonLinearModel(int time, double temp) {
     return nonLinearTemps;
 }
 
-int main() {
+int main()
+{
     int time;
     std::cout << "Input time parameter: ";
     std::cin >> time;
