@@ -1,6 +1,33 @@
 #include <iostream>
-#include "LinearModel.hpp"
-#include "NonlinearModel.hpp"
+#include <cmath>
+
+class LinearModel {
+private:
+    double a, b;
+public:
+    LinearModel(double a, double b): a(a), b(b) {}
+    
+    double simulate_temperature(double Yt, double Uw) {
+        return a*Yt + b*Uw;
+    }
+};
+
+class NonlinearModel {
+private:
+    double a, b, c, d;
+public:
+    NonlinearModel(double a, double b, double c, double d):
+        a(a),
+        b(b),
+        c(c),
+        d(d) {}
+    
+    double simulate_temperature(double Yt, double PreYt, double Uw, double PreUw) {
+        return a*Yt - b*pow(PreYt, 2) + c*Uw + d*sin(PreUw);
+    }
+};
+
+
 
 int main() {
     double Yt, PreYt, Uw, PreUw, a, b, c, d;
@@ -56,7 +83,7 @@ int main() {
         PreYt = save_yt;
         save_yt = Yt;
      
-         std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
+        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
     }
     system("Pause");
 }
