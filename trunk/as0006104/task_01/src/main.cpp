@@ -1,7 +1,12 @@
 #include <iostream>
 #include <cmath>
 
-class LinearModel {
+class Model{
+public:
+ virtual double simulate_temperature(double Yt, double Uw) = 0;
+};
+
+class LinearModel : public Model {
 private:
     double a, b;
 public:
@@ -12,9 +17,10 @@ public:
     }
 };
 
-class NonlinearModel {
+class NonlinearModel : public Model {
 private:
     double a, b, c, d;
+    double PreYt = 0, PreUw = 0;
 public:
     NonlinearModel(double a, double b, double c, double d):
         a(a),
@@ -22,15 +28,16 @@ public:
         c(c),
         d(d) {}
     
-    double simulate_temperature(double Yt, double PreYt, double Uw, double PreUw) {
-        return a*Yt - b*pow(PreYt, 2) + c*Uw + d*sin(PreUw);
+    double simulate_temperature(double Yt, double Uw) {
+        double calc = a*Yt - b*pow(PreYt, 2) + c*Uw + d*sin(PreUw);
+        PreYt = Yt;
+        PreUw = Uw;
+        return calc;
     }
 };
 
-
-
 int main() {
-    double Yt, PreYt, Uw, PreUw, a, b, c, d;
+    double Yt, Uw, a, b, c, d;
     double numOfTimeModeling;
 
     std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
@@ -48,7 +55,7 @@ int main() {
     NonlinearModel nonlinear_model{a,b,c,d};
 
     std::cout << "Please input Yt-parameter: "; std::cin >> Yt;
-    double save_yt = Yt; 
+    double save_yt = Yt;
     
     std::cout << "Please input number of time modeling for the LinearModel: ";
     std::cin >> numOfTimeModeling;
@@ -67,21 +74,12 @@ int main() {
     std::cout << "Please input number of time modeling for the NonlinearModel: ";
     std::cin >> numOfTimeModeling;
     std::cout << "\t\t\t---NonlinearModel---" << std::endl;
-    Yt = save_yt;
     std::cout << "\t\t\tMoments\t\tYt\n";
-    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
-        if(moment > 1) {
-            PreUw = Uw;
-        }
-        else {
-            PreYt = 0;
-            PreUw = 0;
-        }
+    Yt = save_yt;
 
+    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
         std::cout << "Input Uw-parameter: "; std::cin >> Uw;
-        Yt = nonlinear_model.simulate_temperature(Yt, PreYt, Uw, PreUw);
-        PreYt = save_yt;
-        save_yt = Yt;
+        Yt = nonlinear_model.simulate_temperature(Yt, Uw);
      
         std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
     }
