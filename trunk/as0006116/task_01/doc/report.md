@@ -42,76 +42,75 @@ Task is to write program (**С++**), which simulates this object temperature.
 using namespace std;
 int main()
 {
-    const double a = 1.1;
-    const double b = 0.03;
-    const double c = 0.7;
-    const double d = 0.06;
+	 //Константы
+    const double A_means_AncientApparation = 1.1;
+    const double B_means_BountyHunter = 0.03;
+    const double C_means_CentaurWarrunner = 0.7;
+    const double D_means_DarkSeer = 0.06;
     double Ytemp = 0;
     double Uwarm = 0;
     double Ytemp_1 = 17;
     double Uwarm_1 = 19;
+	 //ВВод данных
     cout << "Input temperature: ";
     cin >> Ytemp;
-    cout << "\nInput warm: ";
+    cout << "Input warm: ";
     cin >> Uwarm;
-    cout << "\n";
-    double y[15] = { 0 };
-    y[0] = Ytemp_1;
-    y[1] = Ytemp;
-    for (int i = 2; i < 15; i++) {
-        y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * Uwarm + d * sin(Uwarm_1);
-    }
-    cout << "For nonlinear model:\n";
-    for (int i = 0; i < 15; i++) cout << "y["<< i <<"] = " << y[i] << " \n";
-    cout << "\n";
-    for (int i = 2; i < 15; i++) {
-        y[i] = a * y[i - 1] + b * Uwarm;
-    }
+	 double Temprature_means_TrollWarlord[15] = { 0 };
+    Temprature_means_TrollWarlord[0] = Ytemp_1;
+    Temprature_means_TrollWarlord[1] = Ytemp;
+	 //Вычисления по формуле линейной модели
+	 for (int index_of_copypast = 2; index_of_copypast < 15; index_of_copypast++) { Temprature_means_TrollWarlord[index_of_copypast] = A_means_AncientApparation * Temprature_means_TrollWarlord[index_of_copypast - 1] + B_means_BountyHunter * Uwarm; }
     cout << "For linear model:\n";
-    for (int i = 0; i < 15; i++) cout << "y[" << i << "] = " << y[i] << " \n";
-    return 0;
+    for (int second_index = 0; second_index < 15; second_index++) cout << "Temperature at the " << second_index << " time: " << Temprature_means_TrollWarlord[second_index] << (Temprature_means_TrollWarlord[second_index]>20?". It is soo good)))":". It is soo hot(((") <<" \n";
+	 cout << "\n";
+	 //Вычисления по формуле нелинейной модели
+    for (int third_index = 2; third_index < 15; third_index++) { Temprature_means_TrollWarlord[third_index] = A_means_AncientApparation * Temprature_means_TrollWarlord[third_index - 1] - B_means_BountyHunter * pow(Temprature_means_TrollWarlord[third_index - 2], 2) + C_means_CentaurWarrunner * Uwarm + D_means_DarkSeer * sin(Uwarm_1); }
+    cout << "For nonlinear model:\n";
+    for (int some_other_index = 0; some_other_index < 15; some_other_index++) cout << "Temperature at the "<< some_other_index <<" time: " << Temprature_means_TrollWarlord[some_other_index] << (Temprature_means_TrollWarlord[some_other_index]>20?". It is soo good)))":". It is soo hot(((") << " \n";
+	 return 0;
 }
 ```
 
 Пример вывода программы:
 
 ``` bash
-Input temperature: 21
-
-Input warm: 25
+Input temperature: 10
+Input warm: 12
+For linear model:
+Temperature at the 0 time: 17. It is soo hot(((
+Temperature at the 1 time: 10. It is soo hot(((
+Temperature at the 2 time: 11.36. It is soo hot(((
+Temperature at the 3 time: 12.856. It is soo hot(((
+Temperature at the 4 time: 14.5016. It is soo hot(((
+Temperature at the 5 time: 16.3118. It is soo hot(((
+Temperature at the 6 time: 18.3029. It is soo hot(((
+Temperature at the 7 time: 20.4932. It is soo good)))
+Temperature at the 8 time: 22.9026. It is soo good)))
+Temperature at the 9 time: 25.5528. It is soo good)))
+Temperature at the 10 time: 28.4681. It is soo good)))
+Temperature at the 11 time: 31.6749. It is soo good)))
+Temperature at the 12 time: 35.2024. It is soo good)))
+Temperature at the 13 time: 39.0826. It is soo good)))
+Temperature at the 14 time: 43.3509. It is soo good)))
 
 For nonlinear model:
-y[0] = 17
-y[1] = 21
-y[2] = 31.939
-y[3] = 39.4119
-y[4] = 30.2591
-y[5] = 4.19509
-y[6] = -5.34478
-y[7] = 11.1018
-y[8] = 28.8639
-y[9] = 45.5618
-y[10] = 42.6332
-y[11] = 2.12907
-y[12] = -34.6768
-y[13] = -20.7714
-y[14] = -41.4139
-
-For linear model:
-y[0] = 17
-y[1] = 21
-y[2] = 23.85
-y[3] = 26.985
-y[4] = 30.4335
-y[5] = 34.2269
-y[6] = 38.3995
-y[7] = 42.9895
-y[8] = 48.0384
-y[9] = 53.5923
-y[10] = 59.7015
-y[11] = 66.4217
-y[12] = 73.8138
-y[13] = 81.9452
-y[14] = 90.8897
-
+Temperature at the 0 time: 17. It is soo hot(((
+Temperature at the 1 time: 10. It is soo hot(((
+Temperature at the 2 time: 10.739. It is soo hot(((
+Temperature at the 3 time: 17.2219. It is soo hot(((
+Temperature at the 4 time: 23.8933. It is soo good)))
+Temperature at the 5 time: 25.7938. It is soo good)))
+Temperature at the 6 time: 19.6555. It is soo hot(((
+Temperature at the 7 time: 10.0704. It is soo hot(((
+Temperature at the 8 time: 7.8963. It is soo hot(((
+Temperature at the 9 time: 14.0525. It is soo hot(((
+Temperature at the 10 time: 21.9962. It is soo good)))
+Temperature at the 11 time: 26.6806. It is soo good)))
+Temperature at the 12 time: 23.2427. It is soo good)))
+Temperature at the 13 time: 12.6203. It is soo hot(((
+Temperature at the 14 time: 6.08461. It is soo hot(((
 ```
+
+**Вывод**:
+В результате выполнения задания были получены практические навыки в работе с Git. Продуманный, лёгкий, надёжный сервис, GitHub не в последнюю очередь - один из двигателей open-source. "Выложить на GitHub" - наверное, первое, что приходит в голову, если код перерастает из досужего в нечто, что может использовать не только его автор. GitHub - это и хостинг для вашего кода, и вики, и диффы, и отслеживание истории изменений, и, кроме прочего, прекрасный инструмент для самообучения, причём двустороннего. Во-первых, всегда можно посмотреть, как другие разработчики подходят к имеющейся проблеме, или узнать, как устроен инструмент, которым вы пользуетесь. Во-вторых, из пулл-реквестов к выложенной вами "либе для себя" можно почерпнуть много полезного. Вообще, когда есть сервис, который берёт на себя одну из задач, стоящих перед начинающим проект: хостинг кода и совместную работу над ним, а в случае с GitHub ещё и решает её с таким блеском, то чего же ещё желать?
