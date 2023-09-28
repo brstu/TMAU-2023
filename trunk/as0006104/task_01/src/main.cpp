@@ -36,7 +36,7 @@ public:
     }
 };
 
-void modeling(Model& model, double Yt,int numOfTimeModeling) {
+void modeling(Model& model, double Yt, int numOfTimeModeling) {
     double Uw;
     for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
         std::cout << "Input Uw-parameter: "; std::cin >> Uw;
@@ -65,7 +65,6 @@ int main() {
     NonlinearModel nonlinear_model{a,b,c,d};
 
     std::cout << "Please input Yt-parameter: "; std::cin >> Yt;
-    double save_yt = Yt;
     
     std::cout << "Please input number of time modeling for the LinearModel: ";
     std::cin >> numOfTimeModeling;
@@ -82,7 +81,6 @@ int main() {
     std::cin >> numOfTimeModeling;
     std::cout << "\t\t\t---NonlinearModel---" << std::endl;
     std::cout << "\t\t\tMoments\t\tYt\n";
-    Yt = save_yt;
     modeling(nonlinear_model, Yt, numOfTimeModeling);
 
     system("Pause");
