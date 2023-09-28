@@ -1,41 +1,41 @@
-<p align="center"> Министерство образования Республики Беларусь</p>
-<p align="center">Учреждение образования</p>
-<p align="center">“Брестский Государственный технический университет”</p>
-<p align="center">Кафедра ИИТ</p>
+<p align="center"> ГЊГЁГ­ГЁГ±ГІГҐГ°Г±ГІГўГ® Г®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї ГђГҐГ±ГЇГіГЎГ«ГЁГЄГЁ ГЃГҐГ«Г Г°ГіГ±Гј</p>
+<p align="center">Г“Г·Г°ГҐГ¦Г¤ГҐГ­ГЁГҐ Г®ГЎГ°Г Г§Г®ГўГ Г­ГЁГї</p>
+<p align="center">вЂњГЃГ°ГҐГ±ГІГ±ГЄГЁГ© ГѓГ®Г±ГіГ¤Г Г°Г±ГІГўГҐГ­Г­Г»Г© ГІГҐГµГ­ГЁГ·ГҐГ±ГЄГЁГ© ГіГ­ГЁГўГҐГ°Г±ГЁГІГҐГІвЂќ</p>
+<p align="center">ГЉГ ГґГҐГ¤Г°Г  Г€Г€Г’</p>
 <br><br><br><br><br><br><br>
-<p align="center">Лабораторная работа №1</p>
-<p align="center">По дисциплине “Теория и методы автоматического управления”</p>
-<p align="center">Тема: “Моделирования температуры объекта”</p>
+<p align="center">Г‹Г ГЎГ®Г°Г ГІГ®Г°Г­Г Гї Г°Г ГЎГ®ГІГ  В№1</p>
+<p align="center">ГЏГ® Г¤ГЁГ±Г¶ГЁГЇГ«ГЁГ­ГҐ вЂњГ’ГҐГ®Г°ГЁГї ГЁ Г¬ГҐГІГ®Г¤Г» Г ГўГІГ®Г¬Г ГІГЁГ·ГҐГ±ГЄГ®ГЈГ® ГіГЇГ°Г ГўГ«ГҐГ­ГЁГївЂќ</p>
+<p align="center">Г’ГҐГ¬Г : вЂњГЊГ®Г¤ГҐГ«ГЁГ°Г®ГўГ Г­ГЁГї ГІГҐГ¬ГЇГҐГ°Г ГІГіГ°Г» Г®ГЎГєГҐГЄГІГ вЂќ</p>
 <br><br><br><br><br>
-<p align="right">Выполнил:</p>
-<p align="right">Студент 3 курса</p>
-<p align="right">Группы АС-62</p>
-<p align="right">Гомон М. Д.</p>
-<p align="right">Проверил:</p>
-<p align="right">Иванюк Д. С.</p>
+<p align="right">Г‚Г»ГЇГ®Г«Г­ГЁГ«:</p>
+<p align="right">Г‘ГІГіГ¤ГҐГ­ГІ 3 ГЄГіГ°Г±Г </p>
+<p align="right">ГѓГ°ГіГЇГЇГ» ГЂГ‘-62</p>
+<p align="right">ГѓГ®Г¬Г®Г­ ГЊ. Г„.</p>
+<p align="right">ГЏГ°Г®ГўГҐГ°ГЁГ«:</p>
+<p align="right">Г€ГўГ Г­ГѕГЄ Г„. Г‘.</p>
 <br><br><br><br><br>
-<p align="center">Брест 2023</p>
+<p align="center">ГЃГ°ГҐГ±ГІ 2023</p>
 
 ---
 
-**Задание**:
+**Г‡Г Г¤Г Г­ГЁГҐ**:
 
 Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
 $$\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC} $$ (1)
 
-where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm; $Y_0$ – room temperature; $C,RC$ – some constants.
+where $\tau$ вЂ“ time; $y(\tau)$ вЂ“ input temperature; $u(\tau)$ вЂ“ input warm; $Y_0$ вЂ“ room temperature; $C,RC$ вЂ“ some constants.
 
 After transformation we get these linear (2) and nonlinear (3) models:
 
 $$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
 $$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
 
-where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
+where $\tau$ вЂ“ time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ вЂ“ some constants.
 
-Task is to write program (**С++**), which simulates this object temperature.
+Task is to write program (**Г‘++**), which simulates this object temperature.
 
-**Код решения:**
+**ГЉГ®Г¤ Г°ГҐГёГҐГ­ГЁГї:**
 
 ``` C++
 #include <iostream>
@@ -82,7 +82,7 @@ int main(){
     double d = -0.2;
     double y[16];
     double u;
-    double temperature = y[0];
+    
 
 
     std::cout << "input temperature"; 
@@ -97,7 +97,7 @@ int main(){
 }
 ```
 
-Пример вывода программы:
+ГЏГ°ГЁГ¬ГҐГ° ГўГ»ГўГ®Г¤Г  ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»:
 
 ``` bash
 input temperature 12
