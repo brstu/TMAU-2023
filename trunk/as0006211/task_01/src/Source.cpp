@@ -9,7 +9,7 @@ float linear_transformation(float y[N], float u, float a, float b) {
 		y[i] = a * y[i - 1] + b * u;
 		new_temperature[i] = y[i];
 	}
-	return new_temperature[N];
+	return new_temperature[N-1];
 }
 
 float nonlinear_transformation(float y[N], float u, float a, float b, float c, float d) {
@@ -21,7 +21,7 @@ float nonlinear_transformation(float y[N], float u, float a, float b, float c, f
 		y[i] = a * y[i - 1] - b * pow(y[i-2],2) + c * u + d * sin(u);
 		new_temperature[i] = y[i];
 	}
-	return new_temperature[N];
+	return new_temperature[N-1];
 }
 
 int choose_transformation() {
@@ -29,10 +29,10 @@ int choose_transformation() {
 
 	float temperature[N];
 	float warm;
-	float a = 0.1;		//	
-	float b = 0.01;	//const
-	float c = 0.03;		//
-	float d = 0.02;		//
+	cosnt float a = 0.1;		//	
+	cosnt float b = 0.01;		//const
+	cosnt float c = 0.03;		//
+	cosnt float d = 0.02;		//
 	int temp;
 
 	std::cout << "choose type of transformation: \n 1 - linear \n 2 - nonlinear" << std::endl;
