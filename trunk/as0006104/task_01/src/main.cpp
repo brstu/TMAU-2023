@@ -36,8 +36,18 @@ public:
     }
 };
 
+void modeling(Model& model, double Yt,int numOfTimeModeling) {
+    double Uw;
+    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
+        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
+        Yt = model.simulate_temperature(Yt, Uw);
+
+        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl; 
+    }
+}
+
 int main() {
-    double Yt, Uw, a, b, c, d;
+    double Yt, a, b, c, d;
     double numOfTimeModeling;
 
     std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
@@ -64,24 +74,16 @@ int main() {
 
     std::cout << "\t\t\t---LinearModel---" << std::endl;
     std::cout << "\t\t\tMoments\t\tYt\n";
-    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
-        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
-        Yt = linear_model.simulate_temperature(Yt, Uw);
+    modeling(linear_model, Yt, numOfTimeModeling);
 
-        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl; 
-    }
     std::cout << std::endl;
+    
     std::cout << "Please input number of time modeling for the NonlinearModel: ";
     std::cin >> numOfTimeModeling;
     std::cout << "\t\t\t---NonlinearModel---" << std::endl;
     std::cout << "\t\t\tMoments\t\tYt\n";
     Yt = save_yt;
+    modeling(nonlinear_model, Yt, numOfTimeModeling);
 
-    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
-        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
-        Yt = nonlinear_model.simulate_temperature(Yt, Uw);
-     
-        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
-    }
     system("Pause");
 }
