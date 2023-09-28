@@ -42,7 +42,7 @@ int main(){
     double d = -0.2;
     double y[16];
     double u;
-    double temperature = y[0];
+    
 
 
     std::cout << "input temperature"; 
