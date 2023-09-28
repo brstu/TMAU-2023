@@ -31,8 +31,8 @@ int choose_transformation() {
 	float warm;
 	float a = 0.1;		//	
 	float b = 0.01;	//const
-	float c = 0.3;		//
-	float d = 0.2;		//
+	float c = 0.03;		//
+	float d = 0.02;		//
 	int temp;
 
 	std::cout << "choose type of transformation: \n 1 - linear \n 2 - nonlinear" << std::endl;
