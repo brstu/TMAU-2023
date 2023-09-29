@@ -4,68 +4,64 @@
 
 using namespace std;
 
-#define Numer 16		
+#define nm 16		
 
 
 
-float nonlinear(float y[Numer], float u, float a, float b, float c, float d) {
-	float new_gradus[Numer];
-	y[1] = a * y[0] + b * u;
+double nonlinear(double y[nm], double u, double a, double b, double c, double d) {
+	double new_gradus[nm];
+	y[1] = b * u + a * y[0] ;
 	new_gradus[1] = y[1];
-	for (int i = 2; i < Numer; i++) {
-		y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * u + d * sin(u);
+	for (int i = 2; i < nm; i++) {
+		y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + d * sin(u) + c * u ;
 		new_gradus[i] = y[i];
 	}
-	return new_gradus[Numer - 1];
+	return new_gradus[nm - 1];
 }
 
-float linear(float y[Numer], float u, float a, float b) {
-	float new_gradus[Numer];
-	for (int i = 1; i < Numer; i++) {
-		y[i] = a * y[i - 1] + b * u;
+double linear(double y[nm], double u, double a, double b) {
+	double new_gradus[nm];
+	for (int i = 1; i < nm; i++) {
+		y[i] = b * u + a * y[i - 1]  ;
 		new_gradus[i] = y[i];
 	}
-	return new_gradus[Numer - 1];
+	return new_gradus[nm - 1];
 }
 
-int transformation() {
-	float temperature[Numer];
-	float choosen_warm;
-	const float z = 0.1;		
-	const float x = 0.01;		
-	const float c = 0.03;		
-	const float v = 0.02;		
+
+
+
+int main() {
+
+	double temperature[nm];
+	double choosen_warm;
 	int temp;
 
-	cout << "choose : \n 1 - linear \n 2 - nonlinear" << endl;
+	cout << "choose : \n 0 - linear \n 1,2,3,4,5,6,7,8,9 - nonlinear" << endl;
 	cin >> temp;
-	cout << "enter temperature " <<endl;
+	cout << "enter temperature " << endl;
 	cin >> temperature[0];
-	cout << "enter choosen_warm " <<endl;
+	cout << "enter choosen_warm " << endl;
 	cin >> choosen_warm;
-	cout << "\n";
 
 
-	if (temp == 1) {
+	const double z = 0.1;
+	const double x = 0.01;
+	const double c = 0.03;
+	const double v = 0.02;
+	if (temp == 0) {
 		linear(temperature, choosen_warm, z, x);
-		for (int i = 0; i < Numer; i++) {
+		for (int i = 0; i < nm; i++) {
 			cout << "y[" << i << "]=" << temperature[i] << endl;
 		}
 	}
 	else {
 		nonlinear(temperature, choosen_warm, z, x, c, v);
-		for (int i = 0; i < Numer; i++) {
+		for (int i = 0; i < nm; i++) {
 			cout << "y[" << i << "]=" << temperature[i] << endl;
 		}
 	}
 
-	return 0;
-}
-
-
-int main() {
-
-	transformation();
 	system("pause");
 	return 0;
 }

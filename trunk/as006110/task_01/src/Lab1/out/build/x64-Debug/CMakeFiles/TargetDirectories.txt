@@ -1,0 +1,3 @@
+C:/Games/tmau/TMAU-2023/trunk/as006110/task_01/src/Lab1/out/build/x64-Debug/CMakeFiles/Lab1.dir
+C:/Games/tmau/TMAU-2023/trunk/as006110/task_01/src/Lab1/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Games/tmau/TMAU-2023/trunk/as006110/task_01/src/Lab1/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

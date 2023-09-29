@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Games/tmau/TMAU-2023/trunk/as006110/task_01/src/Lab1/out/build/x64-Debug/CMakeFiles/Lab1.dir/embed.manifest"
