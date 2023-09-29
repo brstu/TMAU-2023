@@ -18,15 +18,12 @@
 
 ---
 
+Цель: написать программу на языке С++, которая моделирует температуру объекта, подверженного воздействию тепла. Для этого необходимо использовать линейную и нелинейную математические модели, описанные в условии задачи.
+
 **Задание**:
 
-Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
-$$\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC} $$ (1)
-
-where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm; $Y_0$ – room temperature; $C,RC$ – some constants.
-
-After transformation we get these linear (2) and nonlinear (3) models:
+На языке C++ симулировать данные 2 модели температуры:
 
 $$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
 $$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
@@ -75,3 +72,5 @@ temp: 1.07 warm: 1.00 time: 10.00
 Press Enter to exit...
 
 ```
+
+Вывод: Успешно смоделировали температуру.
