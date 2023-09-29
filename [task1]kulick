@@ -1,0 +1,49 @@
+//task1
+//the code of task(in developing)
+#include <iostream> 
+#include <cmath>
+  
+ double linear(double inputTemperature_Yt, double inputWarm_U, double a, double b) //Результат линейной функции 
+ { return (a * inputTemperature_Yt)+(b* inputWarm_U); } 
+ double nonLinear(double inputTemperature_Yt, double inputTemperature_Yt_1, double inputWarm_U, double inputWarm_U_1, double a, double b, double c, double d)  //Результат нелинейной функции 
+ { return (a * inputTemperature_Yt) - b*pow(inputTemperature_Yt_1,2)+(c*inputWarm_U)+d*sin(inputWarm_U_1); } 
+ int main()  
+ { // переменные для вычисления функций
+         const double linear1 = 1.6; 
+         const double linear2 = 0.9; 
+         const double nonLinear1 = 0.8; 
+         const double nonLinear2 = 0.6; 
+         const double nonLinear3 = 0.5; 
+         const double nonLinear4 = 0.3; 
+  
+         double linearY = 0.0; 
+         double nonLinearY = 0.0; 
+         double previousNonLinearY = 0.0; 
+  
+         double Warm = 0; 
+         double previousInputU = 0; 
+  
+         int Timet; 
+  
+         std::cout << "enter Warm: "; 
+         std::cin >> Warm; 
+         std::cout << "enter Time: "; 
+         std::cin >> Timet; 
+         std::cout << "\n"; 
+  
+         /*for (int i = 1; i <= Timet; i++) //Цикл для моделирования временных шагов 
+         { 
+                 linearY = linear(linearY, Warm, linearA, linearB); 
+                 nonLinearY = nonLinear(nonLinear2, previousNonLinear2, Warm, previousWarm, nonLinear1, nonLinear2, nonLinear3, nonLinear4); 
+                 previousNonLinearY = nonLinearY;         
+                 previousWarm = Warm; 
+  
+                  
+                 std::cout << "TIME: " << i << std::endl; 
+                 std::cout << "LINEAR MODEL: " << linearY << std::endl; 
+                 std::cout << "NONLINEAR MODEL: " << nonLinearY << std::endl<<std::endl; 
+                  
+         }*/
+  
+  
+ }
