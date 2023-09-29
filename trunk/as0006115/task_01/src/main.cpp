@@ -20,6 +20,7 @@ class Model {
   }
 };
 
+// Some physical constants
 const double A = 0.5;
 const double B = 1;
 const double C = 1.2;
@@ -68,7 +69,7 @@ int main() {
   logData(simulateLinear(initialTemperature, time));
   std::cout << std::endl;
 
-  std::cout << "Linear model:" << std::endl;
+  std::cout << "Non linear model:" << std::endl;
   logData(simulateNonLinear(initialTemperature, time));
   std::cout << "." << std::endl;
 

@@ -37,109 +37,41 @@ Task is to write program (**С++**), which simulates this object temperature.
 
 **Код решения:**
 
-``` typescript
-import { question as prompt } from "readline-sync";
+Код решения задачи приведен в фале trunk/as0006115/src/main.cpp
 
-class TemperatureModel {
-  constructor(public temp: number, public warm: number, public t: number) {}
-
-  toString(): string {
-    return `{ y(t): ${this.temp}; t: ${this.t} }`;
-  }
-}
-
-// Some physical constants
-const A = 0.5;
-const B = 1;
-const C = 1.2;
-const D = 0.4;
-// Should've been discrete value chaning over time but
-const WARM = 1;
-
-function showData(tempModels: TemperatureModel[]) {
-  for (const model of tempModels) {
-    console.log(model.toString());
-  }
-}
-
-function simulateLinearModel(time: number, temp: number) {
-  const linearTemps: TemperatureModel[] = [];
-
-  for (let t = 1; t <= time; t++) {
-    const curWarm = WARM;
-    // let warm = parseInt(prompt(`Input warm for tau=${t}: `));
-    temp = Math.round((A * temp + B * curWarm) * 100) / 100;
-    linearTemps.push(new TemperatureModel(temp, curWarm, t));
-  }
-
-  return linearTemps;
-}
-
-function simulateNonLinearModel(time: number, temp: number) {
-  const nonLinearTemps: TemperatureModel[] = [];
-  let prevTemp = 0;
-  let prevWarm = 0;
-  for (let t = 1; t <= time; t++) {
-    // let warm = parseInt(prompt(`Input warm for tau=${t} s: `));
-    let curWarm = WARM;
-    temp =
-      A * temp -
-      B * Math.pow(prevTemp, 2) +
-      C * curWarm +
-      D * Math.sin(prevWarm);
-    temp = Math.round(temp * 100) / 100;
-    nonLinearTemps.push(new TemperatureModel(temp, curWarm, t));
-    prevTemp = temp;
-    prevWarm = curWarm;
-  }
-
-  return nonLinearTemps;
-}
-
-const time = parseInt(prompt("Input time parameter: "));
-let temp = parseInt(prompt("Input initial temperature: "));
-
-console.log("Linear model data");
-showData(simulateLinearModel(time, temp));
-console.log("Non linear model data");
-showData(simulateNonLinearModel(time, temp));
-
-
-```
+За теплоту принята константа WARM равная 1.
 
 Пример вывода программы:
 
-``` bash
-➜  src git:(task_01) ✗ npm run build
-
-> src@1.0.0 build
-> tsc && node ./dist/main.js
-
+``` zsh
+➜  src git:(task_01) ✗ ./build/tempmodels
 Input time parameter: 10
+
 Input initial temperature: 0
-Linear model data
-{ y(t): 1; t: 1 }
-{ y(t): 1.5; t: 2 }
-{ y(t): 1.75; t: 3 }
-{ y(t): 1.88; t: 4 }
-{ y(t): 1.94; t: 5 }
-{ y(t): 1.97; t: 6 }
-{ y(t): 1.99; t: 7 }
-{ y(t): 2; t: 8 }
-{ y(t): 2; t: 9 }
-{ y(t): 2; t: 10 }
-Non linear model data
-{ y(t): 1.2; t: 1 }
-{ y(t): 0.7; t: 2 }
-{ y(t): 1.4; t: 3 }
-{ y(t): 0.28; t: 4 }
-{ y(t): 1.6; t: 5 }
-{ y(t): -0.22; t: 6 }
-{ y(t): 1.38; t: 7 }
-{ y(t): 0.32; t: 8 }
-{ y(t): 1.59; t: 9 }
-{ y(t): -0.2; t: 10 }
+Linear model:
+temp: 1.00 warm: 1.00 time: 1.00
+temp: 1.50 warm: 1.00 time: 2.00
+temp: 1.75 warm: 1.00 time: 3.00
+temp: 1.88 warm: 1.00 time: 4.00
+temp: 1.94 warm: 1.00 time: 5.00
+temp: 1.97 warm: 1.00 time: 6.00
+temp: 1.98 warm: 1.00 time: 7.00
+temp: 1.99 warm: 1.00 time: 8.00
+temp: 2.00 warm: 1.00 time: 9.00
+temp: 2.00 warm: 1.00 time: 10.00
 
-
+Non Linear model:
+temp: 1.54 warm: 1.00 time: 1.00
+temp: 1.30 warm: 1.00 time: 2.00
+temp: 1.19 warm: 1.00 time: 3.00
+temp: 1.13 warm: 1.00 time: 4.00
+temp: 1.10 warm: 1.00 time: 5.00
+temp: 1.09 warm: 1.00 time: 6.00
+temp: 1.08 warm: 1.00 time: 7.00
+temp: 1.08 warm: 1.00 time: 8.00
+temp: 1.07 warm: 1.00 time: 9.00
+temp: 1.07 warm: 1.00 time: 10.00
+.
+Press Enter to exit...
 
 ```
