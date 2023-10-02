@@ -2,58 +2,46 @@
 <p align="center">Учреждение образования</p>
 <p align="center">“Брестский Государственный технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
-<br><br><br><br><br><br><br>
+<br><br><br>
 <p align="center">Лабораторная работа №1</p>
 <p align="center">По дисциплине “Теория и методы автоматического управления”</p>
 <p align="center">Тема: “Моделирования температуры объекта”</p>
-<br><br><br><br><br>
+<br><br><br>
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-61</p>
 <p align="right">Василенко И.В.</p>
 <p align="right">Проверил:</p>
 <p align="right">Старший преподаватель</p>
-<p align="right">Иванюк Д. С.</p>
-<br><br><br><br><br>
+<p align="right">Иванюк Д.С.</p>
+<br><br><br>
 <p align="center">Брест 2023</p>
 
 ---
+<p> <strong> Цель: </strong>создать программу на языке программирования c++, моделирующую температуру некого объекта с использованием линейной и нелинейной математической модели, описанными в условии задачи.</p>
+<p> <strong> Задание: </strong> </p>
 
-**Задание**:
+1. Предварительное задание [#0](../../../../tasks/task_00/readme.md).
+2. Основное задание [#1](../../../../tasks/task_01/readme.md).
 
-<p>Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
-
-$$\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC} $$ (1)
-
-where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm; $Y_0$ – room temperature; $C,RC$ – some constants.
-
-After transformation we get these linear (2) and nonlinear (3) models:
-
-$$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
-$$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
-
-where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
-
-Task is to write program (**С++**), which simulates this object temperature.
-</p>
-**Решение**:
-<p>Создадим сборку с помощью cMake.</p>
-<p>Для начала на диске D:\ создадим директорию testLab.</p>
-<p>В данной директории оздадим 2 под-директории: lab01 и build.</p>
-<p>В директорию lab01 поместим 2 файла:</p>
+<p> <strong> Решение </strong> </p>
+<p> <strong>1) </strong>Создадим сборку с помощью <em>cMake</em>.</p>
+<p> <strong>2) </strong>Для начала на диске <em>D:\</em> создадим директорию <em>testLab</em>.</p>
+<p> <strong>3) </strong>В данной директории создадим 2 под-директории: <em>lab01</em>, для файлов, содержащих исходный код программы и скрипт сборки проекта и <em>build</em> содержащую, непосредственно сборку нашего проекта.</p>
+<p> <strong>4) </strong>В директорию <em>lab01</em> поместим 2 файла:</p>
 <ul>
-<li>main.cpp с кодом программы.</li>
-<li>CMakeLists.txt с скриптом сборки проекта.</li>
+<li><em>main.cpp</em> с кодом программы для моделирования температуры объекта посредством линейной и нелинейной модели.</li>
+<li><em>CMakeLists.txt</em> с скриптом сборки проекта.</li>
 </ul>
-<p>Откроем консоль и введём следующие команды:</p>
+<p> <strong>5) </strong>Откроем консоль и введём следующие команды:</p>
 <ul>
-<li>Переход в дирректорию для сборки проекта:</li>
+<li>Переход в дирректорию <em>build</em> для сборки проекта:</li>
 
 ``` bash
 cd /d d:\testLab\build
 ```
 
-<li>Сборка проекта с помощью cMake:</li>
+<li>Сборка проекта с помощью <em>cMake</em>:</li>
 
 ``` bash
 cmake d:\testLab\lab01
@@ -61,7 +49,7 @@ cmake d:\testLab\lab01
 
 </ul>
 
-<p>Получим следующий вывод на консоль: </p>
+<p> <strong>6) </strong>Получим следующий вывод на консоль: </p>
 
 ``` bash
 -- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.17763.
@@ -81,9 +69,9 @@ cmake d:\testLab\lab01
 -- Generating done (0.0s)
 -- Build files have been written to: D:/testLab/build
 ```
-<p>Сборка прошла успешно. Запускаем наш проект с помощью капилятора.</p>
+<p> <strong>7) </strong>Сборка с помощью <em>cMake</em> прошла успешно. Запускаем наш проект с помощью компилятора.</p>
 
-Пример вывода программы в консоль:
+<p> <strong>8) </strong>Вывод нашей программмы на консоль:
 
 ``` bash
 Enter the constant a 0.7
@@ -116,4 +104,4 @@ y8 = 0.667728
 y9 = 0.692291
 y10 = 0.690407
 ```
-**Вывод**:В ходе выполнения данной лаболаторной работы были получены знания для работы с cMake.
+<p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с кроссплатформенной системой автоматизации сборки программного обеспечения <em>cMake</em>, а так же приобретены навыки работы с <em>git</em> и <em>github</em>, а именно знания для эффективного управления версиями кода и совместной работы над проектами.</p>
