@@ -3,22 +3,22 @@
 <p align="center">“Брестский Государственный технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
 <br><br><br><br><br><br><br>
-<p align="center">Лабораторная работа №1</p>
-<p align="center">По дисциплине “Теория и методы автоматического управления”</p>
-<p align="center">Тема: “Моделирования температуры объекта”</p>
+<p align="center"><strong>Лабораторная работа №1</strong></p>
+<p align="center"><strong>По дисциплине</strong> “Теория и методы автоматического управления”</p>
+<p align="center"><strong>Тема:</strong> “Моделирования температуры объекта”</p>
 <br><br><br><br><br>
-<p align="right">Выполнил:</p>
-<p align="right">Студент 3 курса</p>
+<p align="right"><strong>Выполнила</strong>:</p>
+<p align="right">Студентка 3 курса</p>
 <p align="right">Группы АС-61</p>
 <p align="right">Линкевич П.С.</p>
-<p align="right">Проверил:</p>
+<p align="right"><strong>Проверил:</strong></p>
 <p align="right">Иванюк Д. С.</p>
 <br><br><br><br><br>
-<p align="center">Брест 2023</p>
+<p align="center"><strong>Брест 2023</strong></p>
 
 ---
 
-**Задание**:
+***Задание***:
 
 Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
@@ -35,7 +35,7 @@ where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some con
 
 Task is to write program (**С++**), which simulates this object temperature.
 
-Пример вывода программы:
+***Пример вывода программы:***
 
 ``` bash
 Линейная модель                 Итерация                        Yt
@@ -58,3 +58,6 @@ Task is to write program (**С++**), which simulates this object temperature.
 Введите Ut: 2
                         4                       -1.24987e+14
 ```
+<br>
+<strong><em>Вывод:</em></strong>
+ <p>В ходе лабораторной работы мы научились работать с кроссплатформенной системой автоматизации сборки программного обеспечения cMake, а так же изучили некоторые комманды для работы с git и github: научились копировать репозиторий, добавлять изменения и т.д.. </p>
