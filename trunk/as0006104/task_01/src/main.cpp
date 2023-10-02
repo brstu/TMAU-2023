@@ -8,19 +8,24 @@ public:
 
 class LinearModel : public Model {
 private:
-    double a, b;
+    double a;
+    double b;
 public:
     LinearModel(double a, double b): a(a), b(b) {}
     
-    double simulate_temperature(double Yt, double Uw) {
+    double simulate_temperature(double Yt, double Uw) final {
         return a*Yt + b*Uw;
     }
 };
 
 class NonlinearModel : public Model {
 private:
-    double a, b, c, d;
-    double PreYt = 0, PreUw = 0;
+    double a;
+    double b;
+    double c;
+    double d;
+    double PreYt = 0;
+    double PreUw = 0;
 public:
     NonlinearModel(double a, double b, double c, double d):
         a(a),
@@ -28,7 +33,7 @@ public:
         c(c),
         d(d) {}
     
-    double simulate_temperature(double Yt, double Uw) {
+    double simulate_temperature(double Yt, double Uw) final {
         double calc = a*Yt - b*pow(PreYt, 2) + c*Uw + d*sin(PreUw);
         PreYt = Yt;
         PreUw = Uw;
@@ -47,7 +52,11 @@ void modeling(Model& model, double Yt, int numOfTimeModeling) {
 }
 
 int main() {
-    double Yt, a, b, c, d;
+    double Yt;
+    double a;
+    double b;
+    double c;
+    double d;
     double numOfTimeModeling;
 
     std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
