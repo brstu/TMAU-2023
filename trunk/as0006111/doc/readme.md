@@ -1,4 +1,4 @@
-<p align="center"> Министерство образования Республики Беларусь</p>
+<p align="center">Министерство образования Республики Беларусь</p>
 <p align="center">Учреждение образования</p>
 <p align="center">“Брестский Государственный технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
@@ -17,19 +17,21 @@
 <p align="center"><strong>Брест 2023</strong></p>
 
 ---
-
+***Цель:***
+Научиться работате с кроссплатформенной системой автоматизации сборки программного обеспечения cMake, изучить некоторые комманды для работы с git и github, атак же написать отчет в формате Markdowm.
+<br><br><br>
 ***Задание***:
 <br><br><br>
-Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
+Давайте возьмем какой-нибудь объект для управления. Мы хотим контролировать его температуру, которую можно описать этим дифференциальным уравнением:
 $$\Large\frac{dy(\tau)}{d\tau}=\frac{u(\tau)}{C}+\frac{Y_0-y(\tau)}{RC} $$ (1)
-where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm; $Y_0$ – room temperature; $C,RC$ – some constants.
+Где $\tau$ – время; $y(\tau)$ – входная температура; $u(\tau)$ – входной нагрев; $Y_0$ – температура в комнате; $C,RC$ – другие константы.
 <br><br><br>
-After transformation we get these linear (2) and nonlinear (3) models:
+После преобразования мы получаем такие линейную (2) и нелинейную (3) модели:
 $$\Large y_{\tau+1}=ay_{\tau}+bu_{\tau}$$ (2)
 $$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
-where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
+Где $\tau$ – дискретные моменты времени ($1,2,3{\dots}n$); $a,b,c,d$ – другие константы.
 <br><br><br>
-Task is to write program (**С++**), which simulates this object temperature.
+Задача написать программу (**С++**), который имитирует температуру этого объекта.
 <br><br><br><br>
 ***Пример вывода программы:***
 <br><br>
@@ -56,4 +58,4 @@ Task is to write program (**С++**), which simulates this object temperature.
 ```
 <br><br>
 <strong><em>Вывод:</em></strong>
- <p>В ходе лабораторной работы мы научились работать с кроссплатформенной системой автоматизации сборки программного обеспечения cMake, а так же изучили некоторые комманды для работы с git и github: научились копировать репозиторий, добавлять изменения и т.д.. </p>
+ <p>В ходе лабораторной работы мы научились работать с кроссплатформенной системой автоматизации сборки программного обеспечения cMake, написали отчетв формате Markdown изучили некоторые комманды для работы с git и github: научились копировать репозиторий, добавлять изменения и т.д. </p>
