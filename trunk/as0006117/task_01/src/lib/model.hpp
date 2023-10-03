@@ -12,7 +12,7 @@ class Model {
   Model(double temp, double warm, int time)
       : temperature(temp), warmth(warm), tau(time) {}
 
-  std::string printData();
+  std::string printData() const;
 };
 
 #endif
