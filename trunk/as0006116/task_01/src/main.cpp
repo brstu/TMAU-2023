@@ -17,7 +17,7 @@ int main()
     cin >> Ytemp;
     cout << "Input warm: ";
     cin >> Uwarm;
-	 double Temprature_means_TrollWarlord[15] = { 0 };
+	 array<double,15> Temprature_means_TrollWarlord = { 0 };
     Temprature_means_TrollWarlord[0] = Ytemp_1;
     Temprature_means_TrollWarlord[1] = Ytemp;
 	 //Вычисления по формуле линейной модели
