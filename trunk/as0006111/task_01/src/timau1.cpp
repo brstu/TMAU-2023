@@ -1,21 +1,23 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <cmath>
 
 using namespace std;
 
+double aN ; double bN ; double cN ; double dN;
+
 double LineModel(double Yt, double a, double b, double Ut) {
     return a * Yt + b * Ut;
 }
 
-double NLineModel(double Yt, double PreviousYt, double Ut, double PreviousUt, double a, double b, double c, double d) {
-    return a * Yt - b * PreviousYt * PreviousYt + c * Ut + d * sin(PreviousUt);
+double NLineModel(double Yt, double PreviousYt, double Ut, double PreviousUt) {
+    return aN * Yt - bN * PreviousYt * PreviousYt + cN * Ut + dN * sin(PreviousUt);
 }
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    double y0, u0, aL, bL, aN, bN, cN, dN, Yt, PreviousYt, Ut, PreviousUt;
-    int LinIter, NLinIter;
+    double y0; double u0; double aL; double bL; double Yt; double PreviousYt; double Ut; double PreviousUt;
+    int LinIter; int NLinIter;
 
     cout << "Введите значение  y: ";
     cin >> y0;
@@ -66,7 +68,7 @@ int main() {
             cout << endl << "Введите Ut: ";
             cin >> Ut;
 
-            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt, aN, bN, cN, dN);
+            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt);
             cout << "\t\t\t" << iterator + 1 << "\t\t\t" << Yt;
         }
         else {
@@ -75,7 +77,7 @@ int main() {
             cout << endl << "Введите Ut: ";
             cin >> Ut;
 
-            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt, aN, bN, cN, dN);
+            Yt = NLineModel(Yt, PreviousYt, Ut, PreviousUt);
             cout << "\t\t\t" << iterator + 1 << "\t\t\t" << Yt;
         }
     }
