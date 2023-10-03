@@ -15,9 +15,9 @@ const int WARMTH = 1;
 
 std::vector<Model> simulateLinear(double temperature, int tau) {
   std::vector<Model> models;
-  for (size_t t = 1; t <= tau; t++) {
+  for (int t = 1; t <= tau; t++) {
     temperature = A_CONST * temperature + B_CONST * WARMTH;
-    models.push_back(Model(temperature, WARMTH, t));
+    models.emplace_back(Model(temperature, WARMTH, t));
   }
 
   return models;
@@ -25,13 +25,13 @@ std::vector<Model> simulateLinear(double temperature, int tau) {
 
 std::vector<Model> simulateNonLinear(double temperature, int tau) {
   std::vector<Model> models;
-  int prevTemperetureValue = 0;
+  double prevTemperetureValue = 0;
 
-  for (size_t t = 1; t <= tau; t++) {
+  for (int t = 1; t <= tau; t++) {
     temperature = A_CONST * temperature -
                   B_CONST * pow(prevTemperetureValue, 2) + C_CONST * WARMTH +
                   D_CONST * sin(WARMTH);
-    models.push_back(Model(temperature, WARMTH, t));
+    models.emplace_back(Model(temperature, WARMTH, t));
     prevTemperetureValue = temperature;
   }
   return models;
@@ -45,7 +45,7 @@ void logData(std::vector<Model> superMegaModels) {
 
 int main() {
   int tau;
-  int initialTemperature;
+  double initialTemperature;
   std::cout << "Input time parameter: ";
   std::cin >> tau;
   std::cout << std::endl;
