@@ -17,7 +17,8 @@ std::vector<Model> simulateLinear(double temperature, int tau) {
   std::vector<Model> models;
   for (int t = 1; t <= tau; t++) {
     temperature = A_CONST * temperature + B_CONST * WARMTH;
-    models.emplace_back(Model(temperature, WARMTH, t));
+    Model model(temperature, WARMTH, t);
+    models.emplace_back(std::move(model));
   }
 
   return models;
@@ -31,14 +32,15 @@ std::vector<Model> simulateNonLinear(double temperature, int tau) {
     temperature = A_CONST * temperature -
                   B_CONST * pow(prevTemperetureValue, 2) + C_CONST * WARMTH +
                   D_CONST * sin(WARMTH);
-    models.emplace_back(Model(temperature, WARMTH, t));
+    Model model(temperature, WARMTH, t);
+    models.emplace_back(std::move(model));
     prevTemperetureValue = temperature;
   }
   return models;
 }
 
-void logData(std::vector<Model> superMegaModels) {
-  for (auto &superMegaModel : superMegaModels) {
+void logData(const std::vector<Model> &superMegaModels) {
+  for (const auto &superMegaModel : superMegaModels) {
     std::cout << superMegaModel.printData() << std::endl;
   }
 }
