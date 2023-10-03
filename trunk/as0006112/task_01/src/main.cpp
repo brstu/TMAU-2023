@@ -9,10 +9,7 @@ public:
     double warm;
     int t;
 
-    TemperatureModel(double temp, double warm, int t) {
-        this->temp = temp;
-        this->warm = warm;
-        this->t = t;
+    TemperatureModel(double temp, double warm, int t) : temp(temp), warm(warm), t(t)  {
     }
 
     std::string toString() const {
@@ -38,7 +35,7 @@ std::vector<TemperatureModel> simulateLinearModel(int time, double temp) {
     for (int t = 1; t <= time; t++) {
         double curWarm = WARM;
         temp = round((A * temp + B * curWarm) * 100) / 100;
-        linearTemps.push_back(TemperatureModel(temp, curWarm, t));
+        linearTemps.emplace_back(temp, curWarm, t);
     }
 
     return linearTemps;
@@ -53,7 +50,7 @@ std::vector<TemperatureModel> simulateNonLinearModel(int time, double temp) {
         double curWarm = WARM;
         temp = A * temp - B * pow(prevTemp, 2) + C * curWarm + D * sin(prevWarm);
         temp = round(temp * 100) / 100;
-        nonLinearTemps.push_back(TemperatureModel(temp, curWarm, t));
+        nonLinearTemps.emplace_back(temp, curWarm, t);
         prevTemp = temp;
         prevWarm = curWarm;
     }
