@@ -4,7 +4,7 @@
 
 using namespace std;
 
-double aN ; double bN ; double cN ; double dN;
+const double aN = 2.34 ; const double bN = 5.13 ; const double cN = 4.17 ; const  double dN = 3.05;
 
 double LineModel(double Yt, double a, double b, double Ut) {
     return a * Yt + b * Ut;
@@ -29,16 +29,6 @@ int main() {
     cin >> aL;
     cout << "Введите значение b: ";
     cin >> bL;
-
-    cout << endl << "Параметры нелинейной модели" << endl;
-    cout << "Введите значение a: ";
-    cin >> aN;
-    cout << "Введите значение b: ";
-    cin >> bN;
-    cout << "Введите значение c: ";
-    cin >> cN;
-    cout << "Введите значение d: ";
-    cin >> dN;
 
     cout << endl << "Количество итераций" << endl;
     cout << "Линейной модели: ";
