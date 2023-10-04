@@ -1,4 +1,2 @@
-cmake_minimum_required (VERSION 3.0.0)
-project (Task01)
-
-add_executable(Task01 TMAU1.cpp)
+cmake_minimum_required(VERSION 3.27) 
+add_executable(main main.cpp) 
