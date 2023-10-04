@@ -3,22 +3,7 @@
 #include <cmath>
 #include <string>
 
-class TemperatureModel {
-public:
-    double temp;
-    double warm;
-    int t;
-
-    TemperatureModel(double temp, double warm, int t) {
-        this->temp = temp;
-        this->warm = warm;
-        this->t = t;
-    }
-
-    std::string toString() const {
-        return "{ y(t): " + std::to_string(this->temp) + "; t: " + std::to_string(this->t) + " }";
-    }
-};
+using namespace std;
 
 const double A = 0.5;
 const double B = 1;
@@ -26,57 +11,77 @@ const double C = 1.2;
 const double D = 0.4;
 const double WARM = 1;
 
-void showData(std::vector<TemperatureModel>& tempModels) {
-    for (const auto& model : tempModels) {
-        std::cout << model.toString() << std::endl;
+class temperature_Model {
+    public:
+    double temperature;
+    double warm;
+    int t;
+    temperature_Model(double temperature, double warm, int t) {
+        this->temperature = temperature;
+        this->warm = warm;
+        this->t = t;
+    }
+    string toString() const {
+        return "{ y(t): " + to_string(this->temperature) + "; t: " + to_string(this->t) + " }";
+    }
+};
+
+void showData(vector<temperature_Model>& temperatureModels) {
+    for (const auto& model : temperatureModels) {
+        cout << model.toString() << endl;
     }
 }
 
-std::vector<TemperatureModel> simulateLinearModel(int time, double temp) {
-    std::vector<TemperatureModel> linearTemps;
+vector<temperature_Model> linear_Model(int time, double temperature) {
+    vector<temperature_Model> linear_temperatures;
 
     for (int t = 1; t <= time; t++) {
-        double curWarm = WARM;
-        temp = round((A * temp + B * curWarm) * 100) / 100;
-        linearTemps.push_back(TemperatureModel(temp, curWarm, t));
+        double cur_Warm = WARM;
+        
+        temperature = round((A * temperature + B * cur_Warm) * 100) / 100;
+        linear_temperatures.push_back(temperature_Model(temperature, cur_Warm, t));
     }
 
-    return linearTemps;
+    return linear_temperatures;
 }
 
-std::vector<TemperatureModel> simulateNonLinearModel(int time, double temp) {
-    std::vector<TemperatureModel> nonLinearTemps;
-    double prevTemp = 0;
-    double prevWarm = 0;
+vector<temperature_Model> non_Linear_Model(int time, double temperature) {
+    vector<temperature_Model> non_Linear_temperatures;
+
+    double prev_temperature = 0;
+    double prev_Warm = 0;
 
     for (int t = 1; t <= time; t++) {
-        double curWarm = WARM;
-        temp = A * temp - B * pow(prevTemp, 2) + C * curWarm + D * sin(prevWarm);
-        temp = round(temp * 100) / 100;
-        nonLinearTemps.push_back(TemperatureModel(temp, curWarm, t));
-        prevTemp = temp;
-        prevWarm = curWarm;
+        double cur_Warm = WARM;
+
+        temperature = A * temperature - B * pow(prev_temperature, 2) + C * cur_Warm + D * sin(prev_Warm);
+        temperature = round(temperature * 100) / 100;
+
+        non_Linear_temperatures.push_back(temperature_Model(temperature, cur_Warm, t));
+
+        prev_temperature = temperature;
+        prev_Warm = cur_Warm;
     }
 
-    return nonLinearTemps;
+    return non_Linear_temperatures;
 }
 
 int main()
 {
     int time;
-    std::cout << "Input time parameter: ";
-    std::cin >> time;
+    cout << "Input time param: ";
+    cin >> time;
 
-    int temp;
-    std::cout << "Input initial temperature: ";
-    std::cin >> temp;
+    int temperature;
+    cout << "Input initial temperature: ";
+    cin >> temperature;
 
-    std::cout << "Linear model data" << std::endl;
-    auto linear = simulateLinearModel(time, temp);
+    cout << "Linear model data output" << endl;
+    auto linear = linear_Model(time, temperature);
     showData(linear);
 
-    std::cout << "Non linear model data" << std::endl;
-    auto nonLinear = simulateNonLinearModel(time, temp);
+    cout << "Non linear model data output" << endl;
+    auto nonLinear = non_Linear_Model(time, temperature);
     showData(nonLinear);
 
     return 0;
