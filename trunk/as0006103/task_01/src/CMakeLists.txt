@@ -1,3 +1,4 @@
-cmake_minimum_required(VERSION 4.0.0) 
+cmake_minimum_required (VERSION 2.4.0)
 project (TMAU01)
-add_executable(MainFile TMAU1.cpp) 
+
+add_executable(MainFile TMAU1.cpp)
