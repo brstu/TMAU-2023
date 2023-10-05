@@ -60,7 +60,7 @@ public:
     double ModelFunction (double yt, double ut) override{
         return a * yt + b * ut;
     }
-    void OutputModel(double y, double u, int NumLin) 
+    void OutputModel(double y, double u, int NumLin) override
     {
         double Yt = y;
         double Ut = u;
