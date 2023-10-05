@@ -37,8 +37,9 @@ public:
             }
             else {
                 prev_ut = 0; prev_yt = 0;
-                std::cout << std::endl;
-                EnterValue(Ut, "enter value Ut:");
+                std::cout << std::endl << "enter value Ut:";
+                std::cin >> Ut;
+
                 Yt = ModelFunction(Yt, Ut);
                 std::cout << "\t\t\t\t" << i + 1 << "\t\t\t\t" << Yt;
             }
@@ -64,8 +65,8 @@ public:
         std::cout << std::endl << std::endl << "Liner model";
         std::cout << "\t\t\tIteration number:" << "\t\t\t" << "Yt";
         for (int i = 0; i < NumLin; i++) {
-            std::cout << std::endl;
-            EnterValue(Ut, "enter value Ut:");
+            std::cout <<std::endl<< "enter value Ut:";
+            std::cin >> Ut;
 
             Yt = ModelFunction(Yt, Ut);
             std::cout << "\t\t\t\t" << i + 1 << "\t\t\t\t" << Yt;
