@@ -3,7 +3,7 @@
 template<typename Type>
 
 
-void EnterValue(Type& value, std::string nameValue)
+void EnterValue(Type& value, const& std::string nameValue)
 {
     std::cout << nameValue;
     std::cin >> value;
@@ -13,7 +13,7 @@ public:
     virtual ~Object() = default;
     virtual double ModelFunction(double Yt, double Ut) = 0;
 };
-class NotModelLiner : Object
+class NotModelLiner : public Object
 {
 public:
     double a;
@@ -22,19 +22,15 @@ public:
     double prev_yt = 0;
     double c;
     double d;
-    NotModelLiner(double a, double b, double c, double d) {
-        this->a = a;
-        this->b = b;
-        this->c = c;
-        this->d = d;
-    }
+    NotModelLiner(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
     ~NotModelLiner() = default;
-    double ModelFunction(double yt, double ut) {
+    double ModelFunction override(double yt, double ut) {
         return a * yt - b * pow(prev_yt, 2) + c * ut + d * sin(prev_ut);
     }
     void OutputModel(double y, double u, int NotNumLin)
     {
-        double Yt = y, Ut = u;
+        double Yt = y;
+        double Ut = u;
 
         std::cout << std::endl << std::endl << "Not liner model";
         std::cout << "\t\t\tIteration number:" << "\t\t\t" << "Yt";
@@ -58,22 +54,20 @@ public:
     }
 };
 
-class ModelLiner : Object
+class ModelLiner : public Object
 {
 public:
     double a;
     double b;
-    ModelLiner(double a, double b) {
-        this->a = a;
-        this->b = b;
-    }
+    ModelLiner(double a, double b) : a(a), b(b) {}
     ~ModelLiner() = default;
-    double ModelFunction(double yt, double ut) {
+    double ModelFunction override(double yt, double ut) {
         return a * yt + b * ut;
     }
     void OutputModel(double y, double u, int NumLin)
     {
-        double Yt = y, Ut = u;
+        double Yt = y;
+        double Ut = u;
         std::cout << std::endl << std::endl << "Liner model";
         std::cout << "\t\t\tIteration number:" << "\t\t\t" << "Yt";
         for (int i = 0; i < NumLin; i++) {
@@ -89,10 +83,19 @@ public:
 
 int main()
 {
-    double y = 0, u = 0, bLiner = 0, aLiner = 0, bNotLiner = 0, aNotLiner = 0, c = 0, d = 0;
-    int NumLin = 0, NumNotLin = 0;
+    double y = 0;
+    double u = 0;
+    double bLiner = 0;
+    double aLiner = 0;
+    double bNotLiner = 0;
+    double aNotLiner = 0;
+    double c = 0;
+    double d = 0;
+    int NumLin = 0;
+    int NumNotLin = 0;
     std::cout << "Number of iteration" << std::endl;
     EnterValue(NumLin, "Liner Model:");
+
     EnterValue(NumNotLin, "Not Liner Model:");
 
     EnterValue(y, "enter value y:");
