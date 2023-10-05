@@ -25,9 +25,10 @@ public:
     string toString() const {
         return "{ y(t): " + to_string(this->temp) + "; t: " + to_string(this->t) + " }";
     }
+
 };
 
-void showData(vector<ModelTemp>& tempModels) {
+void showData(vector<ModelTemp>& const tempModels) {
     for (const auto& model : tempModels) {
         cout << model.toString() << endl;
     }
@@ -66,13 +67,13 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
+    int temp;
+    cout << "Введите начальную температуру: ";
+    cin >> temp;
     int time;
     cout << "Введите время: ";
     cin >> time;
 
-    int temp;
-    cout << "Введите начальную температуру: ";
-    cin >> temp;
 
     cout << "Линейная модель" << endl;
     auto linear = LinearModel(time, temp);
