@@ -5,7 +5,7 @@ class Object {
 public:
     virtual ~Object() = default;
     virtual double ModelFunction(double Yt, double Ut) = 0;
-    void OutputModel(double y, double u, int NumLin) = 0;
+    virtual void OutputModel(double y, double u, int NumLin) = 0;
 };
 class NotModelLiner : public Object
 {
@@ -18,10 +18,10 @@ public:
     double d;
     NotModelLiner(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
     ~NotModelLiner() = default;
-    double ModelFunction (double yt, double ut) override{
+    double ModelFunction (double yt, double ut) final{
         return a * yt - b * pow(prev_yt, 2) + c * ut + d * sin(prev_ut);
     }
-    void OutputModel(double y, double u, int NotNumLin) override
+    void OutputModel(double y, double u, int NotNumLin) final
     {
         double Yt = y;
         double Ut = u;
@@ -30,7 +30,8 @@ public:
         std::cout << "\t\t\tIteration number:" << "\t\t\t" << "Yt";
         for (int i = 0; i < NotNumLin; i++) {
             if (i > 0) {
-                prev_ut = Ut, prev_yt = Yt;
+                prev_ut = Ut;
+                prev_yt = Yt;
                 std::cout << std::endl << "enter value Ut:";
                 std::cin >> Ut;
                 Yt = ModelFunction(Yt, Ut);
@@ -56,10 +57,10 @@ public:
     double b;
     ModelLiner(double a, double b) : a(a), b(b) {}
     ~ModelLiner() = default;
-    double ModelFunction override(double yt, double ut) override{
+    double ModelFunction override(double yt, double ut) final{
         return a * yt + b * ut;
     }
-    void OutputModel(double y, double u, int NumLin) override
+    void OutputModel(double y, double u, int NumLin) final
     {
         double Yt = y;
         double Ut = u;
