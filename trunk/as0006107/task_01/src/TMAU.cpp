@@ -1,12 +1,11 @@
 ﻿#include <iostream>
 #include <cmath>
 using namespace std;
-// Линейная модель
+
 double linModel( double y_t, double u, double a, double b) {
     return a * y_t + b * u;
 }
 
-// Нелинейная модель
 double NolinModel(double y_t, double y_t1, double u, double a, double b, double c, double d) {
     return a * y_t - b * pow(y_t1, 2) + c * u + d * sin(u);
 }
