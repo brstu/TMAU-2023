@@ -30,10 +30,10 @@ int choose_transformation() {
 
     std::vector<float> temperature(N);
     float warm;
-    const double a = 0.1;
-    const double b = 0.1;	
-    const double c = 0.3;		
-    const double d = 0.2;		
+    const float a = 0.1;
+    const float b = 0.1;	
+    const float c = 0.3;		
+    const float d = 0.2;		
     int temp;
 
     std::cout << "choose type of transformation: \n 1 - linear \n 2 - nonlinear" << std::endl;
