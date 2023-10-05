@@ -4,7 +4,7 @@
     "color": "EEEEEE"
   },
   "CHECKS": {
-    "prefixes": ["[task_01]", "[task_02]", "[task_03]", "[task_04]", "[task_05]", "[task_06]", "[doc]", "[github-actions]" ],
+    "regexp": "^\\[(task_01|task_02|task_03|task_04|task_05|task_06|doc|github-actions)\\]\\s[A-ZА-Я].*[^\\.]$",
     "regexpFlags": "i",
     "ignoreLabels" : ["ignore-pr-title-check", "pass"]
   },
