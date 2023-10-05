@@ -17,7 +17,7 @@ public:
     double d;
     NotModelLiner(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
     ~NotModelLiner() = default;
-    double ModelFunction override(double yt, double ut) {
+    double ModelFunction (double yt, double ut) {
         return a * yt - b * pow(prev_yt, 2) + c * ut + d * sin(prev_ut);
     }
     void OutputModel(double y, double u, int NotNumLin)
@@ -54,7 +54,7 @@ public:
     double b;
     ModelLiner(double a, double b) : a(a), b(b) {}
     ~ModelLiner() = default;
-    double ModelFunction override(double yt, double ut) {
+    double ModelFunction (double yt, double ut) {
         return a * yt + b * ut;
     }
     void OutputModel(double y, double u, int NumLin)
