@@ -29,7 +29,7 @@ public:
 };
 
 void showData(vector<ModelTemp>& tempModels) {
-    for (const auto& model : tempModels) {
+    for ( auto& model : tempModels) {
         cout << model.toString() << endl;
     }
 }
