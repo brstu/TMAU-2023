@@ -20,7 +20,7 @@ float nonlinear_transformation(std::vector<float>& y, float u, float a, float b,
     new_temperature[1] = y[1];
 
     for (int i = 2; i < N; i++) {
-        y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * u + d * sin(u);
+        y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * u + d * sinf(u);
         new_temperature[i] = y[i];
     }
     return new_temperature[N-1];
@@ -30,10 +30,10 @@ int choose_transformation() {
 
     std::vector<float> temperature(N);
     float warm;
-    const float a = 0.1;
-    const float b = 0.1;	
-    const float c = 0.3;		
-    const float d = 0.2;		
+    const double a = 0.1;
+    const double b = 0.1;	
+    const double c = 0.3;		
+    const double d = 0.2;		
     int temp;
 
     std::cout << "choose type of transformation: \n 1 - linear \n 2 - nonlinear" << std::endl;
