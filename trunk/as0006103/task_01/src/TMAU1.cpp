@@ -18,10 +18,10 @@ public:
     double d;
     NotModelLiner(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
     ~NotModelLiner() = default;
-    double ModelFunction (double yt, double ut) final{
+    double ModelFunction (double yt, double ut) override{
         return a * yt - b * pow(prev_yt, 2) + c * ut + d * sin(prev_ut);
     }
-    void OutputModel(double y, double u, int NotNumLin) final
+    void OutputModel(double y, double u, int NotNumLin) override
     {
         double Yt = y;
         double Ut = u;
@@ -34,7 +34,7 @@ public:
                 prev_yt = Yt;
                 std::cout << std::endl << "enter value Ut:";
                 std::cin >> Ut;
-                Yt = ModelFunction(Yt, Ut);
+                Yt = this->ModelFunction(Yt, Ut);
                 std::cout << "\t\t\t\t" << i + 1 << "\t\t\t\t" << Yt;
             }
             else {
@@ -42,7 +42,7 @@ public:
                 std::cout << std::endl << "enter value Ut:";
                 std::cin >> Ut;
 
-                Yt = ModelFunction(Yt, Ut);
+                Yt = this->ModelFunction(Yt, Ut);
                 std::cout << "\t\t\t\t" << i + 1 << "\t\t\t\t" << Yt;
             }
         }
@@ -57,10 +57,10 @@ public:
     double b;
     ModelLiner(double a, double b) : a(a), b(b) {}
     ~ModelLiner() = default;
-    double ModelFunction override(double yt, double ut) final{
+    double ModelFunction (double yt, double ut) override{
         return a * yt + b * ut;
     }
-    void OutputModel(double y, double u, int NumLin) final
+    void OutputModel(double y, double u, int NumLin) override
     {
         double Yt = y;
         double Ut = u;
@@ -70,7 +70,7 @@ public:
             std::cout <<std::endl<< "enter value Ut:";
             std::cin >> Ut;
 
-            Yt = ModelFunction(Yt, Ut);
+            Yt = this->ModelFunction(Yt, Ut);
             std::cout << "\t\t\t\t" << i + 1 << "\t\t\t\t" << Yt;
         }
     }
