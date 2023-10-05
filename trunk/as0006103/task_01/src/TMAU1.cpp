@@ -1,13 +1,6 @@
 ﻿#include <iostream>
 #include <cmath>
-template<typename Type>
 
-
-void EnterValue(Type& value, const& std::string nameValue)
-{
-    std::cout << nameValue;
-    std::cin >> value;
-}
 class Object {
 public:
     virtual ~Object() = default;
@@ -95,22 +88,31 @@ int main()
     int NumNotLin = 0;
     std::cout << "Number of iteration" << std::endl;
     EnterValue(NumLin, "Liner Model:");
+    std::cout << "Liner Model:";
+    std::cin >> NumLin;
 
-    EnterValue(NumNotLin, "Not Liner Model:");
-
-    EnterValue(y, "enter value y:");
-    EnterValue(u, "enter value u:");
+    std::cout << "Not Liner Model:";
+    std::cin >> NumNotLin;
+    std::cout << "enter value y:";
+    std::cin >> y;
+    std::cout << "enter value u:";
+    std::cin >> u;
 
     std::cout << std::endl << "Liner model" << std::endl;
-    EnterValue(aLiner, "enter value a:");
-    EnterValue(bLiner, "enter value b:");
+    std::cout << "enter value a:";
+    std::cin >> aLiner;
+    std::cout << "enter value b:";
+    std::cin >> bLiner;
 
     std::cout << std::endl << "Not liner model" << std::endl;
-    EnterValue(aNotLiner, "enter value a:");
-    EnterValue(bNotLiner, "enter value b:");
-    EnterValue(c, "enter value c:");
-    EnterValue(d, "enter value d:");
-
+    std::cout << "enter value a:";
+    std::cin >> aNotLiner;
+    std::cout << "enter value b:";
+    std::cin >> bNotLiner;
+    std::cout << "enter value c:";
+    std::cin >> c;
+    std::cout << "enter value d:";
+    std::cin >> d;
     ModelLiner modelLin(aLiner, bLiner);
     modelLin.OutputModel(y, u, NumLin);
     NotModelLiner notmodelLin(aNotLiner, bNotLiner, c, d);
