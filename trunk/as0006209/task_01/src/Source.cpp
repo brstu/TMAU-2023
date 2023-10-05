@@ -2,38 +2,37 @@
 #include <cmath>
 #include <vector>
 
-constexpr int N = 16;		// kolichestvo izmeneniy temperaturi;
+constexpr int N = 16;    // количество изменений температуры
 
-float linear_transformation(std::vector<float>& y, float u, float a, float b) {
-    std::vector<float> new_temperature(N);
+double linear_transformation(std::vector<double>& y, double u, double a, double b) {
+    std::vector<double> new_temperature(N);
 
     for (int i = 1; i < N; i++) {
         y[i] = a * y[i - 1] + b * u;
         new_temperature[i] = y[i];
     }
-    return new_temperature[N-1];
+    return new_temperature[N - 1];
 }
 
-float nonlinear_transformation(std::vector<float>& y, float u, float a, float b, float c, float d) {
-    std::vector<float> new_temperature(N);
+double nonlinear_transformation(std::vector<double>& y, double u, double a, double b, double c, double d) {
+    std::vector<double> new_temperature(N);
     y[1] = a * y[0] + b * u;
     new_temperature[1] = y[1];
 
     for (int i = 2; i < N; i++) {
-        y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * u + d * sinf(u);
+        y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + c * u + d * sin(u);
         new_temperature[i] = y[i];
     }
-    return new_temperature[N-1];
+    return new_temperature[N - 1];
 }
 
 int choose_transformation() {
-
-    std::vector<float> temperature(N);
-    float warm;
-    const float a = 0.1;
-    const float b = 0.1;	
-    const float c = 0.3;		
-    const float d = 0.2;		
+    std::vector<double> temperature(N);
+    double warm;
+    const double a = 0.1;
+    const double b = 0.1;
+    const double c = 0.3;
+    const double d = 0.2;
     int temp;
 
     std::cout << "choose type of transformation: \n 1 - linear \n 2 - nonlinear" << std::endl;
