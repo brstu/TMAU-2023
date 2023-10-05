@@ -3,6 +3,7 @@
 
 class Object {
 public:
+    virtual ~Object() = default;
     virtual double ModelFunction(double Yt, double Ut) = 0;
     virtual void OutputModel(double y, double u, int NumLin) = 0;
 };
@@ -16,6 +17,7 @@ public:
     double c;
     double d;
     NotModelLiner(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
+    virtual ~NotModelLiner() = default;
     double ModelFunction (double yt, double ut) override{
         return a * yt - b * pow(prev_yt, 2) + c * ut + d * sin(prev_ut);
     }
@@ -54,6 +56,7 @@ public:
     double a;
     double b;
     ModelLiner(double a, double b) : a(a), b(b) {}
+    virtual ~ModelLiner() = default;
     double ModelFunction (double yt, double ut) override{
         return a * yt + b * ut;
     }
