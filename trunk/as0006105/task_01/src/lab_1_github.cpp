@@ -15,8 +15,8 @@ const double WARM = 1;
 
 class ModelTemp {
 public:
-    double temp;
-    double warm;
+   const double temp;
+   const double warm;
     int t;
 
     ModelTemp(double temp, double warm, int t) : temp(temp), warm(warm), t(t) {
@@ -28,7 +28,7 @@ public:
 
 };
 
-void showData(vector<ModelTemp>& tempModels) {
+void showData(vector<ModelTemp>& const tempModels) {
     for (const auto& model : tempModels) {
         cout << model.toString() << endl;
     }
