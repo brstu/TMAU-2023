@@ -87,7 +87,7 @@ int main()
     int NumLin = 0;
     int NumNotLin = 0;
     std::cout << "Number of iteration" << std::endl;
-    EnterValue(NumLin, "Liner Model:");
+
     std::cout << "Liner Model:";
     std::cin >> NumLin;
 
