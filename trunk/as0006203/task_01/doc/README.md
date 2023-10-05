@@ -25,8 +25,8 @@
 2. Основное задание [#1](../../../../tasks/task_01/readme.md).
 
 <p> <strong> Решение </strong> </p>
-<p> <strong>1) </strong>Создадим сборку с помощью <em>cMake</em>.</p>
-<p> <strong>2) </strong>Для начала на диске <em>D:\</em> создадим директорию <em>testLab</em>.</p>
+<p> <strong>1) </strong>Создадим сборку с помощью <em>CMake</em>.</p>
+<p> <strong>2) </strong>Для начала на диске <em>D:\</em> создадим директорию <em>Lab</em>.</p>
 <p> <strong>3) </strong>В данной директории создадим 2 под-директории: <em>lab01</em>, для файлов, содержащих исходный код программы и скрипт сборки проекта и <em>build</em> содержащую, непосредственно сборку нашего проекта.</p>
 <p> <strong>4) </strong>В директорию <em>lab01</em> поместим 2 файла:</p>
 <ul>
@@ -38,13 +38,13 @@
 <li>Переход в дирректорию <em>build</em> для сборки проекта:</li>
 
 ``` bash
-cd /d d:\testLab\build
+cd /d d:\Lab\build
 ```
 
-<li>Сборка проекта с помощью <em>cMake</em>:</li>
+<li>Сборка проекта с помощью <em>CMake</em>:</li>
 
 ``` bash
-cmake d:\testLab\lab01
+cmake d:\Lab\lab01
 ```
 
 </ul>
@@ -69,7 +69,7 @@ cmake d:\testLab\lab01
 -- Generating done (0.0s)
 -- Build files have been written to: D:/testLab/build
 ```
-<p> <strong>7) </strong>Сборка с помощью <em>cMake</em> прошла успешно. Запускаем наш проект с помощью компилятора.</p>
+<p> <strong>7) </strong>Сборка с помощью <em>CMake</em> прошла успешно. Запускаем наш проект с помощью компилятора.</p>
 
 <p> <strong>8) </strong>Вывод нашей программмы на консоль:
 
