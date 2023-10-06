@@ -35,11 +35,7 @@ where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some con
 
 Task is to write program (**С++**), which simulates this object temperature.
 
-**Код решения:**
 
-Пример вывода программы:
-
-``` bash
 time step: 1
 Linear model: 0.5
 Nonlinear model: 0.284147
@@ -79,5 +75,4 @@ Nonlinear model: 0.579928
 time step: 10
 Linear model: 2.23156
 Nonlinear model: 0.579931
-------------------------
-```
+
