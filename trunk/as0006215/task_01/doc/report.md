@@ -39,7 +39,7 @@ Task is to write program (**С++**), which simulates this object temperature.
 
        
 
-Пример вывода программы:
+
 
 ``` bash
 time step: 1
