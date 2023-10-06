@@ -1,7 +1,7 @@
 {
   "LABEL": {
-    "name": "title needs [task]",
-    "color": "EEEEEE"
+    "name": "title needs formatting",
+    "color": "E06666"
   },
   "CHECKS": {
     "regexp": "^\\[(task_01|task_02|task_03|task_04|task_05|task_06|doc|github-actions)\\]\\s[A-ZА-Я].*[^\\.]$",
