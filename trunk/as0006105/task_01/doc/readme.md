@@ -10,7 +10,10 @@
 <p align="right"><strong>Выполнила</strong>:</p>
 <p align="right">Студентка 3 курса</p>
 <p align="right">Группы АС-61</p>
+<<<<<<< HEAD
+<p align="right">Дубновицкая М.С.</p>
 <p align="right">Линкевич П.С.</p>
+>>>>>>> 9427898f429735a3a6cd9bb3f083696054c795ae
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Иванюк Д. С.</p>
 <br><br><br><br><br>
