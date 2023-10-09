@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
@@ -23,18 +24,20 @@ void nonLinearModel(float A, float B, float C, float D, float temp, float warm, 
 {
     cout << "NonLinearModel:" << endl << endl;
 
-    float* temps = new float[time];
+    vector<float> temps;
+    temps.resize(time);
 
     for (int i = 0; i < time; i++)
     {
-        int currentTemp, prevTemp;
+        float currentTemp;
+        float prevTemp;
 
         if (i == 0)
         {
             currentTemp = temp;
             prevTemp = temp;
         }
-        else if(i == 1)
+        else if (i == 1)
         {
             currentTemp = temps[i - 1];
             prevTemp = temp;
@@ -45,27 +48,26 @@ void nonLinearModel(float A, float B, float C, float D, float temp, float warm, 
             prevTemp = temps[i - 2];
         }
 
-        temps[i] = A * currentTemp - B * pow(prevTemp, 2) + C * warm + D * sin(warm);
+        temps[i] = A * currentTemp - B * (float)pow(prevTemp, 2) + C * warm + D * sin(warm);
 
         cout << "y(" << i + 1 << ") = " << temps[i] << endl;
     }
-
-    delete[] temps;
 }
 
 int main()
 {
-    const float A = 0.8;
-    const float B = 0.5;
-    const float C = 2.1;
-    const float D = 1.3;
-    
-    float temp, warm;
+    const float A = 0.8f;
+    const float B = 0.5f;
+    const float C = 2.1f;
+    const float D = 1.3f;
+
+    float temp;
+    float warm;
     int time;
 
     cout << "Input object temperature: ";
     cin >> temp;
-    
+
     cout << "Input warm:";
     cin >> warm;
 
