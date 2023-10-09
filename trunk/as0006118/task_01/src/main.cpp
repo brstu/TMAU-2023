@@ -12,18 +12,18 @@ const double D = 0.4;
 const double WARM = 1;
 
 class temperature_Model {
+        double temperature;
+        double warm;
+        int time;
     public:
-    double temperature;
-    double warm;
-    int time;
-    temperature_Model(double temp, double w, int t) {
-        this->temperature = temp;
-        this->warm = w;
-        this->time = t;
-    }
-    string toString() const {
-        return "{ y(t): " + to_string(this->temperature) + "; t: " + to_string(this->time) + " }";
-    }
+        temperature_Model(double temp, double w, int t) {
+            this->temperature = temp;
+            this->warm = w;
+            this->time = t;
+        }
+        string toString() const {
+            return "{ y(t): " + to_string(this->temperature) + "; t: " + to_string(this->time) + " }";
+        }
 };
 
 void showData(vector<temperature_Model>& temperatureModels) {
