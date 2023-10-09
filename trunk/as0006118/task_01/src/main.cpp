@@ -15,14 +15,14 @@ class temperature_Model {
     public:
     double temperature;
     double warm;
-    int t;
-    temperature_Model(double temperature, double warm, int t) {
-        this->temperature = temperature;
-        this->warm = warm;
-        this->t = t;
+    int time;
+    temperature_Model(double temp, double w, int t) {
+        this->temperature = temp;
+        this->warm = w;
+        this->time = t;
     }
     string toString() const {
-        return "{ y(t): " + to_string(this->temperature) + "; t: " + to_string(this->t) + " }";
+        return "{ y(t): " + to_string(this->temperature) + "; t: " + to_string(this->time) + " }";
     }
 };
 
