@@ -53,7 +53,7 @@ vector<temperature_Model> non_Linear_Model(int time, double temperature) {
         temperature = A * temperature - B * pow(prev_temperature, 2) + C * cur_Warm + D * sin(prev_Warm);
         temperature = round(temperature * 100) / 100;
 
-        non_Linear_temperatures.emplace_back(temperature_Model(temperature, cur_Warm, t));
+        non_Linear_temperatures.emplace_back(temperature, cur_Warm, t);
 
         prev_temperature = temperature;
         prev_Warm = cur_Warm;
