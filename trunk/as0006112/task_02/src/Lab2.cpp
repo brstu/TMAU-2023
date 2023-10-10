@@ -85,11 +85,10 @@ public:
         b_(b),
         c_(c),
         d_(d),
-        yNext_(yNext)
-    {
-        yPrev_ = 0;
-        wPrev_ = 0;
-    }
+        yNext_(yNext),
+		yPrev_(0),
+		wPrev_(0)
+    { }
 
     /**
     * Переопределённый метод для рассчёта нелинейной модели
@@ -152,10 +151,9 @@ public:
         t_(T),
         t0_(T0),
         td_(TD),
-        k_(K)
-    {
-        uk_ = 0;
-    }
+        k_(K),
+		uk_(0)
+    { }
 
     void PIDRegulatorCalculateAndWrite(double need, double start)
     {
