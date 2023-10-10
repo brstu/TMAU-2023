@@ -17,9 +17,12 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
+`public virtual  `[`~AbstractModel`](#class_abstract_model_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
 `public double `[`calculateModel`](#class_abstract_model_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | Виртуальная функция, переопределенная в дочерних классах [LinearModel](#class_linear_model) и [NonLinearModel](#class_non_linear_model).
 
 ## Members
+
+#### `public virtual  `[`~AbstractModel`](#class_abstract_model_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` 
 
 #### `public double `[`calculateModel`](#class_abstract_model_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` 
 
@@ -47,13 +50,13 @@ class LinearModel
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `public inline  `[`LinearModel`](#class_linear_model_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` | 
-`public inline virtual double `[`calculateModel`](#class_linear_model_1a0d8fba6c6f1d6d9eb23f7a33e20f1d7e)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта линейной модели
+`public inline virtual double `[`calculateModel`](#class_linear_model_1a12095f9b671e6165eafc72f86bc7b8f5)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта линейной модели
 
 ## Members
 
 #### `public inline  `[`LinearModel`](#class_linear_model_1aa21922a3dd7e060f69855043075d1db5)`(double a,double b,double yNext)` 
 
-#### `public inline virtual double `[`calculateModel`](#class_linear_model_1a0d8fba6c6f1d6d9eb23f7a33e20f1d7e)`(double yCurrent,double inputWarm)` 
+#### `public inline virtual double `[`calculateModel`](#class_linear_model_1a12095f9b671e6165eafc72f86bc7b8f5)`(double yCurrent,double inputWarm)` 
 
 Переопределённый метод для рассчёта линейной модели
 
@@ -79,13 +82,13 @@ class NonLinearModel
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `public inline  `[`NonLinearModel`](#class_non_linear_model_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` | 
-`public inline virtual double `[`calculateModel`](#class_non_linear_model_1ac48d7e25a35fcc57b8288de331865025)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта нелинейной модели
+`public inline virtual double `[`calculateModel`](#class_non_linear_model_1a9bad4ace82cde16f0631b9590e928d14)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта нелинейной модели
 
 ## Members
 
 #### `public inline  `[`NonLinearModel`](#class_non_linear_model_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` 
 
-#### `public inline virtual double `[`calculateModel`](#class_non_linear_model_1ac48d7e25a35fcc57b8288de331865025)`(double yCurrent,double inputWarm)` 
+#### `public inline virtual double `[`calculateModel`](#class_non_linear_model_1a9bad4ace82cde16f0631b9590e928d14)`(double yCurrent,double inputWarm)` 
 
 Переопределённый метод для рассчёта нелинейной модели
 
