@@ -41,22 +41,12 @@ private:
 	double b_;     ///< Коэффициент
 	double yNext_; ///< Получаемая нами температура
 public:
-	LinearModel(double a, double b, double yNext)
-	{
-		/**
-		* Конструктор LinearModel
-		*
-		* Код:
-		* \code
-		* a_ = a;
-		* b_ = b;
-		* yNext_ = yNext;
-		* \endcode
-		*/
-		a_ = a;
-		b_ = b;
-		yNext_ = yNext;
-	}
+	LinearModel(double a, double b, double yNext) :
+		a_(a),
+		b_(b),
+		yNext_(yNext)
+	{ }
+
 	/**
 	* Переопределённый метод для рассчёта линейной модели
 	*
@@ -66,7 +56,7 @@ public:
 	* return yNext_;
 	* \endcode
 	*/
-	double calculateModel(double yCurrent, double inputWarm)
+	double calculateModel(double yCurrent, double inputWarm) override
 	{
 		yNext_ = a_ * yCurrent + b_ * inputWarm;
 		return yNext_;
@@ -90,30 +80,16 @@ private:
 	double wPrev_; ///< Предыдущее тепло
 
 public:
-	NonLinearModel(double a, double b, double c, double d, double yNext)
-	{
-		/**
-		* Конструктор NonLinearModel
-		*
-		* Код:
-		* \code
-		* a_ = a;
-		* b_ = b;
-		* c_ = c;
-		* d_ = d;
-		* wPrev_ = 0;
-		* yPrev_ = 0;
-		* yNext_ = yNext;
-		* \endcode
-		*/
-		a_ = a;
-		b_ = b;
-		c_ = c;
-		d_ = d;
-		yPrev_ = 0;
-		wPrev_ = 0;
-		yNext_ = yNext;
-	}
+	NonLinearModel(double a, double b, double c, double d, double yNext) :
+		a_(a),
+		b_(b),
+		c_(c),
+		d_(d),
+		yPrev_(0),
+		wPrev_(0),
+		yNext_(yNext)
+	{ }
+
 	/**
 	* Переопределённый метод для рассчёта нелинейной модели
 	*
@@ -125,7 +101,7 @@ public:
 	* return yNext_;
 	* \endcode
 	*/
-	double calculateModel(double yCurrent, double inputWarm)
+	double calculateModel(double yCurrent, double inputWarm) override
 	{
 		yNext_ = a_ * yCurrent - b_ * pow(yPrev_, 2) + c_ * inputWarm + d_ * sin(wPrev_);
 		yPrev_ = yCurrent;
@@ -171,26 +147,14 @@ private:
 		return uk_;
 	}
 public:
-	Regulator(double T, double T0, double TD, double K)
-	{
-		/**
-		* Конструктор Regulator
-		*
-		* Код:
-		* \code
-		* T_ = T;
-		* T0_ = T0;
-		* TD_ = TD;
-		* K_ = K;
-		* uk_ = 0;
-		* \endcode
-		*/
-		t_ = T;
-		t0_ = T0;
-		td_ = TD;
-		k_ = K;
-		uk_ = 0;
-	}
+	Regulator(double T, double T0, double TD, double K) :
+		t_(T),
+		t0_(T0),
+		td_(TD),
+		k_(K),
+		uk_(0)
+	{ }
+
 	void PIDRegulatorCalculateAndWrite(double need, double start)
 	{
 		/**
@@ -245,38 +209,48 @@ public:
 		fout.open("results.txt");
 		if (fout)
 		{
-			double ek = 0, ek1 = 0, ek2 = 0, y = start, u = 0;
-			LinearModel* linear = new LinearModel(0.333, 0.667, 1);
+			double ek = 0;
+			double ek1 = 0;
+			double ek2 = 0;
+			double y = start;
+			double u = 0;
+
+			LinearModel linear(0.333, 0.667, 1);
 			fout << "Линейная модель: " << std::endl;
 			for (int i = 0; i < 50; ++i)
 			{
 				ek = need - y;
 				u = calculateUk(ek, ek1, ek2);
-				y = linear->calculateModel(start, u);
+				y = linear.calculateModel(start, u);
 				fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
 				ek2 = ek1;
 				ek1 = ek;
 			}
-			delete linear;
 
-			ek = 0, ek1 = 0, ek2 = 0, y = start, u = 0, uk_ = 0;
+			ek = 0;
+			ek1 = 0;
+			ek2 = 0;
+			y = start;
+			u = 0;
+			uk_ = 0;
+
 			fout << "Нелинейная модель: " << std::endl;
-			NonLinearModel* nonLinear = new NonLinearModel(1, 0.0033, 0.525, 0.525, 1);
+			NonLinearModel nonLinear(1, 0.0033, 0.525, 0.525, 1);
 			for (int i = 0; i < 50; ++i)
 			{
 				ek = need - y;
 				u = calculateUk(ek, ek1, ek2);
-				y = nonLinear->calculateModel(start, u);
+				y = nonLinear.calculateModel(start, u);
 				fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
 				ek2 = ek1;
 				ek1 = ek;
 			}
-			delete nonLinear;
 		}
 		else
 		{
 			std::cout << "Не удалось открыть файл для записи результатов." << std::endl;
 		}
+
 		fout.close();
 	}
 };
