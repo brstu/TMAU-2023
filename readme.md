@@ -5,6 +5,7 @@
 1. Предварительное задание [#0](./tasks/task_00/readme.md).
 2. Основное задание [#1](./tasks/task_01/readme.md).
 3. Основное задание [#2](./tasks/task_02/readme.md).
+4. Дополнительное (необязательное) задание [#2](https://github.com/platisd/duplicate-code-detection-tool/issues/27)*.
 
 ## Успеваемость
 
