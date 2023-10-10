@@ -19,10 +19,10 @@ public:
         y.push(20.0);
         setU(u);
     }
-    void setU(std::vector <double> u) {
-        u.push_back(20.0);
-        for (int i : u) {
-            this->u.push_back(u[i]);
+    void setU(std::vector <double> newU) {
+        newU.push_back(20.0);
+        for (double i : newU) {
+            this->u.push_back(i);
         }
     }
     void setConstants(double newA, double newB, double newC, double newD) {
@@ -68,7 +68,7 @@ int main()
     std::cout << std::endl;
     //Линейная модель
     Model model2(u);
-    model2.setConstants(1.15, 0.1115, 0, 0); //Набор констант подобран вручную
+    model2.setConstants(1.15, 0.134, 0, 0); //Набор констант подобран вручную
     for (int i = 0; i < u.size(); i++) {
         model2.stepModelingL(i);
         std::cout << model2.getY() << "\t";
