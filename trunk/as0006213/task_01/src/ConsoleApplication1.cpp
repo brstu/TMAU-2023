@@ -10,7 +10,7 @@ private:
     std::vector <float> u;
     std::stack <float> y;
 public:
-    Model(std::vector <float> u) {
+    explicit Model(std::vector <float> u) {
         setConstants(0, 0, 0, 0);
         y.push(20.0);
         y.push(20.0);
