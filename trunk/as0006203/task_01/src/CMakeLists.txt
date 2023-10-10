@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.27.6)
 
-project (main)
+project (solution1)
 
-add_executable(main main.cpp)
+add_executable(solution1 main.cpp)
