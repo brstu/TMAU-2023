@@ -25,51 +25,8 @@
 2. Основное задание [#1](../../../../tasks/task_01/readme.md).
 
 <p> <strong> Решение </strong> </p>
-<p> <strong>1) </strong>Создадим сборку с помощью <em>CMake</em>.</p>
-<p> <strong>2) </strong>Для начала на диске <em>D:\</em> создадим директорию <em>Lab</em>.</p>
-<p> <strong>3) </strong>В данной директории создадим 2 под-директории: <em>lab01</em>, для файлов, содержащих исходный код программы и скрипт сборки проекта и <em>build</em> содержащую, непосредственно сборку нашего проекта.</p>
-<p> <strong>4) </strong>В директорию <em>lab01</em> поместим 2 файла:</p>
-<ul>
-<li><em>main.cpp</em> с кодом программы для моделирования температуры объекта посредством линейной и нелинейной модели.</li>
-<li><em>CMakeLists.txt</em> с скриптом сборки проекта.</li>
-</ul>
-<p> <strong>5) </strong>Откроем консоль и введём следующие команды:</p>
-<ul>
-<li>Переход в дирректорию <em>build</em> для сборки проекта:</li>
 
-``` bash
-cd /d d:\Lab\build
-```
-
-<li>Сборка проекта с помощью <em>CMake</em>:</li>
-
-``` bash
-cmake d:\Lab\lab01
-```
-
-</ul>
-
-<p> <strong>6) </strong>Получим следующий вывод на консоль: </p>
-
-``` bash
--- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.17763.
--- The C compiler identification is MSVC 19.37.32824.0
--- The CXX compiler identification is MSVC 19.37.32824.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: D:/visual-studio/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: D:/visual-studio/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done (3.5s)
--- Generating done (0.0s)
--- Build files have been written to: D:/testLab/build
-```
-<p> <strong>7) </strong>Сборка с помощью <em>CMake</em> прошла успешно. Запускаем наш проект с помощью компилятора.</p>
+<p>Запускаем наш проект</p>
 
 <p> <strong>8) </strong>Вывод нашей программмы на консоль:
 
@@ -108,4 +65,4 @@ y[13] = 2459.98
 y[14] = 3626.29
 y[15] = 5342.85
 ```
-<p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с кроссплатформенной системой автоматизации сборки программного обеспечения <em>cMake</em>, а так же приобретены навыки работы с <em>git</em> и <em>github</em>, а именно знания для эффективного управления версиями кода и совместной работы над проектами.</p>
+<p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с  <em>cMake</em>, а так же приобретены навыки работы с <em>git</em> и <em>github</em>, а именно знания для эффективного управления версиями кода и совместной работы над проектами.</p>
