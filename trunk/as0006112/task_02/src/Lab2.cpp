@@ -212,11 +212,11 @@ public:
 
         if (fout)
         {
-            double ek = 0;
+            double ek;
             double ek1 = 0;
             double ek2 = 0;
             double y = start;
-            double u = 0;
+            double u;
 
             LinearModel linear(0.333, 0.667, 1);
             fout << "Линейная модель: " << std::endl;
