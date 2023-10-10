@@ -6,23 +6,26 @@
 
 class Model {
 private:
-    float a, b, c, d;
-    std::vector <float> u;
-    std::stack <float> y;
+    double a;
+    double b;
+    double c;
+    double d;
+    std::vector <double> u;
+    std::stack <double> y;
 public:
-    explicit Model(std::vector <float> u) {
+    explicit Model(std::vector <double> &u) {
         setConstants(0, 0, 0, 0);
         y.push(20.0);
         y.push(20.0);
         setU(u);
     };
-    void setU(std::vector <float> u) {
+    void setU(std::vector <double> u) {
         u.push_back(20.0);
         for (int i = 0; i < u.size(); i++) {
             this->u.push_back(u[i]);
-        };
+        }
     };
-    void setConstants(float a, float b, float c, float d) {
+    void setConstants(double a, double b, double c, double d) {
         this->a = a;
         this->b = b;
         this->c = c;
@@ -30,23 +33,23 @@ public:
     };
     void stepModelingNL(int i) {
         i += 1;
-        float yPrev = y.top();
+        double yPrev = y.top();
         y.pop();
-        float yNext = a * yPrev - b * pow(y.top(), 2) + c * u[i] + d * sin(u[i-1]);
+        double yPPrev = y.top();
         y.push(yPrev);
-        y.push(yNext);
+        y.push(a * yPrev - b * pow(yPPrev, 2) + c * u[i] + d * sin(u[i - 1]));
     };
     void stepModelingL(int i) {
-        float yNext = a * y.top() - b * u[i];
+        double yNext = a * y.top() - b * u[i];
         y.push(yNext);
     };
-    float getY() {return y.top(); };
+    double getY() {return y.top(); };
 };
 
 int main()
 {
     int num = 30;
-    std::vector <float> u;
+    std::vector <double> u;
     //Генератор случайных чисел
     for (int i = 0; i < num; i++) {
         u.push_back(20.0 - i / 5.0 + i * i / 9.0 - i * i * i / 260.0);
