@@ -71,13 +71,13 @@ public:
 class NonLinearModel : public AbstractModel
 {
 private:
-    double a_;     ///< Коэффициент
-    double b_;     ///< Коэффициент
-    double c_;     ///< Коэффициент
-    double d_;     ///< Коэффициент
-    double yPrev_; ///< Предыдущая температура 
-    double yNext_; ///< Получаемая нами температура
-    double wPrev_; ///< Предыдущее тепло
+    double a_;         ///< Коэффициент
+    double b_;         ///< Коэффициент
+    double c_;         ///< Коэффициент
+    double d_;         ///< Коэффициент
+    double yPrev_ = 0; ///< Предыдущая температура 
+    double yNext_;     ///< Получаемая нами температура
+    double wPrev_ = 0; ///< Предыдущее тепло
 
 public:
     NonLinearModel(double a, double b, double c, double d, double yNext) :
@@ -85,9 +85,7 @@ public:
         b_(b),
         c_(c),
         d_(d),
-        yNext_(yNext),
-		yPrev_(0),
-		wPrev_(0)
+        yNext_(yNext)
     { }
 
     /**
@@ -118,11 +116,11 @@ public:
 class Regulator
 {
 private:
-    double t_;  ///< Постоянная интегрирования
-    double t0_; ///< Шаг для квантования
-    double td_; ///< Постоянная дифференцирования
-    double k_;  ///< Коэффициент передачи
-    double uk_; ///< Текущее значение управляющего воздействия
+    double t_;      ///< Постоянная интегрирования
+    double t0_;     ///< Шаг для квантования
+    double td_;     ///< Постоянная дифференцирования
+    double k_;      ///< Коэффициент передачи
+    double uk_ = 0; ///< Текущее значение управляющего воздействия
 
     double calculateUk(double ek, double ek1, double ek2)
     {
@@ -151,8 +149,7 @@ public:
         t_(T),
         t0_(T0),
         td_(TD),
-        k_(K),
-		uk_(0)
+        k_(K)
     { }
 
     void PIDRegulatorCalculateAndWrite(double need, double start)
