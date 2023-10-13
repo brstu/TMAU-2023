@@ -6,9 +6,9 @@ double linearModel(double inputTemperature_Yt, double inputWarm_U, double a, dou
 	return (a * inputTemperature_Yt)+(b* inputWarm_U);
 }
 
-double nonLinearModel(double inputTemperature_Yt, double inputTemperature_Yt_1, double inputWarm_U, double inputWarm_U_1, double a, double b, double c, double d)  //Вычисление нелинейной функции
+double nonLinearModel(double inputTemperature_Yt, double inputTemperature_Yt_1, double inputWarm_U, double a, double b, double c, double d)  //Вычисление нелинейной функции
 {
-	return (a * inputTemperature_Yt) - b*pow(inputTemperature_Yt_1,2)+(c*inputWarm_U)+d*sin(inputWarm_U_1);
+	return (a * inputTemperature_Yt) - b*pow(inputTemperature_Yt_1,2)+(c*inputWarm_U)+d*sin(inputWarm_U);
 }
 
 int main() 
@@ -38,9 +38,9 @@ int main()
 	for (int i = 1; i <= timeT; i++) //Цикл для моделирования временных шагов
 	{
 		linearY = linearModel(linearY, inputU, linearA, linearB);
-		nonLinearY = nonLinearModel(nonLinearY, previousNonLinearY, inputU, previousInputU, nonLinearA, nonLinearB, nonLinearC, nonLinearD);
+		nonLinearY = nonLinearModel(nonLinearY, previousNonLinearY, inputU, nonLinearA, nonLinearB, nonLinearC, nonLinearD);
 		previousNonLinearY = nonLinearY;	
-		previousInputU = inputU;
+		
 
 		
 		std::cout << "TIME: " << i << std::endl;
