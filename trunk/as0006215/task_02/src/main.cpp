@@ -63,9 +63,9 @@ private:
     double q0;
     double q1;
     double q2;
-    double e_k_1;
-    double e_k_2;
-    double u_k_1;
+    double e_k_1 = 0.0;
+    double e_k_2 = 0.0;
+    double u_k_1 = 0.0;
 
 public:
     /**
@@ -75,7 +75,7 @@ public:
      * @param T0 Параметр T0
      */
     explicit PIDController(double k, double TD, double T0) : q0(k * (1 + (TD / T0))), q1(-k * (1 + 2 * (TD / T0) - (T0 / TD))),
-                                                            q2(k * (TD / T0)), e_k_1(0.0), e_k_2(0.0), u_k_1(0.0) {}
+                                                            q2(k * (TD / T0)) {}
 
     /**
      * @brief Расчет выходного значения ПИД-регулятора
@@ -116,22 +116,24 @@ int main() {
     // Симуляция на 10 временных шагов
     for (int t = 1; t <= 10; t++) {
         // Линейная модель
-        double Yt_linear = linearModel.calculateOutput(Y_linear, 0.0, U);
-        double e_linear = Yt_linear - Y_linear;
-        double u_linear = pidController.calculateOutput(e_linear);
-        Y_linear = linearModel.calculateOutput(Y_linear, 0.0, u_linear);
+         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
 
         // Нелинейная модель
         double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
-        double e_nonlinear = Yt_nonlinear - Y_nonlinear;
-        double u_nonlinear = pidController.calculateOutput(e_nonlinear);
-        Y_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, u_nonlinear);
         Y_prev_nonlinear = Y_nonlinear;
+        Y_nonlinear = Yt_nonlinear;
 
-        std::cout << "time step: " << t << std::endl;
-        std::cout << "Linear model: " << Y_linear << std::endl;
-        std::cout << "Nonlinear model: " << Y_nonlinear << std::endl;
-        std::cout << "------------------------" << std::endl;
+        // ПИД-регулятор
+        double error = Yt_linear - Yt_nonlinear;
+        double controlSignal = pidController.calculateOutput(error);
+
+        // Вывод результатов
+        std::cout << "Time step: " << t << std::endl;
+        std::cout << "Linear model output: " << Yt_linear << std::endl;
+        std::cout << "Nonlinear model output: " << Yt_nonlinear << std::endl;
+        std::cout << "Error: " << error << std::endl;
+        std::cout << "Control signal: " << controlSignal << std::endl;
+        std::cout << std::endl;
     }
 
     return 0;
