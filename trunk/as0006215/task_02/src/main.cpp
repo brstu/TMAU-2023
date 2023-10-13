@@ -1,4 +1,3 @@
-﻿
 #include <iostream>
 #include <cmath>
 
@@ -12,7 +11,8 @@ public:
      * @param U Входное значение
      * @return Выходное значение модели
      */
-    virtual double calculateOutput(double Yt, double Yt_1, double U) = 0;
+    virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
+    virtual ~MathModel() {}
 };
 
 // Линейная модель
@@ -27,9 +27,9 @@ public:
      * @param a Параметр a
      * @param b Параметр b
      */
-    LinearModel(double a, double b) : a(a), b(b) {}
+    explicit LinearModel(double a, double b) : a(a), b(b) {}
 
-    double calculateOutput(double Yt, double Yt_1, double U) override {
+    double calculateOutput(double Yt, double Yt_1, double U) const override {
         return a * Yt + b * U;
     }
 };
@@ -52,8 +52,8 @@ public:
      */
     NonlinearModel(double a, double b, double c, double d) : a(a), b(b), c(c), d(d) {}
 
-    double calculateOutput(double Yt, double Yt_1, double U) override {
-        return a * Yt - b * pow(Yt_1, 2) + c * U + d * sin(U);
+    double calculateOutput(double Yt, double Yt_1, double U) const override {
+        return a * Yt - b * std::pow(Yt_1, 2) + c * U + d * std::sin(U);
     }
 };
 
@@ -74,14 +74,8 @@ public:
      * @param TD Параметр TD
      * @param T0 Параметр T0
      */
-    PIDController(double k, double TD, double T0) {
-        q0 = k * (1 + (TD / T0));
-        q1 = -k * (1 + 2 * (TD / T0) - (T0 / TD));
-        q2 = k * (TD / T0);
-        e_k_1 = 0.0;
-        e_k_2 = 0.0;
-        u_k_1 = 0.0;
-    }
+    explicit PIDController(double k, double TD, double T0) : q0(k * (1 + (TD / T0))), q1(-k * (1 + 2 * (TD / T0) - (T0 / TD))),
+                                                            q2(k * (TD / T0)), e_k_1(0.0), e_k_2(0.0), u_k_1(0.0) {}
 
     /**
      * @brief Расчет выходного значения ПИД-регулятора
@@ -119,26 +113,26 @@ int main() {
     // ПИД-регулятор
     PIDController pidController(1.0, 0.5, 0.2);
 
-            // Simulation for 10 time steps
-            for (int t = 1; t <= 10; t++) {
-                // Linear model
-                double Yt_linear = linearModel.calculateOutput(Y_linear, 0.0, U);
-                double e_linear = Yt_linear - Y_linear;
-                double u_linear = pidController.calculateOutput(e_linear);
-                Y_linear = linearModel.calculateOutput(Y_linear, 0.0, u_linear);
+    // Симуляция на 10 временных шагов
+    for (int t = 1; t <= 10; t++) {
+        // Линейная модель
+        double Yt_linear = linearModel.calculateOutput(Y_linear, 0.0, U);
+        double e_linear = Yt_linear - Y_linear;
+        double u_linear = pidController.calculateOutput(e_linear);
+        Y_linear = linearModel.calculateOutput(Y_linear, 0.0, u_linear);
 
-                // Nonlinear model
-                double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
-                double e_nonlinear = Yt_nonlinear - Y_nonlinear;
-                double u_nonlinear = pidController.calculateOutput(e_nonlinear);
-                Y_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, u_nonlinear);
-                Y_prev_nonlinear = Y_nonlinear;
+        // Нелинейная модель
+        double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
+        double e_nonlinear = Yt_nonlinear - Y_nonlinear;
+        double u_nonlinear = pidController.calculateOutput(e_nonlinear);
+        Y_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, u_nonlinear);
+        Y_prev_nonlinear = Y_nonlinear;
 
-                std::cout << "time step: " << t << std::endl;
-                std::cout << "Linear model: " << Y_linear << std::endl;
-                std::cout << "Nonlinear model: " << Y_nonlinear << std::endl;
-                std::cout << "------------------------" << std::endl;
-            }
+        std::cout << "time step: " << t << std::endl;
+        std::cout << "Linear model: " << Y_linear << std::endl;
+        std::cout << "Nonlinear model: " << Y_nonlinear << std::endl;
+        std::cout << "------------------------" << std::endl;
+    }
 
-            return 0;
-        }
+    return 0;
+}
