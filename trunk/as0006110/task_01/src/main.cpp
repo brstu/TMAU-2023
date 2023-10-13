@@ -42,10 +42,10 @@ double temperat[newmodu];
 		   cin >> chowa;
 
 
-          	const double z = 0.1;
-          	const double x = 0.01;
-          	const double c = 0.03;
-          	const double v = 0.02;
+         double z = 0.1;
+         double x = 0.01;
+         double c = 0.03;
+         double v = 0.02;
           if (temp == 0) {
           Lin(temperat, chowa, z, x);
           for (int i = 0; i < newmodu; i++) {
