@@ -24,7 +24,7 @@ public:
 
     string toString()  {
 
-            return "{ y(t): " + to_string(this->temperer) + "; t: " + to_string(this->t) + " }";
+            return "{ y(t): " + to_string(this->temper) + "; t: " + to_string(this->t) + " }";
     }
 
 
@@ -44,7 +44,7 @@ public:
  double D = 0.4;
 
 
- double war = 1;
+ double WARM = 1;
 
 
 
@@ -98,7 +98,7 @@ vector<temMod> simulateNonLinearMod(int time, double temper) {
     nonLineartempers.emplace_back(temper, curwar, t);
     prtemper = temper;
 
-    
+
     prwar = curwar;
     }
 
