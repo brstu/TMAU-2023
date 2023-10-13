@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-class temperatureMod {
+class temMod {
 public:
 
     double temper;
@@ -19,7 +19,7 @@ public:
 
     int t;
 
-    temperatureMod(double temper, double war, int t) : temper(temper), war(war), t(t)  {
+    temMod(double temper, double war, int t) : temper(temper), war(war), t(t)  {
     }
 
     string toString()  {
@@ -48,7 +48,7 @@ public:
 
 
 
-void showData(vector<temperatureMod>& temperMods) {
+void showData(vector<temMod>& temperMods) {
     for ( auto& model : temperMods) {
         cout << model.toString() << endl;
     }
@@ -60,8 +60,8 @@ void showData(vector<temperatureMod>& temperMods) {
 
 
 
-vector<temperatureMod> simulateLinearMod(int time, double temper) {
-    vector<temperatureMod> lineartempers;
+vector<temMod> simulateLinearMod(int time, double temper) {
+    vector<temMod> lineartempers;
 
     for (int t = 1; t <= time; t++) {
     double curwar = WARM;
@@ -76,8 +76,8 @@ vector<temperatureMod> simulateLinearMod(int time, double temper) {
 
 
 
-vector<temperatureMod> simulateNonLinearMod(int time, double temper) {
-        vector<temperatureMod> nonLineartempers;
+vector<temMod> simulateNonLinearMod(int time, double temper) {
+        vector<temMod> nonLineartempers;
         double prtemper = 0;
         double prwar = 0;
 
@@ -87,10 +87,18 @@ vector<temperatureMod> simulateNonLinearMod(int time, double temper) {
 
 
     double curwar = WARM;
+
+
     temper = A * temper - B * pow(prtemper, 2) + C * curwar + D * sin(prwar);
+
+
     temper = round(temper * 100) / 100;
+
+
     nonLineartempers.emplace_back(temper, curwar, t);
     prtemper = temper;
+
+    
     prwar = curwar;
     }
 
