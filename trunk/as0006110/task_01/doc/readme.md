@@ -10,7 +10,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-61</p>
-<p align="right">Леонович А. А.</p>
+<p align="right">Леонович А.А.</p>
 <p align="right">Проверил:</p>
 <p align="right">Иванюк Д. С.</p>
 <br><br><br><br><br>
@@ -35,63 +35,63 @@ where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some con
 
 Task is to write program (**С++**), which simulates this object temperature.
 
-```
+Пример вывода программы:
 
 Пример вывода программы:
 
 ``` bash
-choose :
- 1 - linear
- 2 - nonlinear
+choose type of transformation:
+ 0 - linear
+ else - nonlinear
 1
 enter temperature
-2
-enter choosen_warm
-4
+45
+enter warm
+13
 
-y[0]=2
-y[1]=0.24
-y[2]=0.064
-y[3]=0.0464
-y[4]=0.04464
-y[5]=0.044464
-y[6]=0.0444464
-y[7]=0.0444446
-y[8]=0.0444445
-y[9]=0.0444444
-y[10]=0.0444444
-y[11]=0.0444444
-y[12]=0.0444444
-y[13]=0.0444444
-y[14]=0.0444444
-y[15]=0.0444444
+y[0]=45
+y[1]=4.63
+y[2]=0.593
+y[3]=0.1893
+y[4]=0.14893
+y[5]=0.144893
+y[6]=0.144489
+y[7]=0.144449
+y[8]=0.144445
+y[9]=0.144444
+y[10]=0.144444
+y[11]=0.144444
+y[12]=0.144444
+y[13]=0.144444
+y[14]=0.144444
+y[15]=0.144444
 Press any key to continue . . .
 
-choose :
- 1 - linear
- 2 - nonlinear
+choose type of transformation:
+ 0 - linear
+ else - nonlinear
 2
 enter temperature
-12
-enter choosen_warm
-4
+45
+enter warm
+13
 
-y[0]=12
-y[1]=1.24
-y[2]=-1.21114
-y[3]=-0.0316257
-y[4]=0.0870329
-y[5]=0.113557
-y[6]=0.116144
-y[7]=0.116349
-y[8]=0.116364
-y[9]=0.116365
-y[10]=0.116365
-y[11]=0.116365
-y[12]=0.116365
-y[13]=0.116365
-y[14]=0.116365
-y[15]=0.116365
+y[0]=45
+y[1]=4.63
+y[2]=-15.803
+y[3]=2.18937
+y[4]=1.70563
+y[5]=4.10666
+y[6]=4.36561
+y[7]=4.25195
+y[8]=4.21864
+y[9]=4.22511
+y[10]=4.22857
+y[11]=4.22838
+y[12]=4.22806
+y[13]=4.22805
+y[14]=4.22807
+y[15]=4.22808
 Press any key to continue . . .
 
 
