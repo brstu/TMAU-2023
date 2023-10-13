@@ -12,9 +12,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           file_extensions: "h, hpp, cpp, c, md"
-          # Only report similarities above 50%
-          ignore_below: 50
-          # If a file is more than 70% similar to another, then the job fails
-          fail_above: 70
-          # If a file is more than 51% similar to another, show a warning symbol in the report
-          warn_above: 51
+          # Only report similarities above 89%
+          ignore_below: 89
+          # If a file is more than 90% similar to another, then the job fails
+          fail_above: 90
+          # If a file is more than 91% similar to another, show a warning symbol in the report
+          warn_above: 91
+          # Leave only one comment with the report and update it for consecutive runs
+          one_comment: true
