@@ -18,3 +18,5 @@ jobs:
           fail_above: 90
           # If a file is more than 91% similar to another, show a warning symbol in the report
           warn_above: 91
+          # Leave only one comment with the report and update it for consecutive runs
+          one_comment: true
