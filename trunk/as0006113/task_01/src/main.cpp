@@ -48,8 +48,8 @@ public:
 
 
 
-void showData(vector<temMod>& temperMods) {
-    for ( auto& model : temperMods) {
+void showData(const vector<temMod>& temperMods) {
+    for (const auto& model : temperMods) {
         cout << model.toString() << endl;
     }
 }
