@@ -1,0 +1,46 @@
+.TH "MathModel" 3 "Version 1.6" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MathModel
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBLinearModel\fP, and \fBNonlinearModel\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual double \fBcalculateOutput\fP (double Yt, double Yt_1, double U)=0"
+.br
+.RI "Расчет выходного значения модели "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual double MathModel::calculateOutput (double Yt, double Yt_1, double U)\fC [pure virtual]\fP"
+
+.PP
+Расчет выходного значения модели 
+.PP
+\fBParameters\fP
+.RS 4
+\fIYt\fP Текущее значение 
+.br
+\fIYt_1\fP Предыдущее значение 
+.br
+\fIU\fP Входное значение 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Выходное значение модели 
+.RE
+.PP
+
+.PP
+Implemented in \fBLinearModel\fP, and \fBNonlinearModel\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

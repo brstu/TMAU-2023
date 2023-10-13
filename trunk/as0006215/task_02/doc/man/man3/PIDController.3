@@ -1,0 +1,59 @@
+.TH "PIDController" 3 "Version 1.6" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PIDController
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPIDController\fP (double k, double TD, double T0)"
+.br
+.RI "Конструктор ПИД-регулятора "
+.ti -1c
+.RI "double \fBcalculateOutput\fP (double e_k)"
+.br
+.RI "Расчет выходного значения ПИД-регулятора "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PIDController::PIDController (double k, double TD, double T0)\fC [inline]\fP"
+
+.PP
+Конструктор ПИД-регулятора 
+.PP
+\fBParameters\fP
+.RS 4
+\fIk\fP Параметр k 
+.br
+\fITD\fP Параметр TD 
+.br
+\fIT0\fP Параметр T0 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "double PIDController::calculateOutput (double e_k)\fC [inline]\fP"
+
+.PP
+Расчет выходного значения ПИД-регулятора 
+.PP
+\fBParameters\fP
+.RS 4
+\fIe_k\fP Ошибка 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Выходное значение ПИД-регулятора 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.
