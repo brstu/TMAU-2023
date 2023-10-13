@@ -5,10 +5,18 @@
 
 using namespace std;
 
+
+
+
 class temperatureMod {
 public:
+
     double temper;
+
+
     double war;
+
+
     int t;
 
     temperatureMod(double temper, double war, int t) : temper(temper), war(war), t(t)  {
@@ -18,12 +26,24 @@ public:
 
             return "{ y(t): " + to_string(this->temperer) + "; t: " + to_string(this->t) + " }";
     }
+
+
 };
 
+
  double A = 0.5;
+
+
+
  double B = 1;
+
+
  double C = 1.2;
+
+
  double D = 0.4;
+
+
  double war = 1;
 
 
@@ -35,6 +55,11 @@ void showData(vector<temperatureMod>& temperMods) {
 }
 
 
+
+
+
+
+
 vector<temperatureMod> simulateLinearMod(int time, double temper) {
     vector<temperatureMod> lineartempers;
 
@@ -44,22 +69,32 @@ vector<temperatureMod> simulateLinearMod(int time, double temper) {
     lineartempers.emplace_back(temper, curwar, t);
     }
 
+    
+
     return lineartempers;
 }
 
+
+
 vector<temperatureMod> simulateNonLinearMod(int time, double temper) {
         vector<temperatureMod> nonLineartempers;
-        double prevtemper = 0;
-        double prevwar = 0;
+        double prtemper = 0;
+        double prwar = 0;
+
+
 
     for (int t = 1; t <= time; t++) {
+
+
     double curwar = WARM;
-    temper = A * temper - B * pow(prevtemper, 2) + C * curwar + D * sin(prevwar);
+    temper = A * temper - B * pow(prtemper, 2) + C * curwar + D * sin(prwar);
     temper = round(temper * 100) / 100;
     nonLineartempers.emplace_back(temper, curwar, t);
-    prevtemper = temper;
-    prevwar = curwar;
+    prtemper = temper;
+    prwar = curwar;
     }
+
+
 
     return nonLineartempers;
 }

@@ -38,8 +38,8 @@ Task is to write program (**С++**), which simulates this object temperature.
 Пример вывода программы:
 
 ``` bash
-Input time parameter: 5
-Input initial temperature: 6
+Input time parameter: 7
+Input initial temperature: 2
 Linear model data
 { y(t): 4.000000; t: 1 }
 { y(t): 3.000000; t: 2 }
@@ -47,9 +47,9 @@ Linear model data
 { y(t): 2.250000; t: 4 }
 { y(t): 2.130000; t: 5 }
 Non linear model data
-{ y(t): 4.200000; t: 1 }
-{ y(t): -14.000000; t: 2 }
-{ y(t): -201.460000; t: 3 }
-{ y(t): -40685.330000; t: 4 }
-{ y(t): -1655316418.340000; t: 5 }
+{ y(t): 4.20; t: 1 }
+{ y(t): 51.00; t: 2 }
+{ y(t): 16361.46; t: 3 }
+{ y(t): -13685.33; t: 4 }
+{ y(t): -113716418.34; t: 5 }
 ```
