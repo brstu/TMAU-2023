@@ -12,7 +12,7 @@ public:
      * @return Выходное значение модели
      */
     virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
-    virtual ~MathModel() {}
+    virtual ~MathModel() = default;
 };
 
 // Линейная модель
@@ -116,7 +116,11 @@ int main() {
     // Симуляция на 10 временных шагов
     for (int t = 1; t <= 10; t++) {
         // Линейная модель
-         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
+         double Yt_linear = linearModel.calculateOutput(Y_linear, Apologies for the incomplete response. Here's the continuation of the code:
+
+```cpp
+        // Линейная модель
+        double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
 
         // Нелинейная модель
         double Yt_nonlinear = nonlinearModel.calculateOutput(Y_nonlinear, Y_prev_nonlinear, U);
