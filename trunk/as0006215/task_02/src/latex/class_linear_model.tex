@@ -1,0 +1,69 @@
+\doxysection{Linear\+Model Class Reference}
+\hypertarget{class_linear_model}{}\label{class_linear_model}\index{LinearModel@{LinearModel}}
+Inheritance diagram for Linear\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_linear_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_linear_model_a354c216624723c40fa18004290d97941}{Linear\+Model}} (double a, double b)
+\begin{DoxyCompactList}\small\item\em Конструктор линейной модели \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_linear_model_a83550f0a422c79bfbb7be43516b75aa3}{calculate\+Output}} (double Yt, double Yt\+\_\+1, double U) override
+\begin{DoxyCompactList}\small\item\em Расчет выходного значения модели \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_linear_model_a354c216624723c40fa18004290d97941}\label{class_linear_model_a354c216624723c40fa18004290d97941} 
+\index{LinearModel@{LinearModel}!LinearModel@{LinearModel}}
+\index{LinearModel@{LinearModel}!LinearModel@{LinearModel}}
+\doxysubsubsection{\texorpdfstring{LinearModel()}{LinearModel()}}
+{\footnotesize\ttfamily Linear\+Model\+::\+Linear\+Model (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор линейной модели 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Параметр a \\
+\hline
+{\em b} & Параметр b \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_linear_model_a83550f0a422c79bfbb7be43516b75aa3}\label{class_linear_model_a83550f0a422c79bfbb7be43516b75aa3} 
+\index{LinearModel@{LinearModel}!calculateOutput@{calculateOutput}}
+\index{calculateOutput@{calculateOutput}!LinearModel@{LinearModel}}
+\doxysubsubsection{\texorpdfstring{calculateOutput()}{calculateOutput()}}
+{\footnotesize\ttfamily double Linear\+Model\+::calculate\+Output (\begin{DoxyParamCaption}\item[{double}]{Yt,  }\item[{double}]{Yt\+\_\+1,  }\item[{double}]{U }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Расчет выходного значения модели 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Yt} & Текущее значение \\
+\hline
+{\em Yt\+\_\+1} & Предыдущее значение \\
+\hline
+{\em U} & Входное значение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Выходное значение модели 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_math_model_a08a6e7c38b4a7b069443343940871bf3}{Math\+Model}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+main.\+cpp\end{DoxyCompactItemize}
