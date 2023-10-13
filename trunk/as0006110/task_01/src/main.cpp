@@ -1,64 +1,84 @@
-#include <iostream>
-#include <cmath>
+						#include <iostream>
+						#include <vector>
+						#include <cmath>
+						#include <string>
 
-using namespace std;
+						using namespace std;
 
+	const double A = 0.5;
+	const double B = 1;
+	const double C = 1.2;
+	const double D = 0.4;
+	const double teplo = 1;
 
+	class Temp_mod {
+	public:
+		double gradus;
+			double teplo;
+	int vrem9;
+	Temp_mod(double temp, double teplo, int t) : gradus(temp), teplo(teplo), vrem9(t) {
+	}
+	string toString() const {
+	return "{ y(t): " + to_string(this->gradus) + "; t: " + to_string(this->vrem9) + " }";
+	}
+		};
 
+		void SD(const vector<Temp_mod>& GM) {
+		for (const auto& model : GM) {
+		cout << model.toString() << endl;
+		}
+		}
 
+		vector<Temp_mod> L_M(int vrem9, double gradus) {
+		vector<Temp_mod> linear_graduss;
 
-          double nLin(double y[16], double u, double a, double b, double c, double d) {
-          double ng[16];
-          y[1] = b * u + a * y[0];
-          	ng[1] = y[1];
-				for (int i = 2; i < 16; i++) {
-				y[i] = a * y[i - 1] - b * pow(y[i - 2], 2) + d * sin(u) + c * u;
-				ng[i] = y[i];
-				}
-				return ng[15];
-}
+		for (int t = 1; t <= vrem9; t++) {
+		double cur_teplo = teplo;
+		gradus = round((A * gradus + B * cur_teplo) * 100) / 100;
+		linear_graduss.emplace_back(gradus, cur_teplo, t);
+		}
 
-		double Lin(double y[16], double u, double a, double b) {
-			double ng[16];
-				for (int i = 1; i < 16; i++) {
-					y[i] = b * u + a * y[i - 1];
-					ng[i] = y[i];
+		return linear_graduss;
+		}
+
+		vector<Temp_mod> non_L_M(int vrem9, double gradus) {
+		vector<Temp_mod> non_Linear_graduss;
+
+		double prev_gradus = 0;
+		double prev_teplo = 0;
+
+		for (int t = 1; t <= vrem9; t++) {
+		double cur_teplo = teplo;
+
+		gradus = A * gradus - B * pow(prev_gradus, 2) + C * cur_teplo + D * sin(prev_teplo);
+		gradus = round(gradus * 100) / 100;
+
+		non_Linear_graduss.emplace_back(gradus, cur_teplo, t);
+
+		prev_gradus = gradus;
+		prev_teplo = cur_teplo;
+		}
+
+					return non_Linear_graduss;
 					}
-					return ng[15];
-					}
 
+					int main()
+					{
+					int vrem9;
+					cout << "Input vrem9 param: ";
+					cin >> vrem9;
 
-int main() {
+								int gradus;
+								cout << "Input initial gradus: ";
+								cin >> gradus;
 
-double temperat[16];
-	double chowa;
-		int temp;
+								cout << "Linear model data output" << endl;
+								auto linear = L_M(vrem9, gradus);
+								SD(linear);
 
-           cout << "choose : \n 0 - Lin \n 1,2,3,4,5,6,7,8,9 - nLin" << endl;
-           cin >> temp;
-           cout << "enter temperat " << endl;
-           cin >> temperat[0];
-           cout << "enter chowa " << endl;
-		   cin >> chowa;
+								cout << "Non linear model data output" << endl;
+								auto nonLinear = non_L_M(vrem9, gradus);
+								SD(nonLinear);
 
-
-         double z = 0.1;
-         double x = 0.01;
-         double c = 0.03;
-         double v = 0.02;
-          if (temp == 0) {
-          Lin(temperat, chowa, z, x);
-          for (int i = 0; i < 16; i++) {
-                    cout << "y[" << i << "]=" << temperat[i] << endl;
-          }
-          }
-                    else {
-          nLin(temperat, chowa, z, x, c, v);
-                    for (int i = 0; i < 16; i++) {
-                              cout << "y[" << i << "]=" << temperat[i] << endl;
-          }
-                              }
-
-system("pause");
-return 0;
-}
+								return 0;
+								}
