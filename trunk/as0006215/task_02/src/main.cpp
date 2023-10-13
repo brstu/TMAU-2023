@@ -118,7 +118,6 @@ int main() {
         // Линейная модель
          double Yt_linear = linearModel.calculateOutput(Y_linear, Apologies for the incomplete response. Here's the continuation of the code:
 
-```cpp
         // Линейная модель
         double Yt_linear = linearModel.calculateOutput(Y_linear, 0, U);
 
