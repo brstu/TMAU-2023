@@ -25,7 +25,6 @@ int main()
 	double previousNonLinearY = 0.0;
 
 	double inputU = 0;
-	double previousInputU = 0;
 
 	int timeT;
 
