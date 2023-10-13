@@ -22,7 +22,7 @@ public:
     temMod(double temper, double war, int t) : temper(temper), war(war), t(t)  {
     }
 
-    const string toString()  {
+     string toString() const {
 
             return "{ y(t): " + to_string(this->temper) + "; t: " + to_string(this->t) + " }";
     }
