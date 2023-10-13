@@ -12,7 +12,7 @@ public:
      * @return Выходное значение модели
      */
     virtual double calculateOutput(double Yt, double Yt_1, double U) const = 0;
-    virtual ~MathModel() {}
+     virtual ~MathModel() = default;
 };
 
 // Линейная модель
