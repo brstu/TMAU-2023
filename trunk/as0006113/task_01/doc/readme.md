@@ -30,21 +30,21 @@ where $\tau$ – time; $y(\tau)$ – input temperature; $u(\tau)$ – input warm
 
 Task is to write program (**С++**), which simulates this object temperature.
 
-Пример вывода программы:
+OUT Progam:
 
 ``` bash
-Input time parameter: 7
-Input initial temperature: 2
+Input time param: 7
+Input initial temper: 2
 Linear model data
-{ y(t): 4.000000; t: 1 }
-{ y(t): 3.000000; t: 2 }
-{ y(t): 2.500000; t: 3 }
-{ y(t): 2.250000; t: 4 }
-{ y(t): 2.130000; t: 5 }
+{ y(t): 4.00; t: 1 }
+{ y(t): 3.00; t: 2 }
+{ y(t): 2.50; t: 3 }
+{ y(t): 2.25; t: 4 }
+{ y(t): 2.13; t: 5 }
 Non linear model data
 { y(t): 4.20; t: 1 }
 { y(t): 51.00; t: 2 }
-{ y(t): 16361.46; t: 3 }
+{ y(t): 1634561.46; t: 3 }
 { y(t): -13685.33; t: 4 }
 { y(t): -113716418.34; t: 5 }
 ```
