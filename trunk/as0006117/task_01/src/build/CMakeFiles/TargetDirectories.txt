@@ -1,3 +1,0 @@
-D:/5 семестр/ТиМАУ/github/TMAU-2023-main/trunk/as0006117/task_01/src/build/CMakeFiles/MainFile.dir
-D:/5 семестр/ТиМАУ/github/TMAU-2023-main/trunk/as0006117/task_01/src/build/CMakeFiles/ALL_BUILD.dir
-D:/5 семестр/ТиМАУ/github/TMAU-2023-main/trunk/as0006117/task_01/src/build/CMakeFiles/ZERO_CHECK.dir
