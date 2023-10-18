@@ -1,32 +1,29 @@
-﻿#include <iostream>
 #include <cmath>
 #include <vector>
-
+#include <iostream>
 using namespace std;
-
-void linearModel(float A, float B, float temp, float warm, int time)
+void linearModel(float A, float B, float temperat, float warm, int time)
 {
-    cout << endl << "LinModel:" << endl << endl;
-    float currTempr = temp;
-    for (int i = 0; i < time; i++)
+    cout << "LinearModel:" << endl;
+    float currTempr = temperat;
+    int w = 0;
+    while (w < time)
     {
         currTempr = A * currTempr + B * warm;
-        cout << "y(" << i + 1 << ") = " << currTempr << endl;
+        cout << "y[" << w + 1 << "] = " << currTempr << endl;
+        w++;
     }
-    cout << endl;
 }
 
-void nonLinearModel(float A, float B, float C, float D, float temp, float warm, int time)
+void nonLinearModel(float a, float b, float c, float d, float temp, float warm, int time)
 {
-    cout << "NonLinMod:" << endl << endl;
-
-    vector<float> temps;
-    temps.resize(time);
+    cout << "NonLinearModel:" << endl;
+    vector<float> listOfTemps;
+    listOfTemps.resize(time);
     for (int i = 0; i < time; i++)
     {
         float currentTemp;
         float prevTemp;
-
         if (i == 0)
         {
             currentTemp = temp;
@@ -34,42 +31,28 @@ void nonLinearModel(float A, float B, float C, float D, float temp, float warm, 
         }
         else if (i == 1)
         {
-            currentTemp = temps[i - 1];
+            currentTemp = listOfTemps[i - 1];
             prevTemp = temp;
         }
         else
         {
-            currentTemp = temps[i - 1];
-            prevTemp = temps[i - 2];
+            currentTemp = listOfTemps[i - 1];
+            prevTemp = listOfTemps[i - 2];
         }
+        listOfTemps[i] = a * currentTemp - b * (float)pow(prevTemp, 2) + c * warm + d * sin(warm);
 
-        temps[i] = A * currentTemp - B * (float)pow(prevTemp, 2) + C * warm + D * sin(warm);
-
-        cout << "y(" << i + 1 << ") = " << temps[i] << endl;
+        cout << "y[" << i + 1 << "] = " << listOfTemps[i] << endl;
     }
 }
 
-int main()
+void main()
 {
-    const float A = 0.7f;
-    const float B = 0.6f;
-    const float C = 1.1f;
-    const float D = 2.3f;
-    float Tempr;
-    float Warm;
-    int Time;
-
-    cout << "Input object temperature: ";
-    cin >> Tempr;
-
-    cout << "Input warm:";
-    cin >> Warm;
-
-    cout << "Input time limit:";
-    cin >> Time;
-
-    linearModel(A, B, Tempr, Warm, Time);
-    nonLinearModel(A, B, C, D, Tempr, Warm, Time);
-
-    return 0;
+    float a = 0.7f, b = 0.6f, d = 2.3f, c = 1.1f;
+    float temperature, warm;
+    int time;
+    cout << "Введи температуру объекта: "; cin >> temperature;
+    cout << "Введи тепло:"; cin >> warm;
+    cout << "Введи временной предел:"; cin >> time;
+    linearModel(a, b, temperature, warm, time);
+    nonLinearModel(a, b, c, d, temperature, warm, time);
 }
