@@ -39,24 +39,16 @@ Task is to write program (**С++**), which simulates this object temperature.
 Результаты работы программы:
 
 ``` bash
-Input object temperature: 5
-Input warm:4
-Input time limit:5
-
-LinModel:
-
-y(1) = 5.9
-y(2) = 6.53
-y(3) = 6.971
-y(4) = 7.2797
-y(5) = 7.49579
-
-NonLinMod:
-
-y(1) = -8.84065
-y(2) = -18.5291
-y(3) = -57.2052
-y(4) = -243.381
-y(5) = -2131.17
+Введи температуру объекта: 5
+Введи тепло:4
+Введи временной предел:3
+LinearModel:
+y[1] = 5.9
+y[2] = 6.53
+y[3] = 6.971
+NonLinearModel:
+y[1] = -8.84065
+y[2] = -18.5291
+y[3] = -57.2052
 
 ```
