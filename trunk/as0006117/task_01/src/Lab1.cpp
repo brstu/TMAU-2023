@@ -22,7 +22,7 @@ public:
         this->warm = warm;
     }
 
-    const double NonLinearSimulation()
+    double NonLinearSimulation() const
     {
         double start_temperature = 1;
         double start_warm = 1;
@@ -30,7 +30,7 @@ public:
         return simulation;
     }
 
-    const double LinearSimulation()
+    double LinearSimulation() const
     {
         double y = A * this->temperature + B * this->warm;
         return y;
