@@ -15,8 +15,11 @@ class TempController
 
 
 public:
-    TempController(double time, double temperature, double warm) 
+    TempController() 
     {
+        double time;
+        double temperature;
+        double warm;
         this->temperature = temperature;
         this->time = time;
         this->warm = warm;
