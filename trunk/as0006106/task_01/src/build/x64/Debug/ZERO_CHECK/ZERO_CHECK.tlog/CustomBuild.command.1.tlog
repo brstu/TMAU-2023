@@ -1,0 +1,10 @@
+^D:\GITHUB\TMAU-2023\TRUNK\AS0006106\TASK_01\SRC\BUILD\CMAKEFILES\3C294F8EBF7B6096C5464AF8484A24D9\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/github/TMAU-2023/trunk/as0006106/task_01/src -BD:/github/TMAU-2023/trunk/as0006106/task_01/src/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/github/TMAU-2023/trunk/as0006106/task_01/src/build/ModelingTemperature.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
