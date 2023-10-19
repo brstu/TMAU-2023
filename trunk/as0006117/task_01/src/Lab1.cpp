@@ -7,7 +7,7 @@ class TempController
     const double A = 2.3;
     const double B = 0.7;
     const double C = 1.5;
-    const double D = 2;
+    const double D = 3;
     double time;
     double temperature;
     double warm;
