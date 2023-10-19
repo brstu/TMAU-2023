@@ -40,7 +40,9 @@ public:
 int main()
 {
     setlocale(LC_ALL, "rus");
-    double time, temperature, warm;
+    double time;
+    double temperature;
+    double warm;
     cout << "Введите температуру в комнате:" << endl;
     cin >> temperature;
     cout << "Введите момент времени на данный момент:" << endl;
