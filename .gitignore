@@ -30,4 +30,8 @@
 *.exe
 *.out
 *.app
-build
+
+# Directories to ignore
+.vs/
+out/
+build/
