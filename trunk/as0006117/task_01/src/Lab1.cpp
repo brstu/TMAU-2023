@@ -24,7 +24,8 @@ public:
 
     double NonLinearSimulation()
     {
-        double start_temperature = 1, start_warm = 1;
+        double start_temperature = 1;
+        double start_warm = 1;
         double simulation = A * this->temperature - B * pow(start_temperature, 2) + C * this->warm + D * sin(start_warm);
         return simulation;
     }
