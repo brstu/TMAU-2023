@@ -24,7 +24,7 @@ public:
     {
         double start_temperature = 1;
         double start_warm = 1;
-        double simulation = A * this->temperature - B * pow(start_temperature, 2) + C * this->warm + D * sin(start_warm);
+        double simulation = A * this->temperature - B * pow(start_temperature, 2) + C * this->warm + D * sin(start_warm) + this->time * 0;
         return simulation;
     }
 
