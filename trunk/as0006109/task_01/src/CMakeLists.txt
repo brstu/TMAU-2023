@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.0.0)
-project (Task01)
+cmake_minimum_required (VERSION 3.27.6)
+project (TempBuild)
 
-add_executable(Task01 main.cpp)
+add_executable(TempBuild main.cpp)
