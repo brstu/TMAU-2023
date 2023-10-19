@@ -15,11 +15,9 @@ class TempController
 
 
 public:
-    TempController(double temperature, double time, double warm) 
+    TempController(double temperature, double time, double warm) : temperature(temperature), time(time), warm(warm)
     {
-        this->temperature = temperature;
-        this->time = time;
-        this->warm = warm;
+        
     }
 
     double NonLinearSimulation() const
