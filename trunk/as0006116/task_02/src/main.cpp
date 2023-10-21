@@ -9,7 +9,7 @@ using namespace std;
 */
 
 /**
-* \class AbstractModel
+* \class ParentModel
 * \brief Класс, который рассчитывает значения моделей
 */
 class ParentModel
@@ -24,7 +24,7 @@ public:
 };
 /**
 * \class LinearModel
-* \brief Класс, который наследуется от класса AbstractModel и служит для реализации линейной модели через переопределение функции simulate
+* \brief Класс, который наследуется от класса ParentModel и служит для реализации линейной модели через переопределение функции simulate
 */
 class LinearModel : public ParentModel
 {
@@ -56,7 +56,7 @@ public:
 };
 /**
 * \class NonLinearModel
-* \brief Класс, который наследуется от класса AbstractModel и служит для реализации нелинейной модели через переопределение функции simulate
+* \brief Класс, который наследуется от класса ParentModel и служит для реализации нелинейной модели через переопределение функции simulate
 */
 class NonLinearModel : public ParentModel
 {
