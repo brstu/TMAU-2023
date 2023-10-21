@@ -3,8 +3,8 @@
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `class `[`ParentModel`](#classParentModel) | Класс, который рассчитывает значения моделей
-`class `[`LinearModel`](#classLinearModel) | Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации линейной модели через переопределение функции simulate.
-`class `[`NonLinearModel`](#classNonLinearModel) | Класс, который наследуется от класса [AbstractModel](#classParentModel) и служит для реализации нелинейной модели через переопределение функции simulate.
+`class `[`LinearModel`](#classLinearModel) | Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации линейной модели через переопределение функции simulate
+`class `[`NonLinearModel`](#classNonLinearModel) | Класс, который наследуется от класса [AbstractModel](#classParentModel) и служит для реализации нелинейной модели через переопределение функции simulate
 `class `[`RegObject`](#classRegObject) | Класс, который реализует вычисление параметров моделей и вывод результатов в файл
 
 # class `ParentModel` {#classParentModel}
@@ -14,7 +14,7 @@
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `public virtual  `[`~ParentModel`](#classParentModel_1ad87734503c159c4dd931335d9f1d11d4)`() = default` | 
-`public double `[`simulate`](#classParentModel_1a1ca8895af8246381297cec9d9dce08d7)`(double y,double warm)` | Виртуальная функция, которая ассчитывает значения модели.
+`public double `[`simulate`](#classParentModel_1a1ca8895af8246381297cec9d9dce08d7)`(double y,double warm)` | Виртуальная функция, которая рассчитывает значения модели
 
 ## Members
 
@@ -22,7 +22,7 @@
 
 #### `public double `[`simulate`](#classParentModel_1a1ca8895af8246381297cec9d9dce08d7)`(double y,double warm)` {#classParentModel_1a1ca8895af8246381297cec9d9dce08d7}
 
-Виртуальная функция, которая ассчитывает значения модели.
+Виртуальная функция, которая ассчитывает значения модели
 
 # class `LinearModel` {#classLinearModel}
 
@@ -31,7 +31,7 @@ class LinearModel
   : public ParentModel
 ```  
 
-Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации линейной модели через переопределение функции simulate.
+Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации линейной модели через переопределение функции simulate
 
 ## Summary
 
@@ -61,7 +61,7 @@ class NonLinearModel
   : public ParentModel
 ```  
 
-Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации нелинейной модели через переопределение функции simulate.
+Класс, который наследуется от класса [ParentModel](#classParentModel) и служит для реализации нелинейной модели через переопределение функции simulate
 
 ## Summary
 
