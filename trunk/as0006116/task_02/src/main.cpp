@@ -3,12 +3,6 @@
 #include <fstream>
 using namespace std;
 /**
-* \mainpage
-* \brief Лабораторная работа 2. ПИД-регуляторы
-* \author Седко Максим Викторович. АС-61
-*/
-
-/**
 * \class ParentModel
 * \brief Класс, который рассчитывает значения моделей
 */
