@@ -18,7 +18,7 @@ public:
     virtual ~ParentModel() = default;
 
     /**
-    * \brief Виртуальная функция, которая ассчитывает значения модели.
+    * \brief Виртуальная функция, которая рассчитывает значения модели
     */
     virtual double simulate(double y, double warm) = 0;
 };
