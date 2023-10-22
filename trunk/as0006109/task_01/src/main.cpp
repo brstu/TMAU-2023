@@ -47,8 +47,12 @@ void nonLinearModel(float a, float b, float c, float d, float temp, float warm, 
 
 int main()
 {
-    float a = 0.7f, b = 0.6f, d = 2.3f, c = 1.1f;
-    float temperature, warm;
+    float a = 0.7f;
+    float b = 0.6f;
+    float d = 2.3f;
+    float c = 1.1f;
+    float temperature;
+    float warm;
     int time;
     cout << "Введи температуру объекта: "; cin >> temperature;
     cout << "Введи тепло:"; cin >> warm;
