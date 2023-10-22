@@ -45,7 +45,7 @@ void nonLinearModel(float a, float b, float c, float d, float temp, float warm, 
     }
 }
 
-void main()
+int main()
 {
     float a = 0.7f, b = 0.6f, d = 2.3f, c = 1.1f;
     float temperature, warm;
@@ -55,4 +55,5 @@ void main()
     cout << "Введи временной предел:"; cin >> time;
     linearModel(a, b, temperature, warm, time);
     nonLinearModel(a, b, c, d, temperature, warm, time);
+    return 0;
 }
