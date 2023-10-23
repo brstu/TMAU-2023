@@ -19,7 +19,8 @@
 
 ---
 <p> <strong>Цель</strong> создать тестовый проект "Hello PLCnext from AS0xxyy!", собрать его и продемонстрировать работоспособность на тестовом контроллере.</p> 
-<p> <strong>Задание</strong> </p> [#3](../../../../tasks/task_03/readme.md).
+
+Задание [#3](../../../../tasks/task_03/readme.md).
 <p> <strong>Решение</strong> </p>
 <p>Следуя заданию, клонируем репозиторий. Изменяем файл формата <em>.json</em> в зависимости от версии нужных нам программ и их расположения. </p>
 <p>Собираем файл <em>hello_PLCnext</em> используя следующие команды:</p>
@@ -71,7 +72,7 @@ cmake --build --preset=build-windows-AXCF2152-2021.9.0.40 --target install .
 
 <p>Запускаем наш проект. И получаем следующий вывод.</p>
 
-![](./images/hello_PLCnext_launch.png.png) 
+![](./images/hello_PLCnext_launch.png) 
 
 ![](./images/laboratory.png) 
 
