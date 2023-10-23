@@ -48,32 +48,32 @@ cmake --build --preset=build-windows-AXCF2152-2021.9.0.40 --target install .
 <p>В лаборатории подключаемся к контроллеру.</p>
 <p>Настраиваем сеть.</p>
 
-![](./images/network_configuration.png)  
+![](images/network_configuration.png)  
 
 <p>Проверяем подключение к контроллеру.</p>
 
-![](./images/connection_check.png)  
+![](images/connection_check.png)  
 
 <p>Открываем программу <em>PuTTY Configuration</em> и подключаемся к контроллеру.</p>
 
-![](./images/PuTTY_connect.png) 
+![](images/PuTTY_connect.png) 
 
 <p>Вводим логин и пароль для подключенияя к контроллеру.</p>
 
-![](./images/PuTTY_login.png) 
+![](images/PuTTY_login.png) 
 
 <p>Открываем программу <em>WinCP</em> и подключаемся к контроллеру.</p>
 
-![](./images/WinCP_connect.png) 
+![](images/WinCP_connect.png) 
 
 <p>Добавляем собраный проект в корень контролера и меняем его разрешения, для запуска.</p>
 
-![](./images/hello_PLCnext_settings.png) 
+![](images/hello_PLCnext_settings.png) 
 
 <p>Запускаем наш проект. И получаем следующий вывод.</p>
 
-![](./images/hello_PLCnext_launch.png) 
+![](images/hello_PLCnext_launch.png) 
 
-![](./images/laboratory.png) 
+![](images/laboratory.png) 
 
 <p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с контроллером <em>AXC F 2152</em>.</p>
