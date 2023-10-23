@@ -43,7 +43,7 @@ cmake --build --preset=build-windows-AXCF2152-2021.9.0.40 --target install .
 
 <p>Получаем файл <em></em>hello_PLCnext.</p>
 
-![](./images/hello_PLCnext_directory.png)  
+![](images/hello_PLCnext_directory.png)  
 
 <p>В лаборатории подключаемся к контроллеру.</p>
 <p>Настраиваем сеть.</p>
