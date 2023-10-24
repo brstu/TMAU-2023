@@ -48,11 +48,11 @@ cmake --build --preset=build-windows-AXCF2152-2021.9.0.40 --target install .
 <p>В лаборатории подключаемся к контроллеру.</p>
 <p>Настраиваем сеть.</p>
 
-![](images/network_configuration.png)  
+![](images/.network_configuration.png)  
 
 <p>Проверяем подключение к контроллеру.</p>
 
-![](images/connection_check.png)  
+![](images/connect_check.png)  
 
 <p>Открываем программу <em>PuTTY Configuration</em> и подключаемся к контроллеру.</p>
 
