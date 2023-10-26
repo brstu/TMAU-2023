@@ -14,7 +14,7 @@ using namespace std;
 */
 
 /**
-* \class AbstractMod
+* \class AbstMod
 * \brief Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
 *
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calculMod
@@ -24,10 +24,10 @@ using namespace std;
 
 
 
-class AbstractMod
+class AbstMod
 {
 public:
-    virtual ~AbstractMod() = default;
+    virtual ~AbstMod() = default;
 
 
 
@@ -44,26 +44,26 @@ public:
 * \class LinearMod
 * \brief Класс, который служит для реализации линейной модели
 *
-* Дочерний класс от AbstractMod, который реализует линейную модель через переопределённую функцию calculMod
+* Дочерний класс от AbstMod, который реализует линейную модель через переопределённую функцию calculMod
 */
 
 
 
 
-class LinearMod : public AbstractMod
+class LinearMod : public AbstMod
 {
 
 private:
-    double a_;     ///< Коэффициент
-    double b_;     ///< Коэффициент
+    double a___;     ///< Коэффициент
+    double b___;     ///< Коэффициент
     double yNext_; ///< Получаемая нами температура
 
 
 
 public:
     LinearMod(double a, double b, double yNext) :
-        a_(a),
-        b_(b),
+        a___(a),
+        b___(b),
         yNext_(yNext)
     { }
 
@@ -72,13 +72,13 @@ public:
     *
     * Код:
     * \code
-    * yNext_ = a_ * yCurrent + b_ * inputWarm;
+    * yNext_ = a___ * yCurrent + b___ * inputWarm;
     * return yNext_;
     * \endcode
     */
     double calculMod(double yCurrent, double inputWarm) override
     {
-        yNext_ = a_ * yCurrent + b_ * inputWarm;
+        yNext_ = a___ * yCurrent + b___ * inputWarm;
         return yNext_;
     }
 };
@@ -89,30 +89,30 @@ public:
 * \class NonLinearMod
 * \brief Класс, который служит для реализации нелинейной модели
 *
-* Дочерний класс от AbstractMod, который реализует нелинейную модель через переопределённую функцию calculMod
+* Дочерний класс от AbstMod, который реализует нелинейную модель через переопределённую функцию calculMod
 */
 
 
 
-class NonLinearMod : public AbstractMod
+class NonLinearMod : public AbstMod
 {
 
 
 private:
-    double a_;         ///< Коэффициент
-    double b_;         ///< Коэффициент
-    double c_;         ///< Коэффициент
-    double d_;         ///< Коэффициент
+    double a___;         ///< Коэффициент
+    double b___;         ///< Коэффициент
+    double c___;         ///< Коэффициент
+    double d___;         ///< Коэффициент
     double yPrev_ = 0; ///< Предыдущая температура 
     double yNext_;     ///< Получаемая нами температура
     double wPrev_ = 0; ///< Предыдущее тепло
 
 public:
     NonLinearMod(double a, double b, double c, double d, double yNext) :
-        a_(a),
-        b_(b),
-        c_(c),
-        d_(d),
+        a___(a),
+        b___(b),
+        c___(c),
+        d___(d),
         yNext_(yNext)
     { }
 
@@ -124,15 +124,19 @@ public:
     *
     * Код:
     * \code
-    * yNext_ = a_ * yCurrent - b_ * pow(yPrev_, 2) + c_ * inputWarm + d_ * sin(wPrev_);
+    * yNext_ = a___ * yCurrent - b___ * pow(yPrev_, 2) + c___ * inputWarm + d___ * sin(wPrev_);
     * yPrev_ = yNext_;
     * wPrev_ = inputWarm;
     * return yNext_;
     * \endcode
     */
+
+
+
+                       
     double calculMod(double yCurrent, double inputWarm) override
     {
-        yNext_ = a_ * yCurrent - b_ * pow(yPrev_, 2) + c_ * inputWarm + d_ * sin(wPrev_);
+        yNext_ = a___ * yCurrent - b___ * pow(yPrev_, 2) + c___ * inputWarm + d___ * sin(wPrev_);
         yPrev_ = yCurrent;
         wPrev_ = inputWarm;
         return yNext_;
@@ -140,7 +144,7 @@ public:
 };
 
 
-
+                           
 
 /**
 * \class Regulator
@@ -148,7 +152,7 @@ public:
 *
 * Отдельный класс, в котором мы моделируем регулятор
 */
-
+                           
 
 
 class Regulator
@@ -156,15 +160,15 @@ class Regulator
 private:
     double t_;      ///< Постоянная интегрирования
     double t0_;     ///< Шаг для квантования
-    double td_;     ///< Постоянная дифференцирования
+    double td___;     ///< Постоянная дифференцирования
     double k_;      ///< Коэффициент передачи
     double uk_ = 0; ///< Текущее значение управляющего воздействия
 
 
 
+                         
 
-
-    double calculateUk(double ek, double ek1, double ek2)
+    double calcul(double ek, double ek1, double ek2)
     {
         /**
         * \brief Метод для рассчёта uk_
@@ -173,9 +177,9 @@ private:
         *
         * Код:
         * \code
-        * double q0 = K_ * (1 + TD_ / T0_);
-        * double q1 = -K_ * (1 + 2 * TD_ / T0_ - T0_ / T_);
-        * double q2 = K_ * TD_ / T0_;
+        * double q0 = K_ * (1 + Td___ / T0_);
+        * double q1 = -K_ * (1 + 2 * Td___ / T0_ - T0_ / T_);
+        * double q2 = K_ * Td___ / T0_;
         * uk_ += q0 * ek + q1 * ek1 + q2 * ek2;
         * return uk_;
         * \endcode
@@ -184,9 +188,9 @@ private:
 
 
 
-        double q0 = k_ * (1 + td_ / t0_); /// q0 - Параметр регулятора
-        double q1 = -k_ * (1 + 2 * td_ / t0_ - t0_ / t_); /// q1 - Параметр регулятора
-        double q2 = k_ * td_ / t0_; /// q2 - Параметр регулятора
+        double q0 = k_ * (1 + td___ / t0_); /// q0 - Параметр регулятора
+        double q1 = -k_ * (1 + 2 * td___ / t0_ - t0_ / t_); /// q1 - Параметр регулятора
+        double q2 = k_ * td___ / t0_; /// q2 - Параметр регулятора
         uk_ += q0 * ek + q1 * ek1 + q2 * ek2;
         return uk_;
     }
@@ -198,7 +202,7 @@ public:
     Regulator(double T, double T0, double TD, double K) :
         t_(T),
         t0_(T0),
-        td_(TD),
+        td___(TD),
         k_(K)
     { }
 
@@ -231,7 +235,7 @@ public:
         *     for (int i = 0; i < 50; ++i)
         *     {
         *         ek = need - y;
-        *         u = calculateUk(ek, ek1, ek2);
+        *         u = calcul(ek, ek1, ek2);
         *         y = linear.calculMod(start, u);
         *         fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
         *         ek2 = ek1;
@@ -250,7 +254,7 @@ public:
         *     for (int i = 0; i < 50; ++i)
         *     {
         *         ek = need - y;
-        *         u = calculateUk(ek, ek1, ek2);
+        *         u = calcul(ek, ek1, ek2);
         *         y = nonLinear.calculMod(start, u);
         *         fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
         *         ek2 = ek1;
@@ -286,7 +290,7 @@ public:
             for (int i = 0; i < 50; ++i)
             {
                 ek = need - y;
-                u = calculateUk(ek, ek1, ek2);
+                u = calcul(ek, ek1, ek2);
                 y = linear.calculMod(start, u);
                 fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
                 ek2 = ek1;
@@ -307,7 +311,7 @@ public:
             for (int i = 0; i < 50; ++i)
             {
                 ek = need - y;
-                u = calculateUk(ek, ek1, ek2);
+                u = calcul(ek, ek1, ek2);
                 y = nonLinear.calculMod(start, u);
                 fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
                 ek2 = ek1;

@@ -2,12 +2,12 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`AbstractMod`](#class_abstract_Mod) | Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
+`class `[`AbstMod`](#class_Abst_Mod) | Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
 `class `[`LinearMod`](#class_linear_Mod) | Класс, который служит для реализации линейной модели
 `class `[`NonLinearMod`](#class_non_linear_Mod) | Класс, который служит для реализации нелинейной модели
 `class `[`Regulator`](#class_regulator) | Класс регулятора
 
-# class `AbstractMod` 
+# class `AbstMod` 
 
 
 
@@ -23,14 +23,14 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public virtual  `[`~AbstractMod`](#class_abstract_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
-`public double `[`calculMod`](#class_abstract_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
+`public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
+`public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
 
 ## Members
 
-#### `public virtual  `[`~AbstractMod`](#class_abstract_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` 
+#### `public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` 
 
-#### `public double `[`calculMod`](#class_abstract_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` 
+#### `public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` 
 
 Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
 
@@ -46,12 +46,12 @@
 
 ```
 class LinearMod
-  : public AbstractMod
+  : public AbstMod
 ```  
 
 Класс, который служит для реализации линейной модели
 
-Дочерний класс от [AbstractMod](#class_abstract_Mod), который реализует линейную модель через переопределённую функцию calculMod
+Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует линейную модель через переопределённую функцию calculMod
 
 
 
@@ -74,23 +74,23 @@ class LinearMod
 
 Код: 
 ```cpp
-yNext_ = a_ * yCurrent + b_ * inputWarm;
+yNext_ = a___ * yCurrent + b___ * inputWarm;
 return yNext_;
 ```
-
+                      
 
 
 # class `NonLinearMod` 
 
 ```
 class NonLinearMod
-  : public AbstractMod
+  : public AbstMod
 ```  
 
 Класс, который служит для реализации нелинейной модели
 
-Дочерний класс от [AbstractMod](#class_abstract_Mod), который реализует нелинейную модель через переопределённую функцию calculMod
-
+Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует нелинейную модель через переопределённую функцию calculMod
+                           
 ## Summary
 
  Members                        | Descriptions                                
@@ -98,7 +98,7 @@ class NonLinearMod
 `public inline  `[`NonLinearMod`](#class_non_linear_Mod_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` | 
 `public inline virtual double `[`calculMod`](#class_non_linear_Mod_1a9bad4ace82cde16f0631b9590e928d14)`(double yCurrent,double inputWarm)` | Переопределённый метод для рассчёта нелинейной модели
 
-
+                               
 
 ## Members
 
@@ -110,21 +110,23 @@ class NonLinearMod
 
 
 
-
+                           
 Код: 
 ```cpp
-yNext_ = a_ * yCurrent - b_ * pow(yPrev_, 2) + c_ * inputWarm + d_ * sin(wPrev_);
+yNext_ = a___ * yCurrent - b___ * pow(yPrev_, 2) + c___ * inputWarm + d___ * sin(wPrev_);
 yPrev_ = yNext_;
 wPrev_ = inputWarm;
 return yNext_;
 ```
-
+                      
 
 
 
 # class `Regulator` 
 
 Класс регулятора
+
+
 
 Отдельный класс, в котором мы моделируем регулятор
 
