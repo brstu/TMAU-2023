@@ -148,7 +148,7 @@ int main()
 {
     setlocale(0, "");
     ofstream fout;
-    fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
+    fout.open("D:\\PID.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
         fout << "Linear Model:" << endl;
         LinearMod* l = new LinearMod(0.333, 0.667, 1);
@@ -158,6 +158,10 @@ int main()
         NonLinearMod* nl = new NonLinearMod(1, 0.0033, 0.525, 0.525, 1);
         regulator* regnl = new regulator(10, 10, 50, 0.1);
         PIDregulator(5, 2, regnl, nl);
+        delete l;
+        delete regl;
+        delete nl;
+        delete regnl;
     }
     cout << "Данные были сохранены в файл PID.txt" << endl;
     return 0;
