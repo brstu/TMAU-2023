@@ -70,6 +70,64 @@
 
 
 
+# class `AbstMod` 
+
+
+
+
+Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
+
+
+
+
+
+
+
+
+Абстрактный класс, который предоставляет виртуальную функцию уравнения calculMod и от которого наследуются классы [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod)
+
+
+
+
+## Summary
+
+ Members                        | Descriptions                                
+--------------------------------|---------------------------------------------
+`public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
+
+
+
+             
+`public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | 
+
+
+
+
+
+ 
+ 
+  Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
+
+
+
+
+
+
+                                
+Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели. 
+#### Parameters
+* `yCurrent` Температура помещения 
+
+
+
+
+* `inputWarm` Входящее тепло
+
+
+
+
+
+
 
 
 # class `LinearMod` 
@@ -128,8 +186,6 @@ yNext_ = a___ * yCurrent + b___ * inputWarm;
 return yNext_;
 ```
                       
-
-
 
 
 
@@ -214,10 +270,6 @@ return yNext_;
 
 
 #### `public inline void `[`PIDRegulatorcalculAndWrite`](#class_regulator_1a4b9d368fc11c81701f7ac70d3035227b)`(double need,double start)`
-
-
-
-
 
 
 
