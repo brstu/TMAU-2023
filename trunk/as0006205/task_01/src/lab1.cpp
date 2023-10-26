@@ -14,7 +14,7 @@ private:
 public:
     LinearModel(double g, double h): g(g), h(h) {}
 
-    virtual ~LinearModel() = default;
+    virtual LinearModel() = default;
     
     double simulate_temperature(double Yt, double Uw) final {
         return g*Yt + h*Uw;
@@ -36,7 +36,7 @@ public:
         j(j),
         k(k) {}
 
-    virtual ~NonlinearModel() = default;
+    virtual NonlinearModel() = default;
     
     double simulate_temperature(double Yt, double Uw) final {
         double calc = g*Yt - h*pow(PreYt, 2) + j*Uw + k*sin(PreUw);
