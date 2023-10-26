@@ -1,83 +1,101 @@
 #include <iostream>
-#include <fstream>
 #include <cmath>
 
-using namespace std;
+class Model{
+public:
+ virtual ~Model() = default;
+ virtual double simulate_temperature(double Yt, double Uw) = 0;
+};
 
-const double a = 1, b_l = 0.9, b_nl = 0.0000000009, c = 0.05, d = 0.1;//константы, сделал отдельную константу b для линейной и нелинейной моделей (b_l - для линейной, b_nl - для нелинейной)
+class LinearModel : public Model {
+private:
+    double g;
+    double h;
+public:
+    LinearModel(double g, double h): g(g), h(h) {}
 
-double LinearMod(double y_t, double f_t, int time) { //линейная модель, где y_t - начальная температура, f_t - теплота (изменение температуры), time - количество времени
-		return a * y_t + b_l * f_t;
-}
+    virtual ~LinearModel() = default;
+    
+    double simulate_temperature(double Yt, double Uw) final {
+        return g*Yt + h*Uw;
+    }
+};
 
-double NonLinearMod(double y_t, double f_t, double EXy_t, double EXf_t, int time) { //нелинейная модель, где y_t - начальная температура, f_t - теплота (изменение температуры), EXy_t - значение температуры в предыдущий момент времени, time - количество времени
-		return a * y_t - b_nl * pow(EXy_t, 2) + c * f_t + d * sin(EXf_t);
-}
+class NonlinearModel : public Model {
+private:
+    double g;
+    double h;
+    double j;
+    double k;
+    double PreYt = 0;
+    double PreUw = 0;
+public:
+    NonlinearModel(double g, double h, double j, double k):
+        g(g),
+        h(h),
+        j(j),
+        k(k) {}
 
-double f_tMod(double f_t) {//изменение теплоты
-	return f_t * 1.2545;
+    virtual ~NonlinearModel() = default;
+    
+    double simulate_temperature(double Yt, double Uw) final {
+        double calc = g*Yt - h*pow(PreYt, 2) + j*Uw + k*sin(PreUw);
+        PreYt = Yt;
+        PreUw = Uw;
+        return calc;
+    }
+};
+
+void modeling(Model& model, double Yt, int numOfTimeModeling) {
+    double Uw;
+    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
+        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
+        Yt = model.simulate_temperature(Yt, Uw);
+
+        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl; 
+    }
 }
 
 int main() {
-	setlocale(LC_ALL, "");
-	double y_t, f_t, EXy_t, EXf_t, time;
-	cout << "Введите начальное значение температуры: ";
-	cin >> y_t;
-	cout << "Введите значение теплоты (то, на сколько будет изменяться температура): ";
-	cin >> f_t;
-	cout << "Введите количество времени (больше 0): ";
-	cin >> time;
-	int choice;
-	cout << "1.Температура по линейной модели" << endl;
-	cout << "2.Температура по нелинейной модели" << endl;
-	cout << "Какое из действий выполнить? (1 или 2):" << endl;
-	cin >> choice;
-	switch (choice) {
-	case 1:
-		if (time > 0) {
-			ofstream fout;
-			fout.open("D:\\linear.txt");
-			if (fout.is_open()) {
-				fout << "Time\t" << "Temperature" << endl;
-				for (int i = 1; i <= time; ++i) {
-					y_t = LinearMod(y_t, f_t, time);
-					fout << i << '\t' << y_t << endl;
-				}
-			}
-			fout.close();
-			cout << "Данные были сохранены в файл linear.txt" << endl;
-		}
-		else {
-			cout << "Некорректный ввод" << endl;
-		}
-		break;
-	case 2:
-		EXy_t = 0;
-		EXf_t = 0;
-		if (time > 0) {
-			ofstream fout;
-			fout.open("D:\\nonlinear.txt");
-			if (fout.is_open()) {
-				fout << "Time\t" << "Temperature" << endl;
-				for (int i = 1; i <= time; ++i) {
-					double _EXy_t_ = y_t;//переменная для записи в EXy_t
-					double _EXf_t_ = f_t;//переменная для записи в EXf_t
-					y_t = NonLinearMod(y_t, f_t, EXy_t, EXf_t, time);
-					f_t = f_tMod(f_t);
-					fout << i << '\t' << y_t << endl;
-					EXy_t = _EXy_t_;
-					EXf_t = _EXf_t_;
-				}
-			}
-			fout.close();
-			cout << "Данные были сохранены в файл nonlinear.txt" << endl;
-		}
-		else {
-			cout << "Некорректный ввод" << endl;
-		}
-		break;
-	default:
-		cout << "Ошибка, некорректный ввод" << endl;
-		break;
-	}
+    double YT1;
+    double g;
+    double h;
+    double j;
+    double k;
+    double numOfTimeModeling;
+
+    std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
+    std::cout << "Input a-parameter: "; std::cin >> g;
+    std::cout << "Input b-parameter: "; std::cin >> h;
+    
+    LinearModel linear_model{j,h};
+
+    std::cout << "---Please input NonlinearModel's constant parameters--- " << std::endl;
+    std::cout << "Input a-parameter: "; std::cin >> g;
+    std::cout << "Input b-parameter: "; std::cin >> h;
+    std::cout << "Input c-parameter: "; std::cin >> j;
+    std::cout << "Input d-parameter: "; std::cin >> k;
+    
+    NonlinearModel nonlinear_model{g,h,j,k};
+
+    std::cout << "Please input Yt-parameter: "; std::cin >> YT1;
+    
+    std::cout << "Please input number of time modeling for the LinearModel: ";
+    std::cin >> numOfTimeModeling;
+
+    //start simulating an object temperature
+
+    std::cout << "\t\t\t---LinearModel---" << std::endl;
+    std::cout << "\t\t\tMoments\t\tYt\n";
+    modeling(linear_model, YT1, static_cast<int>(numOfTimeModeling));
+
+    std::cout << std::endl;
+    
+    std::cout << "Please input number of time modeling for the NonlinearModel: ";
+    std::cin >> numOfTimeModeling;
+    std::cout << "\t\t\t---NonlinearModel---" << std::endl;
+    std::cout << "\t\t\tMoments\t\tYt\n";
+    modeling(nonlinear_model, YT1, static_cast<int>(numOfTimeModeling ));
+
+    system("Pause");
 }
