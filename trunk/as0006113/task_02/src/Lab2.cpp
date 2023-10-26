@@ -3,6 +3,10 @@
 #include <fstream>
 
 using namespace std;
+
+
+
+
 /**
 * \mainpage
 * \brief Лабораторная работа 2. ПИД-регуляторы
@@ -10,40 +14,54 @@ using namespace std;
 */
 
 /**
-* \class AbstractModel
+* \class AbstractMod
 * \brief Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
 *
-* Абстрактный класс, который предоставляет виртуальную функцию уравнения calculateModel
-* и от которого наследуются классы LinearModel и NonLinearModel
+* Абстрактный класс, который предоставляет виртуальную функцию уравнения calculMod
+* и от которого наследуются классы LinearMod и NonLinearMod
 */
-class AbstractModel
+
+
+
+
+class AbstractMod
 {
 public:
-    virtual ~AbstractModel() = default;
+    virtual ~AbstractMod() = default;
+
+
 
     /**
-    * \brief Виртуальная функция, переопределенная в дочерних классах LinearModel и NonLinearModel
+    * \brief Виртуальная функция, переопределенная в дочерних классах LinearMod и NonLinearMod
     *
     * Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели.
     * \param yCurrent Температура помещения
     * \param inputWarm Входящее тепло
     */
-    virtual double calculateModel(double yCurrent, double inputWarm) = 0;
+    virtual double calculMod(double yCurrent, double inputWarm) = 0;
 };
 /**
-* \class LinearModel
+* \class LinearMod
 * \brief Класс, который служит для реализации линейной модели
 *
-* Дочерний класс от AbstractModel, который реализует линейную модель через переопределённую функцию calculateModel
+* Дочерний класс от AbstractMod, который реализует линейную модель через переопределённую функцию calculMod
 */
-class LinearModel : public AbstractModel
+
+
+
+
+class LinearMod : public AbstractMod
 {
+
 private:
     double a_;     ///< Коэффициент
     double b_;     ///< Коэффициент
     double yNext_; ///< Получаемая нами температура
+
+
+
 public:
-    LinearModel(double a, double b, double yNext) :
+    LinearMod(double a, double b, double yNext) :
         a_(a),
         b_(b),
         yNext_(yNext)
@@ -58,20 +76,28 @@ public:
     * return yNext_;
     * \endcode
     */
-    double calculateModel(double yCurrent, double inputWarm) override
+    double calculMod(double yCurrent, double inputWarm) override
     {
         yNext_ = a_ * yCurrent + b_ * inputWarm;
         return yNext_;
     }
 };
+
+
+
 /**
-* \class NonLinearModel
+* \class NonLinearMod
 * \brief Класс, который служит для реализации нелинейной модели
 *
-* Дочерний класс от AbstractModel, который реализует нелинейную модель через переопределённую функцию calculateModel
+* Дочерний класс от AbstractMod, который реализует нелинейную модель через переопределённую функцию calculMod
 */
-class NonLinearModel : public AbstractModel
+
+
+
+class NonLinearMod : public AbstractMod
 {
+
+
 private:
     double a_;         ///< Коэффициент
     double b_;         ///< Коэффициент
@@ -82,13 +108,16 @@ private:
     double wPrev_ = 0; ///< Предыдущее тепло
 
 public:
-    NonLinearModel(double a, double b, double c, double d, double yNext) :
+    NonLinearMod(double a, double b, double c, double d, double yNext) :
         a_(a),
         b_(b),
         c_(c),
         d_(d),
         yNext_(yNext)
     { }
+
+
+
 
     /**
     * Переопределённый метод для рассчёта нелинейной модели
@@ -101,7 +130,7 @@ public:
     * return yNext_;
     * \endcode
     */
-    double calculateModel(double yCurrent, double inputWarm) override
+    double calculMod(double yCurrent, double inputWarm) override
     {
         yNext_ = a_ * yCurrent - b_ * pow(yPrev_, 2) + c_ * inputWarm + d_ * sin(wPrev_);
         yPrev_ = yCurrent;
@@ -109,12 +138,19 @@ public:
         return yNext_;
     }
 };
+
+
+
+
 /**
 * \class Regulator
 * \brief Класс регулятора
 *
 * Отдельный класс, в котором мы моделируем регулятор
 */
+
+
+
 class Regulator
 {
 private:
@@ -123,6 +159,10 @@ private:
     double td_;     ///< Постоянная дифференцирования
     double k_;      ///< Коэффициент передачи
     double uk_ = 0; ///< Текущее значение управляющего воздействия
+
+
+
+
 
     double calculateUk(double ek, double ek1, double ek2)
     {
@@ -140,12 +180,20 @@ private:
         * return uk_;
         * \endcode
         */
+
+
+
+
         double q0 = k_ * (1 + td_ / t0_); /// q0 - Параметр регулятора
         double q1 = -k_ * (1 + 2 * td_ / t0_ - t0_ / t_); /// q1 - Параметр регулятора
         double q2 = k_ * td_ / t0_; /// q2 - Параметр регулятора
         uk_ += q0 * ek + q1 * ek1 + q2 * ek2;
         return uk_;
     }
+
+
+
+
 public:
     Regulator(double T, double T0, double TD, double K) :
         t_(T),
@@ -153,6 +201,9 @@ public:
         td_(TD),
         k_(K)
     { }
+
+
+
 
     void PIDRegulatorCalculateAndWrite(double need, double start)
     {
@@ -175,30 +226,32 @@ public:
         *     double y = start;
         *     double u = 0;
         * 
-        *     LinearModel linear(0.333, 0.667, 1);
+        *     LinearMod linear(0.333, 0.667, 1);
         *     fout << "Линейная модель: " << endl;
         *     for (int i = 0; i < 50; ++i)
         *     {
         *         ek = need - y;
         *         u = calculateUk(ek, ek1, ek2);
-        *         y = linear.calculateModel(start, u);
+        *         y = linear.calculMod(start, u);
         *         fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
         *         ek2 = ek1;
         *         ek1 = ek;
         *     }
         * 
+        *
+        *
         *     ek1 = 0;
         *     ek2 = 0;
         *     y = start;
         *     uk_ = 0;
         * 
         *     fout << "Нелинейная модель: " << endl;
-        *     NonLinearModel nonLinear(1, 0.0033, 0.525, 0.525, 1);
+        *     NonLinearMod nonLinear(1, 0.0033, 0.525, 0.525, 1);
         *     for (int i = 0; i < 50; ++i)
         *     {
         *         ek = need - y;
         *         u = calculateUk(ek, ek1, ek2);
-        *         y = nonLinear.calculateModel(start, u);
+        *         y = nonLinear.calculMod(start, u);
         *         fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
         *         ek2 = ek1;
         *         ek1 = ek;
@@ -210,6 +263,10 @@ public:
         * }
         * \endcode
         */
+
+
+
+
         ofstream fout("results.txt");
 
         if (fout)
@@ -220,17 +277,25 @@ public:
             double y = start;
             double u;
 
-            LinearModel linear(0.333, 0.667, 1);
+
+
+
+
+            LinearMod linear(0.333, 0.667, 1);
             fout << "Линейная модель: " << endl;
             for (int i = 0; i < 50; ++i)
             {
                 ek = need - y;
                 u = calculateUk(ek, ek1, ek2);
-                y = linear.calculateModel(start, u);
+                y = linear.calculMod(start, u);
                 fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
                 ek2 = ek1;
                 ek1 = ek;
             }
+
+
+
+
 
             ek1 = 0;
             ek2 = 0;
@@ -238,23 +303,28 @@ public:
             uk_ = 0;
 
             fout << "Нелинейная модель: " << endl;
-            NonLinearModel nonLinear(1, 0.0033, 0.525, 0.525, 1);
+            NonLinearMod nonLinear(1, 0.0033, 0.525, 0.525, 1);
             for (int i = 0; i < 50; ++i)
             {
                 ek = need - y;
                 u = calculateUk(ek, ek1, ek2);
-                y = nonLinear.calculateModel(start, u);
+                y = nonLinear.calculMod(start, u);
                 fout << "E=" << ek << " Y=" << y << " U=" << u << endl;
                 ek2 = ek1;
                 ek1 = ek;
             }
         }
+
+
         else
         {
             cout << "Не удалось открыть файл для записи результатов." << endl;
         }
     }
 };
+
+
+
 
 int main()
 {
@@ -272,6 +342,9 @@ int main()
     * return 0;
     * \endcode
     */
+
+
+
     setlocale(0, "");
     Regulator object(10, 10, 40, 0.1);
     object.PIDRegulatorCalculateAndWrite(5, 2);
