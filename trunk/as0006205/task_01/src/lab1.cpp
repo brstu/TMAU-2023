@@ -1,116 +1,130 @@
-﻿#include <iostream>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 #include <fstream>
-#include <vector>
-#include <Windows.h>
+using namespace std;
+/**
+ * @mainpage
+ * @brief ПИД-регулятор
+ * @author Бурда Дмитрий Сергеевич
+ */
 
-const double ROOM_TEMPERATURE = 24.5;
+/**
+ * @class Function
+ * @brief Абстрактный класс моделей вычисления
+ */
+class Function{
+public:
+    virtual double function (double wh_t, double wh_w ) = 0;
+};
+/**
+ * @class LinealFunction
+ * @brief Класс линейной модели
+ * @details Является подклассом Function
+ */
 
-double A1 = 1.0000046, B1 = 1.00000012;
-double emulate_linear_model(std::vector<double>&, std::vector<double>&, const int&);
-
-double A2 = A1, B2 = 0.0000000056, C2 = B1, D2 = 0.0833;
-double emulate_nonlinear_model(std::vector<double>&, std::vector<double>&, const int&);
-
-void emulate_intput_warm(std::vector<double>&, const int&);
-
-int main() {
-    std::vector<double> input_warm_per_moment;
-    std::vector<double> temperature_in_linear_model;
-    std::vector<double> temperature_in_nonlinear_model;
-
-    double linear_model_result;
-    double nonlinear_model_result;
-
-    int time_moment;
-
-    char action = 'g';
-
-    do {
-        system("cls");
-        input_warm_per_moment.clear();
-        temperature_in_linear_model.clear();
-        temperature_in_nonlinear_model.clear();
-
-        std::cout << "Enter the time moment: ";
-        std::cin >> time_moment;
-        if (time_moment < 0) time_moment *= -1;
-        emulate_intput_warm(input_warm_per_moment, time_moment);
-
-        nonlinear_model_result = emulate_nonlinear_model(temperature_in_nonlinear_model, input_warm_per_moment, time_moment);
-        linear_model_result = emulate_linear_model(temperature_in_linear_model, input_warm_per_moment, time_moment);
-
-        std::cout << "Results:\n"
-            << "nonlinear_model = " << linear_model_result << '\n'
-            << "nonlinear_model = " << nonlinear_model_result << '\n';
-
-        std::cout << "Once again? (n - no, anything else - yes) ";
-        std::cin >> action;
-
-    } while (action != 'n');
-
-    std::cout << "\nDo you want to save full data per each time moment? (y - yes, anything else - no) ";
-    std::cin >> action;
-    if (action == 'y') {
-        std::ofstream file_for_results;
-        file_for_results.open("results.txt");
-
-        file_for_results << "Results fоr each time moment: \n\n"
-            << "Room temperatur = " << ROOM_TEMPERATURE << '\n';
-        for (int i = 0; i <= time_moment; i++) {
-            file_for_results << "\ntime moment = " << i
-                << "\nlinear model = " << temperature_in_linear_model[i]
-                << "\nnonlinear model = " << temperature_in_nonlinear_model[i] << '\n';
+class LineFunction: public Function{
+private:
+    /**
+     * @brief Константы линейной модели
+     *
+     * @param   a       Параметр А
+     * @param   b       Параметр B
+     */
+    const double a = 0.2, b = 0.1;
+public:
+    double function ( double wh_t, double wh_w) override{
+        double rezult;
+        rezult = a * wh_w + b* wh_w;
+        return rezult;
+    }
+};
+/**
+ * @class NoLinealFunction
+ * @brief Класс нелинейной модели
+ * @details Является подклассом Function
+ */
+class NoLineFunction:public Function{
+private:
+    /**
+     * @brief Константы нелинейной модели
+     *
+     * @param   a           Параметр А
+     * @param   b           Параметр B
+     * @param   c           Параметр С
+     * @param   d           Параметр D
+     */
+    const double a = 1, b = 0.0033, c = 0.525, d =0.525;
+    double wh_w_1 = 0;
+    double wh_t_1 = 0;
+public:
+    double function (double wh_t,double wh_w) override{
+        double rezult;
+        rezult = a * wh_t - b * pow(wh_t_1, 2) + c * wh_w + d * sin(wh_w_1);
+        wh_w_1 = wh_w;
+        wh_t_1 = wh_t;
+        return rezult;
+    }
+};
+/**
+ * @class PID
+ * @brief Абстрактный класс пид-контроллера
+ */
+class PID{
+private:
+/**
+     * @brief controller
+     *
+     * @param   T   Параметр Т
+     * @param   T0  Параметр Т0
+     * @param   Td  Параметр Td
+     * @param   K   Параметр k
+     */
+    double u = 0, Td = 50, T =10, T0 = 10, k = 0.1;
+public:
+    double regulator(double e, double e1, double e2){
+        double q0 = k*(1+(Td/T0));
+        double q1 = -1*k*(1+2*(Td/T0)-(T0/T));
+        double q2 = k * (Td/T0);
+        u += q0*e + q1*e1 + q2*e2;
+        return u;
+    }
+    double PID_contr(double w, double y0, Function* model,ofstream& file){
+        double buf1 = 0, buf2 = 0, y = y0;
+        for (int i = 0; i <100; i++) {
+            double er, u;
+            er = w - y;
+            u = regulator(er, buf1, buf2);
+            y = model->function(y0, u);
+            file<<er<<"\t"<<u<<"\t"<<y;
+            buf2 = buf1;
+            buf1 = er;
         }
-
-        std::cout << "\nData have been saved\n";
-        file_for_results.close();
     }
+};
 
-    return 0;
-}
-
-double emulate_linear_model(std::vector<double>& temperature_in_linear_model, std::vector<double>& input_warm_per_moment, const int& time_moment) {
-    if (time_moment >= 0) {
-        temperature_in_linear_model.push_back(ROOM_TEMPERATURE);
-    }
-
-    for (int i = 1; i <= time_moment; i++) {
-        temperature_in_linear_model.push_back(
-            A1 * temperature_in_linear_model[i - 1]
-            + B1 * input_warm_per_moment[i - 1]);
-    }
-
-    return temperature_in_linear_model[time_moment];
-}
-
-double emulate_nonlinear_model(std::vector<double>& temperature_in_nonlinear_model, std::vector<double>& input_warm_per_moment, const int& time_moment) {
-    if (time_moment >= 0) {
-        temperature_in_nonlinear_model.push_back(ROOM_TEMPERATURE);
-        if (time_moment >= 1) {
-            temperature_in_nonlinear_model.push_back(
-                A2 * ROOM_TEMPERATURE
-                + B2 * input_warm_per_moment[0]);
+int main(){
+    double w = 80, y = 10;
+    ofstream file;
+    file.open("text.txt");
+    int number;
+    cout<<"Выберите тип функции ( 1 - линейная, 2 - нелинейная): ";
+    cin>>number;
+    switch(number){
+        case 1:{
+            PID* pid = new PID;
+            LineFunction* lfunct = new LineFunction;
+            pid->PID_contr(w,y,lfunct,file);
+            break;
         }
-    }
-
-    for (int i = 2; i <= time_moment; i++) {
-        temperature_in_nonlinear_model.push_back(
-            A2 * temperature_in_nonlinear_model[i - 1]
-            - B2 * std::pow(temperature_in_nonlinear_model[i - 2], 2)
-            + C2 * input_warm_per_moment[i - 1]
-            + D2 * std::sin(input_warm_per_moment[i - 2]));
-    }
-
-    return temperature_in_nonlinear_model[time_moment];
-}
-
-void emulate_intput_warm(std::vector<double>& input_warm_per_moment, const int& time_moment) {
-    if (time_moment >= 0) {
-        input_warm_per_moment.push_back(ROOM_TEMPERATURE / 676);
-    }
-
-    for (int i = 1; i <= time_moment; i++) {
-        double warm_upper = (double(i) / 103) + ROOM_TEMPERATURE / 776;
-        input_warm_per_moment.push_back(input_warm_per_moment[i - 1] + warm_upper);
+        case 2:{
+            PID* pid = new PID;
+            NoLineFunction* nlfunct = new NoLineFunction;
+            pid->PID_contr(w,y,nlfunct,file);
+            break;
+        }
+        case 0:{
+            break;
+        }
     }
 }
