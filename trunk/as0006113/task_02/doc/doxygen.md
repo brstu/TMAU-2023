@@ -50,18 +50,7 @@
  
   Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
 
-## Members
 
-#### `public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` 
-
-
-
-                             
-#### `public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` 
-
-                  
-
-Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
 
 
 
@@ -179,25 +168,6 @@ class NonLinearMod
 
                                
 
-## Members
-
-
-
-
-
-#### `public inline  `[`NonLinearMod`](#class_non_linear_Mod_1aa33bbbe3024131505d356c0df9dcd518)`(double a,double b,double c,double d,double yNext)` 
-
-
-
-
-#### `public inline virtual double `[`calculMod`](#class_non_linear_Mod_1a9bad4ace82cde16f0631b9590e928d14)`(double yCurrent,double inputWarm)` 
-
-
-
-
-
-
-Переопределённый метод для рассчёта нелинейной модели
 
 
 
