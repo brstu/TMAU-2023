@@ -1,101 +1,47 @@
 #include <iostream>
 #include <cmath>
 
-class Model{
-public:
- virtual Model() = default;
- virtual double simulate_temperature(double Yt, double Uw) = 0;
-};
+// Линейная модель
+double linearModel(double yT, double u1, double A, double B) {
+    return A * yT + B * u1;
+}
 
-class LinearModel : public Model {
-private:
-    double g;
-    double h;
-public:
-    LinearModel(double g, double h): g(g), h(h) {}
-
-    override LinearModel() = default;
-    
-    double simulate_temperature(double Yt, double Uw) final {
-        return g*Yt + h*Uw;
-    }
-};
-
-class NonlinearModel : public Model {
-private:
-    double g;
-    double h;
-    double j;
-    double k;
-    double PreYt = 0;
-    double PreUw = 0;
-public:
-    NonlinearModel(double g, double h, double j, double k):
-        g(g),
-        h(h),
-        j(j),
-        k(k) {}
-
-    override NonlinearModel() = default;
-    
-    double simulate_temperature(double Yt, double Uw) final {
-        double calc = g*Yt - h*pow(PreYt, 2) + j*Uw + k*sin(PreUw);
-        PreYt = Yt;
-        PreUw = Uw;
-        return calc;
-    }
-};
-
-void modeling(Model& model, double Yt, int numOfTimeModeling) {
-    double Uw;
-    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
-        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
-        Yt = model.simulate_temperature(Yt, Uw);
-
-        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl; 
-    }
+// Нелинейная модель
+double nonlinearModel(double yT, double yT1, double u1, double A, double B, double cc, double dd) {
+    return A * yT - B * pow(yT1, 2) + cc * u1 + dd * sin(U);
 }
 
 int main() {
-    double YT1;
-    double g;
-    double h;
-    double j;
-    double k;
-    double numOfTimeModeling;
-
-    std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
-    std::cout << "Input a-parameter: "; std::cin >> g;
-    std::cout << "Input b-parameter: "; std::cin >> h;
     
-    LinearModel linear_model{j,h};
+    double a_lin = 0.8;
+    double b_lin = 0.5;
+    double a_nonlin = 0.8;
+    double b_nonlin = 0.5;
+    double c_nonlin = 0.2;
+    double d_nonlin = 0.1;
 
-    std::cout << "---Please input NonlinearModel's constant parameters--- " << std::endl;
-    std::cout << "Input a-parameter: "; std::cin >> g;
-    std::cout << "Input b-parameter: "; std::cin >> h;
-    std::cout << "Input c-parameter: "; std::cin >> j;
-    std::cout << "Input d-parameter: "; std::cin >> k;
-    
-    NonlinearModel nonlinear_model{g,h,j,k};
+   
+    double Y_lin = 0.0;
+    double Y_nonlin = 0.0;
+    double Y_prev_nonlin = 0.0;
 
-    std::cout << "Please input Yt-parameter: "; std::cin >> YT1;
-    
-    std::cout << "Please input number of time modeling for the LinearModel: ";
-    std::cin >> numOfTimeModeling;
+    // Входные значения
+    double u1 = 1.0;
 
-    //start simulating an object temperature
+    // Моделирование для 10 временных шагов
+    for (int T = 1; T <= 10; T++) {
+        // Линейная модель
+        Y_lin = linearModel(Y_lin, u1, a_lin, b_lin);
 
-    std::cout << "\t\t\t---LinearModel---" << std::endl;
-    std::cout << "\t\t\tMoments\t\tYt\n";
-    modeling(linear_model, YT1, static_cast<int>(numOfTimeModeling));
+        // Нелинейная модель
+        Y_nonlin = nonlinearModel(Y_nonlin, Y_prev_nonlin, u1, a_nonlin, b_nonlin, c_nonlin, d_nonlin);
+        Y_prev_nonlin = Y_nonlin;
 
-    std::cout << std::endl;
-    
-    std::cout << "Please input number of time modeling for the NonlinearModel: ";
-    std::cin >> numOfTimeModeling;
-    std::cout << "\t\t\t---NonlinearModel---" << std::endl;
-    std::cout << "\t\t\tMoments\t\tYt\n";
-    modeling(nonlinear_model, YT1, static_cast<int>(numOfTimeModeling ));
+        std::cout << "time step: " << T << std::endl;
+        std::cout << "Linear model: " << Y_lin << std::endl;
+        std::cout << "Nonlinear model: " << Y_nonlin << std::endl;
+        std::cout << "------------------------" << std::endl;
+    }
 
-    system("Pause");
+    return 0;
 }
