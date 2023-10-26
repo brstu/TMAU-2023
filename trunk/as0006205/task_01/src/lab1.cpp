@@ -1,47 +1,50 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 
-// Линейная модель
-double linearModel(double yT, double u1, double A, double B) {
-    return A * yT + B * u1;
+const int n = 16;
+
+void linearModel(std::vector<double>& y, double input, double coefA, double coefB) {
+    std::vector<double> newTemp(n);
+
+    for (int i = 1; i < n; i++) {
+        y[i] = coefA * y[i - 1] + coefB * input;
+        newTemp[i] = y[i];
+    }
+
+    // Вывод результатов для линейной модели
+    std::cout << "For linear model:\n";
+    for (int i = 1; i < n; i++) std::cout << "y[" << i << "] = " << newTemp[i] << " \n";
 }
 
-// Нелинейная модель
-double nonlinearModel(double yT, double yT1, double u1, double A, double B, double cc, double dd) {
-    return A * yT - B * pow(yT1, 2) + cc * u1 + dd * sin(U);
+void nonLinearModel(std::vector<double>& y, double input, double coefA, double coefB, double coefC, double coefD) {
+    std::vector<double> newTemp(n);
+
+    for (int i = 2; i < n; i++) {
+        y[i] = coefA * y[i - 1] - coefB * y[i - 2] + coefC * input + coefD * sin(input);
+        newTemp[i] = y[i];
+    }
+
+    // Вывод результатов для нелинейной модели
+    std::cout << "For nonlinear model:\n";
+    for (int i = 2; i < n; i++) std::cout << "y[" << i << "] = " << newTemp[i] << " \n";
 }
 
 int main() {
-    
-    double a_lin = 0.8;
-    double b_lin = 0.5;
-    double a_nonlin = 0.8;
-    double b_nonlin = 0.5;
-    double c_nonlin = 0.2;
-    double d_nonlin = 0.1;
+    double coefA = 1.2;
+    double coefB = -0.4;
+    double coefC = 0.6;
+    double coefD = -0.2;
+    std::vector<double> y(n);
+    double input;
 
-   
-    double Y_lin = 0.0;
-    double Y_nonlin = 0.0;
-    double Y_prev_nonlin = 0.0;
+    std::cout << "Input initial temperature: ";
+    std::cin >> y[0];
+    std::cout << "Input warming value: ";
+    std::cin >> input;
 
-    // Входные значения
-    double u1 = 1.0;
-
-    // Моделирование для 10 временных шагов
-    for (int T = 1; T <= 10; T++) {
-        // Линейная модель
-        Y_lin = linearModel(Y_lin, u1, a_lin, b_lin);
-
-        // Нелинейная модель
-        Y_nonlin = nonlinearModel(Y_nonlin, Y_prev_nonlin, u1, a_nonlin, b_nonlin, c_nonlin, d_nonlin);
-        Y_prev_nonlin = Y_nonlin;
-
-        std::cout << "time step: " << T << std::endl;
-        std::cout << "Linear model: " << Y_lin << std::endl;
-        std::cout << "Nonlinear model: " << Y_nonlin << std::endl;
-        std::cout << "------------------------" << std::endl;
-    }
+    linearModel(y, input, coefA, coefB);
+    nonLinearModel(y, input, coefA, coefB, coefC, coefD);
 
     return 0;
 }
