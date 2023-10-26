@@ -3,7 +3,7 @@
 
 class Model{
 public:
- virtual ~Model() = default;
+ virtual Model() = default;
  virtual double simulate_temperature(double Yt, double Uw) = 0;
 };
 
