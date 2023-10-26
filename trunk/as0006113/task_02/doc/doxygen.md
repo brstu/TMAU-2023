@@ -68,68 +68,6 @@
 
 
 
-
-
-# class `AbstMod` 
-
-
-
-
-Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
-
-
-
-
-
-
-
-
-Абстрактный класс, который предоставляет виртуальную функцию уравнения calculMod и от которого наследуются классы [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod)
-
-
-
-
-## Summary
-
- Members                        | Descriptions                                
---------------------------------|---------------------------------------------
-`public virtual  `[`~AbstMod`](#class_Abst_Mod_1a70c0c5f53c7edb56bf68838d46de366b)`() = default` | 
-
-
-
-             
-`public double `[`calculMod`](#class_Abst_Mod_1acfab24a843dd017565c12aa96fd12f64)`(double yCurrent,double inputWarm)` | 
-
-
-
-
-
- 
- 
-  Виртуальная функция, переопределенная в дочерних классах [LinearMod](#class_linear_Mod) и [NonLinearMod](#class_non_linear_Mod).
-
-
-
-
-
-
-                                
-Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели. 
-#### Parameters
-* `yCurrent` Температура помещения 
-
-
-
-
-* `inputWarm` Входящее тепло
-
-
-
-
-
-
-
-
 # class `LinearMod` 
 
 ```
@@ -143,7 +81,7 @@ class LinearMod
 
 
 
-Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует линейную модель через переопределённую функцию calculMod
+Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует линейную модель
 
 
 
@@ -202,7 +140,7 @@ class NonLinearMod
 
 Класс, который служит для реализации нелинейной модели
 
-Дочерний класс от [AbstMod](#class_Abst_Mod), который реализует нелинейную модель через переопределённую функцию calculMod
+Дочерний класс от [AbstMod](#class_Abst_Mod)
 
 
 
