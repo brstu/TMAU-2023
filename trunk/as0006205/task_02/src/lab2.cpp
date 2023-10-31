@@ -19,6 +19,7 @@ public:
     * \details абстрактная функция для переопределения в дочерних классах
     */
     virtual float equation(float y_t, float u_t) = 0;
+    virtual ~model() {}
 };
 /**
 * \class LinearMod
@@ -36,10 +37,8 @@ public:
    * \param y_t1 - температура на выходе
    */
     LinearMod(float a, float b, float y_t1)
+        : a(a), b(b), y_t1(y_t1) // Инициализация членов класса в списке инициализации
     {
-        this->a = a;
-        this->b = b;
-        this->y_t1 = y_t1;
     }
     /**
     * \details функция для вычисления температуры по линейной модели
@@ -49,6 +48,8 @@ public:
         y_t1 = a * y_t + b * u_t;
         return y_t1;
     }
+
+    virtual ~LinearMod() {}
 };
 /**
 * \class NonLinearMod
@@ -67,12 +68,8 @@ public:
    * \param a, b, c, d просто коэффициенты
    */
     NonLinearMod(float a, float b, float c, float d, float y_t1)
+        : a(a), b(b), c(c), d(d), y_t1(y_t1), y_t0(0), u_t0(0) // Инициализация членов класса в списке инициализации
     {
-        this->a = a;
-        this->b = b;
-        this->c = c;
-        this->d = d;
-        this->y_t1 = y_t1;
     }
     /**
     * \details функция для вычисления температуры по нелинейной модели
@@ -84,6 +81,8 @@ public:
         y_t0 = y_t;
         return y_t1;
     }
+
+    virtual ~NonLinearMod() {}
 };
 /**
 * \class regulator
@@ -98,12 +97,11 @@ public:
     * \details конструктор для regulator
     * \param K,T0,TD,T слева-направо: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
     */
-    regulator(float T, float T0, float TD, float K) {
-        this->T = T;
-        this->T0 = T0;
-        this->TD = TD;
-        this->K = K;
+    regulator(float T, float T0, float TD, float K)
+        : T(T), T0(T0), TD(TD), K(K), u(0) // Инициализация членов класса в списке инициализации
+    {
     }
+
     /**
     * \details функция для подсчёта управляющей переменной
     * \param e, em1, em2 значения текущей, прошлой и позапрошлой ошибок
