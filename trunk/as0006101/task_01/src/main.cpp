@@ -42,7 +42,7 @@ int main()
         cout << endl;
         cout << "Введите ut: ";
         cin >> ut;
-        yt = Linear_Model(yt, A, B, ut);
+        yt = Linear_Model(yt, ut);
         cout << "Шаг: " << iter + 1 << ";" << " yt: " << yt;
     }
     cout << endl;
