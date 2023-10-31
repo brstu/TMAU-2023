@@ -19,7 +19,7 @@ public:
     * \details абстрактная функция для переопределения в дочерних классах
     */
     virtual float equation(float y_t, float u_t) = 0;
-    virtual ~model() {}
+    virtual ~model() = default;
 };
 /**
 * \class LinearMod
@@ -49,7 +49,7 @@ public:
         return y_t1;
     }
 
-    virtual ~LinearMod() {}
+    virtual ~LinearMod() = default;
 };
 /**
 * \class NonLinearMod
@@ -82,7 +82,7 @@ public:
         return y_t1;
     }
 
-    virtual ~NonLinearMod() {}
+    virtual ~NonLinearMod() = default;
 };
 /**
 * \class regulator
@@ -149,12 +149,12 @@ int main() {
     fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
         fout << "Linear Model:" << endl;
-        LinearMod l(0.333, 0.667, 1);
-        regulator regl(10, 10, 50, 0.1);
+        LinearMod l(0.333f, 0.667f, 1);
+        regulator regl(10, 10, 50, 0.1f);
         PIDregulator(5, 2, regl, l);
         fout << "NonLinear Model:" << endl;
-        NonLinearMod nl(1, 0.0033, 0.525, 0.525, 1);
-        regulator regnl(10, 10, 50, 0.1);
+        NonLinearMod nl(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f);
+        regulator regnl(10, 10, 50, 0.1f);
         PIDregulator(5, 2, regnl, nl);
     }
     cout << "Данные были сохранены в файл PID.txt" << endl;
