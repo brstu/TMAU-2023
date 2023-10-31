@@ -142,7 +142,7 @@ public:
 void PIDregulator(float w, float y0, regulator& reg, model& md) {
     ofstream fout;
     fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
-    if (fout.is open()) {
+    if (fout.is_open()) {
         float em1 = 0;
         float em2 = 0;
         float y = y0;
