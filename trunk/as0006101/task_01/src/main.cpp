@@ -6,7 +6,7 @@ using namespace std;
 
 const double a = 1.34; const double b = 5.23; const double c = 4.37; const  double d = 3.95;
 
-double Linear_Model(double yt, double a, double b, double ut)
+double Linear_Model(double yt, double ut)
 {
     return a * yt + b * ut;
 }
