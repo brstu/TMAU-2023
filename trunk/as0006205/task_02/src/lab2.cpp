@@ -2,12 +2,14 @@
 #include <math.h>
 #include <iomanip>
 #include <fstream>
+
 /**
 * \mainpage
 * \brief ПИД-регулятор
-* \author Дмитраница Влад
+* \author Дмитаница Влад
 */
 using namespace std;
+
 /**
 * \class model
 * \brief Абстрактный класс, который будет использоваться для построения линейных и нелинейных моделей
@@ -21,6 +23,7 @@ public:
     virtual float equation(float y_t, float u_t) = 0;
     virtual ~model() = default;
 };
+
 /**
 * \class LinearMod
 * \brief Класс, представляющий линейную модель контролируемого объекта
@@ -29,17 +32,21 @@ public:
 class LinearMod : public model
 {
 private:
-    float a, b, y_t1;
+    float a;
+    float b;
+    float y_t1;
+
 public:
     /**
-   * \details конструктор для LinearMod
-   * \param a, b - просто коэффициенты
-   * \param y_t1 - температура на выходе
-   */
+    * \details конструктор для LinearMod
+    * \param a, b - просто коэффициенты
+    * \param y_t1 - температура на выходе
+    */
     LinearMod(float a, float b, float y_t1)
-        : a(a), b(b), y_t1(y_t1) // Инициализация членов класса в списке инициализации
+        : a(a), b(b), y_t1(y_t1)
     {
     }
+
     /**
     * \details функция для вычисления температуры по линейной модели
     */
@@ -51,6 +58,7 @@ public:
 
     virtual ~LinearMod() = default;
 };
+
 /**
 * \class NonLinearMod
 * \brief Класс, представляющий нелинейную модель контролируемого объекта
@@ -59,24 +67,26 @@ public:
 class NonLinearMod : public model
 {
 private:
-    float a, c, d, b;///< a, b, c, d - просто коэффициенты
-    float y_t0 = 0, y_t1;///< y_t0 - предыдущее(начальное) значение температуры, y_t1 - текущее значение температуры на выходе
-    float u_t0 = 0;///< u_t0 - переменная для предыдущего значения тепла
+    float a, c, d, b; ///< a, b, c, d - просто коэффициенты
+    float y_t0 = 0; ///< y_t0 - предыдущее(начальное) значение температуры
+    float y_t1; ///< текущее значение температуры на выходе
+    float u_t0 = 0; ///< u_t0 - переменная для предыдущего значения тепла
 public:
     /**
    * \details конструктор для NonLinearMod
    * \param a, b, c, d просто коэффициенты
    */
     NonLinearMod(float a, float b, float c, float d, float y_t1)
-        : a(a), b(b), c(c), d(d), y_t1(y_t1), y_t0(0), u_t0(0) // Инициализация членов класса в списке инициализации
+        : a(a), b(b), c(c), d(d), y_t1(y_t1) // Нет нужды инициализировать y_t0, y_t1 и u_t0 здесь
     {
     }
+
     /**
     * \details функция для вычисления температуры по нелинейной модели
     */
     float equation(float y_t, float u_t)
     {
-        y_t1 = a * y_t - b * pow(y_t0, 2) + c * u_t + d * sin(u_t0);
+        y_t1 = a * y_t - b * static_cast<float>(pow(y_t0, 2)) + c * u_t + d * sin(u_t0);
         u_t0 = u_t;
         y_t0 = y_t;
         return y_t1;
@@ -84,6 +94,7 @@ public:
 
     virtual ~NonLinearMod() = default;
 };
+
 /**
 * \class regulator
 * \brief Класс для реализации регулятора
@@ -91,14 +102,19 @@ public:
 class regulator
 {
 private:
-    float T, T0, TD, K, u = 0;
+    float T;
+    float T0;
+    float TD;
+    float K;
+    float u = 0;
+
 public:
     /**
     * \details конструктор для regulator
     * \param K,T0,TD,T слева-направо: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
     */
     regulator(float T, float T0, float TD, float K)
-        : T(T), T0(T0), TD(TD), K(K), u(0) // Инициализация членов класса в списке инициализации
+        : T(T), T0(T0), TD(TD), K(K), u(0)
     {
     }
 
@@ -114,6 +130,7 @@ public:
         return u;
     }
 };
+
 /**
 * \brief Функция, которая моделирует ПИД-регулятор
 * \details функция имитирует работу ПИД-регулятора
@@ -125,10 +142,13 @@ public:
 void PIDregulator(float w, float y0, regulator& reg, model& md) {
     ofstream fout;
     fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
-    if (fout.is_open()) {
-        float em1 = 0, em2 = 0, y = y0;
+    if (fout.is open()) {
+        float em1 = 0;
+        float em2 = 0;
+        float y = y0;
         for (int i = 0; i < 100; i++) {
-            float e, u;
+            float e;
+            float u;
             e = w - y;
             u = reg.temperature(e, em1, em2);
             y = md.equation(y0, u);
