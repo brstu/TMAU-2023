@@ -124,7 +124,7 @@ public:
 * \param *md указатель на экземпляр model
 * \param y0 начальное значение y
 */
-void PIDregulator(float w, float y0, regulator* reg, model* md) {
+void PIDregulator(float w, float y0, regulator& reg, model& md) {
     ofstream fout;
     fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
@@ -132,8 +132,8 @@ void PIDregulator(float w, float y0, regulator* reg, model* md) {
         for (int i = 0; i < 100; i++) {
             float e, u;
             e = w - y;
-            u = reg->temperature(e, em1, em2);
-            y = md->equation(y0, u);
+            u = reg.temperature(e, em1, em2);
+            y = md.equation(y0, u);
             fout << "E=" << e << " Y=" << y << " U=" << u << endl;
             em2 = em1;
             em1 = e;
@@ -141,11 +141,11 @@ void PIDregulator(float w, float y0, regulator* reg, model* md) {
     }
     fout.close();
 }
+
 /**
 * \brief Функция main, создаём экземпляры всех классов и вызываем функцию PIDregulator
 */
-int main()
-{
+int main() {
     setlocale(0, "");
     ofstream fout;
     fout.open("E:\\PID.txt", ios_base::out | ios_base::app);
