@@ -50,7 +50,7 @@ public:
     /**
     * \details функция для вычисления температуры по линейной модели
     */
-    float equation(float y_t, float u_t)
+    float equation(float y_t, float u_t) override
     {
         y_t1 = a * y_t + b * u_t;
         return y_t1;
@@ -77,14 +77,13 @@ public:
    * \param a, b, c, d просто коэффициенты
    */
     NonLinearMod(float a, float b, float c, float d, float y_t1)
-        : a(a), b(b), c(c), d(d), y_t1(y_t1) // Нет нужды инициализировать y_t0, y_t1 и u_t0 здесь
+    : a(a), b(b), c(c), d(d), y_t1(y_t1)
     {
     }
-
     /**
     * \details функция для вычисления температуры по нелинейной модели
     */
-    float equation(float y_t, float u_t)
+    float equation(float y_t, float u_t) override
     {
         y_t1 = a * y_t - b * static_cast<float>(pow(y_t0, 2)) + c * u_t + d * sin(u_t0);
         u_t0 = u_t;
@@ -114,10 +113,9 @@ public:
     * \param K,T0,TD,T слева-направо: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
     */
     regulator(float T, float T0, float TD, float K)
-        : T(T), T0(T0), TD(TD), K(K), u(0)
+    : T(T), T0(T0), TD(TD), K(K)
     {
     }
-
     /**
     * \details функция для подсчёта управляющей переменной
     * \param e, em1, em2 значения текущей, прошлой и позапрошлой ошибок
