@@ -56,7 +56,7 @@ public:
         return y_t1;
     }
 
-    virtual ~LinearMod() = default;
+    ~LinearMod() override = default;
 };
 
 /**
@@ -67,7 +67,10 @@ public:
 class NonLinearMod : public model
 {
 private:
-    float a, c, d, b; ///< a, b, c, d - просто коэффициенты
+    float a; ///< a, b, c, d - просто коэффициенты
+    float b;
+    float c;
+    float d;
     float y_t0 = 0; ///< y_t0 - предыдущее(начальное) значение температуры
     float y_t1; ///< текущее значение температуры на выходе
     float u_t0 = 0; ///< u_t0 - переменная для предыдущего значения тепла
@@ -90,8 +93,8 @@ public:
         y_t0 = y_t;
         return y_t1;
     }
-
-    virtual ~NonLinearMod() = default;
+    
+    ~NonLinearMod() override = default;
 };
 
 /**
