@@ -67,7 +67,7 @@ private:
 public:
 
     Regulator(double T, double TP, double TM, double K)
-        : T(T), TP(TP), TM(TM), K(K)
+        : T(T), TP(TP), TM(TM), K(K), u(0)
     {
     }
 
