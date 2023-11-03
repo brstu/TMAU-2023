@@ -58,7 +58,11 @@ public:
 class Regulator
 {
 private:
-    double T, TP, TM, K, u;
+    double T;
+    double TP;
+    double TM;
+    double K;
+    double u;
 
 public:
 
@@ -68,9 +72,13 @@ public:
     }
 
     double temperature(double e, double em1, double em2) {
-        double q0 = K * (1 + TM / TP);
-        double q1 = -K * (1 + 2 * TM / TP - TP / T);
-        double q2 = K * TM / TP;
+        double q0;
+        double q1;
+        double q2;
+
+        q0 = K * (1 + TM / TP);
+        q1 = -K * (1 + 2 * TM / TP - TP / T);
+        q2 = K * TM / TP;
         u += q0 * e + q1 * em1 + q2 * em2;
         return u;
     }
@@ -89,7 +97,7 @@ void PID(double w, double y0, Regulator& reg, LinearModel& md1, NonLinearModel& 
             e = w - y;
             u = reg.temperature(e, em1, em2);
 
-            if (mode == 1) {
+            if (mode == true) {
                 y = md1.equation(y0, u);
             }
             else
@@ -114,10 +122,10 @@ int main() {
         LinearModel l(0.333f, 0.667f, 1);
         NonLinearModel nl(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f);
         Regulator regl(10, 10, 50, 0.1f);
-        PID(5, 2, regl, l, nl, 1);
+        PID(5, 2, regl, l, nl, true);
         fout << "NonLinearModel:" << endl;
         Regulator regnl(10, 10, 50, 0.1f);
-        PID(5, 2, regnl, l, nl, 2);
+        PID(5, 2, regnl, l, nl, false);
     }
     cout << "Сохранено в result.txt" << endl;
     return 0;
