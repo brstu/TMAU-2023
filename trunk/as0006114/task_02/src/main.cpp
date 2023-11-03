@@ -76,7 +76,7 @@ public:
     }
 };
 
-void PID(double w, double y0, Regulator& reg, LinearModel& md) {
+void PID(double w, double y0, Regulator& reg, LinearModel& md1, NonLinearModel& md2, bool mode) {
     ofstream fout;
     fout.open("D:\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
@@ -88,7 +88,15 @@ void PID(double w, double y0, Regulator& reg, LinearModel& md) {
             double u;
             e = w - y;
             u = reg.temperature(e, em1, em2);
-            y = md.equation(y0, u);
+
+            if (mode == 1) {
+                y = md1.equation(y0, u);
+            }
+            else
+            {
+                y = md2.equation(y0, u);
+            }
+
             fout << "E=" << e << " Y=" << y << " U=" << u << endl;
             em2 = em1;
             em1 = e;
@@ -96,28 +104,6 @@ void PID(double w, double y0, Regulator& reg, LinearModel& md) {
     }
     fout.close();
 }
-
-void PID(double w, double y0, Regulator& reg, NonLinearModel& md) {
-    ofstream fout;
-    fout.open("D:\\result.txt", ios_base::out | ios_base::app);
-    if (fout.is_open()) {
-        double em1 = 0;
-        double em2 = 0;
-        double y = y0;
-        for (int i = 0; i < 100; i++) {
-            double e;
-            double u;
-            e = w - y;
-            u = reg.temperature(e, em1, em2);
-            y = md.equation(y0, u);
-            fout << "E=" << e << " Y=" << y << " U=" << u << endl;
-            em2 = em1;
-            em1 = e;
-        }
-    }
-    fout.close();
-}
-
 
 int main() {
     setlocale(0, "");
@@ -126,12 +112,12 @@ int main() {
     if (fout.is_open()) {
         fout << "LinearModel:" << endl;
         LinearModel l(0.333f, 0.667f, 1);
-        Regulator regl(10, 10, 50, 0.1f);
-        PID(5, 2, regl, l);
-        fout << "NonLinearModel:" << endl;
         NonLinearModel nl(1.0f, 0.0033f, 0.525f, 0.525f, 1.0f);
+        Regulator regl(10, 10, 50, 0.1f);
+        PID(5, 2, regl, l, nl, 1);
+        fout << "NonLinearModel:" << endl;
         Regulator regnl(10, 10, 50, 0.1f);
-        PID(5, 2, regnl, nl);
+        PID(5, 2, regnl, l, nl, 2);
     }
     cout << "Сохранено в result.txt" << endl;
     return 0;
