@@ -62,12 +62,12 @@ private:
     double TP;
     double TM;
     double K;
-    double u;
+    double u = 0;
 
 public:
 
     Regulator(double T, double TP, double TM, double K)
-        : T(T), TP(TP), TM(TM), K(K), u(0)
+        : T(T), TP(TP), TM(TM), K(K)
     {
     }
 
