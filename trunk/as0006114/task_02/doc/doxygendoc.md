@@ -2,14 +2,14 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`class `[`LinearModel`](#class_linear_model) | Класс, который представляет линейную модель
-`class `[`NonLinearModel`](#class_non_linear_model) | Класс, который представляет нелинейную модель
-`class `[`Regulator`](#classRegulator) | Класс регулятора
+`class `[`LinearModel1`](#class_linear_model1) | Класс, который представляет линейную модель
+`class `[`NonLinearModel1`](#class_non_linear_model1) | Класс, который представляет нелинейную модель
+`class `[`Regulator1`](#classRegulator1) | Класс регулятора
 
-## class `LinearModel` 
+## class `LinearModel1` 
 
 ```
-class LinearModel
+class LinearModel1
 ```
 
 Класс, который представляет линейную модель контролируемого объекта
@@ -18,55 +18,53 @@ class LinearModel
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`LinearModel`](#class_linear_mod_1a75f89a870b01deb52c0885435ae57c4e)`(double A, double B, double temp)` | конструктор для [LinearModel](#class_linear_model)
-`public inline virtual double `[`equation`](#class_linear_model_1a381674509c44cabf43ca6ba062675dea)`(double temp, double warm)` | функция для вычисления температуры по линейной модели
+`public inline  `[`LinearModel1`](#class_linear_model1_1a75f89a870b01deb52c0885435ae57c4e)`(double A, double B, double temp)` | конструктор для [LinearModel](#class_linear_model)
+`public inline virtual double `[`equation`](#class_linear_model1_1a381674509c44cabf43ca6ba062675dea)`(double temp, double warm)` | функция для вычисления температуры по линейной модели
 
 
 ### Members
 
-#### `public inline  `[`LinearModel`](#class_linear_model_1a75f89a870b01deb52c0885435ae57c4e)`(double A, double B, double temp)` 
+#### `public inline  `[`LinearModel1`](#class_linear_model1_1a75f89a870b01deb52c0885435ae57c4e)`(double A, double B, double temp)` 
 
-конструктор для [LinearModel](#class_linear_model)
+конструктор для [LinearModel1](#class_linear_model1)
 #### Parameters
 * `A` `B` - коэффициенты 
 
 * `currentTemp` - температура на выходе
 
-#### `public inline virtual double `[`equation`](#class_linear_model_1a381674509c44cabf43ca6ba062675dea)`(double temp, double warm)` 
+#### `public inline virtual double `[`equation`](#class_linear_model1_1a381674509c44cabf43ca6ba062675dea)`(double temp, double warm)` 
 
 функция для вычисления температуры по линейной модели
 
-## class `NonLinearModel`
+## class `NonLinearModel1`
 
 ```
-class NonLinearModel
+class NonLinearModel1
 ```
 
 Класс, представляющий нелинейную модель
-
-Дочерний класс, расширяющий класс model
 
 ### Summary
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`NonLinearModel`](#class_non_linear_model_1abdc835f56120ccc4d4eb7a3d3c60314c)`(double A, double B, double C, double D, double temp)` | конструктор для [NonLinearModel](#class_non_linear_model)
-`public inline virtual double `[`equation`](#class_non_linear_model_1ab5d708bdcc976c5ab1196322b9d32829)`(double temp, double warm)` | функция для вычисления температуры по нелинейной модели
+`public inline  `[`NonLinearModel1`](#class_non_linear_model1_1abdc835f56120ccc4d4eb7a3d3c60314c)`(double A, double B, double C, double D, double temp)` | конструктор для [NonLinearModel](#class_non_linear_model)
+`public inline virtual double `[`equation`](#class_non_linear_model1_1ab5d708bdcc976c5ab1196322b9d32829)`(double temp, double warm)` | функция для вычисления температуры по нелинейной модели
 
 
 ### Members
 
-#### `public inline  `[`NonLinearModel`](#class_non_linear_model_1abdc835f56120ccc4d4eb7a3d3c60314c)`(double A, double B, double C, double D, double temp)` 
+#### `public inline  `[`NonLinearModel1`](#class_non_linear_model1_1abdc835f56120ccc4d4eb7a3d3c60314c)`(double A, double B, double C, double D, double temp)` 
 
-конструктор для [NonLinearModel](#class_non_linear_model)
+конструктор для [NonLinearModel1](#class_non_linear_model1)
 #### Parameters
 * `A` `B` `C` `D` коэффициенты
 
-#### `public inline virtual double `[`equation`](#class_non_linear_model_1ab5d708bdcc976c5ab1196322b9d32829)`(double temp, double warm)` 
+#### `public inline virtual double `[`equation`](#class_non_linear_model1_1ab5d708bdcc976c5ab1196322b9d32829)`(double temp, double warm)` 
 
 вычисление температуры по нелинейной модели
 
-## class `Regulator`
+## class `Regulator1`
 
 Класс, реализующий регулятор
 
@@ -74,15 +72,15 @@ class NonLinearModel
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`Regulator`](#classRegulator_1a7c40ac8810c3d6a4cd583b011d673f78)`(double T, double TP, double TM, double K)` | конструктор для Regulator 
-`public inline float `[`temperature`](#classRegulator_1a54bc0b1a0c02beb98ff634b9acc91876)`(double e, double em1, double em2)` | функция для подсчёта управляющей переменной 
+`public inline  `[`Regulator1`](#classRegulator1_1a7c40ac8810c3d6a4cd583b011d673f78)`(double T, double TP, double TM, double K)` | конструктор для Regulator 
+`public inline float `[`temperature1`](#classRegulator1_1a54bc0b1a0c02beb98ff634b9acc91876)`(double e, double em1, double em2)` | функция для подсчёта управляющей переменной 
 
 
 ### Members
 
-#### `public inline  `[`Regulator`](#classRegulator_1a7c40ac8810c3d6a4cd583b011d673f78)`(double T, double TP, double TM, double K)` 
+#### `public inline  `[`Regulator1`](#classRegulator1_1a7c40ac8810c3d6a4cd583b011d673f78)`(double T, double TP, double TM, double K)` 
 
-конструктор для Regulator 
+конструктор для Regulator1
 #### Parameters
 * `K` `TP` `TM` `T`: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
 
