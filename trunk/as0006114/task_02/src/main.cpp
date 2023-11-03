@@ -45,10 +45,10 @@ public:
     {
     }
 
-    double equation(double temp, double warm)
+    double equation(double temp, double warm1)
     {
-        currentTemp = A * temp - B * pow(prevTemp, 2) + C * warm + D * sin(this->warm);
-        this->warm = warm;
+        currentTemp = A * temp - B * pow(prevTemp, 2) + C * warm1 + D * sin(this->warm);
+        this->warm = warm1;
         prevTemp = temp;
         return currentTemp;
     }
