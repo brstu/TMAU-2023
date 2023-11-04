@@ -9,21 +9,21 @@
 */
 
 /**
-* \class abstract_model_pid
+* \class AbstractModelPID
 * \brief Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
 *
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calculate_pid_model
-* и от которого наследуются классы linear_model_pid и nonlinear_model_pid
+* и от которого наследуются классы LinearModelPID и NonlinearModelPID
 */
 
 /**
-* \class nonlinear_model_pid
+* \class NonlinearModelPID
 * \brief Класс, который служит для реализации нелинейной модели
 *
-* Дочерний класс от abstract_model_pid, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
+* Дочерний класс от AbstractModelPID, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
 */
 
-class nonlinear_model_pid : public abstract_model_pid
+class NonlinearModelPID : public AbstractModelPID
 {
 private:
 
@@ -39,7 +39,7 @@ private:
 
 public:
 
-    nonlinear_model_pid(double a, double b, double c, double d, double yNext) :
+    NonlinearModelPID(double a, double b, double c, double d, double yNext) :
         a_(a), b_(b), c__(c), d_(d), nextY__(yNext)
     { }
 
@@ -62,13 +62,13 @@ public:
         return nextY__;
     }
 };
-class abstract_model_pid
+class AbstractModelPID
 {
 public:
-    virtual ~abstract_model_pid() = default;
+    virtual ~AbstractModelPID() = default;
 
     /**
-    * \brief Виртуальная функция, переопределенная в дочерних классах linear_model_pid и nonlinear_model_pid
+    * \brief Виртуальная функция, переопределенная в дочерних классах LinearModelPID и NonlinearModelPID
     *
     * Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели.
     * \param curr_temp Температура помещения
@@ -79,12 +79,12 @@ public:
 
 
 /**
-* \class linear_model_pid
+* \class LinearModelPID
 * \brief Класс, который служит для реализации линейной модели
 *
-* Дочерний класс от abstract_model_pid, который реализует линейную модель через переопределённую функцию calculate_pid_model
+* Дочерний класс от AbstractModelPID, который реализует линейную модель через переопределённую функцию calculate_pid_model
 */
-class linear_model_pid : public abstract_model_pid
+class LinearModelPID : public AbstractModelPID
 {
 private:
 
@@ -93,7 +93,7 @@ private:
     double nextY__; ///< Получаемая нами температура
 
 public:
-    linear_model_pid(double a, double b, double yNext) :
+    LinearModelPID(double a, double b, double yNext) :
         a_(a), b_(b), nextY__(yNext)
     { }
 
@@ -181,7 +181,7 @@ public:
     *     double y = start;
     *     double u = 0;
     * 
-    *     linear_model_pid linear(0.333, 0.667, 1);
+    *     LinearModelPID linear(0.333, 0.667, 1);
     * 
     *     fout << "Линейная модель: " << std::endl;
     * 
@@ -204,7 +204,7 @@ public:
     * 
     *     fout << "Нелинейная модель: " << std::endl;
     * 
-    *     nonlinear_model_pid nonLinear(1, 0.0033, 0.525, 0.525, 1);
+    *     NonlinearModelPID nonLinear(1, 0.0033, 0.525, 0.525, 1);
     *     for (int i = 0; i < 50; ++i){
     *         ekb_1 = need - y;
     *         u = calc__uk(ekb_1, ekb_2, ekb_3);
@@ -230,7 +230,7 @@ public:
         double y = start;
         double u;
 
-        linear_model_pid linear(0.333, 0.667, 1);
+        LinearModelPID linear(0.333, 0.667, 1);
 
         fout << "Линейная модель: " << std::endl;
 
@@ -253,7 +253,7 @@ public:
 
         fout << "Нелинейная модель: " << std::endl;
 
-        nonlinear_model_pid nonLinear(1, 0.0033, 0.525, 0.525, 1);
+        NonlinearModelPID nonLinear(1, 0.0033, 0.525, 0.525, 1);
 
         for (int i = 0; i < 50; ++i){
             ekb_1 = need - y;
