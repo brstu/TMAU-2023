@@ -23,7 +23,8 @@
 * Дочерний класс от abstract_model_pid, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
 */
 
-class nonlinear_model_pid : public abstract_model_pid{
+class nonlinear_model_pid : public abstract_model_pid
+{
 private:
 
     double a_;         ///< Коэффициент
@@ -61,7 +62,8 @@ public:
         return nextY__;
     }
 };
-class abstract_model_pid{
+class abstract_model_pid
+{
 public:
     virtual ~abstract_model_pid() = default;
 
@@ -82,7 +84,8 @@ public:
 *
 * Дочерний класс от abstract_model_pid, который реализует линейную модель через переопределённую функцию calculate_pid_model
 */
-class linear_model_pid : public abstract_model_pid{
+class linear_model_pid : public abstract_model_pid
+{
 private:
 
     double a_;     ///< Коэффициент
@@ -117,7 +120,8 @@ public:
 * Отдельный класс, в котором мы моделируем регулятор
 */
 
-class Regulator{
+class Regulator
+{
 private:
 
     double const_int_;      ///< Постоянная интегрирования
