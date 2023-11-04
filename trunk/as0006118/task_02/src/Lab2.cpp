@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <cmath>
 #include <fstream>
+
 /**
 * \mainpage
 * \brief Лабораторная работа 2. ПИД-регуляторы
@@ -14,8 +15,53 @@
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calculate_pid_model
 * и от которого наследуются классы linear_model_pid и nonlinear_model_pid
 */
-class abstract_model_pid
-{
+
+/**
+* \class nonlinear_model_pid
+* \brief Класс, который служит для реализации нелинейной модели
+*
+* Дочерний класс от abstract_model_pid, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
+*/
+
+class nonlinear_model_pid : public abstract_model_pid{
+private:
+
+    double a_;         ///< Коэффициент
+    double b_;         ///< Коэффициент
+    double c__;         ///< Коэффициент
+    double d_;         ///< Коэффициент
+    double prevY__ = 0; ///< Предыдущая температура 
+    double nextY__;     ///< Получаемая нами температура
+    double prevW__ = 0; ///< Предыдущее тепло
+
+
+
+public:
+
+    nonlinear_model_pid(double a, double b, double c, double d, double yNext) :
+        a_(a), b_(b), c__(c), d_(d), nextY__(yNext)
+    { }
+
+    /**
+    * Переопределённый метод для рассчёта нелинейной модели
+    *
+    * Код:
+    * \code
+    * nextY__ = a_ * curr_temp - b_ * pow(prevY__, 2) + c__ * warm_input + d_ * sin(prevW__);
+    * prevY__ = nextY__;
+    * prevW__ = warm_input;
+    * return nextY__;
+    * \endcode
+    */
+
+    double calculate_pid_model(double curr_temp, double warm_input) override{
+        nextY__ = a_ * curr_temp - b_ * pow(prevY__, 2) + c__ * warm_input + d_ * sin(prevW__);
+        prevY__ = curr_temp;
+        prevW__ = warm_input;
+        return nextY__;
+    }
+};
+class abstract_model_pid{
 public:
     virtual ~abstract_model_pid() = default;
 
@@ -28,23 +74,24 @@ public:
     */
     virtual double calculate_pid_model(double curr_temp, double warm_input) = 0;
 };
+
+
 /**
 * \class linear_model_pid
 * \brief Класс, который служит для реализации линейной модели
 *
 * Дочерний класс от abstract_model_pid, который реализует линейную модель через переопределённую функцию calculate_pid_model
 */
-class linear_model_pid : public abstract_model_pid
-{
+class linear_model_pid : public abstract_model_pid{
 private:
+
     double a_;     ///< Коэффициент
     double b_;     ///< Коэффициент
-    double yNext_; ///< Получаемая нами температура
+    double nextY__; ///< Получаемая нами температура
+
 public:
     linear_model_pid(double a, double b, double yNext) :
-        a_(a),
-        b_(b),
-        yNext_(yNext)
+        a_(a), b_(b), nextY__(yNext)
     { }
 
     /**
@@ -52,115 +99,66 @@ public:
     *
     * Код:
     * \code
-    * yNext_ = a_ * curr_temp + b_ * warm_input;
-    * return yNext_;
+    * nextY__ = a_ * curr_temp + b_ * warm_input;
+    * return nextY__;
     * \endcode
     */
-    double calculate_pid_model(double curr_temp, double warm_input) override
-    {
-        yNext_ = a_ * curr_temp + b_ * warm_input;
-        return yNext_;
+
+    double calculate_pid_model(double curr_temp, double warm_input) override{
+        nextY__ = a_ * curr_temp + b_ * warm_input;
+        return nextY__;
     }
 };
-/**
-* \class nonlinear_model_pid
-* \brief Класс, который служит для реализации нелинейной модели
-*
-* Дочерний класс от abstract_model_pid, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
-*/
-class nonlinear_model_pid : public abstract_model_pid
-{
-private:
-    double a_;         ///< Коэффициент
-    double b_;         ///< Коэффициент
-    double c_;         ///< Коэффициент
-    double d_;         ///< Коэффициент
-    double yPrev_ = 0; ///< Предыдущая температура 
-    double yNext_;     ///< Получаемая нами температура
-    double wPrev_ = 0; ///< Предыдущее тепло
 
-public:
-    nonlinear_model_pid(double a, double b, double c, double d, double yNext) :
-        a_(a),
-        b_(b),
-        c_(c),
-        d_(d),
-        yNext_(yNext)
-    { }
-
-    /**
-    * Переопределённый метод для рассчёта нелинейной модели
-    *
-    * Код:
-    * \code
-    * yNext_ = a_ * curr_temp - b_ * pow(yPrev_, 2) + c_ * warm_input + d_ * sin(wPrev_);
-    * yPrev_ = yNext_;
-    * wPrev_ = warm_input;
-    * return yNext_;
-    * \endcode
-    */
-    double calculate_pid_model(double curr_temp, double warm_input) override
-    {
-        yNext_ = a_ * curr_temp - b_ * pow(yPrev_, 2) + c_ * warm_input + d_ * sin(wPrev_);
-        yPrev_ = curr_temp;
-        wPrev_ = warm_input;
-        return yNext_;
-    }
-};
 /**
 * \class Regulator
 * \brief Класс регулятора
 *
 * Отдельный класс, в котором мы моделируем регулятор
 */
-class Regulator
-{
+
+class Regulator{
 private:
 
-    double t_;      ///< Постоянная интегрирования
-    double t0_;     ///< Шаг для квантования
-    double td_;     ///< Постоянная дифференцирования
-    double k_;      ///< Коэффициент передачи
-    double uk_ = 0; ///< Текущее значение управляющего воздействия
+    double const_int_;      ///< Постоянная интегрирования
+    double step_kvant_;     ///< Шаг для квантования
+    double const_difer_;     ///< Постоянная дифференцирования
+    double koev_peredach_;      ///< Коэффициент передачи
+    double setpoint_ = 0; ///< Текущее значение управляющего воздействия
 
-    double calc_uk(double ek, double ek1, double ek2)
-    {
+    double calc__uk(double ekb_1, double ekb_2, double ekb_3){
         /**
-        * \brief Метод для рассчёта uk_
+        * \brief Метод для рассчёта setpoint_
         *
         * Метод рассчёта текущего значения управляющего воздействия на объект управления
         *
         * Код:
         * \code
         * 
-        * double q0 = K_ * (1 + TD_ / T0_);
-        * double q1 = -K_ * (1 + 2 * TD_ / T0_ - T0_ / T_);
-        * double q2 = K_ * TD_ / T0_;
-        * uk_ += q0 * ek + q1 * ek1 + q2 * ek2;
+        * double q1 = koev_peredach_ * (1 + const_difer_ / step_kvant_);
+        * double q2 = -koev_peredach_ * (1 + 2 * const_difer_ / step_kvant_ - step_kvant_ / const_int_);
+        * double q3 = koev_peredach_ * const_difer_ / step_kvant_;
+        * setpoint_ += (q1 * ekb_1 + q2 * ekb_2 + q3 * ekb_3);
         * 
-        * return uk_;
+        * return setpoint_;
         * \endcode
         */
 
-        double q0 = k_ * (1 + td_ / t0_); /// q0 - Параметр регулятора
-        double q1 = -k_ * (1 + 2 * td_ / t0_ - t0_ / t_); /// q1 - Параметр регулятора
-        double q2 = k_ * td_ / t0_; /// q2 - Параметр регулятора
-        uk_ += q0 * ek + q1 * ek1 + q2 * ek2;
+        double q1 = koev_peredach_ * (1 + const_difer_ / step_kvant_); /// q1 - Параметр регулятора
+        double q2 = -koev_peredach_ * (1 + 2 * const_difer_ / step_kvant_ - step_kvant_ / const_int_); /// q2 - Параметр регулятора
+        double q3 = koev_peredach_ * const_difer_ / step_kvant_; /// q3 - Параметр регулятора
+        setpoint_ += (q1 * ekb_1 + q2 * ekb_2 + q3 * ekb_3);
 
-        return uk_;
+        return setpoint_;
     }
 
 public:
 
     Regulator(double T, double T0, double TD, double K) :
-        t_(T),
-        t0_(T0),
-        td_(TD),
-        k_(K)
+        const_int_(T),step_kvant_(T0), const_difer_(TD),koev_peredach_(K)
     { }
 
-    void pid_calculate_write(double need, double start)
-    {
+    void pid_calculate_write(double need, double start){
     /**
     * \brief Метод моделирования ПИД-регулятора
     *
@@ -172,11 +170,10 @@ public:
     * \code
     * std::ofstream fout("results.txt");
     * 
-    * if (fout)
-    * {
-    *     double ek = 0;
-    *     double ek1 = 0;
-    *     double ek2 = 0;
+    * if (fout){
+    *     double ekb_1 = 0;
+    *     double ekb_2 = 0;
+    *     double ekb_3 = 0;
     *     double y = start;
     *     double u = 0;
     * 
@@ -184,95 +181,95 @@ public:
     * 
     *     fout << "Линейная модель: " << std::endl;
     * 
-    *     for (int i = 0; i < 50; ++i)
-    *     {
+    *     for (int i = 0; i < 50; ++i){
     * 
-    *         ek = need - y;
-    *         u = calc_uk(ek, ek1, ek2);
+    *         ekb_1 = need - y;
+    *         u = calc__uk(ekb_1, ekb_2, ekb_3);
     *         y = linear.calculate_pid_model(start, u);
-    *         fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
+    *         fout << "E=" << ekb_1 << " Y=" << y << " U=" << u << std::endl;
     * 
-    *         ek2 = ek1;
-    *         ek1 = ek;
+    *         ekb_3 = ekb_2;
+    *         ekb_2 = ekb_1;
     *     }
     * 
-    *     ek1 = 0;
-    *     ek2 = 0;
+    *     ekb_2 = 0;
+    *     ekb_3 = 0;
     * 
     *     y = start;
-    *     uk_ = 0;
+    *     setpoint_ = 0;
     * 
     *     fout << "Нелинейная модель: " << std::endl;
     * 
     *     nonlinear_model_pid nonLinear(1, 0.0033, 0.525, 0.525, 1);
-    *     for (int i = 0; i < 50; ++i)
-    *     {
-    *         ek = need - y;
-    *         u = calc_uk(ek, ek1, ek2);
+    *     for (int i = 0; i < 50; ++i){
+    *         ekb_1 = need - y;
+    *         u = calc__uk(ekb_1, ekb_2, ekb_3);
     *         y = nonLinear.calculate_pid_model(start, u);
-    *         fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
+    *         fout << "E=" << ekb_1 << " Y=" << y << " U=" << u << std::endl;
     * 
-    *         ek2 = ek1;
-    *         ek1 = ek;
+    *         ekb_3 = ekb_2;
+    *         ekb_2 = ekb_1;
     *     }
     * }
-    * else
-    * {
+    * else{
     *     std::cout << "Не удалось открыть файл для записи результатов." << std::endl;
     * }
     * \endcode
     */
+
     std::ofstream fout("results.txt");
 
-    if (fout)
-    {
-        double ek;
-        double ek1 = 0;
-        double ek2 = 0;
+    if (fout){
+        double ekb_1;
+        double ekb_2 = 0;
+        double ekb_3 = 0;
         double y = start;
         double u;
 
         linear_model_pid linear(0.333, 0.667, 1);
-        fout << "Линейная модель: " << std::endl;
-        for (int i = 0; i < 50; ++i)
-        {
-            ek = need - y;
-            u = calc_uk(ek, ek1, ek2);
-            y = linear.calculate_pid_model(start, u);
-            fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
 
-            ek2 = ek1;
-            ek1 = ek;
+        fout << "Линейная модель: " << std::endl;
+
+        for (int i = 0; i < 50; ++i){
+            ekb_1 = need - y;
+
+            u = calc__uk(ekb_1, ekb_2, ekb_3);
+            y = linear.calculate_pid_model(start, u);
+
+            fout << "E=" << ekb_1 << " Y=" << y << " U=" << u << std::endl;
+
+            ekb_3 = ekb_2;
+            ekb_2 = ekb_1;
         }
 
-        ek1 = 0;
-        ek2 = 0;
+        ekb_2 = 0;
+        ekb_3 = 0;
         y = start;
-        uk_ = 0;
+        setpoint_ = 0;
 
         fout << "Нелинейная модель: " << std::endl;
+
         nonlinear_model_pid nonLinear(1, 0.0033, 0.525, 0.525, 1);
 
-        for (int i = 0; i < 50; ++i)
-        {
-            ek = need - y;
-            u = calc_uk(ek, ek1, ek2);
+        for (int i = 0; i < 50; ++i){
+            ekb_1 = need - y;
+
+            u = calc__uk(ekb_1, ekb_2, ekb_3);
             y = nonLinear.calculate_pid_model(start, u);
-            fout << "E=" << ek << " Y=" << y << " U=" << u << std::endl;
+
+            fout << "E=" << ekb_1 << " Y=" << y << " U=" << u << std::endl;
             
-            ek2 = ek1;
-            ek1 = ek;
+            ekb_3 = ekb_2;
+            ekb_2 = ekb_1;
         }
     }
-    else
-        {
+    else{
             std::cout << "Не удалось открыть файл для записи результатов." << std::endl;
         }
     }
 };
 
-int main()
-{
+int main(){
     /**
     * \brief Главная функция main
     *
@@ -288,8 +285,12 @@ int main()
     * \endcode
     */
     setlocale(0, "");
+
     Regulator object(10, 10, 40, 0.1);
+
     object.pid_calculate_write(5, 2);
+
     std::cout << "Данные были сохранены в файл results.txt" << std::endl;
+
     return 0;
 }
