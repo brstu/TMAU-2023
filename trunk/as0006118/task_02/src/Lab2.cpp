@@ -15,6 +15,21 @@
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calculate_pid_model
 * и от которого наследуются классы LinearModelPID и NonlinearModelPID
 */
+class AbstractModelPID
+{
+public:
+    virtual ~AbstractModelPID() = default;
+
+    /**
+    * \brief Виртуальная функция, переопределенная в дочерних классах LinearModelPID и NonlinearModelPID
+    *
+    * Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели.
+    * \param curr_temp Температура помещения
+    * \param warm_input Входящее тепло
+    */
+    virtual double calculate_pid_model(double curr_temp, double warm_input) = 0;
+};
+
 
 /**
 * \class NonlinearModelPID
@@ -22,11 +37,9 @@
 *
 * Дочерний класс от AbstractModelPID, который реализует нелинейную модель через переопределённую функцию calculate_pid_model
 */
-
 class NonlinearModelPID : public AbstractModelPID
 {
 private:
-
     double a_;         ///< Коэффициент
     double b_;         ///< Коэффициент
     double c__;         ///< Коэффициент
@@ -61,20 +74,6 @@ public:
         prevW__ = warm_input;
         return nextY__;
     }
-};
-class AbstractModelPID
-{
-public:
-    virtual ~AbstractModelPID() = default;
-
-    /**
-    * \brief Виртуальная функция, переопределенная в дочерних классах LinearModelPID и NonlinearModelPID
-    *
-    * Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели.
-    * \param curr_temp Температура помещения
-    * \param warm_input Входящее тепло
-    */
-    virtual double calculate_pid_model(double curr_temp, double warm_input) = 0;
 };
 
 
