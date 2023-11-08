@@ -1,0 +1,39 @@
+Linear model: 0.875
+Nonlinear model: -0.0166427
+------------------------
+time step: 2
+Linear model: 1.0704
+Nonlinear model: 0.173381
+------------------------
+time step: 3
+Linear model: 1.2768
+Nonlinear model: 0.34965
+------------------------
+time step: 4
+Linear model: 1.53988
+Nonlinear model: 0.447306
+------------------------
+time step: 5
+Linear model: 1.8395
+Nonlinear model: 0.503951
+------------------------
+time step: 6
+Linear model: 2.10472
+Nonlinear model: 0.550198
+------------------------
+time step: 7
+Linear model: 2.3096
+Nonlinear model: 0.580401
+------------------------
+time step: 8
+Linear model: 2.46419
+Nonlinear model: 0.598937
+------------------------
+time step: 9
+Linear model: 2.57019
+Nonlinear model: 0.609924
+------------------------
+time step: 10
+Linear model: 2.63462
+Nonlinear model: 0.614628
+------------------------
