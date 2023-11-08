@@ -18,7 +18,7 @@
 
 ---
 
-**Задание**:
+Задание:
 
 Let's get some object to be controlled. We want to control its temperature, which can be described by this differential equation:
 
@@ -33,11 +33,11 @@ $$\Large y_{\tau+1}=ay_{\tau}-by_{\tau-1}^2+cu_{\tau}+d\sin(u_{\tau-1})$$ (3)
 
 where $\tau$ – time discrete moments ($1,2,3{\dots}n$); $a,b,c,d$ – some constants.
 
-Task is to write program (**С++**), which simulates this object temperature.
+Task is to write program (С++), which simulates this object temperature.
 
-**Код решения:**
+Код решения:
 
-``` C++
+ C++
 #include <iostream>
 
 using namespace std;
@@ -121,7 +121,7 @@ int main()
 
 Результаты работы программы:
 
-``` bash
+ bash
 Input object temperature: 5
 Input warm:10
 Input time limit:10
