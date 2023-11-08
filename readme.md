@@ -8,6 +8,7 @@
 4. Дополнительное (необязательное) задание [#2](https://github.com/platisd/duplicate-code-detection-tool/issues/27)*.
 5. Основное задание [#3](./tasks/task_03/readme.md).
 6. Основное задание [#4](./tasks/task_04/readme.md).
+7. Дополнительное (необязательное) задание [#5](./tasks/task_05/readme.md).
 
 ## Успеваемость
 
