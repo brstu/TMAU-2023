@@ -8,23 +8,23 @@ class TemperatureController
 	const double B = 0.9;
 	const double C = 1.7;
 	const double D = 1;
-	double time=0;
-	double temperature=0;
-	double warm=0;
+	double time;
+	double temperature;
+	double warm;
 
 
 
 public:
-	TemperatureController(double time, double temperature, double warm) {
+	TemperatureController(double time=0, double temperature=0, double warm=0) {
 		this->temperature = temperature;
 		this->time = time;
 		this->warm = warm;
 	}
-	double const LinearSimulation() {
+	double LinearSimulation() const {
 		double y = A * this->temperature + B * this->warm;
 		return y;
 	}
-	double const NonLinearSimulation() {
+	double NonLinearSimulation() const {
 		double start_temperature = 1, start_warm = 1;
 		double simulation = A * this->temperature - B * pow(start_temperature, 2) + C * this->warm + D * sin(start_warm);
 		return simulation;
