@@ -8,12 +8,12 @@ class TemperatureController
 	const double B = 0.9;
 	const double C = 1.7;
 	const double D = 1;
-	double temperature;
-	double warm;
 
 
 
 public:
+	double temperature;
+	double warm;
 	TemperatureController(double temperature=0, double warm=0) : temperature(temperature),warm(warm) {
 	}
 	double LinearSimulation() const {
