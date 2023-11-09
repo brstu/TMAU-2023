@@ -14,8 +14,7 @@ class TemperatureController
 
 public:
 
-	TemperatureController(double temperature=0, double warm=0) : temperature(temperature),warm(warm) {
-	}
+	TemperatureController(double temperature, double warm) : temperature(temperature),warm(warm) {}
 	double LinearSimulation() const {
 		double y = A * this->temperature + B * this->warm;
 		return y;
