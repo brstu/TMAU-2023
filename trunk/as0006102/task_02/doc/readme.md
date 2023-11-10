@@ -30,7 +30,7 @@
 
 <p>С помощью Doxygen была создана документация программы.</p>
 
-2. Документация [doxygen.md](/doxygen.md).
+2. Документация [doxygen.md](doxygen.md).
 
 <p> <strong> Графики: </strong> </p>
 <p> <strong> Линейная модель: </strong> </p>
