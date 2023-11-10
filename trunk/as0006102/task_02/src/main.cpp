@@ -199,9 +199,7 @@ int main() {
     };
 
     array<const char*, 2> model_names = { "Linear Model", "Nonlinear Model" }; /// названия моделей
-    ModelParams model_params[2]; /// массив для хранения параметров модели
-
-    /// цикл по моделям и ввод их параметров
+    array<ModelParams, 2> model_params;/// цикл по моделям и ввод их параметров
     for (int i = 0; i < 2; i++) {
         cout << "----------Input " << model_names[i] << "'s constant parameters----------" << endl;
         input_parametrs(model_params[i].alpha, model_params[i].beta, model_params[i].gamma, model_params[i].delta, i);
