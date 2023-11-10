@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <array>
 using namespace std;
 
 
@@ -124,13 +125,13 @@ private:
     double calculate_Uk(double error)
     {
         /// используем массив для хранения ошибок и цикл для вычисления Uk
-        static double errors[3] = { 0, 0, 0 }; /// хранение последних трех ошибок
+        array<double, 3> errors = { 0, 0, 0 }; /// хранение последних трех ошибок
         errors[2] = errors[1]; /// сдвиг ошибок влево
         errors[1] = errors[0];
         errors[0] = error; /// хранение текущей ошибки
 
         /// коэффициенты для формулы PID
-        double q[3] = { K * (1 + TD / T0), -K * (1 + 2 * TD / T0 - T0 / T), K * TD / T0 };
+        array<double, 3> q = { K * (1 + TD / T0), -K * (1 + 2 * TD / T0 - T0 / T), K * TD / T0 };
 
         /// цикл по ошибкам и добавление их произведений с коэффициентами к Uk
         for (int i = 0; i < 3; i++) {
@@ -175,12 +176,12 @@ public:
 void input_parametrs(double& alpha, double& beta, double& gamma, double& delta, bool is_nonlinear_Model) {
 
     /// массив для хранения параметров и цикл для их ввода
-    static const char* names[] = { "alpha", "beta", "gamma", "delta" }; // названия параметров
-    static const int num_params[] = { 2, 4 }; // количество параметров для каждого типа модели
+    array<const char*, 4> names = { "alpha", "beta", "gamma", "delta" }; // названия параметров
+    array<const int, 3> num_params = { 2, 4 }; // количество параметров для каждого типа модели
     int n = num_params[is_nonlinear_Model]; // получение количества параметров в зависимости от типа модели
 
     /// создание массива для хранения параметров по ссылке
-    double* params[] = { &alpha, &beta, &gamma, &delta };
+    array<double*, 4> params = { &alpha, &beta, &gamma, &delta };
 
     /// цикл по параметрам и их ввод с использованием их названий
     for (int i = 0; i < n; i++) {
@@ -197,7 +198,7 @@ int main() {
         double delta;
     };
 
-    static const char* model_names[] = { "Linear Model", "Nonlinear Model" }; /// названия моделей
+    array<const char*, 2> model_names = { "Linear Model", "Nonlinear Model" }; /// названия моделей
     ModelParams model_params[2]; /// массив для хранения параметров модели
 
     /// цикл по моделям и ввод их параметров
