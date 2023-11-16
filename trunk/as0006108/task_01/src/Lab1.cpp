@@ -38,12 +38,11 @@ void calculateLinearModel(int time, double yCurrent,double inputWarm)
 
 void calculateNonlinearModel(int time, double yCurrent, double inputWarm)
 {
-	double yNext;
 	double yPrev = 0.0;
 	double inputWarmPrev = 0.0;
 	while (time--)
 	{
-		yNext = (a * yCurrent) - (bNonlin * pow(yPrev, 2)) + (c * inputWarm) + (d * sin(inputWarmPrev));
+		double yNext = (a * yCurrent) - (bNonlin * pow(yPrev, 2)) + (c * inputWarm) + (d * sin(inputWarmPrev));
 		std::cout << yNext << std::endl;
 		yPrev = yCurrent;
 		yCurrent = yNext;
