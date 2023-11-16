@@ -28,7 +28,7 @@ int main()
 }
 void calculateLinearModel(int time, double yCurrent,double inputWarm)
 {
-	double yNext = 0.0;
+	double yNext;
 	while (time--)
 	{
 		yNext = (a * yCurrent) + (bLin * inputWarm);
@@ -39,7 +39,7 @@ void calculateLinearModel(int time, double yCurrent,double inputWarm)
 
 void calculateNonlinearModel(int time, double yCurrent, double inputWarm)
 {
-	double yNext = 0.0;
+	double yNext;
 	double yPrev = 0.0;
 	double inputWarmPrev = 0.0;
 	while (time--)
