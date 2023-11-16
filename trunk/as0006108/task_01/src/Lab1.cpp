@@ -1,12 +1,13 @@
 ﻿#include <iostream>
 #include <cmath>
-const float a = 1, bLin = 1, bNonlin = 0.00001, c = bLin, d = 0.1;
-void calculateLinearModel(int time, float yCurrent, const float& inputWarm);
-void calculateNonlinearModel(int time, float yCurrent, float inputWarm);
+
+double a = 1, bLin = 1, bNonlin = 0.00001, c = bLin, d = 0.1;
+void calculateLinearModel(int time, double yCurrent, double& inputWarm);
+void calculateNonlinearModel(int time, double yCurrent, double inputWarm);
 int main()
 {
 	setlocale(0, "");
-	float yCurrent = 0.0, inputWarm = 0.0;
+	double yCurrent = 0.0, inputWarm = 0.0;
 	int time = 0;
 	do
 	{
@@ -20,9 +21,9 @@ int main()
 	calculateNonlinearModel(time, yCurrent, inputWarm);
 	return 0;
 }
-void calculateLinearModel(int time, float yCurrent, const float& inputWarm)
+void calculateLinearModel(int time, double yCurrent, double& inputWarm)
 {
-	float yNext = 0.0;
+	double yNext = 0.0;
 	while (time--)
 	{
 		yNext = (a * yCurrent) + (bLin * inputWarm);
@@ -31,9 +32,9 @@ void calculateLinearModel(int time, float yCurrent, const float& inputWarm)
 	}
 }
 
-void calculateNonlinearModel(int time, float yCurrent, float inputWarm)
+void calculateNonlinearModel(int time, double yCurrent, double inputWarm)
 {
-	float yNext = 0.0, yPrev = 0.0, inputWarmPrev = 0.0;
+	double yNext = 0.0, yPrev = 0.0, inputWarmPrev = 0.0;
 	while (time--)
 	{
 		yNext = (a * yCurrent) - (bNonlin * pow(yPrev, 2)) + (c * inputWarm) + (d * sin(inputWarmPrev));
