@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include <cmath>
 
-double a = 1, bLin = 1, bNonlin = 0.00001, c = bLin, d = 0.1;
-void calculateLinearModel(int time, double yCurrent, double& inputWarm);
-void calculateNonlinearModel(int time, double yCurrent, double inputWarm);
+const double a = 1, bLin = 1, bNonlin = 0.00001, c = bLin, d = 0.1;
+void calculateLinearModel(int time, double yCurrent, const double& inputWarm);
+void calculateNonlinearModel(int time, double yCurrent, const double inputWarm);
 int main()
 {
 	setlocale(0, "");
