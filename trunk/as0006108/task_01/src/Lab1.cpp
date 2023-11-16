@@ -28,10 +28,9 @@ int main()
 }
 void calculateLinearModel(int time, double yCurrent,double inputWarm)
 {
-	double yNext;
 	while (time--)
 	{
-		yNext = (a * yCurrent) + (bLin * inputWarm);
+		double yNext = (a * yCurrent) + (bLin * inputWarm);
 		std::cout << yNext << std::endl;
 		yCurrent = yNext;
 	}
