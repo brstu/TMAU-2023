@@ -6,7 +6,7 @@ const double bLin = 1;
 const double bNonlin = 0.00001;
 const double c = bLin;
 const double d = 0.1;
-void calculateLinearModel(int time, double yCurrent, double& inputWarm);
+void calculateLinearModel(int time, double yCurrent, double inputWarm);
 void calculateNonlinearModel(int time, double yCurrent, double inputWarm);
 int main()
 {
@@ -26,7 +26,7 @@ int main()
 	calculateNonlinearModel(time, yCurrent, inputWarm);
 	return 0;
 }
-void calculateLinearModel(int time, double yCurrent,const double & inputWarm)
+void calculateLinearModel(int time, double yCurrent,double inputWarm)
 {
 	double yNext = 0.0;
 	while (time--)
