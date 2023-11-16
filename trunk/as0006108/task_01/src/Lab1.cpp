@@ -26,7 +26,7 @@ int main()
 	calculateNonlinearModel(time, yCurrent, inputWarm);
 	return 0;
 }
-void calculateLinearModel(int time, double yCurrent, double& inputWarm)
+void calculateLinearModel(int time, double yCurrent, const double& inputWarm)
 {
 	double yNext = 0.0;
 	while (time--)
