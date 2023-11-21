@@ -11,7 +11,10 @@ public:
 //Класс Non_lin_Model является производным от Math_Model и представляет нелинейную математическую модель.- Коэффициенты coefficientA, coefficientB, coefficientC и coefficientD в классе Non_lin_Model используются для вычисления выходного значения модели на основе текущего значения, предыдущего значения и входного значения с помощью формулы coefficientA * currentOutput - coefficientB * pow(previousOutput, 2) + coefficientC * input + coefficientD * sin(input).
 class Non_lin_Model : public Math_Model {
 private:
-   double coefA,coefB,coefC,coefD;
+    double coefA;
+    double coefB;
+    double coefC;
+    double coefD;
 public:
    Non_lin_Model(double coefA, double coefB, double coefC, double coefD)
         : coefA(coefA), coefB(coefB), coefC(coefC), coefD(coefD) {}
@@ -29,7 +32,9 @@ public:
 //The PID_Regulator class represents the implementation of a PID regulator. It contains the coefficients gainP, gainI and gainD, which correspond to the proportional, integral and differential components of the controller, respectively.
 class PIDRegulator{
 private:
-   double gainP,gainI,gainD;
+    double gainP;
+    double gainI;
+    double gainD;
    double previousError = 0.0;
    double integralError = 0.0;
    double previousControlSignal = 0.0;
