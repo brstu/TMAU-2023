@@ -2,11 +2,14 @@
 #include <vector>
 #include <math.h>
 
-double sy1 = 20.0; 
-double sy2 = 20.5;
+const double sy1 = 20.0; 
+const double sy2 = 20.5;
 
 class Synchronizable
 {
+protected:
+    virtual ~Synchronizable() = default;
+public:
     /**
      * \brief   Required function to initialize the simulation process.
      *
@@ -20,10 +23,10 @@ class Synchronizable
      *								The size is determined for each specific
      *								class.
      */
-    virtual void sync(double* arrStart) = 0;
+    virtual void sync(std::vector <double> arrStart) = 0;
 };
 
-class Model : Synchronizable
+class Model : protected Synchronizable
 {
 private:
 
@@ -37,7 +40,11 @@ private:
     double d;	///< Parameter d
 
 public:
-    explicit Model(double* con, double strt1, double strt2) {
+    explicit Model(std::vector <double> con, double strt1, double strt2) {
+        init(con, strt1, strt2);
+    };
+
+    void init(std::vector <double> con, double strt1, double strt2) {
         this->a = con[0];
         this->b = con[1];
         this->c = con[2];
@@ -49,7 +56,7 @@ public:
     };
 
     ///Should recive 3 starting parameters
-    void sync(double* arrStart) override {
+    void sync(std::vector <double> arrStart) override {
         this->u = arrStart[0];
         this->u_p = arrStart[1];
     };
@@ -85,12 +92,11 @@ public:
     double stepModelingL(double u_n) {
         u = u_n;
         double y_n = a * y - b * u;
-        double y = y_n;
-        return y;
+        return y_n;
     };
 };
 
-class Regulator : public Synchronizable
+class Regulator : protected Synchronizable
 {
 private:
     double ek;		///< Parameter ek
@@ -103,7 +109,7 @@ private:
     double T0;		///< Parameter T0
     double q0;		///< Parameter q0
     double q1;		///< Parameter q1
-    double q2;		///< Parameter q2ч
+    double q2;		///< Parameter q2
 
 public:
     /**
@@ -115,7 +121,11 @@ public:
      * \param[in]	con		Array of simulation constants.
      * \param[in]	start	Initial approximation
      */
-    explicit Regulator(double* con, double start) {
+    explicit Regulator(std::vector <double> con, double start) {
+        init(con, start);
+    };
+
+    void init(std::vector <double> con, double start) {
         this->K = con[0];
         this->T = con[1];
         this->Td = con[2];
@@ -139,7 +149,7 @@ public:
     };
 
     ///Should recive 3 starting parameters
-    void sync(double* arrStart) override {
+    void sync(std::vector <double>  arrStart) override {
         this->ek = arrStart[0];
         this->ek_p = arrStart[1];
         this->ek_pp = arrStart[2];
@@ -149,7 +159,7 @@ public:
      * \brief   Computate and define modelling variation by
      *			simulation constants.
      */
-    double deltaU() {
+    const double deltaU() {
         return(q0 * ek + q1 * ek_p + q2 * ek_pp);
     };
 
@@ -184,9 +194,9 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Nonlineal model" << std::endl;
-    double arr_m1[4] = { 1, 0.01, 0.5, 0.7 };
+    std::vector <double> arr_m1 = { 1, 0.01, 0.5, 0.7 };
     Model model1(arr_m1, sy1, sy2);
-    double arr_aux1[2] = { u[0], u[1] };
+    std::vector <double> arr_aux1 = { u[0], u[1] };
     model1.sync(arr_aux1);//////////////////////////////////////////////////
     std::vector <double> vecMod1;
     vecMod1.push_back(sy1); std::cout << vecMod1.back() << "\t";
@@ -198,9 +208,9 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Nonlineal model control" << std::endl;
-    double arr1[4] = { 0.1, 0.09, 0.007, 0.001 };
+    std::vector <double> arr1 = { 0.1, 0.09, 0.007, 0.001 };
     Regulator reg1(arr1, 20);
-    double arr_aux2[3] = { 0, 0, 0 };
+    std::vector <double> arr_aux2 = { 0, 0, 0 };
     reg1.sync(arr_aux2);
     std::vector <double> vecReg1;
     for (int i = 0; i < u.size(); i++) {
@@ -210,7 +220,7 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Lineal model" << std::endl;
-    double arr_m2[4] = { 1.15, 0.007, 0, 0 };
+    std::vector <double> arr_m2 = { 1.15, 0.007, 0, 0 };
     Model model2(arr_m2, sy1, sy2);
     model1.sync(arr_aux1);
     std::vector <double> vecMod2;
@@ -222,14 +232,14 @@ int main()
     std::cout << std::endl;
 
     std::cout << "Lineal model control" << std::endl;
-    double arr2[4] = { 0.6, 0.8, 0.1, 0.01 };
+    std::vector <double> arr2 = { 0.6, 0.8, 0.1, 0.01 };
     Regulator reg2(arr2, 20);
-    double arr_aux3[3] = { 15, 19, 18 };
+    std::vector <double>  arr_aux3 = { 15, 19, 18 };
     reg2.sync(arr_aux3);
     std::vector <double> vecReg2;
     for (int i = 0; i < u.size(); i++) {
         vecReg2.push_back(reg2.step(vecMod2[i]));
         std::cout << vecReg2[i] << "\t";
-    };
+    }
 
-};
+}
