@@ -23,7 +23,7 @@ public:
      *								The size is determined for each specific
      *								class.
      */
-    virtual void sync(std::vector <double> arrStart) = 0;
+    virtual void sync(std::vector <double>& arrStart) = 0;
 };
 
 class Model : protected Synchronizable
@@ -56,7 +56,7 @@ public:
     };
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double> arrStart) override {
+    void sync(std::vector <double>& arrStart) override {
         this->u = arrStart[0];
         this->u_p = arrStart[1];
     };
@@ -149,7 +149,7 @@ public:
     };
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double>  arrStart) override {
+    void sync(std::vector <double> &arrStart) override {
         this->ek = arrStart[0];
         this->ek_p = arrStart[1];
         this->ek_pp = arrStart[2];
@@ -159,7 +159,7 @@ public:
      * \brief   Computate and define modelling variation by
      *			simulation constants.
      */
-    const double deltaU() {
+    double deltaU() const {
         return(q0 * ek + q1 * ek_p + q2 * ek_pp);
     };
 
