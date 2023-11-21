@@ -17,8 +17,8 @@ double NotLineModel(double Yt, double PrevioustYt, double Ut, double PrevioustUt
 //program starting point
 int main()
 {//setlocale(LC_ALL, "Russian");////allow the use of Russian language//upd: Initially I wanted to make the interface Russian-language, but I am confused that Gitkraken does not recognize Russian letters, and therefore all comments and results of the program were translated into English and presented in the report in the appropriate form
-    double Yt; double PreviousYt; double Ut; double PreviousUt; double y0; double u0; double aL; double bL; //выделим память для расчетных переменных
-    int LineIter; int NotLineIter;//выделим еще памяти для переменных - счетчиков
+    double Yt; double PreviousYt; double Ut; double PreviousUt; double y0; double u0; double aL; double bL; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    int LineIter; int NotLineIter;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     //get the input values ??a and b
     cout << "Linear Model Parameters" << endl;
     cout << "Enter a:\t";

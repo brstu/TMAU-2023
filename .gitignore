@@ -34,3 +34,5 @@
 # Directories to ignore
 .vs/
 out/
+
+readme.md
