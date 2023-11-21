@@ -1,10 +1,175 @@
-﻿#include "model.h"
-#include "regulator.h"
 #include <iostream>
 #include <vector>
+#include <math.h>
 
 double sy1 = 20.0; 
 double sy2 = 20.5;
+
+class Synchronizable
+{
+    /**
+     * \brief   Required function to initialize the simulation process.
+     *
+     * \details The function places several values of a sequence to calculate
+     *          a first approximation. The number of values is determined by
+     *			the mathematical model, and is fixed in the implementation of
+     *			a particular class, and is also taken into account when calling
+     *			a method.
+     *
+     * \param[in]     arrStart		Array of the first numbers of the sequence.
+     *								The size is determined for each specific
+     *								class.
+     */
+    virtual void sync(double* arrStart) = 0;
+};
+
+class Model : Synchronizable
+{
+private:
+
+    double u;	///< Parameter u
+    double u_p;	///< Parameter u_p
+    double y;	///< Parameter y
+    double y_p;	///< Parameter y_p
+    double a;	///< Parameter a
+    double b;	///< Parameter b
+    double c;	///< Parameter c
+    double d;	///< Parameter d
+
+public:
+    explicit Model(double* con, double strt1, double strt2) {
+        this->a = con[0];
+        this->b = con[1];
+        this->c = con[2];
+        this->d = con[3];
+        this->y = strt1;
+        this->y_p = strt2;
+        this->u = 0;
+        this->u_p = 0;
+    };
+
+    ///Should recive 3 starting parameters
+    void sync(double* arrStart) override {
+        this->u = arrStart[0];
+        this->u_p = arrStart[1];
+    };
+
+    /**
+     * \brief   Computate next state calculation operation linear
+     *			system
+     *
+     * \param[in]	u_n		The following value of the measure of
+     *						external influence on the system.
+     *
+     * \return		next state calculation operation linear system
+     */
+    double stepModelingNL(double u_n) {
+        u_p = u;
+        u = u_n;
+        double y_n = (a * y - b * pow(y_p, 2) + c * u + d * sin(u_p));
+        y_p = y;
+        y = y_n;
+        return y;
+    };
+
+    /**
+     * \brief   Computate next state calculation operation
+     *			non-linear system
+     *
+     * \param[in]	u_n		The following value of the measure of
+     *						external influence on the system.
+     *
+     * \return		next state calculation operation non-linear
+     *				system
+     */
+    double stepModelingL(double u_n) {
+        u = u_n;
+        double y_n = a * y - b * u;
+        double y = y_n;
+        return y;
+    };
+};
+
+class Regulator : public Synchronizable
+{
+private:
+    double ek;		///< Parameter ek
+    double ek_p;	///< Parameter ek_p
+    double ek_pp;	///< Parameter ek_pp
+    double u_p;		///< Parameter u_p
+    double K;		///< Parameter K
+    double T;		///< Parameter T
+    double Td;		///< Parameter Td
+    double T0;		///< Parameter T0
+    double q0;		///< Parameter q0
+    double q1;		///< Parameter q1
+    double q2;		///< Parameter q2ч
+
+public:
+    /**
+     * \brief   Class constructor.
+     *
+     * \note    After initializing the class object, required
+     *			to complete the synchronization procedure.
+     *
+     * \param[in]	con		Array of simulation constants.
+     * \param[in]	start	Initial approximation
+     */
+    explicit Regulator(double* con, double start) {
+        this->K = con[0];
+        this->T = con[1];
+        this->Td = con[2];
+        this->T0 = con[3];
+        this->u_p = start;
+        defConstants();
+        this->ek = 0;
+        this->ek_p = 0;
+        this->ek_pp = 0;
+        this->u_p = 0;
+    };
+
+    /**
+     * \brief   Computate and define simulation constants by setting
+     *			parameters.
+     */
+    void defConstants() {
+        this->q0 = K * (1 + Td / T0);
+        this->q1 = -K * (1 + 2 * Td / T0 - T0 / T);
+        this->q2 = K * Td / T0;
+    };
+
+    ///Should recive 3 starting parameters
+    void sync(double* arrStart) override {
+        this->ek = arrStart[0];
+        this->ek_p = arrStart[1];
+        this->ek_pp = arrStart[2];
+    };
+
+    /**
+     * \brief   Computate and define modelling variation by
+     *			simulation constants.
+     */
+    double deltaU() {
+        return(q0 * ek + q1 * ek_p + q2 * ek_pp);
+    };
+
+    /**
+     * \brief   Iterative operation of computation the next
+     *			model parameter.
+     *
+     * \param[in]	ek_n	Next model state.
+     * \return		This function returns the calculated
+     *				model parameter.
+     */
+    double step(double ek_n) {
+        ek_pp = ek_p;
+        ek_p = ek;
+        ek = ek_n;
+        double u = u_p + deltaU();
+        u_p = u;
+        return u;
+    };
+};
 
 int main()
 {
