@@ -2,7 +2,7 @@
 #include <vector>
 #include <math.h>
 
-const double sy1 = 20.0; 
+const double sy1 = 20.0;
 const double sy2 = 20.5;
 
 class Synchronizable
@@ -40,11 +40,11 @@ private:
     double d;	///< Parameter d
 
 public:
-    explicit Model(std::vector <double> con, double strt1, double strt2) {
+    explicit Model(std::vector <double>& con, double strt1, double strt2) {
         init(con, strt1, strt2);
     };
 
-    void init(std::vector <double> con, double strt1, double strt2) {
+    void init(std::vector <double>& con, double strt1, double strt2) {
         this->a = con[0];
         this->b = con[1];
         this->c = con[2];
@@ -121,11 +121,11 @@ public:
      * \param[in]	con		Array of simulation constants.
      * \param[in]	start	Initial approximation
      */
-    explicit Regulator(std::vector <double> con, double start) {
+    explicit Regulator(std::vector <double>& con, double start) {
         init(con, start);
     };
 
-    void init(std::vector <double> con, double start) {
+    void init(std::vector <double>& con, double start) {
         this->K = con[0];
         this->T = con[1];
         this->Td = con[2];
@@ -149,7 +149,7 @@ public:
     };
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double> &arrStart) override {
+    void sync(std::vector <double>& arrStart) override {
         this->ek = arrStart[0];
         this->ek_p = arrStart[1];
         this->ek_pp = arrStart[2];
@@ -216,7 +216,7 @@ int main()
     for (int i = 0; i < u.size(); i++) {
         vecReg1.push_back(reg1.step(vecMod1[i]));
         std::cout << vecReg1[i] << "\t";
-    };
+    }
     std::cout << std::endl;
 
     std::cout << "Lineal model" << std::endl;
