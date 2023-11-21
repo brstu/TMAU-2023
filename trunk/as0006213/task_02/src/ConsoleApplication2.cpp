@@ -28,6 +28,15 @@ public:
 
 class Model : protected Synchronizable
 {
+    /** /file Model.h
+     *  /brief Temperature simulation module.
+     *
+     *  Сontains a representation of the
+     *	temperature control class.
+     *
+     *  /author Mikhail Liashenko
+     *  /bug No bugs.
+     */
 private:
 
     double u;	///< Parameter u
@@ -44,22 +53,10 @@ public:
         init(con, strt1, strt2);
     };
 
-    void init(std::vector <double>& con, double strt1, double strt2) {
-        this->a = con[0];
-        this->b = con[1];
-        this->c = con[2];
-        this->d = con[3];
-        this->y = strt1;
-        this->y_p = strt2;
-        this->u = 0;
-        this->u_p = 0;
-    };
+    void init(std::vector <double>& con, double strt1, double strt2);
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double>& arrStart) override {
-        this->u = arrStart[0];
-        this->u_p = arrStart[1];
-    };
+    void sync(std::vector <double>& arrStart) override;
 
     /**
      * \brief   Computate next state calculation operation linear
@@ -70,14 +67,7 @@ public:
      *
      * \return		next state calculation operation linear system
      */
-    double stepModelingNL(double u_n) {
-        u_p = u;
-        u = u_n;
-        double y_n = (a * y - b * pow(y_p, 2) + c * u + d * sin(u_p));
-        y_p = y;
-        y = y_n;
-        return y;
-    };
+    double stepModelingNL(double u_n);
 
     /**
      * \brief   Computate next state calculation operation
@@ -89,15 +79,22 @@ public:
      * \return		next state calculation operation non-linear
      *				system
      */
-    double stepModelingL(double u_n) {
-        u = u_n;
-        double y_n = a * y - b * u;
-        return y_n;
-    };
+    double stepModelingL(double u_n);
 };
 
 class Regulator : protected Synchronizable
 {
+    /** /file Regulator.h
+     *  /brief Standart PID Regulator.
+     *
+     *  Contains the implementation of a PID
+     *  controller, methods for its creation,
+     *  configuration, and use.
+     *
+     *  /author Mikhail Liashenko
+     *  /bug No bugs.
+     */
+
 private:
     double ek;		///< Parameter ek
     double ek_p;	///< Parameter ek_p
@@ -125,43 +122,22 @@ public:
         init(con, start);
     };
 
-    void init(std::vector <double>& con, double start) {
-        this->K = con[0];
-        this->T = con[1];
-        this->Td = con[2];
-        this->T0 = con[3];
-        this->u_p = start;
-        defConstants();
-        this->ek = 0;
-        this->ek_p = 0;
-        this->ek_pp = 0;
-        this->u_p = 0;
-    };
+    void init(std::vector <double>& con, double start);
 
     /**
      * \brief   Computate and define simulation constants by setting
      *			parameters.
      */
-    void defConstants() {
-        this->q0 = K * (1 + Td / T0);
-        this->q1 = -K * (1 + 2 * Td / T0 - T0 / T);
-        this->q2 = K * Td / T0;
-    };
+    void defConstants();
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double>& arrStart) override {
-        this->ek = arrStart[0];
-        this->ek_p = arrStart[1];
-        this->ek_pp = arrStart[2];
-    };
+    void sync(std::vector <double>& arrStart) override;
 
     /**
      * \brief   Computate and define modelling variation by
      *			simulation constants.
      */
-    double deltaU() const {
-        return(q0 * ek + q1 * ek_p + q2 * ek_pp);
-    };
+    double deltaU() const;
 
     /**
      * \brief   Iterative operation of computation the next
@@ -171,14 +147,7 @@ public:
      * \return		This function returns the calculated
      *				model parameter.
      */
-    double step(double ek_n) {
-        ek_pp = ek_p;
-        ek_p = ek;
-        ek = ek_n;
-        double u = u_p + deltaU();
-        u_p = u;
-        return u;
-    };
+    double step(double ek_n);
 };
 
 int main()
@@ -243,3 +212,72 @@ int main()
     }
 
 }
+
+    void Model::init(std::vector <double>& con, double strt1, double strt2) {
+    this->a = con[0];
+    this->b = con[1];
+    this->c = con[2];
+    this->d = con[3];
+    this->y = strt1;
+    this->y_p = strt2;
+    this->u = 0;
+    this->u_p = 0;
+};
+
+    void Model::sync(std::vector <double>& arrStart) {
+        this->u = arrStart[0];
+        this->u_p = arrStart[1];
+    };
+
+    double Model::stepModelingNL(double u_n) {
+        u_p = u;
+        u = u_n;
+        double y_n = (a * y - b * pow(y_p, 2) + c * u + d * sin(u_p));
+        y_p = y;
+        y = y_n;
+        return y;
+    };
+
+    double Model::stepModelingL(double u_n) {
+        u = u_n;
+        double y_n = a * y - b * u;
+        return y_n;
+    };
+
+    void Regulator::init(std::vector <double>& con, double start) {
+        this->K = con[0];
+        this->T = con[1];
+        this->Td = con[2];
+        this->T0 = con[3];
+        this->u_p = start;
+        defConstants();
+        this->ek = 0;
+        this->ek_p = 0;
+        this->ek_pp = 0;
+        this->u_p = 0;
+    };
+
+    void Regulator::defConstants() {
+        this->q0 = K * (1 + Td / T0);
+        this->q1 = -K * (1 + 2 * Td / T0 - T0 / T);
+        this->q2 = K * Td / T0;
+    };
+
+    void Regulator::sync(std::vector <double>& arrStart) {
+        this->ek = arrStart[0];
+        this->ek_p = arrStart[1];
+        this->ek_pp = arrStart[2];
+    };
+
+    double Regulator::deltaU() const {
+        return(q0 * ek + q1 * ek_p + q2 * ek_pp);
+    };
+
+    double Regulator::step(double ek_n) {
+        ek_pp = ek_p;
+        ek_p = ek;
+        ek = ek_n;
+        double u = u_p + deltaU();
+        u_p = u;
+        return u;
+    };
