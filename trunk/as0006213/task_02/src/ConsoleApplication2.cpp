@@ -87,7 +87,7 @@ class Regulator : protected Synchronizable
     /** /file Regulator.h
      *  /brief Standart PID Regulator.
      *
-     *  Contains the implementation of a PID
+     *  Contains the representation of a PID
      *  controller, methods for its creation,
      *  configuration, and use.
      *
@@ -213,6 +213,16 @@ int main()
 
 }
 
+/** /file Model.cpp
+ *  /brief Temperature simulation module.
+ *
+ *  Сontains a implementation of the
+ *	temperature control class.
+ *
+ *  /author Mikhail Liashenko
+ *  /bug No bugs.
+ */
+
     void Model::init(std::vector <double>& con, double strt1, double strt2) {
     this->a = con[0];
     this->b = con[1];
@@ -243,6 +253,17 @@ int main()
         double y_n = a * y - b * u;
         return y_n;
     };
+
+/** /file Regulator.h
+ *  /brief Standart PID Regulator.
+ *
+ *  Contains the implementation of a PID
+ *  controller, methods for its creation,
+ *  configuration, and use.
+ *
+ *  /author Mikhail Liashenko
+ *  /bug No bugs.
+ */
 
     void Regulator::init(std::vector <double>& con, double start) {
         this->K = con[0];
