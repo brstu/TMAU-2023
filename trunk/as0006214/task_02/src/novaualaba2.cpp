@@ -32,19 +32,19 @@ public:
 //The PID_Regulator class represents the implementation of a PID regulator. It contains the coefficients gainP, gainI and gainD, which correspond to the proportional, integral and differential components of the controller, respectively.
 class PIDRegulator{
 private:
-    double gainP;
-    double gainI;
-    double gainD;
+   double P;
+   double I;
+   double D;
    double previousError = 0.0;
    double integralError = 0.0;
    double previousControlSignal = 0.0;
 public:
-   explicit PIDRegulator(double gainP, double gainI, double gainD)
-        : gainP(gainP), gainI(gainI), gainD(gainD) {}
+   explicit PIDRegulator(double P, double I, double D)
+        : P(P), I(I), D(D) {}
    double calcOutput(double currentError) {
        integralError += currentError;
        double derivativeError = currentError - previousError;
-       double controlSignal = gainP * currentError + gainI * integralError + gainD * derivativeError;
+       double controlSignal = P * currentError + I * integralError + D * derivativeError;
        previousError = currentError;
        previousControlSignal = controlSignal;
        return controlSignal;}};
@@ -60,16 +60,13 @@ int main() {
      double currentOutput_nonlinear = 0.0;
      double previousOutput_nonlinear = 0.0;
      double input = 1.0;
-
      Non_lin_Model nonlinModel(coefA_nonlinear, coefB_nonlinear, coefC_nonlinear, coefD_nonlinear);
      Lin_Model linModel(coefA_linear, coefB_linear);
      PIDRegulator pidRegulator(1.0, 0.5, 0.2);
-
      vector<double> curOutput_linear_values;
      vector<double> curOutput_nonlinear_values;
      vector<double> ervalues;
      vector<double> controlSig_values;
-
      for (int t = 1; t <= 10; t++) {
          currentOutput_linear = linModel.calc_Output(currentOutput_linear, 0, input);
          currentOutput_nonlinear = nonlinModel.calc_Output(currentOutput_nonlinear, previousOutput_nonlinear, input);
