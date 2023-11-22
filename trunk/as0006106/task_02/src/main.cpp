@@ -32,6 +32,16 @@ public:
     virtual ~Model() = default;
 };
 
+void input_parametrs(double& a, double& b, double& c, double& d, bool is_nonlinearModel) {
+
+    if (is_nonlinearModel) {
+        cout << "Введите параметр с: "; cin >> c;
+        cout << "Введите параметр d: "; cin >> d;
+    }
+    cout << "Введите параметр а: "; cin >> a;
+    cout << "Введите параметр d: "; cin >> b;
+
+
 /**
  * @brief Линейная модель контроля температуры
  * 
@@ -169,24 +179,21 @@ public:
     }
 };
 
-void input_parametrs(double &a, double &b, double &c, double &d, bool is_nonlinearModel) {
-   
-    if(is_nonlinearModel) {
-        cout << "Введите параметр с: "; cin >> c;
-        cout << "Введите параметр d: "; cin >> d;
-    }
-    cout << "Введите параметр а: "; cin >> a;
-    cout << "Введите параметр d: "; cin >> b;
 
 
 }
 int main() {
     setlocale(LC_ALL, "Russian");
     const double w = 8;
+
     const double y0 = 3;
+
     double a;
+
     double b;
+
     double c;
+
     double d;
 
 
