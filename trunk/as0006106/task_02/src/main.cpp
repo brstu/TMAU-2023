@@ -32,16 +32,6 @@ public:
     virtual ~Model() = default;
 };
 
-void input_parametrs(double& a, double& b, double& c, double& d, bool is_nonlinearModel) {
-
-    if (is_nonlinearModel) {
-        cout << "Введите параметр с: "; cin >> c;
-        cout << "Введите параметр d: "; cin >> d;
-    }
-    cout << "Введите параметр а: "; cin >> a;
-    cout << "Введите параметр d: "; cin >> b;
-
-
 /**
  * @brief Линейная модель контроля температуры
  * 
@@ -114,6 +104,17 @@ public:
      */
     ~NonlinearModel() override = default;
 };
+
+
+void input_parametrs(double& a, double& b, double& c, double& d, bool is_nonlinearModel) {
+
+    if (is_nonlinearModel) {
+        cout << "Введите параметр с: "; cin >> c;
+        cout << "Введите параметр d: "; cin >> d;
+    }
+    cout << "Введите параметр а: "; cin >> a;
+    cout << "Введите параметр d: "; cin >> b;
+
 
 /**
  * @brief Proportional–integral–derivative регулятор
