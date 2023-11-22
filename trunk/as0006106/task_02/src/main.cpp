@@ -80,16 +80,6 @@ private:
 public:
 
     /**
-     * @brief Конструктор класса NonLinearModel
-     * @param a,b,c,d: some constants
-     */
-    NonlinearModel(double a, double b, double c, double d):
-        a(a),
-        b(b),
-        c(c),
-        d(d) {}
-    
-    /**
      * @brief Этот переопределенный метод для определения температуры по Нелинейной модели
      */
     double simulate_temperature(double Yt, double Uw) final {
@@ -98,6 +88,15 @@ public:
         PreUw = Uw;
         return calc;
     }
+    /**
+     * @brief Конструктор класса NonLinearModel
+     * @param a,b,c,d: some constants
+     */
+    NonlinearModel(double a, double b, double c, double d):
+        a(a),
+        b(b),
+        c(c),
+        d(d) {}
 
     /**
      * @brief Destroy the NonlinearModel object
@@ -124,7 +123,32 @@ private:
     const double T = 10;
     //! Константа дифференциации
     const double TD = 80;
-    
+public:
+
+    /**
+     * @brief Регулятор моделирования
+     *
+     * @param w желаемое значение
+     * @param y0 начальная температура
+     * @param model линейная или нелинейная модель
+     */
+    void Regulate(double w, double y0, Model& model)
+    {
+        double e2 = 0;
+        double y = y0;
+        double e1 = 0;
+
+        for (int i = 1; i <= numOfTimeModeling; i++) {
+            double e;
+            e = w - y;
+            Uk = calculate_Uk(e, e1, e2);
+            y = model.simulate_temperature(y0, Uk);
+            cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << std::endl;
+            e2 = e1;
+            e1 = e;
+        }
+        Uk = 0;
+    }
     /**
      * @brief Рассчитать текущее контрольное значение
      * 
