@@ -208,11 +208,16 @@ int main() {
 
     cout << "\t---Нелинейная модель---" << endl;
     pid_regulator.Regulate(w, y0, nonlinear_model);
-    system("Pause");
-}
+
 
 
     cout << "\t---Линейная модель---" << endl;
     pid_regulator.Regulate(w, y0, linear_model);
     cout << endl;
+    system("Pause");
+    return 0;
+}
+
+
+
     
