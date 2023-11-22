@@ -114,7 +114,7 @@ void input_parametrs(double& a, double& b, double& c, double& d, bool is_nonline
     }
     cout << "Введите параметр а: "; cin >> a;
     cout << "Введите параметр d: "; cin >> b;
-
+}
 
 /**
  * @brief Proportional–integral–derivative регулятор
@@ -181,8 +181,6 @@ public:
 };
 
 
-
-}
 int main() {
     setlocale(LC_ALL, "Russian");
     const double w = 8;
