@@ -123,32 +123,7 @@ private:
     const double T = 10;
     //! Константа дифференциации
     const double TD = 80;
-public:
 
-    /**
-     * @brief Регулятор моделирования
-     *
-     * @param w желаемое значение
-     * @param y0 начальная температура
-     * @param model линейная или нелинейная модель
-     */
-    void Regulate(double w, double y0, Model& model)
-    {
-        double e2 = 0;
-        double y = y0;
-        double e1 = 0;
-
-        for (int i = 1; i <= numOfTimeModeling; i++) {
-            double e;
-            e = w - y;
-            Uk = calculate_Uk(e, e1, e2);
-            y = model.simulate_temperature(y0, Uk);
-            cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << std::endl;
-            e2 = e1;
-            e1 = e;
-        }
-        Uk = 0;
-    }
     /**
      * @brief Рассчитать текущее контрольное значение
      * 
