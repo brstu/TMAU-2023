@@ -14,7 +14,11 @@ class LinearModel
   : public Model
 ```  
 
+
+
 Линейная модель контроля температуры
+
+
 
 ## Summary
 
@@ -26,7 +30,11 @@ class LinearModel
 
 ## Members
 
+
+
 #### `public inline  `[`LinearModel`](#class_linear_model_1a354c216624723c40fa18004290d97941)`(double a,double b)` 
+
+
 
 Конструктор класса [LinearModel](#class_linear_model).
 
@@ -37,6 +45,8 @@ class LinearModel
 
 Этот переопределенный метод возвращает значение температуры по Линейной симуляци
 
+
+
 #### `public  `[`~LinearModel`](#class_linear_model_1a4a9d9e4e2ce4e51ed5a1e70aebdece31)`() = default` 
 
 Деструктор для класса [LinearModel](#class_linear_model).
@@ -44,6 +54,9 @@ class LinearModel
 # class `Model` 
 
 Обстрактный класс модели
+
+
+
 
 Модель используется для представления других моделей
 
@@ -58,12 +71,17 @@ class LinearModel
 
 #### `public double `[`simulate_temperature`](#class_model_1a5a90c717f9a81a28dc7c01e83d60c507)`(double Yt,double Uw)` 
 
+
+
 Виртуальная функция для определения температуры
 
 #### Parameters
 * `Yt` Входная температура 
 
 * `Uw` Входное количество тепло 
+
+
+
 
 #### Returns
 double Выходная информация о температуре
@@ -74,12 +92,18 @@ double Выходная информация о температуре
 
 # class `NonlinearModel` 
 
+
+
+
 ```
 class NonlinearModel
   : public Model
 ```  
 
 Линейная модель контроллера температуры
+
+
+
 
 ## Summary
 
@@ -91,6 +115,9 @@ class NonlinearModel
 
 ## Members
 
+
+
+
 #### `public inline  `[`NonlinearModel`](#class_nonlinear_model_1a9f3a611ca0c92ff58940e6c17e2ee55d)`(double a,double b,double c,double d)` 
 
 Конструктор класса NonLinearModel.
@@ -98,9 +125,14 @@ class NonlinearModel
 #### Parameters
 * `a` `b` `c` `d` some constants
 
+
+
+
 #### `public inline virtual double `[`simulate_temperature`](#class_nonlinear_model_1a5fc532df0aa33e129ce6721d536922bf)`(double Yt,double Uw)` 
 
 Этот переопределенный метод для определения температуры по Нелинейной модели
+
+
 
 #### `public  `[`~NonlinearModel`](#class_nonlinear_model_1afd13796ba2713bd1487745ad03dbf034)`() = default` 
 
@@ -112,15 +144,25 @@ Proportional–integral–derivative регулятор
 
 ## Summary
 
+
+
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `public inline void `[`Regulate`](#class_p_i_dregulator_1a237cb281c5134ada08cee584ac6cfb2b)`(double w,double y0,`[`Model`](#class_model)` & model)` | Регулятор моделирования
+
+
 
 ## Members
 
 #### `public inline void `[`Regulate`](#class_p_i_dregulator_1a237cb281c5134ada08cee584ac6cfb2b)`(double w,double y0,`[`Model`](#class_model)` & model)` 
 
+
+
+
 Регулятор моделирования
+
+
+
 
 #### Parameters
 * `w` желаемое значение 
