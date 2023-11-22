@@ -189,22 +189,30 @@ int main() {
     double c;
     double d;
 
-    cout << "---Пожалуйста введите параметры нелинейной модели---" << endl;
-    input_parametrs(a,b,c,d,true);
-    NonlinearModel nonlinear_model{a,b,c,d};
 
     cout << "---Пожалуйста введите параметры линейной модели---" << endl;
     input_parametrs(a,b,c,d,false);
     LinearModel linear_model{a,b};
 
 
+    cout << "---Пожалуйста введите параметры нелинейной модели---" << endl;
+    input_parametrs(a,b,c,d,true);
+    NonlinearModel nonlinear_model{a,b,c,d};
+
+
+
+
     PIDregulator pid_regulator;
+
+
+
+    cout << "\t---Нелинейная модель---" << endl;
+    pid_regulator.Regulate(w, y0, nonlinear_model);
+    system("Pause");
+}
+
 
     cout << "\t---Линейная модель---" << endl;
     pid_regulator.Regulate(w, y0, linear_model);
     cout << endl;
     
-    cout << "\t---Нелинейная модель---" << endl;
-    pid_regulator.Regulate(w, y0, nonlinear_model);
-    system("Pause");
-}
