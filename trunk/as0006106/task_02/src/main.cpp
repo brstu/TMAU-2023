@@ -14,22 +14,6 @@ public:
 };
 
 
-class LinearModel : public Model {
-private:
-    double a; 
-    double b; 
-public:
-
-    LinearModel(double a, double b): a(a), b(b) {}
-
-    double simulate_temperature(double Yt, double Uw) final {
-        return a*Yt + b*Uw;
-    }
-
-
-    ~LinearModel() override = default;
-};
-
 
 class NonlinearModel : public Model {
 private:
@@ -120,6 +104,22 @@ public:
         }
         Uk = 0;
     }
+};
+
+class LinearModel : public Model {
+private:
+    double a;
+    double b;
+public:
+
+    LinearModel(double a, double b) : a(a), b(b) {}
+
+    double simulate_temperature(double Yt, double Uw) final {
+        return a * Yt + b * Uw;
+    }
+
+
+    ~LinearModel() override = default;
 };
 
 
