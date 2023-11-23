@@ -41,38 +41,38 @@ cmake --build --preset=build-windows-AXCF2152-2022.6.0.43 --target install .
 
 <p>В результате получим файл <em></em>hello_PLCnext.</p>
 
-![](../images/hello_PLCnext_binary.jpg)  
+![](images/hello_PLCnext_binary.jpg)  
 
 <p>Подключаемся к контроллеру.</p>
 
 
-![](../images/connect.jpg)
-![](../images/connectionIPV4.jpg)  
+![](images/connect.jpg)
+![](images/connectionIPV4.jpg)  
 
 <p>Проверяем подключение к контроллеру с помощью команды <em>ping 192.168.1.1</em> и получаем следующий результат</p>
 
-![](../images/check_connection.jpg)  
+![](images/check_connection.jpg)  
 
 <p>Устанавливаем и открываем программу <em>PuTTY Configuration</em> и подключаемся к контроллеру.</p>
 
-![](../images/putty_connect.jpg) 
+![](images/putty_connect.jpg) 
 
 <p>Авторизируемся для подключения к контроллеру</p>
 
-![](../images/putty_login.jpg) 
+![](images/putty_login.jpg) 
 
 <p>Устанавливаем и открываем программу <em>WinCP</em> вводим IP adress и авторизируемся.</p>
 
-![](../images/WinSCP_login.jpg) 
+![](images/WinSCP_login.jpg) 
 
 <p>Добавляем бинарный файл <em>hello_PLCnext </em> в корень контроллера и меняем его свойства</p>
 
-![](../images/WinSCP_files.jpg) 
+![](images/WinSCP_files.jpg) 
 
 <p>Запускаем наш проект и получаем следующий вывод.</p>
 
-![](../images/output.jpg) 
+![](images/output.jpg) 
 
-![](../images/lab.jpg) 
+![](images/lab.jpg) 
 
 <p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с контроллером <em>AXC F 2152</em>.</p>
