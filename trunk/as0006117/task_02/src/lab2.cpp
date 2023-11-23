@@ -11,8 +11,8 @@
 using namespace std;
 
 /**
-* \class Models
-* \brief Абстрактный класс, который будет использоваться для построения линейных и нелинейных моделей
+* \class  Models
+* \brief  Абстрактный класс, который будет использоваться для построения линейных и нелинейных моделей
 */
 class Models
 {
@@ -141,7 +141,7 @@ public:
 */
 void PiDregulator(float w, float y0, Regulator& reg, Models& md) {
     ofstream fout;
-    fout.open("E:\\result.txt", ios_base::out | ios_base::app);
+    fout.open("D:\\5 семестр\\ТиМАУ\\Lab2\\lab2\\lab2\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
         float em1 = 0;
          float em2 = 0;
@@ -168,9 +168,9 @@ void PiDregulator(float w, float y0, Regulator& reg, Models& md) {
 int main() {
     setlocale(0, "");
      ofstream fout;
-    fout.open("D:\\result.txt", ios_base::out | ios_base::app);
+    fout.open("D:\\5 семестр\\ТиМАУ\\Lab2\\lab2\\lab2\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
-        fout << "zzzzЛинейная модель:" << endl;
+        fout << "Линейная модель : " << endl;
          LinMod l(0.333f, 0.667f, 1);
         Regulator regl(10, 10, 50, 0.1f);
         PiDregulator(5, 2, regl, l);
