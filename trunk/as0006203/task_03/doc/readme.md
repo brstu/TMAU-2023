@@ -71,8 +71,8 @@ cmake --build --preset=build-windows-AXCF2152-2022.6.0.43 --target install .
 
 <p>Запускаем наш проект и получаем следующий вывод.</p>
 
-![](images/output.jpg) 
+![](../images/output.jpg) 
 
-![](images/lab.jpg) 
+![](../images/lab.jpg) 
 
 <p> <strong> Вывод:</strong> В ходе выполнения данной лабораторной работы были получены знания для работы с контроллером <em>AXC F 2152</em>.</p>
