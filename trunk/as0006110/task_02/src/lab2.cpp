@@ -14,10 +14,10 @@
 *
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calc_PID
 * и от которого наследуются классы Non_line_PID и Line_PID
-*/teplo_vhod
+*/
 class AbsModPID
 {
-public:calc_PID
+public:
     virtual ~AbsModPID() = default;
 
     /**
@@ -84,6 +84,40 @@ public:
 * Отдельный класс, в котором мы моделируем регулятор
 */
 
+/**
+* \class Line_PID
+* \brief Класс, который служит для реализации линейной модели
+*
+* Дочерний класс от AbsModPID, который реализует линейную модель через переопределённую функцию calc_PID
+*/
+class Line_PID : public AbsModPID
+{
+private:
+
+    double _a_;     ///< Коэффициент
+    double _b_;     ///< Коэффициент
+    double _nextY_; ///< Получаемая нами температура
+
+public:
+    Line_PID(double a, double b, double yNext) :
+        _a_(a), _b_(b), _nextY_(yNext)
+    { }
+
+    /**
+    * Переопределённый метод для рассчёта линейной модели
+    *
+    * Код:
+    * \code
+    * _nextY_ = _a_ * current_temperature + _b_ * teplo_vhod;
+    * return _nextY_;
+    * \endcode
+    */
+
+    double calc_PID(double current_temperature, double teplo_vhod) override{
+        _nextY_ = _a_ * current_temperature + _b_ * teplo_vhod;
+        return _nextY_;
+    }
+};
 class regulator_detka
 {
 private:
@@ -119,43 +153,6 @@ private:
 
         return zadanii_tochki;
     }
-
-
-/**
-* \class Line_PID
-* \brief Класс, который служит для реализации линейной модели
-*
-* Дочерний класс от AbsModPID, который реализует линейную модель через переопределённую функцию calc_PID
-*/
-class Line_PID : public AbsModPID
-{
-private:
-
-    double _a_;     ///< Коэффициент
-    double _b_;     ///< Коэффициент
-    double _nextY_; ///< Получаемая нами температура
-
-public:
-    Line_PID(double a, double b, double yNext) :
-        _a_(a), _b_(b), _nextY_(yNext)
-    { }
-
-    /**
-    * Переопределённый метод для рассчёта линейной модели
-    *
-    * Код:
-    * \code
-    * _nextY_ = _a_ * current_temperature + _b_ * teplo_vhod;
-    * return _nextY_;
-    * \endcode
-    */
-
-    double calc_PID(double current_temperature, double teplo_vhod) override{
-        _nextY_ = _a_ * current_temperature + _b_ * teplo_vhod;
-        return _nextY_;
-    }
-};
-
 
 public:
 
