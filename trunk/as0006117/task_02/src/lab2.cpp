@@ -42,8 +42,8 @@ class LinMod : public Models
         * \param A, B - коэффициенты
         * \param Y_t1 - температура на выходе
         */
-        LinMod(float a*, float b*, float y_t1*)
-            : A(a*), B(b*), Y_t1(y_t1*)
+        LinMod(float w, float e, float y_t1)
+            : A(w), B(e), Y_t1(y_t1)
         {
         }
 
@@ -114,8 +114,8 @@ public:
     * \details конструктор для Regulator
     * \param _K_,_T0_,_TD_,_T_ : коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
     */
-    Regulator(float T*, float T0*, float TD*, float K*)
-        : _T_(T*),  _T0_(T0*),  _TD_(TD*),  _K_(K*)
+    Regulator(float T, float T0, float TD, float K)
+        : _T_(T),  _T0_(T0),  _TD_(TD),  _K_(K)
     {
     }
     /**

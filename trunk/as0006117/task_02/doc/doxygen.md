@@ -22,13 +22,13 @@ class LinMod
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`LinMod`](#class_lin_mod_1a9e6a00330d0b32712deebf9f84fc9567)`(float a*,float b*,float y_t1*)` | конструктор для [LinMod](#class_lin_mod)
+`public inline  `[`LinMod`](#class_lin_mod_1a9e6a00330d0b32712deebf9f84fc9567)`(float w,float e,float y_t1)` | конструктор для [LinMod](#class_lin_mod)
 `public inline virtual float `[`equation`](#class_lin_mod_1a382c98a02f555215152a8897fa788369)`(float y_T,float u_T)` | функция вычисляет температуру благодаря линейной модели
 `public  `[`~LinMod`](#class_lin_mod_1a7167974b1800c1986271fcba01e5a116)`() = default` | 
 
 ## Members
 
-#### `public inline  `[`LinMod`](#class_lin_mod_1a9e6a00330d0b32712deebf9f84fc9567)`(float a*,float b*,float y_t1*)` 
+#### `public inline  `[`LinMod`](#class_lin_mod_1a9e6a00330d0b32712deebf9f84fc9567)`(float w,float e,float y_t1)` 
 
 конструктор для [LinMod](#class_lin_mod)
 #### Parameters
@@ -100,12 +100,12 @@ class NonLinMod
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public inline  `[`Regulator`](#class_regulator_1ad688597ba6a3eab7ad80cd647e25cdc9)`(float T*,float T0*,float TD*,float K*)` | конструктор для [Regulator](#class_regulator)
+`public inline  `[`Regulator`](#class_regulator_1ad688597ba6a3eab7ad80cd647e25cdc9)`(float T,float T0,float TD,float K)` | конструктор для [Regulator](#class_regulator)
 `public inline float `[`temperature`](#class_regulator_1aee0dd8d239c33e2999b1051e1803f6a6)`(float mt,float mt1,float mt2)` | функция для подсчёта управляющей переменной 
 
 ## Members
 
-#### `public inline  `[`Regulator`](#class_regulator_1ad688597ba6a3eab7ad80cd647e25cdc9)`(float T*,float T0*,float TD*,float K*)` 
+#### `public inline  `[`Regulator`](#class_regulator_1ad688597ba6a3eab7ad80cd647e25cdc9)`(float T,float T0,float TD,float K)` 
 
 конструктор для [Regulator](#class_regulator)
 #### Parameters
