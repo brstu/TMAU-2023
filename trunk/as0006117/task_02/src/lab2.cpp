@@ -18,7 +18,7 @@ class Models
 {
     public:
     /**
-    * \details абстрактная функция для переопределения в дочерних классах
+    * \details абстрактная функция предназначенная для переопределения в дочерних классах
     */
     virtual float equation(float y_t, float u_t) = 0;
     virtual ~Models() = default;
@@ -42,17 +42,17 @@ class LinMod : public Models
         * \param A, B - коэффициенты
         * \param Y_t1 - температура на выходе
         */
-        LinMod(float a, float b, float y_t1)
-            : A(a), B(b), Y_t1(y_t1)
+        LinMod(float a*, float b*, float y_t1*)
+            : A(a*), B(b*), Y_t1(y_t1*)
         {
         }
 
         /**
         * \details функция для вычисления температуры по линейной модели
         */
-        float equation(float y_t, float u_t) override
+        float equation(float y_T, float u_T) override
         {
-            Y_t1 = A * y_t + B * u_t;
+            Y_t1 = A * y_T + B * u_T;
             return Y_t1;
         }
 
@@ -62,7 +62,7 @@ class LinMod : public Models
 /**
 * \class NonLinMod
 * \brief Класс, представляющий нелинейную модель контролируемого объекта
-* \details Дочерний класс, который расширяет класс Models
+* \details Дочерний класс, служещий для расширения класса Models
 */
 class NonLinMod : public Models
 {
@@ -76,20 +76,20 @@ private:
     float U_t0 = 0; ///< U_t0 - переменная для предыдущего значения тепла
 public:
     /**
-   * \details конструктор для NonLinMod
+   * \details конструктор NonLinMod
    */
-    NonLinMod(float a, float b, float c, float d, float y_t1)
-        : A(a), B(b), C(c), D(d), Y_t1(y_t1)
+    NonLinMod(float m, float a, float k, float s, float y_t1)
+        : A(m), B(a), C(k), D(s), Y_t1(y_t1)
     {
     }
     /**
-    * \details функция для вычисления температуры по нелинейной модели
+    * \details функция которая вычисляет температуру по нелинейной модели
     */
-    float equation(float y_t, float u_t) override
+    float equation(float y_T, float u_T) override
     {
-        Y_t1 = A * y_t - B * static_cast<float>(pow(Y_t0, 2)) + C * u_t + D * sin(U_t0);
-        U_t0 = u_t;
-        Y_t0 = y_t;
+        Y_t1 = A * y_T - B * static_cast<float>(pow(Y_t0, 2)) + C * u_T + D * sin(U_t0);
+        U_t0 = u_T;
+        Y_t0 = y_T;
         return Y_t1;
     }
 
@@ -98,7 +98,7 @@ public:
 
 /**
 * \class Regulator
-* \brief Класс для реализации регулятора
+* \brief Класс который реализует регулятор
 */
 class Regulator
 {
@@ -112,15 +112,15 @@ private:
 public:
     /**
     * \details конструктор для Regulator
-    * \param _K_,_T0_,_TD_,_T_ слева-направо: коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
+    * \param _K_,_T0_,_TD_,_T_ : коэффициент передачи, шаг, постоянная диференцирования, постоянная интегрирования
     */
-    Regulator(float T, float T0, float TD, float K)
-        : _T_(T),  _T0_(T0),  _TD_(TD),  _K_(K)
+    Regulator(float T*, float T0*, float TD*, float K*)
+        : _T_(T*),  _T0_(T0*),  _TD_(TD*),  _K_(K*)
     {
     }
     /**
     * \details функция для подсчёта управляющей переменной
-    * \param mt, mt1, mt2 значения текущей, прошлой и позапрошлой ошибок
+    * \param mt, mt1, mt2 - это значения ошибок: текущей, прошлой, позапрошлой
     */
     float temperature(float mt, float mt1, float mt2) {
         float q0 = _K_ * (1 + _TD_ / _T0_);
