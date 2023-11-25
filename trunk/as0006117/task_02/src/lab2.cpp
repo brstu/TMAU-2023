@@ -25,7 +25,7 @@ class Models
     /**
     * \details абстрактная функция предназначенная для переопределения в дочерних классах
     */
-    virtual float equat(float y_t, float u_t) = 0;
+    virtual float equation(float y_t, float u_t) = 0;
     virtual ~Models() = default;
 };
 
@@ -189,7 +189,7 @@ void PiDregulator(float w, float y0, Regulator& reg, Models& md) {
             
             e = w - y;
             u = reg.temperature(e, mt1, mt2);
-            y = md.equat(y0, u);
+            y = md.equation(y0, u);
 
             fout << "E=" << e << " Y=" << y << " U=" << u << endl;
             mt2 = mt1;
@@ -214,13 +214,13 @@ int main() {
     fout.open("D:\\5 семестр\\ТиМАУ\\Lab2\\lab2\\lab2\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
         fout << "Линейная модель : " << endl;
-         LinMod lm(0.333f, 0.667f, 1);
+         LinMod l(0.333f, 0.667f, 1);
         Regulator reglin(10, 10, 50, 0.1f);
-        PiDregulator(5, 2, reglin, lm);
+        PiDregulator(5, 2, reglin, l);
          fout << "Нелинейная модель:" << endl;
-        NonLinMod nlm(1.0f, 0.0043f, 0.535f, 0.535f, 1.0f);
+        NonLinMod nl(1.0f, 0.0043f, 0.535f, 0.535f, 1.0f);
          Regulator regnlin(10, 10, 50, 0.1f);
-        PiDregulator(6, 3, regnlin, nlm);
+        PiDregulator(6, 3, regnlin, nl);
     }
     cout << "Данные были сохранены в файл result.txt" << endl;
      return 0;
