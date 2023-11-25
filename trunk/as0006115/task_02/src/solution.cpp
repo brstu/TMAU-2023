@@ -55,7 +55,8 @@ public:
     */
     double modelFunc(double currentTemp, double warmth) override
     {
-        return A * currentTemp + B * warmth;
+        nextTemp = A * currentTemp + B * warmth;
+        return nextTemp;
     }
 };
 
