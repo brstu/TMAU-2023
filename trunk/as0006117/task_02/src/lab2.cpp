@@ -25,7 +25,7 @@ class Models
     /**
     * \details абстрактная функция предназначенная для переопределения в дочерних классах
     */
-    virtual float equation(float y_t, float u_t) = 0;
+    virtual float equat(float y_t, float u_t) = 0;
     virtual ~Models() = default;
 };
 
@@ -65,10 +65,12 @@ public:
     */
     float equation(float y_T, float u_T) override
     {
+
         Y_t1 = M * y_T - A * static_cast<float>(pow(Y_t0, 2)) + K * u_T + S * sin(U_t0);
-            U_t0 = u_T;
-            Y_t0 = y_T;
+        Y_t0 = y_T;
+        U_t0 = u_T;
         return Y_t1;
+
     }
 
     ~NonLinMod() override = default;
@@ -150,10 +152,10 @@ public:
     */
     float temperature(float mt, float mt1, float mt2) {
 
-        float q0 = _K_ * (1 + _TD_ / _T0_);
-        float q1 = -_K_ * (1 + 2 * _TD_ / _T0_ - _T0_ / _T_);
-        float q2 = _K_ * _TD_ / _T0_;
-        u += q0 * mt + q1 * mt1 + q2 * mt2;
+        float p0 = _K_ * (1 + _TD_ / _T0_);
+        float p1 = -_K_ * (1 + 2 * _TD_ / _T0_ - _T0_ / _T_);
+        float p2 = _K_ * _TD_ / _T0_;
+        u += p0 * mt + p1 * mt1 + p2 * mt2;
         return u;
     }
 };
@@ -175,20 +177,23 @@ void PiDregulator(float w, float y0, Regulator& reg, Models& md) {
     ofstream fout;
     fout.open("D:\\5 семестр\\ТиМАУ\\Lab2\\lab2\\lab2\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
-        float em1 = 0;
-         float em2 = 0;
-        float y = y0;
-        for (int i = 0; i < 100; i++) {
-            float e;
-            float u;
 
+        float y = y0;
+        float mt1 = 0;
+        float mt2 = 0;
+        
+        for (int i = 0; i < 100; i++) {
+
+            float u;
+            float e;
+            
             e = w - y;
-            u = reg.temperature(e, em1, em2);
-             y = md.equation(y0, u);
+            u = reg.temperature(e, mt1, mt2);
+            y = md.equat(y0, u);
 
             fout << "E=" << e << " Y=" << y << " U=" << u << endl;
-            em2 = em1;
-            em1 = e;
+            mt2 = mt1;
+            mt1 = e;
         }
     }
     fout.close();
@@ -209,13 +214,13 @@ int main() {
     fout.open("D:\\5 семестр\\ТиМАУ\\Lab2\\lab2\\lab2\\result.txt", ios_base::out | ios_base::app);
     if (fout.is_open()) {
         fout << "Линейная модель : " << endl;
-         LinMod l(0.333f, 0.667f, 1);
-        Regulator regl(10, 10, 50, 0.1f);
-        PiDregulator(5, 2, regl, l);
+         LinMod lm(0.333f, 0.667f, 1);
+        Regulator reglin(10, 10, 50, 0.1f);
+        PiDregulator(5, 2, reglin, lm);
          fout << "Нелинейная модель:" << endl;
-        NonLinMod nl(1.0f, 0.0043f, 0.535f, 0.535f, 1.0f);
-         Regulator regnl(10, 10, 50, 0.1f);
-        PiDregulator(6, 3, regnl, nl);
+        NonLinMod nlm(1.0f, 0.0043f, 0.535f, 0.535f, 1.0f);
+         Regulator regnlin(10, 10, 50, 0.1f);
+        PiDregulator(6, 3, regnlin, nlm);
     }
     cout << "Данные были сохранены в файл result.txt" << endl;
      return 0;
