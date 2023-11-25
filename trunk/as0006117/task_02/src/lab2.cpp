@@ -42,29 +42,32 @@ class Models
 class NonLinMod : public Models
 {
 private:
-    float A; ///< A, B, C, D - коэффициенты
-    float B;
-    float C;
-    float D;
+    
     float Y_t0 = 0; ///< Y_t0 - предыдущее(начальное) значение температуры
-    float Y_t1; ///< Yтекущее значение температуры на выходе
+    float Y_t1; ///< Y_t1 - текущее значение температуры на выходе
     float U_t0 = 0; ///< U_t0 - переменная для предыдущего значения тепла
+    float M; ///< M, A, K, S - коэффициенты
+    float A;
+    float K;
+    float S;
+
 public:
     /**
    * \details конструктор NonLinMod
    */
     NonLinMod(float m, float a, float k, float s, float y_t1)
-        : A(m), B(a), C(k), D(s), Y_t1(y_t1)
+        : M(m), A(a), K(k), S(s), Y_t1(y_t1)
     {
+
     }
     /**
     * \details функция которая вычисляет температуру по нелинейной модели
     */
     float equation(float y_T, float u_T) override
     {
-        Y_t1 = A * y_T - B * static_cast<float>(pow(Y_t0, 2)) + C * u_T + D * sin(U_t0);
-        U_t0 = u_T;
-        Y_t0 = y_T;
+        Y_t1 = M * y_T - A * static_cast<float>(pow(Y_t0, 2)) + K * u_T + S * sin(U_t0);
+            U_t0 = u_T;
+            Y_t0 = y_T;
         return Y_t1;
     }
 
@@ -85,9 +88,10 @@ public:
 class LinMod : public Models
 {
     private:
+        
+        float Y_t1;
         float A;
         float B;
-        float Y_t1;
 
     public:
         /**
@@ -124,11 +128,12 @@ class LinMod : public Models
 class Regulator
 {
 private:
+    
+    float u = 0;
     float _T_;
     float _T0_;
     float _TD_;
     float _K_;
-    float u = 0;
 
 public:
     /**
@@ -144,8 +149,9 @@ public:
     * \param mt, mt1, mt2 - это значения ошибок: текущей, прошлой, позапрошлой
     */
     float temperature(float mt, float mt1, float mt2) {
+
         float q0 = _K_ * (1 + _TD_ / _T0_);
-         float q1 = -_K_ * (1 + 2 * _TD_ / _T0_ - _T0_ / _T_);
+        float q1 = -_K_ * (1 + 2 * _TD_ / _T0_ - _T0_ / _T_);
         float q2 = _K_ * _TD_ / _T0_;
         u += q0 * mt + q1 * mt1 + q2 * mt2;
         return u;
