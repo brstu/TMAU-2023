@@ -55,8 +55,7 @@ public:
     /**
    * \details конструктор NonLinMod
    */
-    NonLinMod(float m, float a, float k, float s, float y_t1)
-        : M(m), A(a), K(k), S(s), Y_t1(y_t1)
+    NonLinMod(float m, float a, float k, float s, float y_t1) : Y_t1(y_t1), M(m), A(a), K(k), S(s)
     {
 
     }
@@ -101,8 +100,7 @@ class LinMod : public Models
         * \param A, B - коэффициенты
         * \param Y_t1 - температура на выходе
         */
-        LinMod(float w, float e, float y_t1)
-            : A(w), B(e), Y_t1(y_t1)
+        LinMod(float w, float e, float y_t1) : Y_t1(y_t1), A(w), B(e)
         {
         }
 
