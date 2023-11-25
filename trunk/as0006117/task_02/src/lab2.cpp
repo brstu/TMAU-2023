@@ -10,6 +10,11 @@
 */
 using namespace std;
 
+
+
+
+
+
 /**
 * \class  Models
 * \brief  Абстрактный класс, который будет использоваться для построения линейных и нелинейных моделей
@@ -24,40 +29,10 @@ class Models
     virtual ~Models() = default;
 };
 
-/**
-* \class LinMod
-* \brief Класс, представляющий линейную модель контролируемого объекта
-* \details Дочерний класс, который расширяет класс Models
-*/
-class LinMod : public Models
-{
-    private:
-        float A;
-        float B;
-        float Y_t1;
 
-    public:
-        /**
-        * \details конструктор для LinMod
-        * \param A, B - коэффициенты
-        * \param Y_t1 - температура на выходе
-        */
-        LinMod(float w, float e, float y_t1)
-            : A(w), B(e), Y_t1(y_t1)
-        {
-        }
 
-        /**
-        * \details функция для вычисления температуры по линейной модели
-        */
-        float equation(float y_T, float u_T) override
-        {
-            Y_t1 = A * y_T + B * u_T;
-            return Y_t1;
-        }
 
-        ~LinMod() override = default;
-};
+
 
 /**
 * \class NonLinMod
@@ -96,6 +71,52 @@ public:
     ~NonLinMod() override = default;
 };
 
+
+
+
+
+
+
+/**
+* \class LinMod
+* \brief Класс, представляющий линейную модель контролируемого объекта
+* \details Дочерний класс, который расширяет класс Models
+*/
+class LinMod : public Models
+{
+    private:
+        float A;
+        float B;
+        float Y_t1;
+
+    public:
+        /**
+        * \details конструктор для LinMod
+        * \param A, B - коэффициенты
+        * \param Y_t1 - температура на выходе
+        */
+        LinMod(float w, float e, float y_t1)
+            : A(w), B(e), Y_t1(y_t1)
+        {
+        }
+
+        /**
+        * \details функция для вычисления температуры по линейной модели
+        */
+        float equation(float y_T, float u_T) override
+        {
+            Y_t1 = A * y_T + B * u_T;
+            return Y_t1;
+        }
+
+        ~LinMod() override = default;
+};
+
+
+
+
+
+
 /**
 * \class Regulator
 * \brief Класс который реализует регулятор
@@ -131,6 +152,11 @@ public:
     }
 };
 
+
+
+
+
+
 /**
 * \brief Функция, которая моделирует ПИД-регулятор
 * \details функция имитирует работу ПИД-регулятора
@@ -161,6 +187,12 @@ void PiDregulator(float w, float y0, Regulator& reg, Models& md) {
     }
     fout.close();
 }
+
+
+
+
+
+
 
 /**
 * \brief Функция main, создаём экземпляры всех классов и вызываем функцию PiDregulator
