@@ -106,9 +106,9 @@ class Controller
 private:
     double heat = 0;
     double K; 
-    double T; 
-    double TD; 
     double T0;
+    double TD; 
+    double T; 
 public:
     Controller(double K, double T0, double TD, double T) : K(K), T0(T0), TD(TD), T(T) {}
 
