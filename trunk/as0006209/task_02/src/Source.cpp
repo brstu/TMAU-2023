@@ -1,198 +1,136 @@
 #include <iostream>
 #include <cmath>
 
-/**
- * \brief An abstract model's class which is used to represent other models.
- *
- * 
- */
-class Abstract {
+class AbstractModel {
 public:
-    /**
-     * @brief Virtual function for temperature determination
-     *
-     * @param Yt: input temperature
-     * @param Uw: input warm
-     * @return double output temperature
-     *
-     */
-    virtual double simulate_temperature(double Yt, double Uw) = 0;
-
-    /**
-     * @brief Destroy the model object
-     *
-     */
-    virtual ~Abstract() = default;
+    virtual double simulateTemperature(double currentTemperature, double inputWarm) = 0;
+    virtual ~AbstractModel() = default;
 };
 
-/**
- * @brief Linear model of temperature control
- *
- */
-class Linear : public Abstract {
+class LinearModel : public AbstractModel {
 private:
-    double a; ///< Parametr a
-    double b; ///< Parametr b
-public:
-    /**
-     * @brief Construct a new Linear object
-     *
-     * @param a,b: some constants
-     *
-     */
-    Linear(double a, double b) : a(a), b(b) {}
+    double coefficientA;
+    double coefficientB;
 
-    /**
-     * @brief This is a redefined method for calculating the output temperature of a linear model object
-     */
-    double simulate_temperature(double Yt, double Uw) final {
-        return a * Yt + b * Uw;
+public:
+    LinearModel(double a, double b) : coefficientA(a), coefficientB(b) {}
+
+    double simulateTemperature(double currentTemperature, double inputWarm) override {
+        return coefficientA * currentTemperature + coefficientB * inputWarm;
     }
 
-    /**
-     * @brief Destroy the Linear object
-     */
-    ~Linear() override = default;
+    ~LinearModel() override = default;
 };
 
-/**
- * @brief Nonlinear model of temperature control
- *
- */
-class NonLinear : public Abstract {
+class NonlinearModel : public AbstractModel {
 private:
-    double a; ///< Parametr a
-    double b; ///< Parametr b
-    double c; ///< Parametr c
-    double d; ///< Parametr d
-    //! Previous temperature value
-    double PrevYt = 0;
-    //! Previous warm value
-    double PrevUw = 0;
+    double coefficientA;
+    double coefficientB;
+    double coefficientC;
+    double coefficientD;
+    double prevTemperature = 0;
+    double prevInputWarm = 0;
+    bool isFirstStep = true; // Флаг для отслеживания первого шага моделирования
+    
 public:
+    NonlinearModel(double a, double b, double c, double d) :
+        coefficientA(a),
+        coefficientB(b),
+        coefficientC(c),
+        coefficientD(d) {}
 
-    /**
-     * @brief Construct a new Nonlinear object
-     * @param a,b,c,d: some constants
-     */
-    NonLinear(double a, double b, double c, double d) :
-        a(a),
-        b(b),
-        c(c),
-        d(d) {}
+    double simulateTemperature(double currentTemperature, double inputWarm) override {
+        double calculatedTemperature;
 
-    /**
-     * @brief This is a redefined method for calculating the output temperature of a nonlinear model object
-     */
-    double simulate_temperature(double Yt, double Uw) final {
-        double calculate = a * Yt - b * pow(PrevYt, 2) + c * Uw + d * sin(PrevUw);
-        PrevYt = Yt;
-        PrevUw = Uw;
-        return calculate;
-    }
-
-    /**
-     * @brief Destroy the Nonlinear object
-     *
-     */
-    ~NonLinear() override = default;
-};
-
-/**
- * @brief Proportional–integral–derivative regulator
- */
-class PID_regulator
-{
-private:
-    //! Transfer coefficient
-    const double K = 0.1;
-    //! Integration constant
-    const double T = 10;
-    //! Differentiation constant
-    const double TD = 80;
-    //! Quantization step
-    const double T0 = 50;
-    //! Simulation time
-    const double numOfTimeModeling = 30;
-    //! Control variable value
-    double Uk = 0;
-
-    /**
-     * @brief Calculate current control value
-     *
-     * @param e deviation from the desired value
-     * @param e1 previous deviation from the desired value
-     * @param e2 previous deviation from e1
-     * @return double updated control variable value
-     */
-    double calculate_Uk(double e, double e1, double e2)
-    {
-        double q0 = K * (1 + TD / T0);
-        double q1 = -K * (1 + 2 * TD / T0 - T0 / T);
-        double q2 = K * TD / T0;
-        Uk += q0 * e + q1 * e1 + q2 * e2;
-        return Uk;
-    }
-
-public:
-
-    /**
-     * @brief Modeling regulator
-     *
-     * @param w desired value
-     * @param y0 initial temperature
-     * @param model linear or nonlinear model
-     */
-    void Regulate(double w, double y0, Abstract& model)
-    {
-        double e1 = 0;
-        double e2 = 0;
-        double y = y0;
-        for (int i = 1; i <= numOfTimeModeling; i++) {
-            double e;
-            e = w - y;
-            Uk = calculate_Uk(e, e1, e2);
-            y = model.simulate_temperature(y0, Uk);
-            std::cout << "E = " << e << ", Yt = " << y << ", Uk = " << Uk << std::endl;
-            e2 = e1;
-            e1 = e;
+        if (isFirstStep) {
+            calculatedTemperature = coefficientA * currentTemperature + coefficientC * inputWarm;
+            isFirstStep = false;
         }
-        Uk = 0;
+        else {
+            calculatedTemperature = coefficientA * currentTemperature - coefficientB * pow(prevTemperature, 2) + coefficientC * inputWarm + coefficientD * sin(prevInputWarm);
+        }
+
+        prevTemperature = currentTemperature;
+        prevInputWarm = inputWarm;
+        return calculatedTemperature;
+    }
+
+    ~NonlinearModel() override = default;
+};
+
+
+class PIDRegulator {
+private:
+    const double transferCoefficientK = 0.1;
+    const double integrationConstantT = 10;
+    const double differentiationConstantTD = 80;
+    const double quantizationStepT0 = 50;
+    const double simulationTime = 30;
+    double controlVariableUk = 0;
+
+    double calculateControlVariable(double deviation, double prevDeviation, double prevPrevDeviation) {
+        double q0 = transferCoefficientK * (1 + differentiationConstantTD / quantizationStepT0);
+        double q1 = -transferCoefficientK * (1 + 2 * differentiationConstantTD / quantizationStepT0 - quantizationStepT0 / integrationConstantT);
+        double q2 = transferCoefficientK * differentiationConstantTD / quantizationStepT0;
+        controlVariableUk += q0 * deviation + q1 * prevDeviation + q2 * prevPrevDeviation;
+        return controlVariableUk;
+    }
+
+public:
+    void regulate(double desiredValue, double initialTemperature, AbstractModel& model) {
+        double prevDeviation = 0;
+        double prevPrevDeviation = 0;
+        double currentTemperature = initialTemperature;
+
+        for (int i = 1; i <= simulationTime; i++) {
+            double deviation = desiredValue - currentTemperature;
+            controlVariableUk = calculateControlVariable(deviation, prevDeviation, prevPrevDeviation);
+            currentTemperature = model.simulateTemperature(initialTemperature, controlVariableUk);
+
+            std::cout << "Deviation(E) = " << deviation << ", Current Temperature(Yt) = " << currentTemperature << ", Control Variable(Uk) = " << controlVariableUk << std::endl;
+
+            prevPrevDeviation = prevDeviation;
+            prevDeviation = deviation;
+        }
+
+        controlVariableUk = 0;
     }
 };
 
-void input_parametrs(double& a, double& b, double& c, double& d, bool is_nonlinearModel) {
-    std::cout << "Input a-param: "; std::cin >> a;
-    std::cout << "Input b-param: "; std::cin >> b;
+void inputParameters(double& a, double& b, double& c, double& d, bool isNonlinearModel) {
+    std::cout << "Input parameter a: "; std::cin >> a;
+    std::cout << "Input parameter b: "; std::cin >> b;
 
-    if (is_nonlinearModel) {
-        std::cout << "Input c-param: "; std::cin >> c;
-        std::cout << "Input d-param: "; std::cin >> d;
+    if (isNonlinearModel) {
+        std::cout << "Input parameter c: "; std::cin >> c;
+        std::cout << "Input parameter d: "; std::cin >> d;
     }
 }
+
 int main() {
-    const double w = 8;
-    const double y0 = 3;
+    const double desiredValue = 8;
+    const double initialTemperature = 3;
     double a;
     double b;
     double c;
     double d;
 
-    std::cout << " input LinearModel's parameters" << std::endl;
-    input_parametrs(a, b, c, d, false);
-    Linear linear_model{ a,b };
+    std::cout << "Input Linear Model's parameters" << std::endl;
+    inputParameters(a, b, c, d, false);
+    LinearModel linearModel{ a, b };
 
-    std::cout << " input NonlinearModel's parameters" << std::endl;
-    input_parametrs(a, b, c, d, true);
-    NonLinear nonlinear_model{ a,b,c,d };
+    std::cout << "Input Nonlinear Model's parameters" << std::endl;
+    inputParameters(a, b, c, d, true);
+    NonlinearModel nonlinearModel{ a, b, c, d };
 
-    PID_regulator pid_regulator;
+    PIDRegulator pidRegulator;
 
-    std::cout << "\tLinearModel:" << std::endl;
-    pid_regulator.Regulate(w, y0, linear_model);
+    std::cout << "\tLinear Model:" << std::endl;
+    pidRegulator.regulate(desiredValue, initialTemperature, linearModel);
     std::cout << std::endl;
 
-    std::cout << "\tNonlinearModel" << std::endl;
-    pid_regulator.Regulate(w, y0, nonlinear_model);
+    std::cout << "\tNonlinear Model" << std::endl;
+    pidRegulator.regulate(desiredValue, initialTemperature, nonlinearModel);
+
     system("Pause");
 }
