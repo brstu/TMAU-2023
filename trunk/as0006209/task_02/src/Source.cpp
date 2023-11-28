@@ -30,15 +30,14 @@ private:
     double coefficientD;
     double prevTemperature = 0;
     double prevInputWarm = 0;
-    bool isFirstStep;  // Флаг для отслеживания первого шага моделирования
+    bool isFirstStep = true; // Флаг для отслеживания первого шага моделирования
     
 public:
     NonlinearModel(double a, double b, double c, double d) :
         coefficientA(a),
         coefficientB(b),
         coefficientC(c),
-        coefficientD(d),
-        isFirstStep(true) {}
+        coefficientD(d) {}
 
     double simulateTemperature(double currentTemperature, double inputWarm) override {
         double calculatedTemperature;
@@ -111,7 +110,10 @@ void inputParameters(double& a, double& b, double& c, double& d, bool isNonlinea
 int main() {
     const double desiredValue = 8;
     const double initialTemperature = 3;
-    double a, b, c, d;
+    double a;
+    double b;
+    double c;
+    double d;
 
     std::cout << "Input Linear Model's parameters" << std::endl;
     inputParameters(a, b, c, d, false);
