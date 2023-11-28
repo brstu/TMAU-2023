@@ -7,7 +7,6 @@
 * \brief Лабораторная работа 2. ПИД-регуляторы
 * \author Клунин Тимур. АС-61
 */
-
 /**
 * \class AbsModPID
 * \brief Класс, который необходим классам, рассчитывающим линейную и нелинейную модель
@@ -15,6 +14,7 @@
 * Абстрактный класс, который предоставляет виртуальную функцию уравнения calcPIDMod
 * и от которого наследуются классы LinModPID и NonModPID
 */
+
 class AbsModPID
 {
 public:
@@ -24,11 +24,13 @@ public:
    * \brief Виртуальная функция, переопределенная в дочерних классах LinModPID и NonModPID
    *
    * Функция переопределяется в дочерних классах и служит для рассчета линейной/нелинейной модели.
-   * \param curr_temp Температура помещения
-   * \param warm_input Входящее тепло
+   * \param curTemmmp Температура помещения
+   * \param warmInpuutt Входящее тепло
    */
-   virtual double calcPIDMod(double curr_temp, double warm_input) = 0;
+   virtual double calcPIDMod(double curTemmmp, double warmInpuutt) = 0;
 };
+
+
 
 
 /**
@@ -43,36 +45,34 @@ private:
    double a_;   ///< Коэффициент
    double b_;   ///< Коэффициент
    double c__;   ///< Коэффициент
-   double d_;   ///< Коэффициент
-   double prevY__ = 0; ///< Предыдущая температура 
-   double nextY__;   ///< Получаемая нами температура
+   double d;   ///< Коэффициент
+   double prevY___ = 0; ///< Предыдущая температура 
+   double nextY___;   ///< Получаемая нами температура
    double prevW__ = 0; ///< Предыдущее тепло
-
-
-
 public:
 
    NonModPID(double a, double b, double c, double d, double yNext) :
-   a_(a), b_(b), c__(c), d_(d), nextY__(yNext)
+   a_(a), b_(b), c__(c), d(d), nextY___(yNext)
    { }
+
 
    /**
    * Переопределённый метод для рассчёта нелинейной модели
    *
    * Код:
    * \code
-   * nextY__ = a_ * curr_temp - b_ * pow(prevY__, 2) + c__ * warm_input + d_ * sin(prevW__);
-   * prevY__ = nextY__;
-   * prevW__ = warm_input;
-   * return nextY__;
+   * nextY___ = a_ * curTemmmp - b_ * pow(prevY___, 2) + c__ * warmInpuutt + d * sin(prevW__);
+   * prevY___ = nextY___;
+   * prevW__ = warmInpuutt;
+   * return nextY___;
    * \endcode
    */
 
-   double calcPIDMod(double curr_temp, double warm_input) override{
-   nextY__ = a_ * curr_temp - b_ * pow(prevY__, 2) + c__ * warm_input + d_ * sin(prevW__);
-   prevY__ = curr_temp;
-   prevW__ = warm_input;
-   return nextY__;
+   double calcPIDMod(double curTemmmp, double warmInpuutt) override{
+   nextY___ = a_ * curTemmmp - b_ * pow(prevY___, 2) + c__ * warmInpuutt + d * sin(prevW__);
+   prevY___ = curTemmmp;
+   prevW__ = warmInpuutt;
+   return nextY___;
    }
 };
 
@@ -89,11 +89,11 @@ private:
 
    double a_;   ///< Коэффициент
    double b_;   ///< Коэффициент
-   double nextY__; ///< Получаемая нами температура
+   double nextY___; ///< Получаемая нами температура
 
 public:
    LinModPID(double a, double b, double yNext) :
-   a_(a), b_(b), nextY__(yNext)
+   a_(a), b_(b), nextY___(yNext)
    { }
 
    /**
@@ -101,14 +101,14 @@ public:
    *
    * Код:
    * \code
-   * nextY__ = a_ * curr_temp + b_ * warm_input;
-   * return nextY__;
+   * nextY___ = a_ * curTemmmp + b_ * warmInpuutt;
+   * return nextY___;
    * \endcode
    */
 
-   double calcPIDMod(double curr_temp, double warm_input) override{
-   nextY__ = a_ * curr_temp + b_ * warm_input;
-   return nextY__;
+   double calcPIDMod(double curTemmmp, double warmInpuutt) override{
+   nextY___ = a_ * curTemmmp + b_ * warmInpuutt;
+   return nextY___;
    }
 };
 
