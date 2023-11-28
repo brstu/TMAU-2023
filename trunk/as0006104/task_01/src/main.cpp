@@ -1,45 +1,47 @@
 #include <iostream>
 #include <cmath>
 
-class Model{
+class Model {
 public:
- virtual ~Model() = default;
- virtual double simulate_temperature(double Yt, double Uw) = 0;
+    virtual ~Model() = default;
+    virtual double simulate_temperature(double Yt, double Uw) = 0;
 };
 
-class LinearModel : public Model {
+class Linear : public Model {
 private:
-    double a;
-    double b;
-public:
-    LinearModel(double a, double b): a(a), b(b) {}
+    double fg;
+    double hhj;
 
-    virtual ~LinearModel() = default;
-    
-    double simulate_temperature(double Yt, double Uw) final {
-        return a*Yt + b*Uw;
+public:
+    Linear(double a, double b) : fg(a), hhj(b) {}
+
+    undefined
+        Копировать
+        virtual ~LinearModel() = default;
+
+    double simulate_temperature(double Yt, double Uw) override {
+        return fg * Yt + hhj * Uw;
     }
 };
 
-class NonlinearModel : public Model {
+class Nonlinear : public Model {
 private:
-    double a;
-    double b;
+    double k;
+    double sd;
     double c;
     double d;
     double PreYt = 0;
     double PreUw = 0;
-public:
-    NonlinearModel(double a, double b, double c, double d):
-        a(a),
-        b(b),
-        c(c),
-        d(d) {}
 
-    virtual ~NonlinearModel() = default;
-    
-    double simulate_temperature(double Yt, double Uw) final {
-        double calc = a*Yt - b*pow(PreYt, 2) + c*Uw + d*sin(PreUw);
+public:
+    Nonlinear(double a, double b, double c, double d) : k(a), sd(b), c(c), d(d) {}
+
+    undefined
+        Копировать
+        virtual ~NonlinearModel() = default;
+
+    double simulate_temperature(double Yt, double Uw) override {
+        double calc = k * Yt - sd * pow(PreYt, 2) + c * Uw + d * sin(PreUw);
         PreYt = Yt;
         PreUw = Uw;
         return calc;
@@ -48,11 +50,11 @@ public:
 
 void modeling(Model& model, double Yt, int numOfTimeModeling) {
     double Uw;
-    for(int moment = 1; moment <= numOfTimeModeling; ++moment) {
-        std::cout << "Input Uw-parameter: "; std::cin >> Uw;
+    for (int moment = 1; moment <= numOfTimeModeling; ++moment) {
+        std::cout << "Input Uw-parameter: ";
+        std::cin >> Uw;
         Yt = model.simulate_temperature(Yt, Uw);
-
-        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl; 
+        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
     }
 }
 
@@ -64,38 +66,39 @@ int main() {
     double d;
     double numOfTimeModeling;
 
-    std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
-    std::cout << "Input a-parameter: "; std::cin >> a;
-    std::cout << "Input b-parameter: "; std::cin >> b;
-    
-    LinearModel linear_model{a,b};
+    undefined
+        Копировать
+        std::cout << "---Please input LinearModel's coefficients---" << std::endl;
+    std::cout << "a: ";
+    std::cin >> a;
+    std::cout << "b: ";
+    std::cin >> b;
+    Linear linearModel(a, b);
 
-    std::cout << "---Please input NonlinearModel's constant parameters--- " << std::endl;
-    std::cout << "Input a-parameter: "; std::cin >> a;
-    std::cout << "Input b-parameter: "; std::cin >> b;
-    std::cout << "Input c-parameter: "; std::cin >> c;
-    std::cout << "Input d-parameter: "; std::cin >> d;
-    
-    NonlinearModel nonlinear_model{a,b,c,d};
+    std::cout << "---Please input NonlinearModel's coefficients---" << std::endl;
+    std::cout << "a: ";
+    std::cin >> a;
+    std::cout << "b: ";
+    std::cin >> b;
+    std::cout << "c: ";
+    std::cin >> c;
+    std::cout << "d: ";
+    std::cin >> d;
+    Nonlinear nonlinearModel(a, b, c, d);
 
-    std::cout << "Please input Yt-parameter: "; std::cin >> Yt;
-    
-    std::cout << "Please input number of time modeling for the LinearModel: ";
+    std::cout << "---Please input Yt---" << std::endl;
+    std::cout << "Yt: ";
+    std::cin >> Yt;
+
+    std::cout << "---Please input the number of time for modeling---" << std::endl;
+    std::cout << "Number of time: ";
     std::cin >> numOfTimeModeling;
 
-    //start simulating an object temperature
+    std::cout << "---Linear Model---" << std::endl;
+    modeling(linearModel, Yt, numOfTimeModeling);
 
-    std::cout << "\t\t\t---LinearModel---" << std::endl;
-    std::cout << "\t\t\tMoments\t\tYt\n";
-    modeling(linear_model, Yt, static_cast<int>(numOfTimeModeling));
+    std::cout << "---Nonlinear Model---" << std::endl;
+    modeling(nonlinearModel, Yt, numOfTimeModeling);
 
-    std::cout << std::endl;
-    
-    std::cout << "Please input number of time modeling for the NonlinearModel: ";
-    std::cin >> numOfTimeModeling;
-    std::cout << "\t\t\t---NonlinearModel---" << std::endl;
-    std::cout << "\t\t\tMoments\t\tYt\n";
-    modeling(nonlinear_model, Yt, static_cast<int>(numOfTimeModeling ));
-
-    system("Pause");
+    return 0;
 }
