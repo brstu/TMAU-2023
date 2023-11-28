@@ -1,6 +1,7 @@
 ﻿cmake_minimum_required(VERSION 2.8)
-add_executable (tmau1_c_make "tmau1_c_make.cpp" "tmau1_c_make.h")
+project (task_01)
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET tmau1_c_make PROPERTY CXX_STANDARD 20)
-endif()
+add_executable (tmau1_c_make "tmau1_c_make.cpp")
+
+
+  
