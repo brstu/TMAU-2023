@@ -1,5 +1,8 @@
-﻿#include <iostream>
-#include <math.h>
+﻿// tmau1_c_make.cpp: определяет точку входа для приложения.
+//
+
+#include "tmau1_c_make.h"
+
 
 void Linear(double a, double b, double current_temperature, double input_warm, size_t itterations) {
 
@@ -57,3 +60,4 @@ int main()
         NonLinear(a, b, c, d, current_temperature, input_warm, itterations);
 
 }
+
