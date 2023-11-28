@@ -1,7 +1,8 @@
 ﻿// tmau1_c_make.cpp: определяет точку входа для приложения.
 //
 
-#include "tmau1_c_make.h"
+#include <iostream>
+#include <math.h>
 
 int main()
 {
