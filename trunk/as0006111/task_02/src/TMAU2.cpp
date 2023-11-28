@@ -32,7 +32,8 @@ public:
 class Linear : public Model
 {
 private:
-    double a, b; ///< Коэффициенты
+double a; ///< Коэффициент
+double b; ///< Коэффициент
 public:
     Linear(double a, double b) : a(a), b(b) {}
 
@@ -63,7 +64,10 @@ public:
 class Non_Linear : public Model
 {
 private:
-    double a, b, c, d;  ///< Коэффициенты
+    double a; ///< Коэффициент
+    double b; ///< Коэффициент
+    double c; ///< Коэффициент
+    double d; ///< Коэффициент
     double y0 = 0; ///< Предыдущая температура 
     double heat0 = 0; ///< Предыдущее тепло
 public:
@@ -101,7 +105,10 @@ class Controller
 {
 private:
     double heat = 0;
-    double K, T, TD, T0;
+    double K; 
+    double T; 
+    double TD; 
+    double T0;
 public:
     Controller(double K, double T0, double TD, double T) : K(K), T0(T0), TD(TD), T(T) {}
 
@@ -141,7 +148,10 @@ void PID_System(const double w, Controller* ins, Model* m, double y)
        *
        * Код:
        * \code
-       * double e, e0, e1, u;
+       * double e; 
+       *double e0; 
+       *double e1; 
+       *double u;
        *e = 0.0,
        *e0 = 0.0,
        *e1 = 0.0;
@@ -157,7 +167,10 @@ void PID_System(const double w, Controller* ins, Model* m, double y)
        *}
        * \endcode
        */
-    double e, e0, e1, u;
+    double e; 
+    double e0; 
+    double e1; 
+    double u;
     e = 0.0;
     e0 = 0.0;
     e1 = 0.0;
