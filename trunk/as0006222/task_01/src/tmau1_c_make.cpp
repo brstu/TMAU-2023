@@ -3,35 +3,6 @@
 
 #include "tmau1_c_make.h"
 
-
-void Linear(double a, double b, double current_temperature, double input_warm, size_t itterations) {
-
-
-    for (size_t i = 0; i < itterations; i++)
-    {
-        double next = a * current_temperature + b * input_warm;
-        std::cout << next << "\n";
-        current_temperature = next;
-    }
-    std::cout << "end\n";
-
-}
-
-void NonLinear(double a, double b, double c, double d, double current_temperature, double input_warm, size_t itterations) {
-
-    double previous_temperature = 0;
-    for (size_t i = 0; i < itterations; i++)
-    {
-        double next = a * current_temperature - b * previous_temperature * previous_temperature + c * input_warm + d * sin(input_warm);
-        previous_temperature = current_temperature;
-        current_temperature = next;
-        std::cout << next << "\n";
-    }
-    std::cout << "end\n";
-
-
-}
-
 int main()
 {
     double a, b, c, d, current_temperature, input_warm;
@@ -55,9 +26,30 @@ int main()
     std::cin >> itterations;
 
     if (mode)
-        Linear(a, b, current_temperature, input_warm, itterations);
+    {
+        for (size_t i = 0; i < itterations; i++)
+        {
+            double next = a * current_temperature + b * input_warm;
+            std::cout << next << "\n";
+            current_temperature = next;
+        }
+        std::cout << "end\n";
+    }
+
     else
-        NonLinear(a, b, c, d, current_temperature, input_warm, itterations);
+    {
+        double previous_temperature = 0;
+        for (size_t i = 0; i < itterations; i++)
+        {
+            double next = a * current_temperature - b * previous_temperature * previous_temperature + c * input_warm + d * sin(input_warm);
+            previous_temperature = current_temperature;
+            current_temperature = next;
+            std::cout << next << "\n";
+        }
+        std::cout << "end\n";
+
+
+    }
 
 }
 
