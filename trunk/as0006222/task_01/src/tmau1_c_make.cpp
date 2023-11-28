@@ -6,7 +6,13 @@
 
 int main()
 {
-    double a, b, c, d, current_temperature, input_warm;
+    double a; 
+    double b; 
+    double c; 
+    double d; 
+    double current_temperature;
+    double input_warm;
+
     bool mode;
     size_t itterations;
     std::cout << "A: ";
