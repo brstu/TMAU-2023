@@ -1,93 +1,107 @@
 ﻿#include <iostream>
 #include <cmath>
-#include <functional>
-
-// Define a type alias for readability
-using SimulationFunction = std::function<double(double, double)>;
 
 class Model {
 public:
     virtual ~Model() = default;
-    virtual double simulate_temperature(double Yt, double Uw) const = 0;
+    virtual double simulate_temperature(double Yt, double Uw) = 0;
 };
 
 class LinearModel : public Model {
+private:
     double a;
     double b;
 public:
-    LinearModel(double aParam, double bParam) : a(aParam), b(bParam) {}
+    LinearModel(double a, double b) : a(a), b(b) {}
 
-    double simulate_temperature(double Yt, double Uw) const override {
+    virtual ~LinearModel() = default;
+
+    double simulate_temperature(double Yt, double Uw) override {
         return a * Yt + b * Uw;
     }
 };
 
 class NonlinearModel : public Model {
+private:
     double a;
     double b;
     double c;
     double d;
-    mutable double lastYt = 0;
-    mutable double lastUw = 0;
+    double PreYt = 0;
+    double PreUw = 0;
 public:
-    NonlinearModel(double aParam, double bParam, double cParam, double dParam) :
-        a(aParam), b(bParam), c(cParam), d(dParam) {}
+    NonlinearModel(double a, double b, double c, double d) :
+        a(a),
+        b(b),
+        c(c),
+        d(d) {}
 
-    double simulate_temperature(double Yt, double Uw) const override {
-        double output = a * Yt - b * std::pow(lastYt, 2) + c * Uw + d * std::sin(lastUw);
-        lastYt = Yt;
-        lastUw = Uw;
-        return output;
+    virtual ~NonlinearModel() = default;
+
+    double simulate_temperature(double Yt, double Uw) override {
+        double calc = a * Yt - b * pow(PreYt, 2) + c * Uw + d * sin(PreUw);
+        PreYt = Yt;
+        PreUw = Uw;
+        return calc;
     }
 };
 
-class SimulationEnvironment {
-public:
-    void perform_simulation(const Model& model, double Yt, int numOfIterations) const {
-        double userParam;
-        for (auto iteration = 0; iteration < numOfIterations; ++iteration) {
-            std::cout << "Enter external parameter Uw: ";
-            std::cin >> userParam;
-            Yt = model.simulate_temperature(Yt, userParam);
+void modeling(Model& model, double Yt, int numOfTimeModeling) {
+    double Uw;
+    for (int moment = 1; moment <= numOfTimeModeling; ++moment) {
+        std::cout << "Input Uw-parameter: ";
+        std::cin >> Uw;
+        Yt = model.simulate_temperature(Yt, Uw);
 
-            std::cout << "\tTime: " << iteration + 1 << "\tTemperature: " << Yt << std::endl;
-        }
+        std::cout << "\t\t\t" << moment << "\t\t" << Yt << std::endl;
     }
-};
+}
 
 int main() {
-    double Yt, a, b, c, d;
-    int numOfIterations;
+    double Yt;
+    double a;
+    double b;
+    double c;
+    double d;
+    double numOfTimeModeling;
 
-    std::cout << "--- Configure Linear Model ---\n";
-    std::cout << "Enter parameter a: "; std::cin >> a;
-    std::cout << "Enter parameter b: "; std::cin >> b;
-    LinearModel linearModel(a, b);
+    std::cout << "---Please input LinearModel's constant parameters--- " << std::endl;
+    std::cout << "Input a-parameter: ";
+    std::cin >> a;
+    std::cout << "Input b-parameter: ";
+    std::cin >> b;
 
-    std::cout << "--- Configure Nonlinear Model ---\n";
-    std::cout << "Enter parameter a: "; std::cin >> a;
-    std::cout << "Enter parameter b: "; std::cin >> b;
-    std::cout << "Enter parameter c: "; std::cin >> c;
-    std::cout << "Enter parameter d: "; std::cin >> d;
-    NonlinearModel nonlinearModel(a, b, c, d);
+    LinearModel linear_model{ a,b };
 
-    std::cout << "Enter initial temperature Yt: "; std::cin >> Yt;
+    std::cout << "---Please input NonlinearModel's constant parameters--- " << std::endl;
+    std::cout << "Input a-parameter: ";
+    std::cin >> a;
+    std::cout << "Input b-parameter: ";
+    std::cin >> b;
+    std::cout << "Input c-parameter: ";
+    std::cin >> c;
+    std::cout << "Input d-parameter: ";
+    std::cin >> d;
 
-    SimulationEnvironment simulationEnvironment;
+    NonlinearModel nonlinear_model{ a,b,c,d };
 
-    std::cout << "Enter the number of iterations for Linear Model: ";
-    std::cin >> numOfIterations;
-    std::cout << "--- Simulating Linear Model ---\n";
-    simulationEnvironment.perform_simulation(linearModel, Yt, numOfIterations);
+    std::cout << "Please input Yt-parameter: ";
+    std::cin >> Yt;
 
-    std::cout << "\nEnter the number of iterations for Nonlinear Model: ";
-    std::cin >> numOfIterations;
-    std::cout << "--- Simulating Nonlinear Model ---\n";
-    simulationEnvironment.perform_simulation(nonlinearModel, Yt, numOfIterations);
+    std::cout << "Please input number of time modeling for the LinearModel: ";
+    std::cin >> numOfTimeModeling;
 
-    std::cout << "Simulation complete.\n";
-    // The system("Pause") command is not recommended; this is for Windows only.
-    std::cin.get(); // To pause the output instead of system("Pause")
-    std::cin.get(); // This is to catch any extra newline input to prevent closing immediately.
-    return 0;
+    //start simulating an object temperature
+
+    std::cout << "\t\t\t---LinearModel---" << std::endl;
+    std::cout << "\t\t\tMoments\t\tYt\n";
+    modeling(linear_model, Yt, static_cast<int>(numOfTimeModeling));
+
+    std::cout << std::endl;
+
+    std::cout << "Please input number of time modeling for the NonlinearModel: ";
+    std::cin >> numOfTimeModeling;
+    std::cout << "\t\t\t---NonlinearModel---" << std::endl;
+    std::cout << "\t\t\tMoments\t\tYt\n";
+    modeling(nonlinear_model, Yt, static_cast<int>(numOfTimeModeling));
 }
