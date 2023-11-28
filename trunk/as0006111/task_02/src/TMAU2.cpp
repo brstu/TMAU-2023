@@ -19,7 +19,7 @@ class Model
 {
 public:
     virtual double expression(double heat, double y) = 0;
-    virtual ~Model() {} 
+    virtual ~Model() = default;
 };
 
 /**
@@ -50,7 +50,7 @@ public:
         return y;
     }
 
-    ~Linear() override {} 
+    ~Linear() override = default;
 };
 
 /**
@@ -87,7 +87,7 @@ public:
         return y1; ///< Получаемая температура
     }
 
-    ~Non_Linear() override {} 
+    ~Non_Linear() override = default;
 };
 
 /**
@@ -182,14 +182,14 @@ int main()
    *  setlocale(LC_ALL, "Russian");
    *cout << " Линейная модель:\nE\t\tY\t\tU\n";
    *cout << "----------------------------------------------------" << endl;
-   *Linear* m = new Linear(0.35, 0.567);
-   *Controller* r = new Controller(0.1, 20, 40, 10);
-   *PID_System(5, r, m, 1);
+   *auto m = make_unique<Linear>(0.35, 0.567);
+   *auto r = make_unique<Controller>(0.1, 20, 40, 10);
+   *PID_System(5, r.get(), m.get(), 1);
    *cout << "\n\n\n Нелинейная модель:\nE\t\tY\t\tU\n";
    *cout << "-----------------------------------------------------" << endl;
-   *Non_Linear* nl = new Non_Linear(1, 0.0025, 0.614, 0.777);
-   *Controller* nlr = new Controller(0.1, 20, 40, 10);
-   *PID_System(5, nlr, nl, 1);
+   *auto nl = make_unique<Non_Linear>(1, 0.0025, 0.614, 0.777);
+   *auto nlr = make_unique<Controller>(0.1, 20, 40, 10);
+   *PID_System(5, nlr.get(), nl.get(), 1);
    * return 0;
    * \endcode
    */
@@ -198,15 +198,15 @@ int main()
     cout << " Линейная модель:\nE\t\tY\t\tU\n";
     cout << "----------------------------------------------------" << endl;
 
-    Linear* m = new Linear(0.35, 0.567);
-    Controller* r = new Controller(0.1, 20, 40, 10);
-    PID_System(5, r, m, 1);
+    auto m = make_unique<Linear>(0.35, 0.567);
+    auto r = make_unique<Controller>(0.1, 20, 40, 10);
+    PID_System(5, r.get(), m.get(), 1);
 
     cout << "\n\n\n Нелинейная модель:\nE\t\tY\t\tU\n";
     cout << "-----------------------------------------------------" << endl;
 
-    Non_Linear* nl = new Non_Linear(1, 0.0025, 0.614, 0.777);
-    Controller* nlr = new Controller(0.1, 20, 40, 10);
-    PID_System(5, nlr, nl, 1);
+    auto nl = make_unique<Non_Linear>(1, 0.0025, 0.614, 0.777);
+    auto nlr = make_unique<Controller>(0.1, 20, 40, 10);
+    PID_System(5, nlr.get(), nl.get(), 1);
     return 0;
 }
