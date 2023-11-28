@@ -1,3 +1,4 @@
+#include <memory>
 #include<iostream>
 #include<cmath>
 using namespace std;
