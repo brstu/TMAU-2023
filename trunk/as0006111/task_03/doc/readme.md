@@ -30,6 +30,7 @@
 <br><br><br>
 
 ***Последовательность действий:***
+<br>
 Делаем форк репозитрия savushkin-r-d/PLCnext-howto.<br>
 Устанавливаем CMake, Cmake Tool,WinSCP, PuTTy, MinGW, MVS19 (через него открываем PLCnext-howto/HowTo build program/ Hello PLCnext).<br>
 В cpp файле меняем часть на as006111.<br>
