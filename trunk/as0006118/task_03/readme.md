@@ -21,15 +21,20 @@
 
 ### Цель работы: запустить проект на контроллере AXCF 2152
 ## Ход работы 
-Чтобы начать работу cначала нам нужно создать форк репозитория savushkin-r-d/PLCnext-howto. Для компиляции проекта нам понадобится MVS19, а также следует установить CMake, Cmake Tool и MinGW.
+Чтобы начать работу cначала нам нужно создать форк репозитория savushkin-r-d/PLCnext-howto. 
+Для компиляции проекта нам понадобится MVS19, а также следует установить CMake, Cmake Tool и MinGW.
 
-Открываем проект Hello PLCnext в PLCnext-howto/HowTo build program через MVS и найдем Cpp файл. Заменим текст в этом файле на “as006118”.
+Открываем проект Hello PLCnext в PLCnext-howto/HowTo build program через MVS и найдем Cpp файл. 
+Заменим текст в этом файле на “as006118”.
 
-Попытаемся скомпилировать проект. Если компиляция не удалась, перейдем в PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe и найдем строку “CMAKE_MAKE_PROGRAM:FILEPATH”. В этой строке укажите путь к ninja. По умолчанию он должен быть установлен по адресу C:/Program Files (x86)/MicrosoftVisualStudio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe. После этого попробуем скомпилировать проект снова.
+Попытаемся скомпилировать проект. Если компиляция не удалась, перейдем в PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe и найдем строку “CMAKE_MAKE_PROGRAM:FILEPATH”. 
+В этой строке укажите путь к ninja. По умолчанию он должен быть установлен по адресу C:/Program Files (x86)/MicrosoftVisualStudio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe. 
+После этого попробуем скомпилировать проект снова.
 
 Затем скачаем программы WinSCP и PuTTy. Перейдем в панель управления/Сеть и Интернет/Центр управления сетями и общим доступом, выберем сеть Ethernet и укажем для нее ip 192.168.1.1 и маску подсети 255.255.255.0.
 
-В PuTTy введем ip 192.168.1.10 для подключения к контроллеру. В WinSCP введем тот же ip, имя пользователя “admin” и пароль, который можно найти на контроллере.
+В программу PuTTy введем ip 192.168.1.10 для подключения к контроллеру. 
+В WinSCP введем тот же ip, имя пользователя “admin” и пароль, который можно найти на контроллере.
 
 После входа в файловую систему контроллера переместим файл hello_PLCnext на контроллер и предоставим ему все разрешения и права, чтобы избежать ошибки “permission denied”.
 
