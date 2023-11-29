@@ -91,7 +91,7 @@ private:
     double CurrentValueUk(double eK, double eK1, double eK2)
     {
         double _q0 = _k * (1 + _td / _t0);
-        double _q1 = -_k * (1 + 2 * (_td / _t0) - (_t0 / _t));
+        double _q1 = -_k * (1 + 2 * (_td / _t0 - _t0 / _t);
         double _q2 = _k * _td / _t0;
         _uk += _q0 * eK + _q1 * eK1 + _q2 * eK2;
         return _uk;
