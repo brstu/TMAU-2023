@@ -63,7 +63,7 @@ cmake --build --preset=build-windows-AXCF2152-2022.6.0.43 --target install .
 
 <p>Устанавливаем и открываем программу <em>WinCP</em> вводим IP adress и авторизируемся.</p>
 
-![](images/WinSCP_login.jpg)  !!!!!!!!
+![](images/WinSCP_login.jpg)  
 
 <p>Добавляем бинарный файл <em>hello_PLCnext </em> в корень контроллера и меняем его свойства</p>
 
