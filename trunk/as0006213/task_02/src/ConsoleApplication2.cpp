@@ -2,7 +2,7 @@
 #include <vector>
 #include <math.h>
 
-const double sy1 = 20.0;
+const double sy1 = 20.0; 
 const double sy2 = 20.5;
 
 class Synchronizable
@@ -23,20 +23,11 @@ public:
      *								The size is determined for each specific
      *								class.
      */
-    virtual void sync(std::vector <double>& arrStart) = 0;
+    virtual void sync(std::vector <double> arrStart) = 0;
 };
 
 class Model : protected Synchronizable
 {
-    /** /file Model.h
-     *  /brief Temperature simulation module.
-     *
-     *  Сontains a representation of the
-     *	temperature control class.
-     *
-     *  /author Mikhail Liashenko
-     *  /bug No bugs.
-     */
 private:
 
     double u;	///< Parameter u
@@ -49,14 +40,26 @@ private:
     double d;	///< Parameter d
 
 public:
-    explicit Model(std::vector <double>& con, double strt1, double strt2) {
+    explicit Model(std::vector <double> con, double strt1, double strt2) {
         init(con, strt1, strt2);
     };
 
-    void init(std::vector <double>& con, double strt1, double strt2);
+    void init(std::vector <double> con, double strt1, double strt2) {
+        this->a = con[0];
+        this->b = con[1];
+        this->c = con[2];
+        this->d = con[3];
+        this->y = strt1;
+        this->y_p = strt2;
+        this->u = 0;
+        this->u_p = 0;
+    };
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double>& arrStart) override;
+    void sync(std::vector <double> arrStart) override {
+        this->u = arrStart[0];
+        this->u_p = arrStart[1];
+    };
 
     /**
      * \brief   Computate next state calculation operation linear
@@ -67,7 +70,14 @@ public:
      *
      * \return		next state calculation operation linear system
      */
-    double stepModelingNL(double u_n);
+    double stepModelingNL(double u_n) {
+        u_p = u;
+        u = u_n;
+        double y_n = (a * y - b * pow(y_p, 2) + c * u + d * sin(u_p));
+        y_p = y;
+        y = y_n;
+        return y;
+    };
 
     /**
      * \brief   Computate next state calculation operation
@@ -79,22 +89,15 @@ public:
      * \return		next state calculation operation non-linear
      *				system
      */
-    double stepModelingL(double u_n);
+    double stepModelingL(double u_n) {
+        u = u_n;
+        double y_n = a * y - b * u;
+        return y_n;
+    };
 };
 
 class Regulator : protected Synchronizable
 {
-    /** /file Regulator.h
-     *  /brief Standart PID Regulator.
-     *
-     *  Contains the representation of a PID
-     *  controller, methods for its creation,
-     *  configuration, and use.
-     *
-     *  /author Mikhail Liashenko
-     *  /bug No bugs.
-     */
-
 private:
     double ek;		///< Parameter ek
     double ek_p;	///< Parameter ek_p
@@ -118,26 +121,47 @@ public:
      * \param[in]	con		Array of simulation constants.
      * \param[in]	start	Initial approximation
      */
-    explicit Regulator(std::vector <double>& con, double start) {
+    explicit Regulator(std::vector <double> con, double start) {
         init(con, start);
     };
 
-    void init(std::vector <double>& con, double start);
+    void init(std::vector <double> con, double start) {
+        this->K = con[0];
+        this->T = con[1];
+        this->Td = con[2];
+        this->T0 = con[3];
+        this->u_p = start;
+        defConstants();
+        this->ek = 0;
+        this->ek_p = 0;
+        this->ek_pp = 0;
+        this->u_p = 0;
+    };
 
     /**
      * \brief   Computate and define simulation constants by setting
      *			parameters.
      */
-    void defConstants();
+    void defConstants() {
+        this->q0 = K * (1 + Td / T0);
+        this->q1 = -K * (1 + 2 * Td / T0 - T0 / T);
+        this->q2 = K * Td / T0;
+    };
 
     ///Should recive 3 starting parameters
-    void sync(std::vector <double>& arrStart) override;
+    void sync(std::vector <double>  arrStart) override {
+        this->ek = arrStart[0];
+        this->ek_p = arrStart[1];
+        this->ek_pp = arrStart[2];
+    };
 
     /**
      * \brief   Computate and define modelling variation by
      *			simulation constants.
      */
-    double deltaU() const;
+    const double deltaU() {
+        return(q0 * ek + q1 * ek_p + q2 * ek_pp);
+    };
 
     /**
      * \brief   Iterative operation of computation the next
@@ -147,7 +171,14 @@ public:
      * \return		This function returns the calculated
      *				model parameter.
      */
-    double step(double ek_n);
+    double step(double ek_n) {
+        ek_pp = ek_p;
+        ek_p = ek;
+        ek = ek_n;
+        double u = u_p + deltaU();
+        u_p = u;
+        return u;
+    };
 };
 
 int main()
@@ -185,7 +216,7 @@ int main()
     for (int i = 0; i < u.size(); i++) {
         vecReg1.push_back(reg1.step(vecMod1[i]));
         std::cout << vecReg1[i] << "\t";
-    }
+    };
     std::cout << std::endl;
 
     std::cout << "Lineal model" << std::endl;
@@ -212,93 +243,3 @@ int main()
     }
 
 }
-
-/** /file Model.cpp
- *  /brief Temperature simulation module.
- *
- *  Сontains a implementation of the
- *	temperature control class.
- *
- *  /author Mikhail Liashenko
- *  /bug No bugs.
- */
-
-    void Model::init(std::vector <double>& con, double strt1, double strt2) {
-    this->a = con[0];
-    this->b = con[1];
-    this->c = con[2];
-    this->d = con[3];
-    this->y = strt1;
-    this->y_p = strt2;
-    this->u = 0;
-    this->u_p = 0;
-};
-
-    void Model::sync(std::vector <double>& arrStart) {
-        this->u = arrStart[0];
-        this->u_p = arrStart[1];
-    };
-
-    double Model::stepModelingNL(double u_n) {
-        u_p = u;
-        u = u_n;
-        double y_n = (a * y - b * pow(y_p, 2) + c * u + d * sin(u_p));
-        y_p = y;
-        y = y_n;
-        return y;
-    };
-
-    double Model::stepModelingL(double u_n) {
-        u = u_n;
-        double y_n = a * y - b * u;
-        return y_n;
-    };
-
-/** /file Regulator.h
- *  /brief Standart PID Regulator.
- *
- *  Contains the implementation of a PID
- *  controller, methods for its creation,
- *  configuration, and use.
- *
- *  /author Mikhail Liashenko
- *  /bug No bugs.
- */
-
-    void Regulator::init(std::vector <double>& con, double start) {
-        this->K = con[0];
-        this->T = con[1];
-        this->Td = con[2];
-        this->T0 = con[3];
-        this->u_p = start;
-        defConstants();
-        this->ek = 0;
-        this->ek_p = 0;
-        this->ek_pp = 0;
-        this->u_p = 0;
-    };
-
-    void Regulator::defConstants() {
-        this->q0 = K * (1 + Td / T0);
-        this->q1 = -K * (1 + 2 * Td / T0 - T0 / T);
-        this->q2 = K * Td / T0;
-    };
-
-    void Regulator::sync(std::vector <double>& arrStart) {
-        this->ek = arrStart[0];
-        this->ek_p = arrStart[1];
-        this->ek_pp = arrStart[2];
-    };
-
-    double Regulator::deltaU() const {
-        return(q0 * ek + q1 * ek_p + q2 * ek_pp);
-    };
-
-    double Regulator::step(double ek_n) {
-        ek_pp = ek_p;
-        ek_p = ek;
-        ek = ek_n;
-        double u = u_p + deltaU();
-        u_p = u;
-        return u;
-    };
