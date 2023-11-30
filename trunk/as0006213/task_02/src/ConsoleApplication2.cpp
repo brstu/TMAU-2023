@@ -40,7 +40,7 @@ private:
     double d;	///< Parameter d
 
 public:
-    explicit Model(std::vector <double> &con, double strt1, double strt2) {
+    explicit Model(const std::vector <double>  &con, double strt1, double strt2) {
         init(con, strt1, strt2);
     };
 
@@ -121,7 +121,7 @@ public:
      * \param[in]	con		Array of simulation constants.
      * \param[in]	start	Initial approximation
      */
-    explicit Regulator(std::vector <double> &con, double start) {
+    explicit Regulator(const std::vector <double> &con, double start) {
         init(con, start);
     };
 
