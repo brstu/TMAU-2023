@@ -40,7 +40,7 @@ private:
     double d;	///< Parameter d
 
 public:
-    explicit Model(std::vector <double> con, double strt1, double strt2) {
+    explicit Model(std::vector <double> &con, double strt1, double strt2) {
         init(con, strt1, strt2);
     };
 
@@ -121,7 +121,7 @@ public:
      * \param[in]	con		Array of simulation constants.
      * \param[in]	start	Initial approximation
      */
-    explicit Regulator(std::vector <double> con, double start) {
+    explicit Regulator(std::vector <double> &con, double start) {
         init(con, start);
     };
 
@@ -159,7 +159,7 @@ public:
      * \brief   Computate and define modelling variation by
      *			simulation constants.
      */
-    const double deltaU() {
+    double deltaU() const {
         return(q0 * ek + q1 * ek_p + q2 * ek_pp);
     };
 
@@ -216,7 +216,7 @@ int main()
     for (int i = 0; i < u.size(); i++) {
         vecReg1.push_back(reg1.step(vecMod1[i]));
         std::cout << vecReg1[i] << "\t";
-    };
+    }
     std::cout << std::endl;
 
     std::cout << "Lineal model" << std::endl;
