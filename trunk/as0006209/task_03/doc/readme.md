@@ -65,7 +65,7 @@ cmake --build --preset=build-windows-AXCF2152-2022.6.0.43 --target install .
 
 ![](images/winSCP_log.jpg) 
 
-<p>Перекидываем бинарный файл <em>hello_PLCnext </em> на контроллер и меняем его свойства, делая его исполняемым</p>
+<p>Перекидываем бинарный файл <em>hello_PLCnext </em> на контроллер и меняем его свойства, делая его исполняемым.</p>
 
 ![](images/winSCP.jpg) 
 ![](images/add_executable.jpg) 
