@@ -10,7 +10,7 @@
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-61</p>
-<p align="right">Касюк Д.А.</p>
+<p align="right">Леонович А.А.</p>
 <p align="right">Проверил:</p>
 <p align="right">Старший преподаватель</p>
 <p align="right">Иванюк Д.С.</p>
