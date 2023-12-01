@@ -23,7 +23,7 @@
 ## Цель работы:  
  Используя Visual Code создать тестовый проект "Hello PLCnext from AS06116!", собрать его и продемонстрировать работоспособность на тестовом контроллере.
 ## Ход работы
- Собраем файл используя [руководство](https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext). Настраиваем параметры сети своего компьютера.
+ Собрал исполняемый файл используя [руководство](https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext). Настромл параметры сети своего компьютера.
 
  ![](images/Connection1.jpg)
 
@@ -31,11 +31,11 @@
 
 ![](images/MeInLab.jpg)
 
- Включил PuTTY и также поключился к контроллеру.
+ Включил PuTTY и поключился к контроллеру.
 
 ![](images/Connection2.jpg)
 
- Открыл WinCP и запускаем программу.
+ Открыл WinCP и запустил программу.
 
 ![](images/ProgramWorking.jpg)
 
