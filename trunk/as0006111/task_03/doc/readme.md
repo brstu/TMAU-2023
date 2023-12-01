@@ -18,9 +18,11 @@
 
 ---
 ***Цель:***
+<br>
 Научиться сборке и запуску проекта на контроллере AXCF 2152.
 <br><br><br>
 ***Задание***:
+<br>
 ``` bash
 1) Ознакомиться с платформой PLCnext.
 2) Изучить руководство.
@@ -31,18 +33,19 @@
 
 ***Последовательность действий:***
 <br>
-Делаем форк репозитрия savushkin-r-d/PLCnext-howto.<br>
-Устанавливаем CMake, Cmake Tool,WinSCP, PuTTy, MinGW, MVS19 (через него открываем PLCnext-howto/HowTo build program/ Hello PLCnext).<br>
-В cpp файле меняем часть на as006111.<br>
-В PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe в строку "CMAKE_MAKE_PROGRAM:FILEPATH" прописываем путь к ninja.<br>
-Пересобиаем проект.<br>
-В панели управления "Сеть и Интернет/Центр управления сетями и общим доступом" выбираем  сеть Ethernet, вводим ip 192.168.1.1 и маску 255.255.255.0, PuTTy прописываем ip 192.168.1.10.<br>
+• Делаем fork репозитрия savushkin-r-d/PLCnext-howto.<br>
+• Устанавливаем CMake, Cmake Tool,WinSCP, PuTTy, MinGW, MVS19 (через него открываем PLCnext-howto/HowTo build program/ Hello PLCnext).<br>
+• В cpp файле меняем часть на "as006111".<br>
+• В PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe в строку "CMAKE_MAKE_PROGRAM:FILEPATH" прописываем путь к ninja.<br>
+• Пересобиаем проект.<br>
+• В панели управления "Сеть и Интернет / Центр управления сетями и общим доступом" выбираем  сеть Ethernet, вводим ip 192.168.1.1 и маску 255.255.255.0, PuTTy прописываем ip 192.168.1.10.<br>
+<br>
 ![](../../images/Connection.png)
 <br>
-Прописываем ip в WinSCP и указываем имя пользователя "admin".(Пароль написан на самом контроллере)<br>
-Файл hello_PLCnext перемещаем в файловую систему контроллера, даём все расширения и права. <br>
-Вводим в терминал "./hello_PLCnext" - это запуск проекта. <br>
-Вывод программы: "Hello PLCnext from as006111". <br>
+• Прописываем ip в WinSCP и указываем имя пользователя "admin".(Пароль написан на самом контроллере)<br>
+• Файл hello_PLCnext перемещаем в файловую систему контроллера, даём все расширения и права. <br>
+• Вводим в терминал "./hello_PLCnext" - это запуск проекта. <br>
+Вывод программы: "Hello PLCnext from as006111". <br><br>
 ![](../../images/Conclusion.png)
 <br><br>
 <strong><em>Вывод:</em></strong>
