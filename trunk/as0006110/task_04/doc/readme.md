@@ -58,6 +58,8 @@ https://github.com/savushkin-r-d/ptusa_main/tree/master/russian_readme#%D0%BA%D0
 
 ![](images/screenshot_workpage.png)
 
+<p>6)Над этой лабораторной работали мы в 3 </p>
+
 ![](images/together.png)
 
 # Основные проблемы с которыми я столкнулся
