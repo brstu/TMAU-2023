@@ -7,11 +7,12 @@
 <p align="center">По дисциплине “Теория и методы автоматического управления”</p>
 <p align="center">Тема: “Работа с контроллером AXC F 2152”</p>
 <br><br><br>
-<p align="right">Выполнил:</p>
+<p align="right"><strong>Выполнил:</strong></p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-61</p>
 <p align="right">Василенко И.В.</p>
-<p align="right">Проверил:</p>
+<br>
+<p align="right"><strong>Проверил:</strong></p>
 <p align="right">Старший преподаватель</p>
 <p align="right">Иванюк Д.С.</p>
 <br><br><br>
