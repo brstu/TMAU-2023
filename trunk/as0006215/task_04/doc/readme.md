@@ -30,6 +30,7 @@
 
 Был собран проект в Visual Studio.
 После чего повторно были выполнены действия как в 3 лаб.работе.<https://github.com/Asya2003/TMAU-2023/blob/main/trunk/as0006215/task_03/doc/readme.md>
+Запускаем  файл с помощью команды ./ptusa_main  main.plua  sys_path ./sys/
 
 
 ![](../images/lab41.jpg)
