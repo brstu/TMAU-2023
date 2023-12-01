@@ -34,8 +34,6 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git
 https://github.com/savushkin-r-d/ptusa_main/tree/master/russian_readme#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82
 ```
 
-<p>Получаем файл <em>ptusa_main</em>.</p>
-
 <p>Затем мы подключаемся к контроллеру, следуя тем же шагам, что и в <em>3-й лабораторной работе:</em> </p>
 
 [task_03](../../task_03/doc/readme.md).
@@ -50,13 +48,13 @@ https://github.com/savushkin-r-d/ptusa_main/tree/master/russian_readme#%D0%BA%D0
 
 <p>Получаем результат в виде следущего вывода в консоли: </p>
 
+![](images/console.png)
+
 ![](images/main-admin.png)
 
 ![](images/notebookscreen.png)
 
 ![](images/screenshot_workpage.png)
-
-![](images/console.png)
 
 ![](images/together.png)
 
