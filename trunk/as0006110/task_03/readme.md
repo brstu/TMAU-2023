@@ -44,8 +44,6 @@
 
 ![](../../images/connect2.png)
 
-![](../../images/directory.png)
-
 ![](../../images/login.png)
 
 ![](../../images/network.png)
