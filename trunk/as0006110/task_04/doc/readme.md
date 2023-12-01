@@ -28,7 +28,7 @@
 git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git 
 ```
 
-<p>Далее следуя инструкциям из репозитория собираем проект.</p>
+<p>Далее следуя инструкциям из репозитория собираем проект..</p>
 
 ``` bash
 https://github.com/savushkin-r-d/ptusa_main/tree/master/russian_readme#%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82
