@@ -37,3 +37,15 @@
 ![](../../images/Lab3Result.png)
 
 ![](../../images/Work_together.png)
+
+![](../../images/connect.png)
+
+![](../../images/connect2.png)
+
+![](../../images/directory.png)
+
+![](../../images/login.png)
+
+![](../../images/network.png)
+
+![](../../images/settings.png)
