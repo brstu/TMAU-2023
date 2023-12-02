@@ -37,7 +37,7 @@ https://github.com/savushkin-r-d/ptusa_main/tree/master/russian_readme#%D0%BA%D0
 
 ![](../../images/Lab4File.jpg)
 
-<p>После того, как получили файл, подключаемся к контроллеру через Ithernet соединение. Это было уже проведено в лабораторной работе №3. </p>
+<p>После того, как получили файл, подключаемся к контроллеру через LAN соединение. Это было уже проведено в предыдущей лабораторной работе. </p>
 
 ``` bash
 https://github.com/brstu/TMAU-2023/tree/main/trunk/as0006112/task_03/doc
