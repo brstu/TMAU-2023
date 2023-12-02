@@ -2,15 +2,15 @@
 <p align="center">Учреждение образования Брестский Государственный Технический Университет</p>
 <p align="center">Кафедра ИИТ</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<p align="center"> ##Лабораторная работа №3 </p>
-<p align="center"> ##"Работа с контроллером AXC F 2152"</p>
+<p align="center">## Лабораторная работа №3</p>
+<p align="center">## "Работа с контроллером AXC F 2152"</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<p align="center">Выполнил:</p>
-<p align="center">Студент 3 курса</p>
-<p align="center">Группы АС-62</p>
-<p align="center">Дмитраница В.П.</p>
-<p align="center">Проверил:</p>
-<p align="center">Иванюк Д.С.</p>
+<p align="right">Выполнил:</p>
+<p align="right">Студент 3 курса</p>
+<p align="right">Группы АС-62</p>
+<p align="right">Дмитраница В.П.</p>
+<p align="right">Проверил:</p>
+<p align="right">Иванюк Д.С.</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <p align="center">Брест 2023</p>
 
@@ -20,7 +20,7 @@
 <p> 1. После клонирования репозитория собираем наш файл по инструкции указанной в репозитории https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext.</p>
 <p> 1.1. Настройка перед сборкой файла:
 
-cmake --preset=build-windows-AXCF2152-2021.0.3.35554
+cmake --preset=build-windows-AXCF2152-2021.0.3.35554</p>
 
 <p> 1.2. Сборка файла:
 
