@@ -21,7 +21,7 @@
 Для начала работы необходимо сделать форк репозитрия savushkin-r-d/PLCnext-howto.   
 Для сборки проекта потребуется MVS19. Также устанавливаем CMake, Cmake Tool и MinGW.   
 Через MVS открываем PLCnext-howto/HowTo build program/ Hello PLCnext. Там открываем Cpp файл. В нём надпись меняем на свою. В данном случае на as006112.  
-Пытаемся собрать. Если сборка не удалась, то открываем PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe, находим там строчку "CMAKE_MAKE_PROGRAM:FILEPATH" и прописываем туда свой путь к ninja. По-умолчанию должен установиться по пути C:/Program Files (x86)/MicrosoftVisualStudio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe   
+Пытаемся собрать. Если сборка не удалась, то открываем PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCache, находим там строчку "CMAKE_MAKE_PROGRAM:FILEPATH" и прописываем туда свой путь к ninja. По-умолчанию должен установиться по пути C:/Program Files (x86)/MicrosoftVisualStudio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe   
 Пересобиаем проект.   
 Скачиваем программы WinSCP и PuTTy.   
 Заходим в панель управления/Сеть и Интернет/Центр управления сетями и общим доступом, выбираем там сеть Ethernet и прописываем ей ip 192.168.1.1, маску подсети 255.255.255.0
