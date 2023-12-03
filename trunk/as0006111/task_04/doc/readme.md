@@ -31,14 +31,13 @@
 
 ***Последовательность действий:***
 <br>
-Клонируем репозиторий <br>
+• Клонируем репозиторий <br>
 
-``` bash
-[ptusa_main](https://github.com/savushkin-r-d/ptusa_main).
-```
-<p>Открываем этот репозиторий в <strong>Visual Studio</strong>, создаем проект на базе <strong>CMake</strong>.</p>
-<p>С помощью <strong>Visual Studio</strong>  компилируем проект.</p> 
-<p>Подключаемся к контроллеру, по тому же принципу, что и в 3 лабораторной работе: </p>
+<strong>[ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</strong>
+
+<p>• Открываем этот репозиторий в <strong>Visual Studio</strong>, создаем проект на базе <strong>CMake</strong>.</p>
+<p>• С помощью <strong>Visual Studio</strong>  компилируем проект.</p> 
+<p>• Подключаемся к контроллеру, по тому же принципу, что и в 3 лабораторной работе: </p>
 
 [task_03](../../task_03/doc/readme.md).
 <br>
@@ -46,16 +45,12 @@
 ![](images/cont_files.png)
 <br>
 
-Переходим в папку с проектом и запускаем программу:<br>
+• Переходим в папку с проектом и запускаем программу:<br>
 
-``` bash
-
-./ptusa_main  main.plua  sys_path  ./sys/
-
-```
+<strong>./ptusa_main  main.plua  sys_path  ./sys/</strong>
 
 <br>
-Получаем результат в виде следущего вывода в консоли: <br>
+• Получаем результат в виде следущего вывода в консоли: <br>
 
 ![](../../images/conclusion2.png)
 
