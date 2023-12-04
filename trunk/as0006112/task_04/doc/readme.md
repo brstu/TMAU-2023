@@ -45,3 +45,5 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git
 ![](../../images/Lab4Putty.jpg)
 ![](../../images/Lab4Work.jpg)
 ![](../../images/Lab4Proof.jpg)
+
+### Вывод: В ходе лабораторной работы была изученая общая информация о платформе PLCnext и запущен проект ptusa_main на контроллере.
