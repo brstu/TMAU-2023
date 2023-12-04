@@ -7,7 +7,7 @@
 <p align="center">По дисциплине “Теория и методы автоматического управления”</p>
 <p align="center">Тема: “Работа с контроллером AXC F 2152”</p>
 <br><br><br>
-<p align="right">Выполнила:</p>
+<p align="right">Выполнил:</p>
 <p align="right">Студентка 3 курса</p>
 <p align="right">Группы АС-61</p>
 <p align="right">Касюк Д.А.</p>
