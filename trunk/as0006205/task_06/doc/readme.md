@@ -1,0 +1,54 @@
+ <p align="center">Министерство образования Республики Беларусь</p>
+ <p align="center">Учреждение образования</p>
+ <p align="center">БрГТУ</p>
+ <p align="center">Кафедра ИИТ</p>
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ <p align="center">## Лабораторная работа №6</p>
+ <p align="center">По дисциплине "ТМАУ" за 5 семестр</p>
+ <p align="center">## "Работа с открытыми проектами"</p>
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ <p align="right">Выполнил:</p>
+ <p align="right">Студент 3 курса</p>
+ <p align="right">Группы АС-62</p>
+ <p align="right">Дмитраница В.П.</p>
+ <p align="right">Проверил:</p>
+ <p align="right">Старший преподаватель:</p>
+ <p align="right">Иванюк Д.С.</p>
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+ <p align="center">Брест 2023</p>
+
+
+
+ ##Цель работы:
+ 1.Изучить открытые проекты
+ Документация работы с технологией PLCnext - PLCnext-howto
+ Управляющая программа для контроллеров PLCnext Control - ptusa-main
+ Дополнение для EPLAN Electric P8 - EPLANner
+ Демо-проект T1-PLCnext-Demo
+ Также внести свой вклад в развитие проекта в виде оформления вопросов (issue) и запросов на внесение изменений (pull request)
+
+
+ ##Ход работы:
+
+ При изучении открытых проектов для выполнения поставленной задачи я выбрал демо-проект T1-PLCnext-Demo:https://github.com/savushkin-r-d/T1-PLCnext-Demo
+ После того как нашёл ошибку в 371 cтроке файла readme:https://github.com/savushkin-r-d/T1-PLCnext-Demo#readme добавил запрос issue на исправление ошибки
+ 
+ 
+ ![](images/newissue.jpg)
+
+
+ Указываем в запросе issue найденную ошибку
+
+
+ 
+ ![](images/issueinfo.jpg) 
+ 
+
+
+ После вносим запрос на внесение изменений
+
+
+ ![](images/requstcomm.jpg) 
+
+
+ Вывод: в ходе проведённой работы  ознакомился с открытыми проектами,ознакомились с оформлением вопросов(issue),а также немного внесли свой вклад в развитие демо-проекта T1-PLCnext-Demo
