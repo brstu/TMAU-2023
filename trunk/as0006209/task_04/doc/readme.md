@@ -32,8 +32,8 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git
 <p>Для сборки проекта установим toolchain версии 2023 года и sdk версии 23.6.0.43. sdk необходимо поместить в католог : <em>C:\CLI\SDKs\AXCF2152\2022_0 </em> </p>
 <p>Запускаем проект в <em> Visual Studio 2019</em> для дальнейшей сборки. Во время сборки возникли ошибки связанные с версией sdk и отсуствием Python 3 на моем ноутбуке. Если ошибка с Python 3 была легко исправлена посредством его установки, то с sdk было посложнее. Для исправления в файле <em>CmakePresets.josn</em> в ConfigurePresets и BuildPresets была добвлена новая опция сборке на основе необходимой мне версии sdk:</p>
 
-![](images/jsonpreset1.jpg)
-![](images/jsonpreset2.jpg)
+![](images/jsonpresest1.jpg)
+![](images/jsonpresest2.jpg)
  
 <p>Теперь выбираем сборку которую описали ранее:</p>
 
