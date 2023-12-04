@@ -50,11 +50,8 @@ Task: [#4](../../../../tasks/task_04/readme.md).
 ![](images/prava_ptusi.jpg)
 
 <li><p>Now using folowing command, we get the result: </p></li>
-``` bash
 
 ./ptusa_main  main.plua  sys_path  ./sys/
-
-```
 
 <li><p>We get the following output from our program: </p></li>
 
