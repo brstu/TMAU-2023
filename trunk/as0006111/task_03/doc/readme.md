@@ -1,20 +1,20 @@
-<p align="center">Министерство образования Республики Беларусь</p>
-<p align="center">Учреждение образования</p>
-<p align="center">“Брестский Государственный технический университет”</p>
-<p align="center">Кафедра ИИТ</p>
+<p align="center">Ministry of Education of the Republic of Belarus</p>
+<p align="center">Educational institution</p>
+<p align="center">Brest State Technical University</p>
+<p align="center">Department of IIT</p>
 <br><br><br><br><br><br>
-<p align="center"><strong>Лабораторная работа №3</strong></p>
-<p align="center"><strong>По дисциплине</strong> “"Работа с контроллером AXCF 2152"”</p>
-<p align="center"><strong>Тема:</strong> “Моделирования температуры объекта”</p>
+<p align="center"><strong>Laboratory work No.3</strong></p>
+<p align="center"><strong>By discipline</strong> “"Working with the AXCF 2152 controller"”</p>
+<p align="center"><strong>Subject:</strong> “Modeling the temperature of an object”</p>
 <br><br><br><br><br><br>
-<p align="right"><strong>Выполнила</strong>:</p>
-<p align="right">Студентка 3 курса</p>
-<p align="right">Группы АС-61</p>
-<p align="right">Линкевич П.С.</p>
-<p align="right"><strong>Проверил:</strong></p>
-<p align="right">Иванюк Д. С.</p>
+<p align="right"><strong>Completed </strong>:</p>
+<p align="right">3rd year student</p>
+<p align="right">AC-61 groups</p>
+<p align="right">Linkevich P.S.</p>
+<p align="right"><strong>Checked:</strong></p>
+<p align="right">Ivanyuk D. S.</p>
 <br><br><br><br><br>
-<p align="center"><strong>Брест 2023</strong></p>
+<p align="center"><strong>Brest 2023</strong></p>
 
 ---
 ***Цель:***
