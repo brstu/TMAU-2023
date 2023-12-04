@@ -69,5 +69,5 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa\_main.git
 
 
 
-**Вывод:** Изучили проект [ptusa\_main] (https://github.com/savushkin-r-d/ptusa\_main), используя Visual Studio собрали данный проект и продемонстрировали работоспособность на тестовом контроллере. Написали отчет по выполненной работе в .md формате и с помощью pull request разместили его в нужном каталоге.
+**Вывод:** Изучилии проект [ptusa\_main] (https://github.com/savushkin-r-d/ptusa\_main), используя Visual Studio собрали данный проект и продемонстрировали работоспособность на тестовом контроллере. Написали отчет по выполненной работе в .md формате и с помощью pull request разместили его в нужном каталоге.
 
