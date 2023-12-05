@@ -45,7 +45,7 @@
 ![](images/files.jpg)
 ![](images/files_for_start_project.jpg)
 
-<p>В <em>Putty</em> вводим  команды <em>./ptusa_main  main.plua  sys_path  ./sys/</em> и в результате получаем </p>
+<p>В <em>Putty</em> вводим  команды <em>./ptusa_main  main.plua  sys_path  ./sys/</em> и в результате получаем: </p>
 
 ![](images/output.jpg)
 ![](images/photo_output.jpg)
