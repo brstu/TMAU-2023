@@ -1,62 +1,62 @@
-<p align="center"><strong>Institución educativa</strong></p><br>
-<p align="center"><strong>“Universidad Técnica Estatal de Brest”</strong></p><br>
-<p align="center"><strong>Departamento de IIT</strong></p><br>
+<p align="center"><strong>教育机构</strong></p><br>
+<p align="center"><strong>“布雷斯特国立技术大学”</strong></p><br>
+<p align="center"><strong>IIT学系</strong></p><br>
 <br><br><br><br><br>
-<p align="center"><strong>Trabajo de laboratorio No. 4</strong></p><br>
-<p align="center"><strong>En la disciplina " Teoría y métodos de control automático”</strong></p><br>
-<p align="center"><strong>Tema: "Trabajar con el controlador AXC F 2152"</strong></p><br>
+<p align="center"><strong>实验室工作No.4</strong></p><br>
+<p align="center"><strong>在学科"自动控制的理论与方法"</strong></p><br>
+<p align="center"><strong>主题："使用AXC F2152控制器"</strong></p><br>
 <br><br><br><br><br>
-<p align="right"><strong>Made by:</strong></p><br>
-<p align="right">estudiante de 3er año</p><br>
-<p align="right">AS-62 groups</p><br>
+<p align="right"><strong>制造的:</strong></p><br>
+<p align="right">三年级学生</p><br>
+<p align="right">AS-62组</p><br>
 <p align="right">Kulick A.D.</p>
 <br><br><br>
-<p align="right"><strong>Checked:</strong></p><br>
-<p align="right">Profesor Titular</p><br>
+<p align="right"><strong>检查过:</strong></p><br>
+<p align="right">正教授</p><br>
 <p align="right">Ivanyuk D.S.</p><br>
 <br><br><br><br><br>
-<p align="center">Brest 2023</p><br>
+<p align="center">布雷斯特2023</p><br>
 
 ---
 <p><strong>Task</strong><p>
-<li><p>1. Read general information about the **PLCnext** platform [here](https://www.plcnext.help/te/About/Home.htm).</li></p>
+<li><p>1. 阅读有关"PLCnext"平台的一般信息(https://www.plcnext.help/te/About/Home.htm).</li></p>
 
-<li><p> 2. Estudiar el proyecto [ptusa_main] (https://github.com/savushkin-r-d/ptusa_main).</li></p> 
-<li><p>3. Usando** Visual Studio * * recopile datos del proyecto y demuestre el rendimiento en un controlador de prueba.</li></p> 
-<li><p>4. Redactar un informe sobre el trabajo realizado en formato. md (readme.md) y use una solicitud de extracción para colocarla en el siguiente directorio: trunk \ as000xxyy \ task_04.</li></p>
-<p><strong>Objetivo: </strong>usando<em>Visual Studio </em> ensamble este proyecto y demuestre su funcionalidad en un controlador de prueba.</p>
+<li><p> 2. 研究项目 [ptusa_main] (https://github.com/savushkin-r-d/ptusa_main).</li></p> 
+<li><p>3. 使用"Visual Studio"从项目中收集数据并演示测试控制器上的性能。</li></p> 
+<li><p>4. 格式写一份关于所做工作的报告。 md（readme.md ）并使用拉取请求将其放置在以下目录中: trunk \ as000xxyy \ task_04.</li></p>
+<p><strong>目标: </strong>使用<em>Visual Studio</em>组装此项目并在测试控制器中演示其功能。</p>
 <br>
-<p> <strong>Solución:</strong> </p>
+<p> <strong>解决方案:</strong> </p>
 <br>
 <ul>
 <br>
-<li>De acuerdo con la asignación del trabajo de laboratorio No. 4, clonamos el repositorio [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li>
+<li>根据第4号实验室工作的分配，我们克隆了[ptusa_main]存储库(https://github.com/savushkin-r-d/ptusa_main).</li>
 <br>
-<li><p>Abra el repositorio total en visual Studio. Así obtenemos un proyecto basado en CMake.</p></li>
+<li><p>在Visual Studio中打开总存储库。 所以我们得到了一个基于CMake的项目。</p></li>
 <br>
-<li><p>Usando Visual Studio, ensamblamos este proyecto con la herramienta de ensamblaje CMake.</p></li>
+<li><p>使用Visual Studio，我们用CMake汇编工具组装了这个项目。</p></li>
 <br>
 ![](images/sborkavvizle.jpg)
 <br><br>
-<li><p>A continuación, nos conectamos al controlador de prueba AXC F 2152 en el laboratorio.</p></li>
+<li><p>接下来，我们连接到实验室的AXC F2152测试控制器。</p></li>
 <br>
 ![](images/kontroller.jpg)
 <br><br>
 ![](images/win_cp.jpg)
 <br><br>
-<li><p>Vamos a la carpeta con el proyecto, habiéndolo movido previamente al controlador, y lanzamos nuestro programa:</p></li>
+<li><p>让我们转到文件夹与项目，以前已将其移动到控制器，并启动我们的程序:</p></li>
 <br>
 ![](images/repo.jpg)
 <br><br>
-<li><p>para el archivo ensamblado resultante hello_PLCnext establecemos los derechos de acceso.</p></li>
+<li><p>对于生成的hello_PLCnext程序集文件，我们设置了访问权限。</p></li>
 <br>
 ![](images/prava_ptusi.jpg)
 <br><br>
-<li><p>Ahora usando el siguiente comando, obtenemos el resultado:</p></li>
+<li><p>现在使用以下命令，我们得到结果:</p></li>
 <br>
 ./ptusa_main  main.plua  sys_path  ./sys/
 <br>
-<li><p>Obtenemos el siguiente resultado de nuestro programa:</p></li>
+<li><p>我们从我们的程序中得到以下结果:</p></li>
 <br>
 </ul>
 <br>
@@ -64,12 +64,12 @@
 <br><br>
 ![](images/photo_of_result.jpg)
 <br><br>
-<p>Conclusión: Durante el transcurso de este trabajo de laboratorio, adquirimos una valiosa experiencia trabajando con Visual Studio y el controlador AXC F 2152, que es un paso importante para adquirir habilidades de programación y trabajar con sistemas automatizados. Además, vale la pena señalar que tales ejercicios prácticos no solo refuerzan los conocimientos teóricos, sino que también desarrollan la capacidad de resolver problemas técnicos reales, lo cual es un aspecto clave de las actividades de ingeniería.</p>
+<p>结论：在这个实验室工作过程中，我们获得了与Visual Studio和AXC F2152控制器一起工作的宝贵经验，这是获得编程技能和使用自动化系统的重要一步。 此外，值得注意的是，这种实践练习不仅加强了理论知识，而且还培养了解决实际技术问题的能力，这是工程活动的一个关键方面。</p>
 <br>
-<p>El uso del controlador AXC F 2152 abre amplias posibilidades para crear sistemas de automatización flexibles y escalables. Gracias a su alto rendimiento y multifuncionalidad, podemos implementar con éxito proyectos complejos en el campo de la automatización industrial. Las nuevas habilidades adquiridas al trabajar con este controlador se pueden aplicar en diversos proyectos, que van desde simples tareas de monitoreo y control hasta sistemas complejos que requieren integración con otros dispositivos y servicios.</p>
+<p>AXC F2152控制器的使用为创建灵活和可扩展的自动化系统开辟了广泛的可能性。 由于其高性能和多功能性，我们能够成功地在工业自动化领域实施复杂的项目。 通过使用该控制器获得的新技能可以应用于各种项目，这些项目具有创建灵活和可扩展的自动化系统的广泛可能性。 由于其高性能和多功能性，我们能够成功地在工业自动化领域实施复杂的项目。 通过使用该控制器获得的新技能可以应用于各种项目，从简单的监视和控制任务到需要与其他设备和服务集成的复杂系统。 它们的范围从简单的监测和控制任务到需要与其他设备和服务集成的复杂系统。</p>
 <br>
-<p>Este trabajo de laboratorio requirió significativamente menos tiempo para completarse en comparación con el anterior, y tomó aproximadamente una o dos horas. Este trabajo de laboratorio fue realizado por un equipo de estudiantes as006214, as006219, as006217.</p>
+<p>与前一次相比，这项实验室工作所需的时间要少得多，大约需要一两个小时。 该实验室工作由学生as006214，as006219，as006217组成的团队进行。</p>
 <br>
-<p>este trabajo de laboratorio nos ayudó a aprender a trabajar en equipo y desarrollar más habilidades blandas.</p><br>
+<p>这项实验工作帮助我们学会了团队合作，培养了更多的软技能。</p><br>
 ![](images/team.jpg)
 <br><br>
