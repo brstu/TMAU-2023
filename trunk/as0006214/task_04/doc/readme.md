@@ -1,63 +1,63 @@
-<p align="center"><strong>Ministry of Education of the Republic of Belarus</strong></p>
-<p align="center"><strong>Educational institution</strong></p>
-<p align="center"><strong>“Brest State Technical University”</strong></p>
-<p align="center"><strong>IIT Department</strong></p>
+<p align="center"><strong>Ministry of Education of the Republic of Belarus</strong></p><br>
+<p align="center"><strong>Educational institution</strong></p><br>
+<p align="center"><strong>“Brest State Technical University”</strong></p><br>
+<p align="center"><strong>IIT Department</strong></p><br>
 <br><br><br><br><br>
-<p align="center"><strong>Laboratory work No. 4</strong></p>
-<p align="center"><strong>In the discipline “Theory and methods of automatic control”</strong></p>
-<p align="center"><strong>Topic: “Working with the AXC F 2152 controller”</strong></p>
+<p align="center"><strong>Laboratory work No. 4</strong></p><br>
+<p align="center"><strong>In the discipline “Theory and methods of automatic control”</strong></p><br>
+<p align="center"><strong>Topic: “Working with the AXC F 2152 controller”</strong></p><br>
 <br><br><br><br><br>
-<p align="right"><strong>Completed by:</strong></p>
-<p align="right">3rd year student</p>
-<p align="right">AS-62 groups</p>
+<p align="right"><strong>Made by:</strong></p><br>
+<p align="right">3rd year student</p><br>
+<p align="right">AS-62 groups</p><br>
 <p align="right">Kulick A.D.</p>
 <br><br><br>
-<p align="right"><strong>Checked:</strong></p>
-<p align="right">Senior Lecturer</p>
-<p align="right">Ivanyuk D.S.</p>
+<p align="right"><strong>Checked:</strong></p><br>
+<p align="right">Senior Lecturer</p><br>
+<p align="right">Ivanyuk D.S.</p><br>
 <br><br><br><br><br>
-<p align="center">Brest 2023</p>
+<p align="center">Brest 2023</p><br>
 
 ---
 Task: [#4](../../../../tasks/task_04/readme.md).
 
 <p> <strong>Aim: </strong>using <em>Visual Studio</em> assemble this project and demonstrate its functionality on a test controller.</p> 
-
+<br>
 <p> <strong>Solution:</strong> </p>
-
+<br>
 <ul>
-
+<br>
 <li>According to the assignment of laboratory work No. 4, we clone the repository [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li>
-
+<br>
 <li><p>Open total repo in the visual studio. Thus we get a project based on CMake.</p></li>
-
+<br>
 <li><p>Using Visual Studio We are assemble this project with CMake assembly tool.</p></li>
-
+<br>
 ![](images/sborkavvizle.jpg)
 <br><br>
 
 <li><p>Next we connect to the test controller AXC F 2152 in the laboratory.</p></li>
-
+<br>
 ![](images/kontroller.jpg)
 <br><br>
 ![](images/win_cp.jpg)
-
+<br><br>
 <li><p>We go to the folder with the project, having previously moved it to the controller, and launch our program:</p></li>
-
+<br>
 ![](images/repo.jpg)
 <br><br>
 <li><p>For the resulting assembly file hello_PLCnext we set the access rights</p></li>
-
+<br>
 ![](images/prava_ptusi.jpg)
 <br><br>
 <li><p>Now using folowing command, we get the result: </p></li>
-
+<br>
 ./ptusa_main  main.plua  sys_path  ./sys/
-
+<br>
 <li><p>We get the following output from our program: </p></li>
-
+<br>
 </ul>
-
+<br>
 ![](images/result.jpg)
 <br><br>
 ![](images/photo_of_result.jpg)
