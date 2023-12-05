@@ -1,21 +1,20 @@
-<p align="center">Ministry of Education of the Republic of Belarus</p>
-<p align="center">Educational institution</p>
-<p align="center">BSTU</p>
-<p align="center">Department of IIT</p>
+Ministry of Education of the Republic of Belarus
+Educational institution
+BSTU
+Department of IIT
 <br><br><br><br><br><br>
-<p align="center"><strong>Lab work №4</strong></p>
-<p align="center"><strong>Discipline</strong> “"Working with AXC F 2152 controller"”</p>
-<p align="center"><strong>Subject:</strong> “Modeling the temperature of an object”</p>
+Lab work №4
+Discipline</strong> “"Working with AXC F 2152 controller"”
+Subject “Modeling the temperature of an object”
 <br><br><br><br><br><br>
-<p align="right"><strong>Completed </strong>:</p>
-<p align="right">3rd year student</p>
-<p align="right">Group AS-62</p>
-<p align="right">Gomon M.D.</p>
-<p align="right"><strong>verified:</strong></p>
-<p align="right">senior lecturer</p>
-<p align="right">Ivanyuk D. S.</p>
+Completed :
+3rd year student
+Group AS-62
+Gomon M.D.
+verified:
+Ivanyuk D. S.
 <br><br><br><br><br>
-<p align="center"><strong>Brest 2023</strong></p>
+Brest 2023
 
 ---
 <p> <strong> Цель </strong> Используя Visual Studio собрать проект ptusa_main и продемонтрировать работоспособность на котроллере </p>
