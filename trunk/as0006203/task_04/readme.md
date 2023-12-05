@@ -1,16 +1,22 @@
-<p align="center"><strong>Лабораторная работа №4</strong></p>
-<p align="center"><strong>По дисциплине</strong> “ТиМАУ”</p>
-<p align="center"><strong>Тема:</strong> “Работа с контроллером”</p>
-<br><br><br><br><br><br>
-<p align="right"><strong>Выполнил: </strong>:</p>
-<p align="right">Студент 3-го курса</p>
+<p align="center">Министерство образования Республики Беларусь</p>
+<p align="center">Учреждение образования</p>
+<p align="center">Брестский Государственный технический университет</p>
+<p align="center">Кафедра ИИТ</p>
+<br><br><br>
+<p align="center">Лабораторная работа №4</p>
+<p align="center">По дисциплине “Теория и методы автоматического управления”</p>
+<p align="center">Тема: “Работа с контроллером AXCF 2152”</p>
+<br><br><br>
+<p align="right"><strong>Выполнил:</strong></p>
+<p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-62</p>
 <p align="right">Гомон М.Д.</p>
+<br>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Старший преподаватель</p>
 <p align="right">Иванюк Д.С.</p>
-<br><br><br><br><br>
-<p align="center"><strong>Брест 2023</strong></p>
+<br><br><br>
+<p align="center">Брест 2023</p>
 
 ---
 <p> <strong> Цель </strong> Используя Visual Studio собрать проект ptusa_main и продемонтрировать работоспособность на котроллере </p>
