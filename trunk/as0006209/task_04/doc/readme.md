@@ -11,7 +11,6 @@
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-62</p>
 <p align="right">Кравцов Г.C.</p>
-<br>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Старший преподаватель</p>
 <p align="right">Иванюк Д.С.</p>
