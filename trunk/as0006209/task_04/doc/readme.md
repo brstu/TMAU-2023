@@ -40,7 +40,7 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git
 ![](images/build.jpg)
 
 
-<p>В результате получаем в каталоге репозитория ptusa_main <em>ptusa_main\bin\build\AXCF2152_2022_0</em> необходимые нам файлы сборки проекта </p>
+<p>В результате получаем в каталоге репозитория ptusa_main <em>ptusa_main\bin\build\AXCF2152_2022_0</em> необходимые нам файлы сборки проекта. </p>
 
 ![](images/buildfiles.jpg)
 
