@@ -1,4 +1,3 @@
-<p align="center"><strong>Ministry of Education of the Republic of Belarus</strong></p><br>
 <p align="center"><strong>Educational institution</strong></p><br>
 <p align="center"><strong>“Brest State Technical University”</strong></p><br>
 <p align="center"><strong>IIT Department</strong></p><br>
@@ -19,8 +18,6 @@
 <p align="center">Brest 2023</p><br>
 
 ---
-Task: [#4](../../../../tasks/task_04/readme.md).
-
 <p> <strong>Aim: </strong>using <em>Visual Studio</em> assemble this project and demonstrate its functionality on a test controller.</p> 
 <br>
 <p> <strong>Solution:</strong> </p>
@@ -35,7 +32,6 @@ Task: [#4](../../../../tasks/task_04/readme.md).
 <br>
 ![](images/sborkavvizle.jpg)
 <br><br>
-
 <li><p>Next we connect to the test controller AXC F 2152 in the laboratory.</p></li>
 <br>
 ![](images/kontroller.jpg)
@@ -68,5 +64,6 @@ Task: [#4](../../../../tasks/task_04/readme.md).
 <br>
 <p>This laboratory work required significantly less time to complete compared to the previous one, taking approximately an hour or two. This laboratory work was carried out by a team of students as006214, as006219, as006217.</p>
 <br>
+<p>this laboratory work helped us learn to work in a team and develop more soft skills.</p><br>
 ![](images/team.jpg)
 <br><br>
