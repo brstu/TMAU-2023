@@ -1,18 +1,18 @@
-<p align="center"><strong>Educational institution</strong></p><br>
-<p align="center"><strong>“Brest State Technical University”</strong></p><br>
-<p align="center"><strong>IIT Department</strong></p><br>
+<p align="center"><strong>Institución educativa</strong></p><br>
+<p align="center"><strong>“Universidad Técnica Estatal de Brest”</strong></p><br>
+<p align="center"><strong>Departamento de IIT</strong></p><br>
 <br><br><br><br><br>
-<p align="center"><strong>Laboratory work No. 4</strong></p><br>
-<p align="center"><strong>In the discipline “Theory and methods of automatic control”</strong></p><br>
-<p align="center"><strong>Topic: “Working with the AXC F 2152 controller”</strong></p><br>
+<p align="center"><strong>Trabajo de laboratorio No. 4</strong></p><br>
+<p align="center"><strong>En la disciplina " Teoría y métodos de control automático”</strong></p><br>
+<p align="center"><strong>Tema: "Trabajar con el controlador AXC F 2152"</strong></p><br>
 <br><br><br><br><br>
 <p align="right"><strong>Made by:</strong></p><br>
-<p align="right">3rd year student</p><br>
+<p align="right">estudiante de 3er año</p><br>
 <p align="right">AS-62 groups</p><br>
 <p align="right">Kulick A.D.</p>
 <br><br><br>
 <p align="right"><strong>Checked:</strong></p><br>
-<p align="right">Senior Lecturer</p><br>
+<p align="right">Profesor Titular</p><br>
 <p align="right">Ivanyuk D.S.</p><br>
 <br><br><br><br><br>
 <p align="center">Brest 2023</p><br>
@@ -21,44 +21,42 @@
 <p><strong>Task</strong><p>
 <li><p>1. Read general information about the **PLCnext** platform [here](https://www.plcnext.help/te/About/Home.htm).</li></p>
 
-<li><p>2. Study the project [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li></p>
-
-<li><p>3. Using **Visual Studio** collect project data and demonstrate performance on a test controller.</li></p>
-
-<li><p>4. Write a report on the work performed in .md format (readme.md) and use a pull request to place it in the following directory: trunk\as000xxyy\task_04\doc.</li></p>
-<p> <strong>Aim: </strong>using <em>Visual Studio</em> assemble this project and demonstrate its functionality on a test controller.</p> 
+<li><p> 2. Estudiar el proyecto [ptusa_main] (https://github.com/savushkin-r-d/ptusa_main).</li></p> 
+<li><p>3. Usando** Visual Studio * * recopile datos del proyecto y demuestre el rendimiento en un controlador de prueba.</li></p> 
+<li><p>4. Redactar un informe sobre el trabajo realizado en formato. md (readme.md) y use una solicitud de extracción para colocarla en el siguiente directorio: trunk \ as000xxyy \ task_04.</li></p>
+<p><strong>Objetivo: </strong>usando<em>Visual Studio </em> ensamble este proyecto y demuestre su funcionalidad en un controlador de prueba.</p>
 <br>
-<p> <strong>Solution:</strong> </p>
+<p> <strong>Solución:</strong> </p>
 <br>
 <ul>
 <br>
-<li>According to the assignment of laboratory work No. 4, we clone the repository [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li>
+<li>De acuerdo con la asignación del trabajo de laboratorio No. 4, clonamos el repositorio [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li>
 <br>
-<li><p>Open total repo in the visual studio. Thus we get a project based on CMake.</p></li>
+<li><p>Abra el repositorio total en visual Studio. Así obtenemos un proyecto basado en CMake.</p></li>
 <br>
-<li><p>Using Visual Studio We are assemble this project with CMake assembly tool.</p></li>
+<li><p>Usando Visual Studio, ensamblamos este proyecto con la herramienta de ensamblaje CMake.</p></li>
 <br>
 ![](images/sborkavvizle.jpg)
 <br><br>
-<li><p>Next we connect to the test controller AXC F 2152 in the laboratory.</p></li>
+<li><p>A continuación, nos conectamos al controlador de prueba AXC F 2152 en el laboratorio.</p></li>
 <br>
 ![](images/kontroller.jpg)
 <br><br>
 ![](images/win_cp.jpg)
 <br><br>
-<li><p>We go to the folder with the project, having previously moved it to the controller, and launch our program:</p></li>
+<li><p>Vamos a la carpeta con el proyecto, habiéndolo movido previamente al controlador, y lanzamos nuestro programa:</p></li>
 <br>
 ![](images/repo.jpg)
 <br><br>
-<li><p>For the resulting assembly file hello_PLCnext we set the access rights</p></li>
+<li><p>para el archivo ensamblado resultante hello_PLCnext establecemos los derechos de acceso.</p></li>
 <br>
 ![](images/prava_ptusi.jpg)
 <br><br>
-<li><p>Now using folowing command, we get the result: </p></li>
+<li><p>Ahora usando el siguiente comando, obtenemos el resultado:</p></li>
 <br>
 ./ptusa_main  main.plua  sys_path  ./sys/
 <br>
-<li><p>We get the following output from our program: </p></li>
+<li><p>Obtenemos el siguiente resultado de nuestro programa:</p></li>
 <br>
 </ul>
 <br>
@@ -66,12 +64,12 @@
 <br><br>
 ![](images/photo_of_result.jpg)
 <br><br>
-<p> Conclusion: During the course of this laboratory work, we gained valuable experience working with Visual Studio and the AXC F 2152 controller, which is an important step in acquiring programming skills and working with automated systems. Additionally, it is worth noting that such practical exercises not only reinforce theoretical knowledge but also develop the ability to solve real technical problems, which is a key aspect of engineering activities.</p>
+<p>Conclusión: Durante el transcurso de este trabajo de laboratorio, adquirimos una valiosa experiencia trabajando con Visual Studio y el controlador AXC F 2152, que es un paso importante para adquirir habilidades de programación y trabajar con sistemas automatizados. Además, vale la pena señalar que tales ejercicios prácticos no solo refuerzan los conocimientos teóricos, sino que también desarrollan la capacidad de resolver problemas técnicos reales, lo cual es un aspecto clave de las actividades de ingeniería.</p>
 <br>
-<p>The use of the AXC F 2152 controller opens up wide possibilities for creating flexible and scalable automation systems. Thanks to its high performance and multifunctionality, we can successfully implement complex projects in the field of industrial automation. The new skills acquired in working with this controller can be applied in various projects, ranging from simple monitoring and control tasks to complex systems that require integration with other devices and services.
+<p>El uso del controlador AXC F 2152 abre amplias posibilidades para crear sistemas de automatización flexibles y escalables. Gracias a su alto rendimiento y multifuncionalidad, podemos implementar con éxito proyectos complejos en el campo de la automatización industrial. Las nuevas habilidades adquiridas al trabajar con este controlador se pueden aplicar en diversos proyectos, que van desde simples tareas de monitoreo y control hasta sistemas complejos que requieren integración con otros dispositivos y servicios.</p>
 <br>
-<p>This laboratory work required significantly less time to complete compared to the previous one, taking approximately an hour or two. This laboratory work was carried out by a team of students as006214, as006219, as006217.</p>
+<p>Este trabajo de laboratorio requirió significativamente menos tiempo para completarse en comparación con el anterior, y tomó aproximadamente una o dos horas. Este trabajo de laboratorio fue realizado por un equipo de estudiantes as006214, as006219, as006217.</p>
 <br>
-<p>this laboratory work helped us learn to work in a team and develop more soft skills.</p><br>
+<p>este trabajo de laboratorio nos ayudó a aprender a trabajar en equipo y desarrollar más habilidades blandas.</p><br>
 ![](images/team.jpg)
 <br><br>
