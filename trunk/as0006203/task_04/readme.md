@@ -15,7 +15,7 @@
 ---
 <p> <strong> Цель </strong> Используя Visual Studio собрать проект ptusa_main и продемонтрировать работоспособность на котроллере </p>
 
-Задание: [#4] (../../../../tasks/task_04/readme.md) 
+Задание: [#4](../../../../tasks/task_04/readme.md)
 
 <p> <strong> Решение </strong> </p>
 
