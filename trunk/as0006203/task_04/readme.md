@@ -1,8 +1,3 @@
-<p align="center"><strong>Министерство образования Республики беларусь</strong></p>
-<p align="center"><strong>Учреждение образования</strong></p>
-<p align="center"><stong>БрГТУ</stong></p>
-<p align="center"><strong>Кафедра интеллектуальных информационных технологий</strong></p>
-<br><br><br><br><br><br>
 <p align="center"><strong>Лабораторная работа №4</strong></p>
 <p align="center"><strong>По дисциплине</strong> “ТиМАУ”</p>
 <p align="center"><strong>Тема:</strong> “Работа с контроллером”</p>
@@ -15,7 +10,7 @@
 <p align="right">Старший преподаватель</p>
 <p align="right">Иванюк Д.С.</p>
 <br><br><br><br><br>
-<p align="center"><strong>Brest 2023</strong></p>
+<p align="center"><strong>Брест 2023</strong></p>
 
 ---
 <p> <strong> Цель </strong> Используя Visual Studio собрать проект ptusa_main и продемонтрировать работоспособность на котроллере </p>
