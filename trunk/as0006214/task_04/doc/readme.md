@@ -1,11 +1,3 @@
-<p align="right"><strong>教育机构</strong></p><br>
-<p align="right"><strong>“布雷斯特国立技术大学”</strong></p><br>
-<p align="right"><strong>IIT学系</strong></p><br>
-<br><br><br><br><br>
-<p align="right"><strong>实验室工作No.4</strong></p><br>
-<p align="right"><strong>在学科"自动控制的理论与方法"</strong></p><br>
-<p align="right"><strong>主题："使用AXC F2152控制器"</strong></p><br>
-<br><br><br><br><br>
 <p align="right"><strong>制造的:</strong></p><br>
 <p align="right">三年级学生</p><br>
 <p align="right">AS-62组</p><br>
