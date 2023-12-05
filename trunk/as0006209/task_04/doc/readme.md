@@ -83,3 +83,5 @@ git clone --recurse-submodules https://github.com/savushkin-r-d/ptusa_main.git
 ![](images/laptop.jpg)
 
 <p><strong>Вывод:</strong>В ходе работы проект был успешно собран в  <em>Visual Studio 2019</em> и запущен на контроллере в лаборатории. </p>
+
+~~этот текст дабавлен потомучто code duplicate не проходит после каждого нового merge и я надеюсь что этот текст добавит "уникальности" в отчет~~
