@@ -6,14 +6,14 @@
 <p align="right"><strong>在学科"自动控制的理论与方法"</strong></p><br>
 <p align="right"><strong>主题："使用AXC F2152控制器"</strong></p><br>
 <br><br><br><br><br>
-<p align="center"><strong>制造的:</strong></p><br>
-<p align="center">三年级学生</p><br>
-<p align="center">AS-62组</p><br>
-<p align="center">Kulick A.D.</p>
+<p align="right"><strong>制造的:</strong></p><br>
+<p align="right">三年级学生</p><br>
+<p align="right">AS-62组</p><br>
+<p align="right">Kulick A.D.</p>
 <br><br><br>
-<p align="center"><strong>检查过:</strong></p><br>
-<p align="center">正教授</p><br>
-<p align="center">Ivanyuk D.S.</p><br>
+<p align="right"><strong>检查过:</strong></p><br>
+<p align="right">正教授</p><br>
+<p align="right">Ivanyuk D.S.</p><br>
 <br><br><br><br><br>
 <p align="right">布雷斯特2023</p><br>
 
