@@ -3,12 +3,6 @@
 <p align="right">AS-62组</p><br>
 <p align="right">Kulick A.D.</p>
 <br><br><br>
-<p align="right"><strong>检查过:</strong></p><br>
-<p align="right">正教授</p><br>
-<p align="right">Ivanyuk D.S.</p><br>
-<br><br><br><br><br>
-<p align="right">布雷斯特2023</p><br>
-
 ---
 <p><strong>Task</strong><p>
 <li><p>1. 阅读有关"PLCnext"平台的一般信息(https://www.plcnext.help/te/About/Home.htm).</li></p>
