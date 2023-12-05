@@ -1,21 +1,21 @@
-﻿<p> Министерство образования Республики Беларусь</p>
-<p>Учреждение образования</p>
-<p>“БрГТУ”</p>
-<p>Кафедра интеллектуальных информационных технологий</p>
-<br><br><br>
-<p>Лабораторная работа №4</p>
-<p>По дисциплине “ТиМАУ”</p>
-<p>Тема: “Работа с контроллером AXC F 2152”</p>
-<br><br><br>
-<p>Выполнил:</p>
-<p>Студент 3 курса</p>
-<p>Группы АС-62</p>
-<p>Гомон М.Д.</p>
-<br>
-<p>Проверил:</p>
-<p>Иванюк Д.С.</p>
-<br><br><br>
-<p>Брест 2023</p>
+<p align="center">Ministry of Education of the Republic of Belarus</p>
+<p align="center">Educational institution</p>
+<p align="center">BSTU</p>
+<p align="center">Department of IIT</p>
+<br><br><br><br><br><br>
+<p align="center"><strong>Lab work №4</strong></p>
+<p align="center"><strong>Discipline</strong> “"Working with AXC F 2152 controller"”</p>
+<p align="center"><strong>Subject:</strong> “Modeling the temperature of an object”</p>
+<br><br><br><br><br><br>
+<p align="right"><strong>Completed </strong>:</p>
+<p align="right">3rd year student</p>
+<p align="right">Group AS-62</p>
+<p align="right">Gomon M.D.</p>
+<p align="right"><strong>verified:</strong></p>
+<p align="right">senior lecturer</p>
+<p align="right">Ivanyuk D. S.</p>
+<br><br><br><br><br>
+<p align="center"><strong>Brest 2023</strong></p>
 
 ---
 <p> <strong> Цель </strong> Используя Visual Studio собрать проект ptusa_main и продемонтрировать работоспособность на котроллере </p>
