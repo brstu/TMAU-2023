@@ -18,6 +18,14 @@
 <p align="center">Brest 2023</p><br>
 
 ---
+<p><strong>Task</strong><p>
+<li><p>1. Read general information about the **PLCnext** platform [here](https://www.plcnext.help/te/About/Home.htm).</li></p>
+
+<li><p>2. Study the project [ptusa_main](https://github.com/savushkin-r-d/ptusa_main).</li></p>
+
+<li><p>3. Using **Visual Studio** collect project data and demonstrate performance on a test controller.</li></p>
+
+<li><p>4. Write a report on the work performed in .md format (readme.md) and use a pull request to place it in the following directory: trunk\as000xxyy\task_04\doc.</li></p>
 <p> <strong>Aim: </strong>using <em>Visual Studio</em> assemble this project and demonstrate its functionality on a test controller.</p> 
 <br>
 <p> <strong>Solution:</strong> </p>
