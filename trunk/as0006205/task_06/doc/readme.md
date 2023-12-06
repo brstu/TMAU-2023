@@ -34,21 +34,21 @@
  После того как нашёл ошибку в 371 cтроке файла readme:https://github.com/savushkin-r-d/T1-PLCnext-Demo#readme добавил запрос issue на исправление ошибки
  
  
- ![](images/newissue.jpg)
+ ![](../images/newissue.jpg)
 
 
  Указываем в запросе issue найденную ошибку
 
 
  
- ![](images/issueinfo.jpg) 
+ ![](../images/issueinfo.jpg) 
  
 
 
  После вносим запрос на внесение изменений
 
 
- ![](images/requstcomm.jpg) 
+ ![](../images/requstcomm.jpg) 
 
 
 
