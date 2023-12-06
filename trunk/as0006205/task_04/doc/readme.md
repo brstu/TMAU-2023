@@ -3,9 +3,9 @@
 <p align="center">БрГТУ</p>
 <p align="center">Кафедра ИИТ</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<p align="center">## Лабораторная работа №4</p>
+<p align="center"> Лабораторная работа №4</p>
 <p align="center">по дисциплине:ТМАУ</p>
-<p align="center">## "Работа с контроллером AXC F 2152"</p>
+<p align="center"> "Работа с контроллером AXC F 2152"</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
@@ -43,20 +43,20 @@ PLCnext - это платформа для разработки программ
 
 
 
-![](pictures/parametrs.jpg)
+![](../pictures/parametrs.jpg)
 
 
 После этого нужно использовать программу WINSCP для подключения к контроллеру и перемещения необходимых файлов на него
 
 
-![](pictures/winscpcon.jpg)
+![](../pictures/winscpcon.jpg)
 
 
 Перемещаем необходимые файлы на контроллер для будущего выполнения поставленной задачи
 
 
 
-![](pictures/files.jpg)
+![](../pictures/files.jpg)
 
 
 
@@ -64,15 +64,15 @@ PLCnext - это платформа для разработки программ
 
 
 
-![](pictures/puttylog.jpg)
+![](../pictures/puttylog.jpg)
 
 
 
 Открываем необходимые файлы на контроллере с помощью консоли Putty(./ptusa_main main.plua sys_path ./sys/) и видим на экране результат вывода программы
 
 
-![](pictures/cmd.jpg)
-![](pictures/proofs.jpg)
+![](../pictures/cmd.jpg)
+![](../pictures/proofs.jpg)
 
 
 
