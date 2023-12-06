@@ -18,7 +18,7 @@
 <p align="center">Брест 2023</p>
 
 ---
-<p> <strong> Цель </strong>Собрать проект ptusa_main в <em>Visual Studio</em> и запустить его на котроллере </p>
+<p> <strong> Цель </strong>Собрать проект ptusa_main в <em>Visual Studio</em> и запустить его на котроллере. </p>
 
 Задание: [#4] (../../../../tasks/task_04/readme.md) 
 
