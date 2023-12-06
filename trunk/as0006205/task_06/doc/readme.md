@@ -3,9 +3,9 @@
  <p align="center">БрГТУ</p>
  <p align="center">Кафедра ИИТ</p>
  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
- <p align="center">## Лабораторная работа №6</p>
+ <p align="center"> Лабораторная работа №6</p>
  <p align="center">По дисциплине "ТМАУ" за 5 семестр</p>
- <p align="center">## "Работа с открытыми проектами"</p>
+ <p align="center"> "Работа с открытыми проектами"</p>
  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
  <p align="right">Выполнил:</p>
  <p align="right">Студент 3 курса</p>
