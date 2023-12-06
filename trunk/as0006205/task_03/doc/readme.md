@@ -3,8 +3,8 @@
 <p align="center">БрГТУ</p>
 <p align="center">Кафедра ИИТ</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<p align="center">## Лабораторная работа №3</p>
-<p align="center">## "Работа с контроллером AXC F 2152"</p>
+<p align="center"> Лабораторная работа №3</p>
+<p align="center"> "Работа с контроллером AXC F 2152"</p>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
@@ -23,7 +23,7 @@
 
 
 
- <p <strong>  Ход работы: ВЫПОЛНЕНО СОВМЕСТНО С МИХАИЛОМ ШАЛАБУТОЙ</strong> </p>
+ <p> <strong>  Ход работы: ВЫПОЛНЕНО СОВМЕСТНО С МИХАИЛОМ ШАЛАБУТОЙ </strong> </p>
 
  Cобираем наш файл,который в будущем нужен для запуска на контроллере и выполнения лабораторной работы
  В результате выполнения наших команд получим необходимый файл hello_PLCnext</p>
@@ -31,8 +31,8 @@
 
 
 
-![](screenshots/settings.jpg)
-![](screenshots/afterstartwork.jpg)
+![](../screenshots/settings.jpg)
+![](../screenshots/afterstartwork.jpg)
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-![](screenshots/puttylog.jpg)
+![](../screenshots/puttylog.jpg)
 
 
 Далее мы заходим в приложение winscp,также вводя логин и пароль,чтобы в дальнейшем перенести наш файл на контроллер
@@ -50,10 +50,10 @@
 Видим на экране корректный результат выполнения поставленной задачи!
 
 
-![](screenshots/file.jpg)
+![](../screenshots/file.jpg)
 
 
-![](screenshots/result.jpg)
+![](../screenshots/result.jpg)
  
 
 
