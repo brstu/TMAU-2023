@@ -1,8 +1,36 @@
+<p align="center"><strong>教育机构</strong></p><br>
+<p align="center"><strong>“布雷斯特国立技术大学”</strong></p><br>
+<p align="center"><strong>IIT学系</strong></p><br>
+<p align="right"><strong>教育机构</strong></p><br>
+<p align="right"><strong>“布雷斯特国立技术大学”</strong></p><br>
+<p align="right"><strong>IIT学系</strong></p><br>
+<br><br><br><br><br>
+<p align="center"><strong>实验室工作No.4</strong></p><br>
+<p align="center"><strong>在学科"自动控制的理论与方法"</strong></p><br>
+<p align="center"><strong>主题："使用AXC F2152控制器"</strong></p><br>
+<p align="right"><strong>实验室工作No.4</strong></p><br>
+<p align="right"><strong>在学科"自动控制的理论与方法"</strong></p><br>
+<p align="right"><strong>主题："使用AXC F2152控制器"</strong></p><br>
+<br><br><br><br><br>
 <p align="right"><strong>制造的:</strong></p><br>
 <p align="right">三年级学生</p><br>
 <p align="right">AS-62组</p><br>
 <p align="right">Kulick A.D.</p>
-<br><br><br>
+<p align="center"><strong>制造的:</strong></p><br>
+<p align="center">三年级学生</p><br>
+<p align="center">AS-62组</p><br>
+<p align="center">Kulick A.D.</p>
+<br><br><br><br><br
+<p align="right"><strong>检查过:</strong></p><br>
+<p align="right">正教授</p><br>
+<p align="right">Ivanyuk D.S.</p><br>
+<p align="center"><strong>检查过:</strong></p><br>
+<p align="center">正教授</p><br>
+<p align="center">Ivanyuk D.S.</p><br>
+<br><br><br><br><br>
+<p align="center">布雷斯特2023</p><br>
+<p align="right">布雷斯特2023</p><br>
+<br><br><br><br><br>
 ---
 <p><strong>Task</strong><p>
 <li><p>1. 阅读有关"PLCnext"平台的一般信息(https://www.plcnext.help/te/About/Home.htm).</li></p>
