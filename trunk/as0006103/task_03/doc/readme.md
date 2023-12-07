@@ -31,21 +31,16 @@
 
 ***Последовательность действий:***
 <br>
-Делаем форк репозитрия savushkin-r-d/PLCnext-howto.<br>
-Устанавливаем CMake, Cmake Tool,WinSCP, PuTTy, MinGW, MVS19 (через него открываем PLCnext-howto/HowTo build program/ Hello PLCnext).<br>
-В cpp файле меняем часть на as006103.<br>
-В PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe в строку "CMAKE_MAKE_PROGRAM:FILEPATH" прописываем путь к ninja.<br>
-Пересобиаем проект.<br>
-В панели управления "Сеть и Интернет/Центр управления сетями и общим доступом" выбираем  сеть Ethernet, вводим ip 192.168.1.1 и маску 255.255.255.0, PuTTy прописываем ip 192.168.1.10.<br>
-![](../../src/ip.png)
-<br>
-Прописываем ip в WinSCP и указываем имя пользователя "admin".(Пароль написан на самом контроллере)<br>
-Файл hello_PLCnext перемещаем в файловую систему контроллера, даём все расширения и права. <br>
-Вводим в терминал "./hello_PLCnext" - это запуск проекта. <br>
-Вывод программы: "Hello PLCnext from as006103". <br>
-![](../../src/Lab3Scrinmarina.png)
-<br><br>
-<strong><em>Вывод:</em></strong>
-<p>В ходе лабораторной работы мы научились собирать проект для контроллера AXCF 2152 и запускать его. </p>
+Мы делаем форк репозитория savushkin-r-d/PLCnext-howto.<br> 
+Устанавливаем CMake, Cmake Tool,WinSCP, PuTTy, MinGW, MVS19 (через него открываем PLCnext-howto/HowTo build program/ Hello PLCnext).<br> 
+Внесем изменения в cpp файл, заменив часть на as006103.<br> 
+Открываем PLCnext-howto-master/HowTo build program Hello PLCnext/Hello-PLCnext/CmakeCashe и прописываем путь к ninja в строку "CMAKE_MAKE_PROGRAM:FILEPATH".<br> 
+Затем пересобираем проект.<br> 
+Выбираем сеть Ethernet в панели управления "Сеть и Интернет/Центр управления сетями и общим доступом", вводим ip 192.168.1.1 и маску 255.255.255.0, а также указываем ip 192.168.1.10 для PuTTy.<br> 
+Прописываем ip в WinSCP и указываем имя пользователя "admin" (Пароль написан на самом контроллере).<br> 
+Перемещаем файл hello_PLCnext в файловую систему контроллера, предоставляем все расширения и права. <br> 
+Затем вводим в терминал "./hello_PLCnext" для запуска проекта. <br> 
+Результат программы: "Hello PLCnext from as006103". <br> 
 
-![](../../src/Lab3Photo.png)
+<strong><em>Итог:</em></strong> 
+<p>В результате лабораторной работы мы освоили процесс сборки проекта для контроллера AXCF 2152 и его запуска. </p>
