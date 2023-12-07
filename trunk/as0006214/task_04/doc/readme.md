@@ -66,5 +66,5 @@ Task: [#4](../../../../tasks/task_04/readme.md).
 <p>The use of the AXC F 2152 controller opens up wide possibilities for creating flexible and scalable automation systems. Thanks to its high performance and multifunctionality, we can successfully implement complex projects in the field of industrial automation. The new skills acquired in working with this controller can be applied in various projects, ranging from simple monitoring and control tasks to complex systems that require integration with other devices and services.
 
 <p>This laboratory work required significantly less time to complete compared to the previous one, taking approximately an hour or two. This laboratory work was carried out by a team of students as006214, as006219, as006217.</p>
-
+<br>
 ![](images/team.jpg)
