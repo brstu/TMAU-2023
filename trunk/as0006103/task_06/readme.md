@@ -24,10 +24,10 @@ Study proposed projects and contribute to the project (in the form of submitting
 ## Progress
 During the study of the proposed projects, a command was added to the documentation of one of them to clone the repository in readme.md for convenient use. I created an issue in which I pointed out the [issue](https://github.com/savushkin-r-d/EasyEPLANner/issues/1275). Created a [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1276) in which he mentioned the issue that he was fixing.
 
-<p align="center"><img style='border:2px solid #000000'src="images/pull.png"/>
-<p align="center"><img style='border:2px solid #000000'src="images/issue.png"/>
-<p align="center"><img style='border:2px solid #000000'src="images/commit1.png"/>
-<p align="center"><img style='border:2px solid #000000'src="images/commit2.png"/>
+<p align="center"><img style='border:2px solid #000000'src="img/pull.png"/>
+<p align="center"><img style='border:2px solid #000000'src="img/issue.png"/>
+<p align="center"><img style='border:2px solid #000000'src="img/commit1.png"/>
+<p align="center"><img style='border:2px solid #000000'src="img/commit2.png"/>
 
 
 ## Conclusion:
