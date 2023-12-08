@@ -1,5 +1,6 @@
 <p align="center">Лабораторная работа №6</p>
-<p align="center">Чугарин Даннил АС-61</p>
+<p align="center">Выполнил: Чугарин Даннил АС-61</p>
+<p align="center">Проверил: Иванюк Д.С</p>
 
 ### Цель работы:
 Внести свой вклад в проект (в виде оформления вопросов (issue) и запросов на внесение изменений (pull request)):
@@ -20,4 +21,4 @@
 ![](../../images/pr_changes_tsk6.png)
 
 ### Вывод:
-Входе лабораторной работы я внёс изменения в репозиторий [EasyEPLANner](https://github.com/savushkin-r-d/EasyEPLANner)
+Входе лабораторной работы я внёс изменения в репозиторий [EasyEPLANner](https://github.com/savushkin-r-d/EasyEPLANner).
