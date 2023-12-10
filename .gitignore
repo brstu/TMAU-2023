@@ -34,3 +34,10 @@
 # Directories to ignore
 .vs/
 out/
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
