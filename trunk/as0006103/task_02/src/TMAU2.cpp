@@ -84,7 +84,6 @@ private:
     const double _td = 40;
     const double _t0 = 10;
     const double _k = 0.1;
-    //const double _t = 10;
     const double timeModeling = 30;
     double _uk = 0;
 
