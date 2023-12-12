@@ -1,0 +1,59 @@
+Iteration 1:
+Linear model output: 0.4
+Nonlinear model output: 0.184147
+ERROR: 0.215853
+Control signal: 0.36695
+
+Iteration 2:
+Linear model output: 0.68
+Nonlinear model output: 0.299486
+ERROR: 0.380514
+Control signal: 0.71163
+
+Iteration 3:
+Linear model output: 0.876
+Nonlinear model output: 0.357911
+ERROR: 0.518089
+Control signal: 1.10283
+
+Iteration 4:
+Linear model output: 1.0132
+Nonlinear model output: 0.383445
+ERROR: 0.629755
+Control signal: 1.52419
+
+Iteration 5:
+Linear model output: 1.10924
+Nonlinear model output: 0.393746
+ERROR: 0.715494
+Control signal: 1.96249
+
+Iteration 6:
+Linear model output: 1.17647
+Nonlinear model output: 0.397755
+ERROR: 0.778713
+Control signal: 2.41057
+
+Iteration 7:
+Linear model output: 1.22353
+Nonlinear model output: 0.399292
+ERROR: 0.824236
+Control signal: 2.86467
+
+Iteration 8:
+Linear model output: 1.25647
+Nonlinear model output: 0.399878
+ERROR: 0.856591
+Control signal: 3.32269
+
+Iteration 9:
+Linear model output: 1.27953
+Nonlinear model output: 0.400101
+ERROR: 0.879428
+Control signal: 3.78333
+
+Iteration 10:
+Linear model output: 1.29567
+Nonlinear model output: 0.400185
+ERROR: 0.895485
+Control signal: 4.24577
