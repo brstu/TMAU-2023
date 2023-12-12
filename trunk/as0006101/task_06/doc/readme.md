@@ -35,15 +35,15 @@
 <p align="center">Брест 2023</p>
 
 
-###Цель работы:
+### Цель работы:
 Изучить предложенные проекты и внести свой вклад в проект (в виде оформления вопросов через issues и внесения изменений через pull request)
 ### Ход работы
 
-<p>Изучив проекты, в их документации были найдены пунктуационные ошибки в Демо-проекте [T1-PLCnext-Demo](https://github.com/savushkin-r-d/T1-PLCnext-Demo) и орфографическая ошибка в [EPLANner](https://github.com/savushkin-r-d/EasyEPLANner). </p>
+<p>Изучив проекты, в их документации были найдены пунктуационные ошибки в Демо-проекте: https://github.com/savushkin-r-d/T1-PLCnext-Demo и орфографическая ошибка в https://github.com/savushkin-r-d/EasyEPLANner. </p>
 
-<p>В демо-проекте создала issue, в котором указала на ошибки [issue](https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) (https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) и затем создала [pull request](https://github.com/savushkin-r-d/T1-PLCnext-Demo/pull/41). </p>
+<p>В демо-проекте создала issue, в котором указала на ошибки [issue](https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) и затем создала [pull request](https://github.com/savushkin-r-d/T1-PLCnext-Demo/pull/41). </p>
 
 
-<p>В  EPLANner  также создала issue [issue]( (https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38)https://github.com/savushkin-r-d/EasyEPLANner/issues/1287) (https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) и затем создала [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1288). (https://github.com/savushkin-r-d/EasyEPLANner/pull/1288)  </p>
+<p>В  EPLANner  также создала issue [issue](https://github.com/savushkin-r-d/EasyEPLANner/issues/1287) и затем создала [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1288).  </p>
 
 ### Вывод: в ходе лабораторной работы внесли свой вклад  в проекты.
