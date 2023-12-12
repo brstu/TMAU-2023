@@ -14,7 +14,7 @@
 
 ![](../../images/issue_tsk6.png)
 
-Далее создал [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1278) для внесения изменений в репозиторий.
+Далее создал [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1285) для внесения изменений в репозиторий.
 
 ![](../../images/pr_tsk6.png)
 
