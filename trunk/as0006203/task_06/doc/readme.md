@@ -35,7 +35,7 @@
 
 - В тексте readme.md файла [HowTo install Windows tools for C++ programming with MS Visual Studio IDE](https://github.com/savushkin-r-d/PLCnext-howto/blob/master/HowTo%20install%20Windows%20tools%20for%20C%2B%2B%20programming%20with%20MS%20Visual%20Studio%20IDE/readme.md) была обновлена информация о последней версии SDK.
 
-- В тексте CMakePresets.json файла [Hello-PLCnext](https://github.com/savushkin-r-d/PLCnext-howto/blob/master/HowTo%20build%20program%20Hello%20PLCnext/Hello-PLCnext/CMakePresets.json) были изменены ARP_DEVICE, ARP_DEVICE_VERSION и путь до SDK
+- В тексте CMakePresets.json файла [Hello-PLCnext](https://github.com/savushkin-r-d/PLCnext-howto/blob/master/HowTo%20build%20program%20Hello%20PLCnext/Hello-PLCnext/CMakePresets.json) были изменены ARP_DEVICE, ARP_DEVICE_VERSION и путь до SDK.
 
 - Был создан [issue](https://github.com/savushkin-r-d/PLCnext-howto/issues/53) с описанием изменений.
 
