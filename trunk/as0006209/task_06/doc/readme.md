@@ -35,6 +35,6 @@
 
 - Был создан [issue](https://github.com/savushkin-r-d/PLCnext-howto/issues/48) с описанием данных ошибок.
 
-- И предложено решение данного issue в виде [pull request](https://github.com/savushkin-r-d/PLCnext-howto/pull/49) с их исправлением.
+- И предложено решение данного issue в виде [pull request](https://github.com/savushkin-r-d/PLCnext-howto/pull/49) с их исправлением
 
 **Вывод:** Внесен вклад в проект [PLCnext-howto](https://github.com/savushkin-r-d/PLCnext-howto) посредством исправления ошибок в документации.</p>
