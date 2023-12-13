@@ -41,9 +41,10 @@
 
 <p>Изучив проекты, в их документации были найдены пунктуационные ошибки в Демо-проекте: https://github.com/savushkin-r-d/T1-PLCnext-Demo и орфографическая ошибка в https://github.com/savushkin-r-d/EasyEPLANner. </p>
 
-<p>В демо-проекте создала issue, в котором указала на ошибки [issue](https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) и затем создала [pull request](https://github.com/savushkin-r-d/T1-PLCnext-Demo/pull/41). </p>
+<p>В демо-проекте создала issue, в котором указала на ошибки [issue] (https://github.com/savushkin-r-d/T1-PLCnext-Demo/issues/38) и затем создала [pull request](https://github.com/savushkin-r-d/T1-PLCnext-Demo/pull/41). </p>
 
 
 <p>В  EPLANner  также создала issue [issue](https://github.com/savushkin-r-d/EasyEPLANner/issues/1287) и затем создала [pull request](https://github.com/savushkin-r-d/EasyEPLANner/pull/1288).  </p>
 
-### Вывод: в ходе лабораторной работы внесли свой вклад  в проекты.
+### Вывод: 
+В ходе лабораторной работы изучили предложенные проекты и внесли свой вклад  в них.
