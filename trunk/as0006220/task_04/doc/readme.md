@@ -41,7 +41,7 @@
 
 
 
-![ ] ( ../pictures/2.png )
+![ ] ( ../images/2.png )
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-![ ] ( ../pictures/1.png )
+![ ] ( ../images/1.png )
 
 
 
