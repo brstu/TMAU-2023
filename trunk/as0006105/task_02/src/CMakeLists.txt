@@ -1,4 +1,4 @@
 cmake_minimum_required (VERSION 3.5.0)
 project (Task02)
 
-add_executable(Task02 Source.cpp)
+add_executable(Source Source.cpp)
