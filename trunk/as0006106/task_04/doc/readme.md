@@ -7,7 +7,7 @@
 <p align="center">По дисциплине “Теория и методы автоматического управления”</p>
 <p align="center">Тема: “Работа с контроллером”</p>
 <br><br><br>
-<p align="right">Выполнила:</p>
+<p align="right">Выполнил:</p>
 <p align="right">Студент 3 курса</p>
 <p align="right">Группы АС-61</p>
 <p align="right">Карпович И. В..</p>
