@@ -23,7 +23,7 @@
 
 <p> <strong> Ход работы </strong> </p>
 
-<p> Для выполнения задачи был выбран открытый проект "Документация работы с технологией [PLCnext](https://www.plcnext-community.net/en/) - [PLCnext-howto](https://github.com/savushkin-r-d/PLCnext-howto) "
+Для выполнения задачи был выбран открытый проект "Документация работы с технологией [PLCnext](https://www.plcnext-community.net/en/) - [PLCnext-howto](https://github.com/savushkin-r-d/PLCnext-howto) "
 
 Поскольку есть пользователи, которым тяжело воспринимать текст на английском, а особенно инструкции, было принято решение перевести файл readme.md на русский язык. [Файл здесь](https://github.com/savushkin-r-d/PLCnext-howto/tree/master/HowTo%20build%20program%20Hello%20PLCnext).
 
@@ -31,4 +31,3 @@
 
 Я создала [issue](https://github.com/savushkin-r-d/PLCnext-howto/issues/57), а также [pull request](https://github.com/savushkin-r-d/PLCnext-howto/pull/56), с описанием и внесенными изменениями
 
-</p>
