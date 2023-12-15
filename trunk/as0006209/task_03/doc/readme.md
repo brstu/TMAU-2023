@@ -57,7 +57,7 @@ cmake --build --preset=build-windows-AXCF2152-2022.6.0.43 --target install .
 
 ![](images/putty_connect.jpg) 
 
-<p>Авторизируемся для подключения к контроллеру. Login: <em>admin</em>; password: <em>можно найти на контроллере</em>.</p>
+<p>Авторизируемся для подключения к контроллеру. Login: <em>admin</em>; password: <em>можно найти на контроллере</em></p>
 
 ![](images/putty_login.jpg) 
 
