@@ -33,4 +33,4 @@ else HLA1:turn_off_red() end
 ```
 
 ## Results
-<p align="left"><img style='border:2px solid #000000'src="blink_hla1.gif"/>
+Click on the following link: [blink_HLA1](https://youtube.com/shorts/TJ8U5omHLCs?feature=share)
