@@ -26,8 +26,21 @@
 
 <p>Были внесены изменения в main.plau. Был изменен порядок лапмочек.</p>
 
-<p align="center"><img style='border:2px solid #000000'src="images/main.png"/>
+``` bash
+function user_init()
+    local delta = 200
+
+    A5HL1_info.start_time = get_millisec()
+    A5HL3_info.start_time = A5HL1_info.start_time - delta
+    A5HL5_info.start_time = A5HL3_info.start_time - delta
+    A5HL7_info.start_time = A5HL5_info.start_time - delta
+    A5HL2_info.start_time = A5HL7_info.start_time - delta
+    A5HL4_info.start_time = A5HL2_info.start_time - delta
+    A5HL6_info.start_time = A5HL4_info.start_time - delta
+    A5HL8_info.start_time = A5HL6_info.start_time - delta
+end
+```
 
 <p>Работа контроллера:</p>
 
-<p align="center"><img style='border:2px solid #000000'src="images/chek.gif"/>
+<p>https://youtube.com/shorts/dQ2PyLuyWYQ?si=rofiJEyTblShCQ1V</p>
