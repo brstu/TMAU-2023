@@ -1,5 +1,5 @@
-cmake_minimum_required (VERSION 3.27.6)
+cmake_minimum_required (VERSION 2.4.0)
 
-project (task001)
+project (task1)
 
-add_executable(task001 lab1.cpp) # создание исполняемого файла
+add_executable(task1 lab1.cpp) # создание исполняемого файла
